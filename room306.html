@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide - Room 306</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NYU Perstare';
+            src: url('fonts/NYUPerstare-Regular.woff2') format('woff2'),
+                 url('fonts/NYUPerstare-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NYU Sans';
+            src: url('fonts/NYUSans-Regular.woff2') format('woff2'),
+                 url('fonts/NYUSans-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #57068c;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .nyu-logo {
+            height: 40px;
+        }
+
+        main > h1 {
+            color: #4a148c;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+        }
+
+        .step h2 {
+            color: #4a148c;
+            font-size: 1.5em;
+            margin: 30px 0 20px;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .mode-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #f5f5f5;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(87,6,140,0.04);
+        }
+
+        .mode-button.active, .mode-button:hover {
+            background-color: #4a148c;
+            color: white;
+        }
+
+        .mode-button i {
+            margin-right: 8px;
+            color: #4a148c;
+        }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
+        .mode-section {
+            display: none;
+        }
+
+        .mode-section.active {
+            display: block;
+        }
+
+        .mode-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mode-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            margin-bottom: 24px;
+            background: #faf7fd;
+            object-fit: contain;
+        }
+
+        .instructions {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .step {
+                padding: 16px;
+            }
+            .mode-button {
+                width: 100%;
+                text-align: center;
+            }
+            .mode-image {
+                max-width: 100%;
+            }
+        }
+
+        .image-viewer {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .image-viewer img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            background: #faf7fd;
+            object-fit: contain;
+        }
+
+        .image-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .image-controls button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #ede9fe;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .image-controls button:hover {
+            background: #4a148c;
+            color: white;
+        }
+
+        .image-controls button:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .frame-counter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>Room 306</h1>
+            
+            <section class="step">
+                <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
+                        <i class="fas fa-headphones"></i> External Sound
+                    </button>
+                </div>
+
+                <div id="room-pc-sound" class="mode-section active">
+                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <div class="mode-content">
+                        <img src="images/d37714_68f684e855304401b90fc4ee15ad54cb~mv2.gif" alt="Room PC Sound Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>On the top of the rack, there is a black box labeled Furman. Flip the red switch up and turn on the power.</li>
+                                <li>Towards the bottom of the rack, on the box labelled "Audio Control", press the button labelled "Cart SSL".</li>
+                                <li>Turn all 4 knobs on the right (bass, treble, balance, and volume) to the vertical/12 'o' clock position. For the bass and treble knobs, you will feel a click at each notch. Make sure they align with the exact vertical position. For the balance knob, there is a click only at the vertical position. For the volume knob, there are no clicks for the notches, so just keep it on the middle.</li>
+                                <li>On the bottom box in the rack, make sure sure the knobs for left and right are turned to the vertical/12 'o' clock position.</li>
+                                <li>On the remote strapped to the HDMI switcher, press 3, labelled "CART SSL".</li>
+                                <li>On the computer, in the menu bar in the top right corner, under sound, ensure that "SSL 2+" is the selected device (it will be highlighted blue).</li>
+                                <li>Turn up the big blue knob on the SSL labeled "MONITOR LEVEL".</li>
+                                <li>Turn the grey knob in the top right corner of the SSL all the way to the right towards "USB".</li>
+                                <li>Once you're done using the PC, turn the Monitor Level knob all the way to 0 and switch off the Furman Power in the rack.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-sound" class="mode-section">
+                    <h3><i class="fas fa-laptop"></i> Laptop Sound</h3>
+                    <div class="mode-content">
+                        <img src="images/d37714_05134961113f4252b9c5c657711fa1b2~mv2.gif" alt="Laptop Sound Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>On top of the rack, there is a black box labeled Furman. Flip the red switch on the right side to the on position.</li>
+                                <li>Towards the bottom of the rack, on the box labelled Audio Control, press the button labelled HDMI Switcher and turn all 4 knobs on the right (bass, treble, balance, and volume) to the middle/vertical position. For the bass and treble knobs, you will feel a click at each notch. Make sure they align with the exact vertical position. For the balance knob, there is a click only at the vertical position. For volume only, roughly in the middle is ok, and adjust as needed.</li>
+                                <li>On the bottom box in the rack, make sure both knobs (labelled left and right) are turned to the middle/vertical position.</li>
+                                <li>On the remote strapped to the HDMI switcher, press 2, labelled LAPTOP.</li>
+                                <li>Plug in either your laptop or your phone to the HDMI adapter attached to the rack.</li>
+                                <li>Turn the volume up or down on your laptop/phone to adjust the monitor level.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="external-sound" class="mode-section">
+                    <h3><i class="fas fa-headphones"></i> External Sound</h3>
+                    <div class="instructions">
+                        <ul>
+                            <li>On the podium, the Audio Control Box, select Mini Plug.</li>
+                            <li>Connect your device to the aux cable attached to the podium.</li>
+                            <li>(If you're using a Macbook) Click on the Control Center icon in the menu bar at the top right corner, under "Sound", ensure that External Headphones is the selected device (the circle to the left will be blue if so, click it if not).</li>
+                            <li>(If you're using a Windows laptop) Click on the Speaker icon in the menu bar at the lower right corner, ensure that the device start with Headphones is the selected device.</li>
+                            <li>Click the Volume up and down buttons on the EXTRON panel on the podium to adjust the volume.</li>
+                            <li>When done, click DISPLAY OFF to shut down the system.</li>
+                            <li>Turn the power off on the Furman Box at the bottom of the podium.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><i class="fas fa-video"></i> Projector Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-proj', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-proj', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                </div>
+
+                <div id="room-pc-proj" class="mode-section active">
+                    <h3><i class="fas fa-desktop"></i> Room PC Projector</h3>
+                    <div class="mode-content">
+                        <div class="instructions">
+                            <ul>
+                                <li>On the Extron panel, tap the screen to wake up and tap "Press to Start".</li>
+                                <li>The projector should turn on and automatically screen the room PC.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-proj" class="mode-section">
+                    <h3><i class="fas fa-laptop"></i> Laptop Projector</h3>
+                    <div class="mode-content">
+                        <div class="instructions">
+                            <ul>
+                                <li>On your laptop, open system preferences (in the dock at the bottom of the screen), click on displays, then look under the "Use as" selection.</li>
+                                <li>(Only for Macbook) If you would like to mirror the displays (such that the screen on the cart and on the wall are the same) make sure you select Mirror for PTVMZ61. If you would like to extend the displays (such that the two screens are separate), make sure you select "Main Display".</li>
+                                <li>When done, use the remote to turn off the projector.</li>
+                                <li>Turn off the red switch on the Furman at the top of the rack.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            // Get the parent section
+            const parentSection = button.closest('.step');
+            
+            // Hide all mode sections within the same parent section
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Remove active class from all buttons within the same parent section
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected mode section
+            const selectedMode = document.getElementById(modeId);
+            selectedMode.classList.remove('hidden');
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+        }
+
+        // Function to select default modes
+        function selectDefaultModes() {
+            // Select Room PC mode for both steps
+            document.querySelectorAll('.step').forEach(step => {
+                const roomPCButton = step.querySelector('button:first-of-type');
+                const roomPCSection = step.querySelector('.mode-section:first-of-type');
+                if (roomPCSection) {
+                    roomPCSection.classList.remove('hidden');
+                    roomPCButton.classList.add('active');
+                }
+            });
+        }
+
+        // Run when page loads
+        window.onload = selectDefaultModes;
+    </script>
+</body>
+</html> 

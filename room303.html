@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NYU Perstare';
+            src: url('fonts/NYUPerstare-Regular.woff2') format('woff2'),
+                 url('fonts/NYUPerstare-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NYU Sans';
+            src: url('fonts/NYUSans-Regular.woff2') format('woff2'),
+                 url('fonts/NYUSans-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        h1, h2, h3, .mode-button {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+        }
+
+        .mode-button.active {
+            background-color: #4a148c;
+            color: white;
+        }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
+        .mode-button i {
+            margin-right: 8px;
+            color: #4a148c;
+        }
+
+        header {
+            background-color: #57068c;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .nyu-logo {
+            height: 40px;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 20px;
+        }
+
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .images-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .mode-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .images-row {
+                flex-wrap: nowrap;
+            }
+            
+            .mode-image {
+                width: calc(50% - 10px);
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .images-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .mode-image {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>Room 303</h1>
+            
+            <section class="step">
+                <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
+                        <i class="fas fa-headphones"></i> External Sound
+                    </button>
+                </div>
+
+                <div id="room-pc-sound" class="mode-section">
+                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <div class="mode-content">
+                        <div class="images-row">
+                            <img src="images/start_without_projector.jpg" alt="Start Without Projector" class="mode-image">
+                            <img src="images/podium.jpg" alt="Podium Controls" class="mode-image">
+                        </div>
+                        <div class="instructions" style="margin-top: 20px;">
+                            <ul>
+                                <li>On the podium, there is a black panel labeled Extron. Tap "Start w/o Projector" to wake it up.</li>
+                                <li>Click on "Podium Mac" in the top right corner on the Extron panel.</li>
+                                <li>On the podium, on the Extron panel, adjust the volume by tapping the up and down arrow on the right side of the screen.</li>
+                                <li>When done using the system, click on the "Power" button on the Extron panel and select "Power Down".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-sound" class="mode-section hidden">
+                    <h3><i class="fas fa-laptop"></i> Laptop Sound</h3>
+                    <div class="mode-content">
+                        <div class="image-container">
+                            <div class="images-row">
+                                <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
+                                <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
+                            </div>
+                        </div>
+                        <div class="instructions">
+                            <ul>
+                                <li>On the podium, there is a black panel labeled Extron. Tap "Start w/o Projector" to wake it up.</li>
+                                <li>On the podium, on the Extron black panel, make sure "LAPTOP HDMI" is selected.</li>
+                                <li>On the podium, on the Extron panel, adjust the volume by tapping the up and down arrow on the right side of the screen.</li>
+                                <li>When done using the system, click on the "Power" button on the Extron panel and select "Power Down".</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="external-sound" class="mode-section hidden">
+                    <h3><i class="fas fa-headphones"></i> External Sound Source</h3>
+                    <div class="mode-content">
+                        <img src="images/Windows_Aux.png" alt="External Sound Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>On the Extron black panel on the podium, select Laptop VGA in the top row.</li>
+                                <li>Connect your device to the aux cable attached to the podium.</li>
+                                <li>For MacBook: Click on the Control Center icon in the menu bar at the top right corner, under "Sound", ensure that "External Headphones" is the selected device.</li>
+                                <li>For Windows: Click on the Speaker icon in the menu bar at the lower right corner, ensure that the device starting with "Headphones" is the selected device.</li>
+                                <li>Click the Volume up and down buttons on the EXTRON panel on the podium to adjust the volume.</li>
+                                <li>When done, click 'DISPLAY OFF' to shut down the system.</li>
+                                <li>Turn the power off on the Furman Box at the bottom of the podium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><i class="fas fa-eye"></i> Video/Projection</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                </div>
+
+                <div id="room-pc-video" class="mode-section">
+                    <h3><i class="fas fa-desktop"></i> Room PC Video</h3>
+                    <div class="mode-content">
+                        <img src="images/press_to_start.jpg" alt="Press to Start" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>On the Extron panel, tap the screen to wake up and tap "Press to Start".</li>
+                                <li>The projector should turn on and automatically screen the room PC.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-video" class="mode-section hidden">
+                    <h3><i class="fas fa-laptop"></i> Laptop Video</h3>
+                    <div class="mode-content">
+                        <img src="images/ExtronRack303.png" alt="Laptop Video Setup" class="mode-image">
+                        <div class="instructions">
+                            <h4>For MacBook:</h4>
+                            <ul>
+                                <li>Open System Settings (in the dock at the bottom of the screen), click on Displays.</li>
+                                <li>To Mirror Displays (same screen on podium and wall): Select Mirror for ExtronScalarD.</li>
+                                <li>To Extend Displays (separate screens): Select Extended Display.</li>
+                            </ul>
+                            <h4>For Windows laptop:</h4>
+                            <ul>
+                                <li>Click the Windows icon on the bottom left corner, open 'Settings' and Click on 'System'.</li>
+                                <li>Click on 'Display' and scroll down to 'Multiple Displays' setting.</li>
+                                <li>To mirror displays: Select 'Duplicate these displays'.</li>
+                                <li>To extend displays: Select 'Extend these displays'.</li>
+                                <li>Adjust screen arrangement in the 'Rearrange your displays' section.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Main Page</a></li>
+                        <li><a href="#" class="active"><i class="fas fa-building"></i> Room 303</a></li>
+                        <li><a href="room778.html"><i class="fas fa-building"></i> Room 778</a></li>
+                    </ul>
+                </nav>
+                <p class="bottom-text">© NYU MPAP Room Guide</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            // Get the parent section
+            const parentSection = button.closest('.step');
+            
+            // Hide all mode sections within the same parent section
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Remove active class from all buttons within the same parent section
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected mode section
+            const selectedMode = document.getElementById(modeId);
+            selectedMode.classList.remove('hidden');
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+        }
+
+        // Function to select default modes
+        function selectDefaultModes() {
+            // Select Room PC mode for both steps
+            document.querySelectorAll('.step').forEach(step => {
+                const roomPCButton = step.querySelector('button:first-of-type');
+                const roomPCSection = step.querySelector('.mode-section:first-of-type');
+                if (roomPCSection) {
+                    roomPCSection.classList.remove('hidden');
+                    roomPCButton.classList.add('active');
+                }
+            });
+        }
+
+        // Run when page loads
+        window.onload = selectDefaultModes;
+    </script>
+</body>
+</html> 
+</html> 

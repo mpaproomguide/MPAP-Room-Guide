@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYU 6th Floor Conference Room Guide</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(87,6,140,0.08);
+            padding: 32px 24px 24px 24px;
+        }
+        header {
+            background-color: #57068c;
+            padding: 1.5rem 0 1rem 0;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .nyu-logo {
+            height: 48px;
+        }
+        main > h1 {
+            text-align: center;
+            font-size: 1.7em;
+            margin: 32px 0 24px 0;
+            color: #57068c;
+            font-weight: 700;
+        }
+        .step {
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1.5px solid #e0d7f3;
+        }
+        .step:last-child {
+            border-bottom: none;
+        }
+        .step h2 {
+            color: #4a148c;
+            font-size: 1.2em;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .mode-button {
+            padding: 10px 28px;
+            border: none;
+            border-radius: 6px;
+            background: #ede9fe;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(87,6,140,0.04);
+        }
+        .mode-button.active, .mode-button:hover {
+            background-color: #57068c;
+            color: #fff;
+        }
+        .mode-button i {
+            margin-right: 8px;
+        }
+        .mode-section {
+            display: none;
+            margin-top: 18px;
+        }
+        .mode-section:not(.hidden) {
+            display: block;
+        }
+        .mode-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .mode-image {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            margin-bottom: 18px;
+            background: #faf7fd;
+            object-fit: contain;
+        }
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 22px;
+            margin: 0 0 0 0;
+        }
+        .instructions li {
+            margin-bottom: 14px;
+            font-size: 1.05em;
+        }
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+        }
+        .footer-nav a {
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .footer-nav a:hover {
+            color: #4a148c;
+        }
+        .bottom-text {
+            color: #888;
+            font-size: 0.95em;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px 2vw 20px 2vw;
+            }
+            .mode-image {
+                max-width: 100%;
+            }
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>6th Floor Conference Room</h1>
+            
+            <section class="step">
+                <h2><i class="fas fa-volume-up"></i> Step 1 - Audio</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('desktop-audio', this)">
+                        <i class="fas fa-desktop"></i> Desktop Mode
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-audio', this)">
+                        <i class="fas fa-laptop"></i> Laptop Mode
+                    </button>
+                </div>
+
+                <div id="desktop-audio" class="mode-section">
+                    <h3><i class="fas fa-desktop"></i> Desktop Mode</h3>
+                    <div class="mode-content">
+                        <img src="images/DesktopMode.jpg" alt="Desktop Audio Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Select Universal Audio Thunderbolt as your output device</li>
+                                <li>Turn Apollo x6 volume up</li>
+                                <li>Turn MAC pot up on the mixer</li>
+                                <li>Turn Master Level pot up on the mixer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-audio" class="mode-section hidden">
+                    <h3><i class="fas fa-laptop"></i> Laptop Mode</h3>
+                    <div class="mode-content">
+                        <img src="images/LaptopMode.jpg" alt="Laptop Audio Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect to the 3.5mm jack on the table</li>
+                                <li>Turn AUX pot up on the mixer</li>
+                                <li>Turn Master Level pot up on the mixer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><i class="fas fa-eye"></i> Step 2 - Display</h2>
+
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('desktop-display', this)">
+                        <i class="fas fa-desktop"></i> Desktop Mode
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-display', this)">
+                        <i class="fas fa-laptop"></i> Laptop Mode
+                    </button>
+                </div>
+
+                <div id="desktop-display" class="mode-section">
+                    <h3><i class="fas fa-tv"></i> Desktop Mode</h3>
+                    <div class="mode-content">
+                        <img src="images/Display6thFlr.jpg" alt="Desktop Display Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Make sure HDMI is plugged in to the Film cart</li>
+                                <li>Turn TV on with the remote</li>
+                                <li>Press the home button on the remote</li>
+                                <li>Press the left button till you see "Source"</li>
+                                <li>Click Source and select HDMI 2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-display" class="mode-section hidden">
+                    <h3><i class="fas fa-laptop"></i> Laptop Mode</h3>
+                    <div class="mode-content">
+                        <img src="images/Display6thFlr.jpg" alt="Laptop Display Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Plug the dark grey HDMI cable into your laptop</li>
+                                <li>Turn TV on with the remote</li>
+                                <li>Press the home button on the remote</li>
+                                <li>Press the left button till you see "Source"</li>
+                                <li>Click Source and select HDMI 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Main Page</a></li>
+                        <li><a href="room303.html"><i class="fas fa-building"></i> 303</a></li>
+                        <li><a href="room778.html"><i class="fas fa-building"></i> 778</a></li>
+                    </ul>
+                </nav>
+                <p class="bottom-text">© NYU Conference Room Guide</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            // Get the parent section
+            const parentSection = button.closest('.step');
+            
+            // Hide all mode sections within the same parent section
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Remove active class from all buttons within the same parent section
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected mode section
+            const selectedMode = document.getElementById(modeId);
+            selectedMode.classList.remove('hidden');
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+        }
+
+        // Function to select default modes
+        function selectDefaultModes() {
+            // Select Desktop Mode for both steps
+            document.querySelectorAll('.step').forEach(step => {
+                const desktopButton = step.querySelector('button:first-of-type');
+                const desktopSection = step.querySelector('.mode-section:first-of-type');
+                if (desktopSection) {
+                    desktopSection.classList.remove('hidden');
+                    desktopButton.classList.add('active');
+                }
+            });
+        }
+
+        // Run when page loads
+        window.onload = selectDefaultModes;
+    </script>
+    <script src="js/oneko.js"></script>
+</body>
+</html> 
