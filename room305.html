@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide - Room 305</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #57068c;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .nyu-logo {
+            height: 40px;
+        }
+
+        main > h1 {
+            color: #4a148c;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+        }
+
+        .step h2 {
+            color: #4a148c;
+            font-size: 1.5em;
+            margin: 30px 0 20px;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .mode-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #f5f5f5;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(87,6,140,0.04);
+        }
+
+        .mode-button.active, .mode-button:hover {
+            background-color: #4a148c;
+            color: white;
+        }
+
+        .mode-button i {
+            margin-right: 8px;
+            color: #4a148c;
+        }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
+        .mode-section {
+            display: none;
+        }
+
+        .mode-section.active {
+            display: block;
+        }
+
+        .mode-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 32px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mode-image {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            background: #faf7fd;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .instructions {
+            flex: 1;
+            min-width: 0;
+            font-size: 1.05em;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .step {
+                padding: 16px;
+            }
+            .mode-button {
+                width: 100%;
+                text-align: center;
+            }
+            .mode-content {
+                flex-direction: column;
+            }
+            .mode-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>Room 305</h1>
+            <p style="text-align: center; color: #57068c; font-weight: bold;">Under Construction</p>
+            
+            <section class="step" id="sound-setup">
+                <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC Sound
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound-group', this)">
+                        <i class="fas fa-laptop"></i> Laptop Sound
+                    </button>
+                </div>
+
+                <div id="room-pc-sound" class="mode-section active">
+                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Room PC Rack" class="mode-image">
+                        <div class="instructions">
+                            <h4>RACK</h4>
+                            <ul>
+                                <li>On the top of the rack, there is a black box labeled Furman. Flip the red switch up and turn on the power.</li>
+                                <li>On the second box in the rack labelled "Audio Control", press the button labelled "Cart".</li>
+                                <li>Make sure the "Bass", "Treble" and "Balance" button are set to the 12 'o' clock position. Adjust the volume button as needed.</li>
+                                <li>On the podium computer, in the menu bar in the top right corner, under sound, ensure that "SSL 2+" is the selected device (it will be highlighted blue).</li>
+                                <li>Turn the grey knob in the top right corner of the SSL all the way to the right towards "USB".</li>
+                                <li>Once you're done using the PC, Turn the Monitor Level knob all the way to 0 and switch off the Furman Power in the rack.</li>
+                            </ul>
+                            <h4>TV Monitor</h4>
+                            <ul>
+                                <li>Aim the remote labeled Samsung remote in the room at the TV and press the power button to turn it on.</li>
+                                <li>On the remote, click the "Home" button and select HDMI 1</li>
+                                <li>Once you are done, turn the TV off with the remote.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-sound-group" class="mode-section">
+                    <h3><i class="fas fa-laptop"></i> Laptop Sound Options</h3>
+                    <div class="mode-selector">
+                        <button class="mode-button active" onclick="toggleMode('aux-cable-no-video', this)">
+                            <i class="fas fa-headphones"></i> Aux Cable (No video)
+                        </button>
+                        <button class="mode-button" onclick="toggleMode('hdmi-sound', this)">
+                            <i class="fas fa-video"></i> HDMI Sound
+                        </button>
+                    </div>
+
+                    <div id="aux-cable-no-video" class="mode-section active">
+                        <div class="mode-content">
+                            <img src="images/placeholder.jpg" alt="Aux Cable Setup" class="mode-image">
+                            <div class="instructions">
+                                <ul>
+                                    <li>On the top of the rack, there is a black box labeled Furman. Flip the red switch up and turn on the power.</li>
+                                    <li>Plug the aux cable on the rack into your computer or device.</li>
+                                    <li>On the second box in the rack labelled "Audio Control", press the button labelled "Device".</li>
+                                    <li>Make sure the "Bass", "Treble" and "Balance" button are set to the 12 'o' clock position. Adjust the volume button as needed.</li>
+                                    <li>On the bottom box in the rack, make sure sure the knobs for left and right are turned to the vertical/ 12 'o' clock position</li>
+                                    <li>On your computer, in the menu bar in the top right corner, under sound, ensure that "External Headphones" is the selected device (it will be highlighted blue).</li>
+                                    <li>Once you're done using your computer, press the "Cart" button on the "Audio Control" box before unplugging the aux cord, and switch off the Furman Power in the rack.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="hdmi-sound" class="mode-section">
+                        <div class="mode-content">
+                            <img src="images/placeholder.jpg" alt="HDMI Sound Setup" class="mode-image">
+                            <div class="instructions">
+                                <ul>
+                                    <li>When projecting video from your laptop onto the wall-mounted TV using HDMI, sound will play through the TV speakers, not the room speakers.</li>
+                                    <li>Attach the HDMI cable to your laptop and turn on the TV. If video isn't projected by default, select HDMI 2 as the input.</li>
+                                    <li>Ensure "SAMSUNG" is selected as the playback device in your computer's sound settings.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step" id="display-settings-section">
+                <h2><i class="fas fa-desktop"></i> Display Settings</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('macbook-display', this)">
+                        <i class="fab fa-apple"></i> MacBook
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('windows-display', this)">
+                        <i class="fab fa-windows"></i> Windows
+                    </button>
+                </div>
+
+                <div id="macbook-display" class="mode-section active">
+                    <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="MacBook Display Settings" class="mode-image">
+                        <div class="instructions">
+                            <ol>
+                                <li>Open System Preferences (in the dock at the bottom of the screen), click on Displays, then select the Arrangement tab.</li>
+                                <li>To **Mirror Displays** (same screen on cart and wall): Make sure the "Mirror Displays" box is checked.</li>
+                                <li>To **Extend Displays** (separate screens): Make sure the "Mirror Displays" box is unchecked. The blue box with the white tab on the top represents your computer monitor, while the other box represents the room's screen. You can move this second box to determine its relation to your monitor. For example, if placed to the left of the blue box, you can move your mouse all the way to the left of your monitor and onto the screen at the front of the room.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="windows-display" class="mode-section">
+                    <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Windows Display Settings" class="mode-image">
+                        <div class="instructions">
+                            <ol>
+                                <li>Click the Windows icon on the bottom left corner, open 'Settings' and Click on 'System'.</li>
+                                <li>Click on 'Display' and scroll down to 'Multiple Displays' setting.</li>
+                                <li>To **Mirror Displays**: Select 'Duplicate these displays'.</li>
+                                <li>To **Extend Displays**: Select 'Extend these displays'.</li>
+                                <li>You can adjust how both screens relate to each other in the 'Rearrange your displays' section when you scroll back to the top of the page.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            const parentSection = button.closest('.step') || button.closest('.mode-section'); // Find the closest parent step or mode-section
+
+            if (!parentSection) return; // Exit if no valid parent found
+
+            // Determine the scope of sections and buttons to toggle
+            let sectionsToToggle = [];
+            let buttonsToToggle = [];
+
+            if (parentSection.id === 'sound-setup' || parentSection.id === 'display-settings-section') {
+                // For top-level sections (Sound Setup, Display Settings)
+                sectionsToToggle = parentSection.querySelectorAll(':scope > .mode-section');
+                buttonsToToggle = parentSection.querySelectorAll(':scope > .mode-selector .mode-button');
+            } else {
+                // For nested sections (e.g., Laptop Sound's sub-modes)
+                sectionsToToggle = parentSection.querySelectorAll(':scope > .mode-section');
+                buttonsToToggle = parentSection.querySelectorAll(':scope > .mode-selector .mode-button');
+            }
+
+            // Hide all mode sections within this scope
+            sectionsToToggle.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all buttons within this scope
+            buttonsToToggle.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show the selected mode section
+            const selectedMode = document.getElementById(modeId);
+            if (selectedMode) {
+                selectedMode.classList.add('active');
+            }
+
+            // Add active class to the clicked button
+            button.classList.add('active');
+        }
+
+        function selectDefaultModes() {
+            // Select default for Sound Setup (Room PC Sound)
+            const soundDefaultButton = document.querySelector('#sound-setup .mode-selector .mode-button.active');
+            if (soundDefaultButton) {
+                toggleMode(soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], soundDefaultButton);
+            }
+
+            // Select default for Laptop Sound (Aux Cable - nested)
+            const laptopSoundDefaultButton = document.querySelector('#laptop-sound-group .mode-selector .mode-button.active');
+            if (laptopSoundDefaultButton) {
+                toggleMode(laptopSoundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], laptopSoundDefaultButton);
+            }
+
+            // Select default for Display Settings (MacBook)
+            const displayDefaultButton = document.querySelector('#display-settings-section .mode-selector .mode-button.active');
+            if (displayDefaultButton) {
+                toggleMode(displayDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], displayDefaultButton);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
+    </script>
+</body>
+</html> 
