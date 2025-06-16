@@ -176,7 +176,7 @@
             <button class="building-header" aria-expanded="false">
                 Education Building <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
                 <div class="room-grid">
                     <a href="room303.html" class="room-link">Room 303</a>
                     <a href="room304.html" class="room-link">Room 304</a>
@@ -198,7 +198,7 @@
             <button class="building-header" aria-expanded="false">
                 Pless Annex <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
                 <div class="room-grid">
                     <a href="acting-lab.html" class="room-link">Acting Lab</a>
                     <a href="drama-therapy.html" class="room-link">Drama Therapy</a>
@@ -210,7 +210,7 @@
             <button class="building-header" aria-expanded="false">
                 Paulson <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
                 <div class="room-grid">
                     <a href="room560.html" class="room-link">Room 560</a>
                     <a href="room570.html" class="room-link">Room 570</a>
@@ -226,7 +226,7 @@
             <button class="building-header" aria-expanded="false">
                 Film Cart <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
                 <div class="room-grid">
                     <a href="room302.html" class="room-link">Room 302A-D</a>
                     <a href="room774.html" class="room-link">Room 774</a>
@@ -239,7 +239,7 @@
             <button class="building-header" aria-expanded="false">
                 3rd North <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
                 <div class="room-grid">
                     <a href="roomC205.html" class="room-link">Room C205</a>
                     <a href="roomC207.html" class="room-link">Room C207</a>
@@ -262,7 +262,9 @@
                 if (otherButton !== button) {
                     otherButton.setAttribute('aria-expanded', 'false');
                     otherButton.querySelector('.fa-chevron-right').style.transform = 'rotate(0deg)';
-                    otherButton.nextElementSibling.style.maxHeight = '0';
+                    const otherContent = otherButton.nextElementSibling;
+                    otherContent.style.maxHeight = '0';
+                    otherContent.style.display = 'none';
                 }
             });
             
@@ -272,17 +274,23 @@
             const content = button.nextElementSibling;
             
             if (!isExpanded) {
+                content.style.display = 'block';
                 icon.style.transform = 'rotate(90deg)';
                 content.style.maxHeight = content.scrollHeight + 'px';
             } else {
                 icon.style.transform = 'rotate(0deg)';
                 content.style.maxHeight = '0';
+                setTimeout(() => {
+                    if (content.style.maxHeight === '0px') {
+                        content.style.display = 'none';
+                    }
+                }, 300); // Match the transition duration
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             // Set up click handlers for all building headers
-            document.querySelectorAll('.building-header').forEach((header, idx) => {
+            document.querySelectorAll('.building-header').forEach((header) => {
                 header.addEventListener('click', () => toggleBuilding(header));
             });
 
