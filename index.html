@@ -288,13 +288,21 @@
             }
         }
 
-        // Initialize all sections to be closed
+        // Initialize sections
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.building-header').forEach((header) => {
-                header.setAttribute('aria-expanded', 'false');
-                const content = header.nextElementSibling;
-                content.style.maxHeight = '0';
-                content.style.display = 'none';
+            document.querySelectorAll('.building-header').forEach((header, index) => {
+                if (index === 0) { // Education Building
+                    header.setAttribute('aria-expanded', 'true');
+                    const content = header.nextElementSibling;
+                    content.style.display = 'block';
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    header.querySelector('.fa-chevron-right').style.transform = 'rotate(90deg)';
+                } else {
+                    header.setAttribute('aria-expanded', 'false');
+                    const content = header.nextElementSibling;
+                    content.style.maxHeight = '0';
+                    content.style.display = 'none';
+                }
                 header.addEventListener('click', () => toggleBuilding(header));
             });
         });
