@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide - Room 302A-D</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'NYU Perstare';
+            src: url('fonts/NYUPerstare-Regular.woff2') format('woff2'),
+                 url('fonts/NYUPerstare-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'NYU Sans';
+            src: url('fonts/NYUSans-Regular.woff2') format('woff2'),
+                 url('fonts/NYUSans-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #57068c;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .nyu-logo {
+            height: 40px;
+        }
+
+        main > h1 {
+            color: #4a148c;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+        }
+
+        .step h2 {
+            color: #4a148c;
+            font-size: 1.5em;
+            margin: 30px 0 20px;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .mode-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #f5f5f5;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(87,6,140,0.04);
+        }
+
+        .mode-button.active, .mode-button:hover {
+            background-color: #4a148c;
+            color: white;
+        }
+
+        .mode-button i {
+            margin-right: 8px;
+            color: #4a148c;
+        }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
+        .mode-section {
+            display: none;
+        }
+
+        .mode-section.active {
+            display: block;
+        }
+
+        .mode-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mode-image {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            margin-bottom: 24px;
+            background: #faf7fd;
+            object-fit: contain;
+        }
+
+        .instructions {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .step {
+                padding: 16px;
+            }
+            .mode-button {
+                width: 100%;
+                text-align: center;
+            }
+            .mode-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>Room 302A-D</h1>
+            
+            <section class="step">
+                <h2><i class="fas fa-plug"></i> Step 1 - Connect the Cable</h2>
+                <div class="mode-content">
+                    <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="CalDigit Thunderbolt Hub" class="mode-image">
+                    <div class="instructions">
+                        <ul>
+                            <li>Notice the CalDigit Thunderbolt Hub located under the computer monitor. There should be a Thunderbolt cable plugged in labeled LAPTOP or MAC MINI.</li>
+                            <li>Unplug the Thunderbolt cable from the hub.</li>
+                            <li>Connect the Thunderbolt cable to your laptop.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><i class="fas fa-desktop"></i> Step 2 - Choose Your Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('laptop-mode', this)">
+                        <i class="fas fa-laptop"></i> Laptop Mode
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('desktop-mode', this)">
+                        <i class="fas fa-desktop"></i> Desktop Mode
+                    </button>
+                </div>
+
+                <div id="laptop-mode" class="mode-section active">
+                    <div class="mode-content">
+                        <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="Laptop Mode Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Your laptop should now be connected to the display and audio system.</li>
+                                <li>If you need to adjust the volume, use the volume controls on your laptop.</li>
+                                <li>To disconnect, simply unplug the Thunderbolt cable from your laptop and plug it back into the hub.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="desktop-mode" class="mode-section">
+                    <div class="mode-content">
+                        <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="Desktop Mode Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>The desktop computer should now be connected to the display and audio system.</li>
+                                <li>Use the volume controls on the desktop computer to adjust the volume.</li>
+                                <li>To switch back to laptop mode, unplug the Thunderbolt cable from the hub and connect it to your laptop.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            // Get the parent section
+            const parentSection = button.closest('.step');
+            
+            // Hide all mode sections within this parent section
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons within this parent section
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show the selected mode section
+            document.getElementById(modeId).classList.add('active');
+            
+            // Add active class to the clicked button
+            button.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
