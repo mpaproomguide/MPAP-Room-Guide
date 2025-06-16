@@ -223,7 +223,7 @@
                 </div>
             </section>
 
-            <section class="step">
+            <section class="step" id="choose-setup">
                 <h2><i class="fas fa-desktop"></i> Step 2 - Choose Your Setup</h2>
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('laptop-mode', this)">
@@ -235,25 +235,28 @@
                 </div>
 
                 <div id="laptop-mode" class="mode-section active">
-                    <h3><i class="fas fa-laptop"></i> Laptop Mode</h3>
                     <div class="mode-content">
-                        <img src="images/laptop-example-8de8a918b6a4023b4c711ad0a108967d.jpg.avif" alt="Laptop Connection" class="mode-image">
+                        <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="Laptop Mode Setup" class="mode-image">
                         <div class="instructions">
                             <ul>
-                                <li>To use your personal laptop with the desk, connect the LAPTOP cable</li>
-                                <li>To use the computer that comes with the desk, connect the MAC MINI cable</li>
+                                <li>Your laptop should now be connected to the display and audio system.</li>
+                                <li>If you need to adjust the volume, use the volume controls on your laptop.</li>
+                                <li>To disconnect, simply unplug the Thunderbolt cable from your laptop and plug it back into the hub.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div id="desktop-mode" class="mode-section">
-                    <h3><i class="fas fa-desktop"></i> Desktop Mode</h3>
-                    <div class="instructions">
-                        <ul>
-                            <li>To use the computer that comes with the desk, connect the MAC MINI cable</li>
-                            <li>To use your personal laptop with the desk, connect the LAPTOP cable</li>
-                        </ul>
+                    <div class="mode-content">
+                        <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="Desktop Mode Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>The desktop computer should now be connected to the display and audio system.</li>
+                                <li>Use the volume controls on the desktop computer to adjust the volume.</li>
+                                <li>To switch back to laptop mode, unplug the Thunderbolt cable from the hub and connect it to your laptop.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -273,42 +276,36 @@
 
     <script>
         function toggleMode(modeId, button) {
-            // Get the parent section
             const parentSection = button.closest('.step');
             
-            // Hide all mode sections within the same parent section
+            // Hide all mode sections within this parent section
             parentSection.querySelectorAll('.mode-section').forEach(section => {
-                section.classList.add('hidden');
+                section.classList.remove('active');
             });
             
-            // Remove active class from all buttons within the same parent section
+            // Remove active class from all buttons within this parent section
             parentSection.querySelectorAll('.mode-button').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Show selected mode section
-            const selectedMode = document.getElementById(modeId);
-            selectedMode.classList.remove('hidden');
+            // Show the selected mode section
+            document.getElementById(modeId).classList.add('active');
             
-            // Add active class to clicked button
+            // Add active class to the clicked button
             button.classList.add('active');
         }
 
-        // Function to select default modes
         function selectDefaultModes() {
-            // Select Laptop mode for both steps
-            document.querySelectorAll('.step').forEach(step => {
-                const laptopButton = step.querySelector('button:first-of-type');
-                const laptopSection = step.querySelector('.mode-section:first-of-type');
-                if (laptopSection) {
-                    laptopSection.classList.remove('hidden');
-                    laptopButton.classList.add('active');
-                }
-            });
+            const setupDefaultButton = document.querySelector('#choose-setup .mode-button.active');
+            if (setupDefaultButton) {
+                const modeId = setupDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, setupDefaultButton);
+            }
         }
 
-        // Run when page loads
-        window.onload = selectDefaultModes;
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
+
+    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
 </body>
 </html> 

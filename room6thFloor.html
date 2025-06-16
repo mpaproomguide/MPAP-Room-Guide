@@ -97,9 +97,8 @@
         }
         .mode-section {
             display: none;
-            margin-top: 18px;
         }
-        .mode-section:not(.hidden) {
+        .mode-section.active {
             display: block;
         }
         .mode-content {
@@ -212,7 +211,7 @@
                     </button>
                 </div>
 
-                <div id="desktop-audio" class="mode-section">
+                <div id="desktop-audio" class="mode-section active">
                     <h3><i class="fas fa-desktop"></i> Desktop Mode</h3>
                     <div class="mode-content">
                         <img src="images/DesktopMode.jpg" alt="Desktop Audio Setup" class="mode-image">
@@ -227,7 +226,7 @@
                     </div>
                 </div>
 
-                <div id="laptop-audio" class="mode-section hidden">
+                <div id="laptop-audio" class="mode-section">
                     <h3><i class="fas fa-laptop"></i> Laptop Mode</h3>
                     <div class="mode-content">
                         <img src="images/LaptopMode.jpg" alt="Laptop Audio Setup" class="mode-image">
@@ -254,7 +253,7 @@
                     </button>
                 </div>
 
-                <div id="desktop-display" class="mode-section">
+                <div id="desktop-display" class="mode-section active">
                     <h3><i class="fas fa-tv"></i> Desktop Mode</h3>
                     <div class="mode-content">
                         <img src="images/Display6thFlr.jpg" alt="Desktop Display Setup" class="mode-image">
@@ -270,7 +269,7 @@
                     </div>
                 </div>
 
-                <div id="laptop-display" class="mode-section hidden">
+                <div id="laptop-display" class="mode-section">
                     <h3><i class="fas fa-laptop"></i> Laptop Mode</h3>
                     <div class="mode-content">
                         <img src="images/Display6thFlr.jpg" alt="Laptop Display Setup" class="mode-image">
@@ -302,43 +301,36 @@
 
     <script>
         function toggleMode(modeId, button) {
-            // Get the parent section
             const parentSection = button.closest('.step');
-            
-            // Hide all mode sections within the same parent section
+
             parentSection.querySelectorAll('.mode-section').forEach(section => {
-                section.classList.add('hidden');
+                section.classList.remove('active');
             });
-            
-            // Remove active class from all buttons within the same parent section
+
             parentSection.querySelectorAll('.mode-button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
-            // Show selected mode section
-            const selectedMode = document.getElementById(modeId);
-            selectedMode.classList.remove('hidden');
-            
-            // Add active class to clicked button
+
+            document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
         }
 
-        // Function to select default modes
         function selectDefaultModes() {
-            // Select Desktop Mode for both steps
-            document.querySelectorAll('.step').forEach(step => {
-                const desktopButton = step.querySelector('button:first-of-type');
-                const desktopSection = step.querySelector('.mode-section:first-of-type');
-                if (desktopSection) {
-                    desktopSection.classList.remove('hidden');
-                    desktopButton.classList.add('active');
-                }
-            });
+            const audioDefaultButton = document.querySelector('section:nth-of-type(1) .mode-button.active');
+            if (audioDefaultButton) {
+                const modeId = audioDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, audioDefaultButton);
+            }
+
+            const displayDefaultButton = document.querySelector('section:nth-of-type(2) .mode-button.active');
+            if (displayDefaultButton) {
+                const modeId = displayDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, displayDefaultButton);
+            }
         }
 
-        // Run when page loads
-        window.onload = selectDefaultModes;
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
-    <script src="js/oneko.js"></script>
+    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
 </body>
 </html> 

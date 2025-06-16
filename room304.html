@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide - Room 304</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #57068c;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .nyu-logo {
+            height: 40px;
+        }
+
+        main > h1 {
+            color: #4a148c;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+        }
+
+        .step h2 {
+            color: #4a148c;
+            font-size: 1.5em;
+            margin: 30px 0 20px;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .mode-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #f5f5f5;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(87,6,140,0.04);
+        }
+
+        .mode-button.active, .mode-button:hover {
+            background-color: #4a148c;
+            color: white;
+        }
+
+        .mode-button i {
+            margin-right: 8px;
+            color: #4a148c;
+        }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
+        .mode-section {
+            display: none;
+        }
+
+        .mode-section.active {
+            display: block;
+        }
+
+        .mode-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 32px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mode-image {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            background: #faf7fd;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .instructions {
+            flex: 1;
+            min-width: 0;
+            font-size: 1.05em;
+        }
+
+        .instructions ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .step {
+                padding: 16px;
+            }
+            .mode-button {
+                width: 100%;
+                text-align: center;
+            }
+            .mode-content {
+                flex-direction: column;
+            }
+            .mode-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>Room 304</h1>
+            
+            <section class="step">
+                <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC Sound
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
+                        <i class="fas fa-laptop"></i> Laptop Sound
+                    </button>
+                </div>
+
+                <div id="room-pc-sound" class="mode-section active">
+                    <div class="mode-content">
+                        <img src="images/d37714_d74db3cfaa4e47aa921b124bc00b4274~mv2.gif" alt="Room PC Sound Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Make sure you turn on the speakers from the switch on the wall panel</li>
+                                <li>Turn on the power switch on the Furman Box present in the rack in the room</li>
+                                <li>On the "Rotel" box at the very bottom of the rack, make sure the knob under the "Listening" section is turn on "Cart SSL". Make sure the volume knob on the same box is switched to 9 'o' clock position</li>
+                                <li>On the back on the cart with the room PC, there is small "SSL box". Make sure the "Monitor Mix" knob is turned all the way to the right. Also turn down the big blue knob Monitor Level knob to 9 'o' clock position.</li>
+                                <li>On the room PC, go to the toolbar in the top right corner and under Sound Settings, select SSL 2+ (It would be highlighted blue when selected (In case the SSL 2+ doesn't show up in the output settings, replug the USB-C cable on the box.</li>
+                                <li>You should be able to play the room PC audio through the speakers. Adjust the monitor level only on the big blue knob situated on the SSL 2+ based on your preferences.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-sound" class="mode-section">
+                    <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Laptop Sound Setup" class="mode-image" style="display: none;">
+                        <div class="instructions">
+                            <h3>For Macbook</h3>
+                            <ul>
+                                <li>Connect your laptop to the HDMI cable in the room</li>
+                                <li>You can only play audio from your personal computer through the TV in the room. Use the remote on the cart to turn the TV on.</li>
+                                <li>Make sure to select ESO-C1 as the sound output on your output</li>
+                                <li>When the TV is turned on, you should automatically see your laptop being projected onto it. In case it's not, click Input on the TV remote and ensure HDMI 1 is selected.</li>
+                                <li>In order to change display settings, open system preferences (in the dock at the bottom of the screen), click on displays, then select the arrangement tab.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the cart and on the wall are the same) make sure the box is checked. If you would like to extend the displays (such that the two screens are separate), make sure the box is unchecked. The blue box with the white tab on the top represents the computer monitor while the other box represents the room's screen. You can move around this second box to determine where the second screen exists in relation to the computer monitor. Eg: if set to be on the left of the blue box with the white bar, you would be able to move your mouse all the way to left of your monitor and onto the screen at the front of the room.</li>
+                                <li>When done, use the remote to turn off the TV</li>
+                                <li>Turn the red switch "off" on the Furman box in the rack.</li>
+                            </ul>
+                            <h3>For Windows</h3>
+                            <ul>
+                                <li>First ensure SAMSUNG is selected as the playback device in the sound settings (bottom left corner of the toolbar</li>
+                                <li>Click the Windows icon on the bottom left corner, open 'Settings' and Click on 'System'</li>
+                                <li>Click on 'Display' and scroll down to 'Multiple Displays' setting.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select 'Duplicate these displays'</li>
+                                <li>If you would like to extend the displays (such that the two screens are separate), select 'Extend these displays' You can adjust how both screens related to each other in the 'Rearrange your displays' section when scrool back to the top of the page.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step">
+                <h2><i class="fas fa-video"></i> Projector Setup</h2>
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-projector', this)">
+                        <i class="fas fa-desktop"></i> Room PC Projector
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-projector', this)">
+                        <i class="fas fa-laptop"></i> Laptop Projector
+                    </button>
+                </div>
+
+                <div id="room-pc-projector" class="mode-section active">
+                    <div class="mode-content">
+                        <img src="images/room_pc_projector.gif" alt="Room PC Projector Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Turn on the TV using the remote in the room.</li>
+                                <li>By default, the room PC should be projected on the monitor. In case it isn't, press Input on the remote and ensure HDMI 2 is selected.</li>
+                                <li>On the computer, open system preferences (in the dock at the bottom of the screen), click on displays, then select the arrangement tab.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the cart and on the wall are the same) make sure the box is checked. If you would like to extend the displays (such that the two screens are separate), make sure the box is unchecked. The blue box with the white tab on the top represents the computer monitor while the other box represents the room's screen. You can move around this second box to determine where the second screen exists in relation to the computer monitor. Eg: if set to be on the left of the blue box with the white bar, you would be able to move your mouse all the way to left of your monitor and onto the screen at the front of the room.</li>
+                                <li>When done, use the remote to turn off the projector.</li>
+                                <li>Turn the red switch "off" on the Furman box in the rack.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-projector" class="mode-section">
+                    <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Laptop Projector Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect your laptop to the HDMI cable provided at the podium.</li>
+                                <li>Locate the Extron panel on the wall near the computer.</li>
+                                <li>Press the "Laptop" button to select your laptop as the video source.</li>
+                                <li>The projector should turn on automatically and display your laptop's screen.</li>
+                                <li>If the projector doesn't turn on, press the "Power" button on the Extron panel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            // Get the parent section
+            const parentSection = button.closest('.step');
+            
+            // Hide all mode sections within this parent section
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons within this parent section
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show the selected mode section
+            document.getElementById(modeId).classList.add('active');
+            
+            // Add active class to the clicked button
+            button.classList.add('active');
+        }
+    </script>
+
+    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
+</body>
+</html> 

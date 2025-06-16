@@ -265,7 +265,6 @@
 
     <script>
         function toggleMode(modeId, button) {
-            // Get the parent section
             const parentSection = button.closest('.step');
             
             // Hide all mode sections within this parent section
@@ -284,6 +283,19 @@
             // Add active class to the clicked button
             button.classList.add('active');
         }
+
+        // Function to select default modes on page load
+        function selectDefaultModes() {
+            // Select default for "Choose Your Setup" (Laptop Mode)
+            const setupDefaultButton = document.querySelector('#choose-setup .mode-button.active');
+            if (setupDefaultButton) {
+                toggleMode(setupDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], setupDefaultButton);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
+
+    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
 </body>
 </html> 

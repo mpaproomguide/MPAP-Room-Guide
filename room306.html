@@ -106,37 +106,38 @@
         }
 
         .mode-section {
-            display: block;
+            display: none;
         }
 
-        .mode-section.hidden {
-            display: none;
+        .mode-section.active {
+            display: block;
         }
 
         .mode-content {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 32px;
             width: 100%;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .mode-image {
-            max-width: 600px;
+            max-width: 500px;
             width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(87,6,140,0.08);
-            margin-bottom: 24px;
             background: #faf7fd;
             object-fit: contain;
+            flex-shrink: 0;
         }
 
         .instructions {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
+            flex: 1;
+            min-width: 0;
+            font-size: 1.05em;
         }
 
         .instructions ul {
@@ -145,8 +146,8 @@
         }
 
         .instructions li {
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            margin-bottom: 16px;
+            line-height: 1.5;
         }
 
         .instructions li:last-child {
@@ -186,6 +187,9 @@
             .mode-button {
                 width: 100%;
                 text-align: center;
+            }
+            .mode-content {
+                flex-direction: column;
             }
             .mode-image {
                 max-width: 100%;
@@ -277,7 +281,7 @@
                     </button>
                 </div>
 
-                <div id="room-pc-sound" class="mode-section">
+                <div id="room-pc-sound" class="mode-section active">
                     <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
                     <div class="mode-content">
                         <img src="images/d37714_68f684e855304401b90fc4ee15ad54cb~mv2.gif" alt="Room PC Sound Setup" class="mode-image">
@@ -341,7 +345,7 @@
                     </button>
                 </div>
 
-                <div id="room-pc-proj" class="mode-section">
+                <div id="room-pc-proj" class="mode-section active">
                     <h3><i class="fas fa-desktop"></i> Room PC Projector</h3>
                     <div class="mode-content">
                         <div class="instructions">
@@ -372,42 +376,43 @@
 
     <script>
         function toggleMode(modeId, button) {
-            // Get the parent section
             const parentSection = button.closest('.step');
-            
-            // Hide all mode sections within the same parent section
+
+            // Hide all mode sections within this parent section
             parentSection.querySelectorAll('.mode-section').forEach(section => {
-                section.classList.add('hidden');
+                section.classList.remove('active');
             });
-            
-            // Remove active class from all buttons within the same parent section
+
+            // Remove active class from all buttons within this parent section
             parentSection.querySelectorAll('.mode-button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
-            // Show selected mode section
-            const selectedMode = document.getElementById(modeId);
-            selectedMode.classList.remove('hidden');
-            
-            // Add active class to clicked button
+
+            // Show the selected mode section
+            document.getElementById(modeId).classList.add('active');
+
+            // Add active class to the clicked button
             button.classList.add('active');
         }
 
-        // Function to select default modes
+        // Function to select default modes on page load
         function selectDefaultModes() {
-            // Select Room PC mode for both steps
-            document.querySelectorAll('.step').forEach(step => {
-                const roomPCButton = step.querySelector('button:first-of-type');
-                const roomPCSection = step.querySelector('.mode-section:first-of-type');
-                if (roomPCSection) {
-                    roomPCSection.classList.remove('hidden');
-                    roomPCButton.classList.add('active');
-                }
-            });
+            // Select default for Sound Setup (Room PC Sound)
+            const soundDefaultButton = document.querySelector('#sound-setup .mode-button.active');
+            if (soundDefaultButton) {
+                toggleMode(soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], soundDefaultButton);
+            }
+
+            // Select default for Projector Setup (Room PC Projector)
+            const projectorDefaultButton = document.querySelector('#projector-setup .mode-button.active');
+            if (projectorDefaultButton) {
+                toggleMode(projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], projectorDefaultButton);
+            }
         }
 
-        // Run when page loads
-        window.onload = selectDefaultModes;
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
+
+    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
 </body>
 </html> 
