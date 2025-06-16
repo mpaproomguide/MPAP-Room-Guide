@@ -288,17 +288,15 @@
             }
         }
 
+        // Initialize all sections to be closed
         document.addEventListener('DOMContentLoaded', function() {
-            // Set up click handlers for all building headers
             document.querySelectorAll('.building-header').forEach((header) => {
+                header.setAttribute('aria-expanded', 'false');
+                const content = header.nextElementSibling;
+                content.style.maxHeight = '0';
+                content.style.display = 'none';
                 header.addEventListener('click', () => toggleBuilding(header));
             });
-
-            // Expand Education Building by default (index 0)
-            const educationHeader = document.querySelectorAll('.building-header')[0];
-            const educationList = document.querySelectorAll('.room-list')[0];
-            educationHeader.setAttribute('aria-expanded', 'true');
-            educationList.classList.add('open');
         });
     </script>
 
