@@ -14,156 +14,147 @@
     <style>
         body {
             font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
             background: #f5f5f5;
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 1200px;
-            margin: 40px auto 0 auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(87,6,140,0.08);
-            padding: 32px 24px 24px 24px;
+            margin: 0 auto;
+            padding: 20px;
         }
+
         header {
             background-color: #57068c;
-            padding: 1.5rem 0 1rem 0;
+            padding: 1rem;
             text-align: center;
-            border-radius: 12px 12px 0 0;
         }
+
         .header-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
         }
+
         .header-content h1 {
             color: white;
             margin: 0;
-            font-size: 2em;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: 1.8em;
+            font-weight: 600;
         }
+
         .nyu-logo {
-            height: 48px;
+            height: 40px;
         }
+
         main > h1 {
+            color: #4a148c;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 30px 0;
             text-align: center;
-            font-size: 1.7em;
-            margin: 32px 0 24px 0;
-            color: #57068c;
-            font-weight: 700;
         }
+
         .step {
-            margin-bottom: 40px;
-            padding-bottom: 32px;
-            border-bottom: 1.5px solid #e0d7f3;
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
         }
-        .step:last-child {
-            border-bottom: none;
-        }
+
         .step h2 {
             color: #4a148c;
-            font-size: 1.2em;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.5em;
+            margin: 30px 0 20px;
         }
+
         .mode-selector {
             display: flex;
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             flex-wrap: wrap;
-            justify-content: center;
         }
+
         .mode-button {
-            padding: 10px 28px;
+            padding: 12px 24px;
             border: none;
-            border-radius: 6px;
-            background: #ede9fe;
+            border-radius: 8px;
+            background: #f5f5f5;
             color: #57068c;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
+            font-size: 1.1em;
+            font-weight: 500;
             transition: all 0.2s;
             box-shadow: 0 1px 2px rgba(87,6,140,0.04);
         }
+
         .mode-button.active, .mode-button:hover {
-            background-color: #57068c;
-            color: #fff;
+            background-color: #4a148c;
+            color: white;
         }
+
         .mode-button i {
             margin-right: 8px;
+            color: #4a148c;
         }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
         .mode-section {
             display: none;
         }
+
         .mode-section.active {
             display: block;
         }
+
         .mode-content {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
         }
+
         .mode-image {
-            max-width: 350px;
+            max-width: 600px;
             width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(87,6,140,0.08);
-            margin-bottom: 18px;
+            margin-bottom: 24px;
             background: #faf7fd;
             object-fit: contain;
         }
+
+        .instructions {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         .instructions ul {
             list-style-type: disc;
-            padding-left: 22px;
-            margin: 0 0 0 0;
+            padding-left: 20px;
         }
+
         .instructions li {
-            margin-bottom: 14px;
-            font-size: 1.05em;
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
+
         .instructions li:last-child {
             margin-bottom: 0;
         }
-        footer {
-            margin-top: 40px;
-            text-align: center;
-        }
-        .footer-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-        }
-        .footer-nav a {
-            color: #57068c;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1em;
-            transition: color 0.2s;
-        }
-        .footer-nav a:hover {
-            color: #4a148c;
-        }
-        .bottom-text {
-            color: #888;
-            font-size: 0.95em;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px 2vw 20px 2vw;
-            }
-            .mode-image {
-                max-width: 100%;
-            }
-        }
+
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -177,12 +168,30 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: all 0.2s ease;
         }
+
         .back-link:hover {
             background-color: #f5f5f5;
             transform: translateY(-2px);
         }
+
         .back-link i {
             margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .step {
+                padding: 16px;
+            }
+            .mode-button {
+                width: 100%;
+                text-align: center;
+            }
+            .mode-image {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -335,4 +344,4 @@
     </script>
     <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
 </body>
-</html> 
+</html>
