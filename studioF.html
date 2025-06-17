@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide - Room 306</title>
+    <title>MPAP Room Guide - Studio F</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -134,12 +134,22 @@
             background: #faf7fd;
             object-fit: contain;
             flex-shrink: 0;
+            margin: 15px;
         }
 
         .instructions {
             flex: 1;
             min-width: 0;
             font-size: 1.05em;
+            text-align: left;
+        }
+
+        .instructions h4 {
+            color: #4a148c;
+            font-size: 1.3em;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+            text-align: center;
         }
 
         .instructions ol {
@@ -195,61 +205,8 @@
             }
             .mode-image {
                 max-width: 100%;
+                margin: 10px 0;
             }
-        }
-
-        .image-viewer {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto 24px;
-        }
-
-        .image-viewer img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
-            background: #faf7fd;
-            object-fit: contain;
-        }
-
-        .image-controls {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .image-controls button {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            background: #ede9fe;
-            color: #57068c;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .image-controls button:hover {
-            background: #4a148c;
-            color: white;
-        }
-
-        .image-controls button:disabled {
-            background: #f5f5f5;
-            color: #999;
-            cursor: not-allowed;
-        }
-
-        .frame-counter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9em;
-            color: #666;
         }
     </style>
 </head>
@@ -267,9 +224,9 @@
         </a>
 
         <main>
-            <h1>Room 306</h1>
+            <h1>Studio F</h1>
             
-            <section class="step">
+            <section class="step" id="sound-setup">
                 <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
@@ -278,68 +235,42 @@
                     <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
                         <i class="fas fa-laptop"></i> Laptop
                     </button>
-                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
-                        <i class="fas fa-headphones"></i> External Sound
-                    </button>
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <h3><i class="fas fa-desktop"></i> Room PC</h3>
                     <div class="mode-content">
-                        <img src="images/d37714_68f684e855304401b90fc4ee15ad54cb~mv2.gif" alt="Room PC Sound Setup" class="mode-image">
+                        <img src="images/placeholder.jpg" alt="Studio F Room PC Setup" class="mode-image">
                         <div class="instructions">
+                            <h4>Audio Setup</h4>
                             <ol>
-                                <li>On the top of the rack, there is a black box labeled Furman. Flip the red switch up and turn on the power.</li>
-                                <li>Towards the bottom of the rack, on the box labelled "Audio Control", press the button labelled "Cart SSL".</li>
-                                <li>Turn all 4 knobs on the right (bass, treble, balance, and volume) to the vertical/12 'o' clock position. For the bass and treble knobs, you will feel a click at each notch. Make sure they align with the exact vertical position. For the balance knob, there is a click only at the vertical position. For the volume knob, there are no clicks for the notches, so just keep it on the middle.</li>
-                                <li>On the bottom box in the rack, make sure sure the knobs for left and right are turned to the vertical/12 'o' clock position.</li>
-                                <li>On the remote strapped to the HDMI switcher, press 3, labelled "CART SSL".</li>
-                                <li>On the computer, in the menu bar in the top right corner, under sound, ensure that "SSL 2+" is the selected device (it will be highlighted blue).</li>
-                                <li>Turn up the big blue knob on the SSL labeled "MONITOR LEVEL".</li>
-                                <li>Turn the grey knob in the top right corner of the SSL all the way to the right towards "USB".</li>
-                                <li>Once you're done using the PC, turn the Monitor Level knob all the way to 0 and switch off the Furman Power in the rack.</li>
+                                <li>Turn on the power switch on the audio rack.</li>
+                                <li>Press the "PC" button on the audio control panel.</li>
+                                <li>Adjust the volume using the main volume control.</li>
+                                <li>On the computer, ensure the correct audio output is selected.</li>
                             </ol>
                         </div>
                     </div>
                 </div>
 
                 <div id="laptop-sound" class="mode-section">
-                    <h3><i class="fas fa-laptop"></i> Laptop Sound</h3>
+                    <h3><i class="fas fa-laptop"></i> Laptop</h3>
                     <div class="mode-content">
-                        <img src="images/d37714_05134961113f4252b9c5c657711fa1b2~mv2.gif" alt="Laptop Sound Setup" class="mode-image">
+                        <img src="images/placeholder.jpg" alt="Studio F Laptop Setup" class="mode-image">
                         <div class="instructions">
+                            <h4>Laptop Connection</h4>
                             <ol>
-                                <li>On top of the rack, there is a black box labeled Furman. Flip the red switch on the right side to the on position.</li>
-                                <li>Towards the bottom of the rack, on the box labelled Audio Control, press the button labelled HDMI Switcher and turn all 4 knobs on the right (bass, treble, balance, and volume) to the middle/vertical position. For the bass and treble knobs, you will feel a click at each notch. Make sure they align with the exact vertical position. For the balance knob, there is a click only at the vertical position. For volume only, roughly in the middle is ok, and adjust as needed.</li>
-                                <li>On the bottom box in the rack, make sure both knobs (labelled left and right) are turned to the middle/vertical position.</li>
-                                <li>On the remote strapped to the HDMI switcher, press 2, labelled LAPTOP.</li>
-                                <li>Plug in either your laptop or your phone to the HDMI adapter attached to the rack.</li>
-                                <li>Turn the volume up or down on your laptop/phone to adjust the monitor level.</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="external-sound" class="mode-section">
-                    <h3><i class="fas fa-headphones"></i> External Sound</h3>
-                    <div class="mode-content">
-                        <img src="images/d37714_277c6baaf1cc487f81db1174c678ec23~mv2.png-3.avif" alt="External Sound Setup" class="mode-image">
-                        <div class="instructions">
-                            <ol>
-                                <li>On the podium, the Audio Control Box, select Mini Plug.</li>
-                                <li>Connect your device to the aux cable attached to the podium.</li>
-                                <li>(If you're using a Macbook) Click on the Control Center icon in the menu bar at the top right corner, under "Sound", ensure that External Headphones is the selected device (the circle to the left will be blue if so, click it if not).</li>
-                                <li>(If you're using a Windows laptop) Click on the Speaker icon in the menu bar at the lower right corner, ensure that the device start with Headphones is the selected device.</li>
-                                <li>Click the Volume up and down buttons on the EXTRON panel on the podium to adjust the volume.</li>
-                                <li>When done, click DISPLAY OFF to shut down the system.</li>
-                                <li>Turn the power off on the Furman Box at the bottom of the podium.</li>
+                                <li>Connect your laptop to the HDMI cable provided.</li>
+                                <li>Press the "Laptop" button on the audio control panel.</li>
+                                <li>Adjust the volume using the main volume control.</li>
+                                <li>Ensure your laptop's audio output is set correctly.</li>
                             </ol>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="step">
+            <section class="step" id="projector-setup">
                 <h2><i class="fas fa-video"></i> Projector Setup</h2>
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-proj', this)">
@@ -353,11 +284,14 @@
                 <div id="room-pc-proj" class="mode-section active">
                     <h3><i class="fas fa-desktop"></i> Room PC Projector</h3>
                     <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Studio F Room PC Projector" class="mode-image">
                         <div class="instructions">
-                            <ul>
-                                <li>On the Extron panel, tap the screen to wake up and tap "Press to Start".</li>
-                                <li>The projector should turn on and automatically screen the room PC.</li>
-                            </ul>
+                            <ol>
+                                <li>Turn on the projector using the remote control.</li>
+                                <li>Select "PC" as the input source.</li>
+                                <li>The room PC should display automatically.</li>
+                                <li>Adjust the projector focus if needed.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
@@ -365,13 +299,14 @@
                 <div id="laptop-proj" class="mode-section">
                     <h3><i class="fas fa-laptop"></i> Laptop Projector</h3>
                     <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Studio F Laptop Projector" class="mode-image">
                         <div class="instructions">
-                            <ul>
-                                <li>On your laptop, open system preferences (in the dock at the bottom of the screen), click on displays, then look under the "Use as" selection.</li>
-                                <li>(Only for Macbook) If you would like to mirror the displays (such that the screen on the cart and on the wall are the same) make sure you select Mirror for PTVMZ61. If you would like to extend the displays (such that the two screens are separate), make sure you select "Main Display".</li>
-                                <li>When done, use the remote to turn off the projector.</li>
-                                <li>Turn off the red switch on the Furman at the top of the rack.</li>
-                            </ul>
+                            <ol>
+                                <li>Connect your laptop to the HDMI cable.</li>
+                                <li>Turn on the projector using the remote control.</li>
+                                <li>Select "HDMI" as the input source.</li>
+                                <li>Configure your laptop's display settings as needed.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
@@ -402,13 +337,13 @@
 
         // Function to select default modes on page load
         function selectDefaultModes() {
-            // Select default for Sound Setup (Room PC Sound)
+            // Select default for Sound Setup (Room PC)
             const soundDefaultButton = document.querySelector('#sound-setup .mode-button.active');
             if (soundDefaultButton) {
                 toggleMode(soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], soundDefaultButton);
             }
 
-            // Select default for Projector Setup (Room PC Projector)
+            // Select default for Projector Setup (Room PC)
             const projectorDefaultButton = document.querySelector('#projector-setup .mode-button.active');
             if (projectorDefaultButton) {
                 toggleMode(projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], projectorDefaultButton);

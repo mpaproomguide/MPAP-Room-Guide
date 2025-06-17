@@ -11,6 +11,204 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #57068c;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-content h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .nyu-logo {
+            height: 40px;
+        }
+
+        main > h1 {
+            color: #4a148c;
+            font-size: 2.5em;
+            font-weight: 600;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+        }
+
+        .step h2 {
+            color: #4a148c;
+            font-size: 1.5em;
+            margin: 30px 0 20px;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .mode-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: #f5f5f5;
+            color: #57068c;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 1px 2px rgba(87,6,140,0.04);
+        }
+
+        .mode-button.active, .mode-button:hover {
+            background-color: #4a148c;
+            color: white;
+        }
+
+        .mode-button i {
+            margin-right: 8px;
+            color: #4a148c;
+        }
+
+        .mode-button.active i {
+            color: white !important;
+        }
+
+        .mode-section {
+            display: none;
+        }
+
+        .mode-section.active {
+            display: block;
+        }
+
+        .mode-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 32px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mode-image {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            background: #faf7fd;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin: 15px;
+        }
+
+        .instructions {
+            flex: 1;
+            min-width: 0;
+            font-size: 1.05em;
+            text-align: left;
+        }
+
+        .instructions h4 {
+            color: #4a148c;
+            font-size: 1.3em;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .instructions ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .instructions li:last-child {
+            margin-bottom: 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            color: #57068c;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .step {
+                padding: 16px;
+            }
+            .mode-button {
+                width: 100%;
+                text-align: center;
+            }
+            .mode-content {
+                flex-direction: column;
+            }
+            .mode-image {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -28,7 +226,7 @@
         <main>
             <h1>Room 779</h1>
             
-            <section class="step">
+            <section class="step" id="sound-setup">
                 <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
@@ -38,37 +236,67 @@
                         <i class="fas fa-laptop"></i> Laptop
                     </button>
                     <button class="mode-button" onclick="toggleMode('external-sound', this)">
-                        <i class="fas fa-headphones"></i> External Sound
+                        <i class="fas fa-headphones"></i> External Sound Source
                     </button>
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <h3><i class="fas fa-desktop"></i> Room PC</h3>
                     <div class="mode-content">
+                        <img src="images/d37714_868639a2f5e7464cb31c6adbbec4724c~mv2.gif" alt="Room 779 PC Setup" class="mode-image">
                         <div class="instructions">
-                            <p>Room setup instructions coming soon...</p>
+                            <h4>Sound</h4>
+                            <ol>
+                                <li>On the podium, there is a black panel labeled Extron. Tap the screen to wake it up and press the power button.</li>
+                                <li>Tap the button labeled "PC" and make sure "MUTE" is unselected.</li>
+                                <li>On another EXTRON box under the podium, make sure "5" is selected.</li>
+                                <li>Click on the speaker icon in the menu bar at the top right corner, ensure that "ExtronScalerD" is the selected device (it will be highlighted blue when selected).</li>
+                                <li>Adjust the volume by tapping the up/down arrow on the EXTRON panel.</li>
+                                <li>When done using the room, click on "DISPLAY OFF" to turn off the system and switch off the Furman box below the podium.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
 
                 <div id="laptop-sound" class="mode-section">
-                    <h3><i class="fas fa-laptop"></i> Laptop Sound</h3>
+                    <h3><i class="fas fa-laptop"></i> Laptop</h3>
                     <div class="mode-content">
+                        <img src="images/EXTRON_Rack.jpg.avif" alt="Room 779 Laptop Setup" class="mode-image">
                         <div class="instructions">
-                            <p>Laptop setup instructions coming soon...</p>
+                            <h4>TO CONNECT A LAPTOP/iPhone</h4>
+                            <ol>
+                                <li>On the podium, there is a black panel labeled Extron. Tap the screen to wake it up and press the power button.</li>
+                                <li>Plug in the HDMI-USB-C or any of the other available adapters for the device you are trying to connect.</li>
+                                <li>Press the button labeled "LAPTOP" and make sure "MUTE" is unselected.</li>
+                                <li>Adjust the volume by tapping the up/down arrow on the EXTRON panel.</li>
+                                <li>On the menu bar in the top right corner (if a MacBook), ensure that "ExtronScalerD" is the selected device (it will be highlighted blue when selected).</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
 
                 <div id="external-sound" class="mode-section">
-                    <h3><i class="fas fa-headphones"></i> External Sound</h3>
-                    <div class="instructions">
-                        <p>External sound setup instructions coming soon...</p>
+                    <h3><i class="fas fa-headphones"></i> External Sound Source</h3>
+                    <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Room 779 External Sound Setup" class="mode-image">
+                        <div class="instructions">
+                            <h4>TO CONNECT AN EXTERNAL SOUND SOURCE (NO VIDEO)</h4>
+                            <ol>
+                                <li>On the podium, there is a black panel labeled Extron.</li>
+                                <li>Connect your device to the aux cable attached to the podium.</li>
+                                <li>Tap the button labeled "AUXILIARY" and make sure the "MUTE" Button is unselected.</li>
+                                <li>(If using a MacBook) Click on the Control Center icon in the menu bar at the top right corner, under "Sound", ensure that "External Headphones" is the selected device (the circle to the left will be blue if so, click it if not).</li>
+                                <li>(If using a Windows laptop) Click on the Speaker icon in the menu bar at the lower right corner, ensure that the device start with "Headphones" is the selected device.</li>
+                                <li>Click the Volume up and down buttons on the EXTRON panel on the podium to adjust the volume.</li>
+                                <li>When done, click "DISPLAY OFF" to shut down the system.</li>
+                                <li>Turn the power off on the Furman Box at the bottom of the podium.</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="step">
+            <section class="step" id="projector-setup">
                 <h2><i class="fas fa-video"></i> Projector Setup</h2>
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-proj', this)">
@@ -80,19 +308,37 @@
                 </div>
 
                 <div id="room-pc-proj" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Projector</h3>
+                    <h3><i class="fas fa-desktop"></i> Room PC</h3>
                     <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Room 779 PC Projector" class="mode-image">
                         <div class="instructions">
-                            <p>Projector setup instructions coming soon...</p>
+                            <h4>Video/Projection (Podium PC)</h4>
+                            <ol>
+                                <li>On the EXTRON panel on the podium, press "DISPLAY ON" to project.</li>
+                                <li>On the computer, open system settings (in the dock at the bottom of the screen), click on displays.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and the wall are the same) make sure to select Mirror for DELL P2418D. If you would like to extend the displays (such that the two screens are separate), make sure to select Extended display.</li>
+                                <li>In the Arrange window, you can choose the position of the monitors relative to each other, which will allow you to move your mouse between them accurately.</li>
+                                <li>When done using the projector, click on "DISPLAY OFF" on the Extron panel on the podium and the system should shut down.</li>
+                                <li>Turn the power off at the bottom of the podium.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
 
                 <div id="laptop-proj" class="mode-section">
-                    <h3><i class="fas fa-laptop"></i> Laptop Projector</h3>
+                    <h3><i class="fas fa-laptop"></i> Laptop</h3>
                     <div class="mode-content">
+                        <img src="images/placeholder.jpg" alt="Room 779 Laptop Projector" class="mode-image">
                         <div class="instructions">
-                            <p>Laptop projector setup instructions coming soon...</p>
+                            <h4>Video/Projection (With Mac)</h4>
+                            <ol>
+                                <li>On the EXTRON panel on the podium, press "DISPLAY ON" to project.</li>
+                                <li>On your laptop (if you have a MacBook), open system preferences, click on displays, then select the arrangement tab.</li>
+                                <li>(If you have a MacBook), open system settings (in the dock at the bottom of the screen), click on the displays.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select Mirror for "ExtronScalarD". If you would like to extend the displays (such that the two screens are separate), click stop mirroring and then select "Extended Display".</li>
+                                <li>When done using the projector, click on "DISPLAY OFF" on the Extron panel on the podium and the system should shut down.</li>
+                                <li>Turn the power off on the Furman box below the podium.</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
@@ -103,15 +349,40 @@
     <script>
         function toggleMode(modeId, button) {
             const parentSection = button.closest('.step');
+
+            // Hide all mode sections within this parent section
             parentSection.querySelectorAll('.mode-section').forEach(section => {
                 section.classList.remove('active');
             });
+
+            // Remove active class from all buttons within this parent section
             parentSection.querySelectorAll('.mode-button').forEach(btn => {
                 btn.classList.remove('active');
             });
+
+            // Show the selected mode section
             document.getElementById(modeId).classList.add('active');
+
+            // Add active class to the clicked button
             button.classList.add('active');
         }
+
+        // Function to select default modes on page load
+        function selectDefaultModes() {
+            // Select default for Sound Setup (Room PC)
+            const soundDefaultButton = document.querySelector('#sound-setup .mode-button.active');
+            if (soundDefaultButton) {
+                toggleMode(soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], soundDefaultButton);
+            }
+
+            // Select default for Projector Setup (Room PC)
+            const projectorDefaultButton = document.querySelector('#projector-setup .mode-button.active');
+            if (projectorDefaultButton) {
+                toggleMode(projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1], projectorDefaultButton);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
 
     <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
