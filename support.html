@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Tech Support</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(87,6,140,0.08);
+            padding: 32px 24px;
+            text-align: center;
+        }
+        h1 {
+            color: #4a148c;
+            font-size: 2em;
+            margin-bottom: 16px;
+        }
+        .nyu-logo {
+            height: 40px;
+            margin-bottom: 16px;
+        }
+        .support-btn {
+            display: inline-block;
+            font-size: 1.2em;
+            padding: 1em 2em;
+            background: #57068c;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 24px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .support-btn:hover {
+            background: #4a148c;
+        }
+        .desc {
+            margin-bottom: 24px;
+            font-size: 1.1em;
+        }
+        .support-btn i {
+            color: #fff !important;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+        <h1>Request Classroom Tech Support</h1>
+        <div class="desc">
+            Tap the button below to draft an email to the tech support team.<br>
+            Please include your room number and a brief description of the issue.
+        </div>
+        <a class="support-btn" href="mailto:steinhardt.technology@nyu.edu?subject=Classroom%20Tech%20Support%20Request&body=Room%20Number:%20%0AProblem%20Description:%20" target="_blank">
+            <i class="fas fa-envelope"></i> Draft Email
+        </a>
+    </div>
+</body>
+</html> 
