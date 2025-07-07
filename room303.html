@@ -145,6 +145,12 @@
         .back-link i {
             margin-right: 8px;
         }
+
+        #room-pc-sound {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
     </style>
 </head>
 <body>
@@ -162,9 +168,12 @@
 
         <main>
             <h1>Room 303</h1>
-            
-            <section class="step" id="sound-setup">
-                <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
+            <div class="main-menu-selector" style="display: flex; gap: 12px; justify-content: center; margin: 16px 0 32px 0;">
+                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
+                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+            </div>
+            <section class="step" id="sound-setup-section">
+                <!--<h2><i class="fas fa-volume-up"></i> Sound Setup</h2>-->
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
                         <i class="fas fa-desktop"></i> Room PC
@@ -178,54 +187,56 @@
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
                         <div class="images-row">
                             <img src="images/start_without_projector.jpg" alt="Start Without Projector" class="mode-image">
                             <img src="images/podium.jpg" alt="Podium Controls" class="mode-image">
                         </div>
-                        <div class="instructions" style="margin-top: 20px;">
+                        <div class="instructions">
                             <ul>
-                                <li>On the podium, there is a black panel labeled Extron. Tap "Start w/o Projector" to wake it up.</li>
-                                <li>Click on "Podium Mac" in the top right corner on the Extron panel.</li>
-                                <li>On the podium, on the Extron panel, adjust the volume by tapping the up and down arrow on the right side of the screen.</li>
-                                <li>When done using the system, click on the "Power" button on the Extron panel and select "Power Down".</li>
+                                <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Start w/o Projector</strong>" to wake it up.</li>
+                                <li>Tap <strong style="color: #8c4bbd">"Podium Mac"</strong> in the top right corner on the Extron panel.</li>
+                                <li>Adjust the volume with the up and down arrows on the left side of the Extron panel.</li>
+                                <li>When finished with the system, click on the <strong style="color: #8c4bbd">"Power"</strong> button on the Extron panel and select <strong style="color: #8c4bbd">"Power Down"</strong>.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div id="laptop-sound" class="mode-section">
-                    <h3><i class="fas fa-laptop"></i> Laptop Sound</h3>
+                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
-                        <div class="image-container">
                             <div class="images-row">
                                 <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
                                 <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
                             </div>
-                        </div>
                         <div class="instructions">
                             <ul>
-                                <li>On the podium, there is a black panel labeled Extron. Tap "Start w/o Projector" to wake it up.</li>
-                                <li>On the podium, on the Extron black panel, make sure "LAPTOP HDMI" is selected.</li>
-                                <li>On the podium, on the Extron panel, adjust the volume by tapping the up and down arrow on the right side of the screen.</li>
-                                <li>When done using the system, click on the "Power" button on the Extron panel and select "Power Down".</li>
+                                <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Start w/o Projector</strong>" to wake it up.</li>
+                                <li>Tap <strong style="color: #8c4bbd">"Laptop HDMI"</strong> in the top right corner on the Extron panel.</li>
+                                <li>Adjust the volume with the up and down arrows on the left side of the Extron panel.</li>
+                                <li>When finished with the system, click on the <strong style="color: #8c4bbd">"Power"</strong> button on the Extron panel and select <strong style="color: #8c4bbd">"Power Down"</strong>.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div id="external-sound" class="mode-section">
-                    <h3><i class="fas fa-headphones"></i> External Sound Source</h3>
+                    <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
                     <div class="mode-content">
-                        <img src="images/Windows_Aux.png" alt="External Sound Setup" class="mode-image">
+                        <div class="images-row">
+                            <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
+                            <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
+                        </div>
                         <div class="instructions">
                             <ul>
-                                <li>On the Extron black panel on the podium, select Laptop VGA in the top row.</li>
+                                <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Start w/o Projector</strong>" to wake it up.</li>
+                                <li>Tap <strong style="color: #8c4bbd">"Laptop VGA"</strong> in the top right corner on the Extron panel.</li>
                                 <li>Connect your device to the aux cable attached to the podium.</li>
-                                <li>For MacBook: Click on the Control Center icon in the menu bar at the top right corner, under "Sound", ensure that "External Headphones" is the selected device.</li>
-                                <li>For Windows: Click on the Speaker icon in the menu bar at the lower right corner, ensure that the device starting with "Headphones" is the selected device.</li>
-                                <li>Click the Volume up and down buttons on the EXTRON panel on the podium to adjust the volume.</li>
+                                    <div class="instruction-note"><strong>For Mac:</strong> In Control Center (top right), select <strong>"External Headphones"</strong> under Sound.</div>
+                                    <div class="instruction-note"><strong>For Windows:</strong> Click the speaker icon (bottom right), select the <strong>"Headphones"</strong> device.</div>
+                                <li>Adjust the volume with the up and down arrows on the left side of the Extronpanel.</li>
                                 <li>When done, click 'DISPLAY OFF' to shut down the system.</li>
                                 <li>Turn the power off on the Furman Box at the bottom of the podium.</li>
                             </ul>
@@ -234,8 +245,8 @@
                 </div>
             </section>
 
-            <section class="step" id="video-projection">
-                <h2><i class="fas fa-eye"></i> Video/Projection</h2>
+            <section class="step" id="video-projection-section" style="display:none;">
+                <!--<h2><i class="fas fa-eye"></i> Video/Projection</h2>-->
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
                         <i class="fas fa-desktop"></i> Room PC
@@ -246,7 +257,7 @@
                 </div>
 
                 <div id="room-pc-video" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Video</h3>
+                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
                         <img src="images/press_to_start.jpg" alt="Press to Start" class="mode-image">
                         <div class="instructions">
@@ -262,8 +273,8 @@
                     <h3><i class="fas fa-laptop"></i> Laptop Video</h3>
                     <div class="mode-content">
                         <div class="images-row">
-                            <img src="images/ExtronRack303.png" alt="Extron Rack 303" class="mode-image">
-                            <img src="images/Windows_Aux.png" alt="Windows Aux" class="mode-image">
+                            <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
+                            <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
                         </div>
                         <div class="instructions">
                             <ul>
@@ -304,14 +315,14 @@
         // Function to select default modes on page load
         function selectDefaultModes() {
             // Select default for Sound Setup (Room PC Sound)
-            const soundDefaultButton = document.querySelector('#sound-setup .mode-button.active');
+            const soundDefaultButton = document.querySelector('#sound-setup-section .mode-button.active');
             if (soundDefaultButton) {
                 const modeId = soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
                 toggleMode(modeId, soundDefaultButton);
             }
 
             // Select default for Projector Setup (Room PC Projector)
-            const projectorDefaultButton = document.querySelector('#video-projection .mode-button.active');
+            const projectorDefaultButton = document.querySelector('#video-projection-section .mode-button.active');
             if (projectorDefaultButton) {
                 const modeId = projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
                 toggleMode(modeId, projectorDefaultButton);
@@ -321,6 +332,59 @@
         document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
 
-    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
+
+    <script>
+    function showSection(section) {
+        const soundSection = document.getElementById('sound-setup-section');
+        const videoSection = document.getElementById('video-projection-section');
+        const soundTab = document.getElementById('sound-tab');
+        const videoTab = document.getElementById('video-tab');
+        if (section === 'sound') {
+            soundSection.style.display = '';
+            videoSection.style.display = 'none';
+            soundTab.classList.add('active');
+            videoTab.classList.remove('active');
+        } else {
+            soundSection.style.display = 'none';
+            videoSection.style.display = '';
+            soundTab.classList.remove('active');
+            videoTab.classList.add('active');
+        }
+    }
+    // Default to Sound on load
+    document.addEventListener('DOMContentLoaded', function() {
+        showSection('sound');
+    });
+    </script>
 </body>
 </html> 

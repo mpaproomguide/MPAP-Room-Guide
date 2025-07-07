@@ -298,6 +298,35 @@
         document.addEventListener('DOMContentLoaded', selectDefaultModes);
     </script>
 
-    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
 </body>
 </html>
