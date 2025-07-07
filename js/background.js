@@ -25,7 +25,7 @@ function setup() {
 
 function draw() {
     clear();
-    time += 0.01;
+    time += 0.001; // Slow animation
     
     // Draw each wave
     for (let wave of waves) {
@@ -58,11 +58,13 @@ function draw() {
             ellipse(x, y, 3);
         }
     }
-    
     // Apply blur effect
     filter(BLUR, blurAmount);
 }
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
+    // Redraw static background on resize
+    waves = [];
+    setup();
 } 
