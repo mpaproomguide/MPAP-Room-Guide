@@ -27,9 +27,12 @@
 
         <main>
             <h1>Room 307</h1>
+            <div class="main-menu-selector" style="display: flex; gap: 12px; justify-content: center; margin: 16px 0 32px 0;">
+                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
+                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+            </div>
             
-            <section class="step">
-                <h2><i class="fas fa-volume-up"></i> Sound Setup</h2>
+            <section class="step" id="sound-setup-section">
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
                         <i class="fas fa-desktop"></i> Room PC
@@ -43,7 +46,7 @@
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Sound</h3>
+                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
                         <div class="instructions">
                             <p>Room setup instructions coming soon...</p>
@@ -52,7 +55,7 @@
                 </div>
 
                 <div id="laptop-sound" class="mode-section">
-                    <h3><i class="fas fa-laptop"></i> Laptop Sound</h3>
+                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
                         <div class="instructions">
                             <p>Laptop setup instructions coming soon...</p>
@@ -61,26 +64,27 @@
                 </div>
 
                 <div id="external-sound" class="mode-section">
-                    <h3><i class="fas fa-headphones"></i> External Sound</h3>
-                    <div class="instructions">
-                        <p>External sound setup instructions coming soon...</p>
+                    <h2><i class="fas fa-headphones"></i> External Sound</h2>
+                    <div class="mode-content">
+                        <div class="instructions">
+                            <p>External sound setup instructions coming soon...</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <section class="step">
-                <h2><i class="fas fa-video"></i> Projector Setup</h2>
+            <section class="step" id="video-projection-section" style="display:none;">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-proj', this)">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
                         <i class="fas fa-desktop"></i> Room PC
                     </button>
-                    <button class="mode-button" onclick="toggleMode('laptop-proj', this)">
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
                         <i class="fas fa-laptop"></i> Laptop
                     </button>
                 </div>
 
-                <div id="room-pc-proj" class="mode-section active">
-                    <h3><i class="fas fa-desktop"></i> Room PC Projector</h3>
+                <div id="room-pc-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
                         <div class="instructions">
                             <p>Projector setup instructions coming soon...</p>
@@ -88,8 +92,8 @@
                     </div>
                 </div>
 
-                <div id="laptop-proj" class="mode-section">
-                    <h3><i class="fas fa-laptop"></i> Laptop Projector</h3>
+                <div id="laptop-video" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
                         <div class="instructions">
                             <p>Laptop projector setup instructions coming soon...</p>
@@ -112,6 +116,30 @@
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
         }
+
+        function showSection(section) {
+            const soundSection = document.getElementById('sound-setup-section');
+            const videoSection = document.getElementById('video-projection-section');
+            const soundTab = document.getElementById('sound-tab');
+            const videoTab = document.getElementById('video-tab');
+            
+            if (section === 'sound') {
+                soundSection.style.display = '';
+                videoSection.style.display = 'none';
+                soundTab.classList.add('active');
+                videoTab.classList.remove('active');
+            } else {
+                soundSection.style.display = 'none';
+                videoSection.style.display = '';
+                soundTab.classList.remove('active');
+                videoTab.classList.add('active');
+            }
+        }
+
+        // Default to Sound on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('sound');
+        });
     </script>
 
     <script>

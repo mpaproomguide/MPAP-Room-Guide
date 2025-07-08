@@ -11,119 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
-    <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        h1, h2, h3, .mode-button {
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 600;
-        }
-        .mode-section {
-            display: none;
-        }
-        .mode-section.active {
-            display: block;
-        }
-        .mode-button.active {
-            background-color: #4a148c;
-            color: white;
-        }
-        .mode-button.active i {
-            color: white !important;
-        }
-        .mode-button i {
-            margin-right: 8px;
-            color: #4a148c;
-        }
-        header {
-            background-color: #57068c;
-            padding: 1rem;
-            text-align: center;
-        }
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .header-content h1 {
-            color: white;
-            margin: 0;
-            font-size: 1.8em;
-            font-weight: 600;
-        }
-        .nyu-logo {
-            height: 40px;
-        }
-        .instructions ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        .instructions li {
-            margin-bottom: 20px;
-        }
-        .instructions li:last-child {
-            margin-bottom: 0;
-        }
-        .images-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        .mode-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        @media (min-width: 768px) {
-            .images-row {
-                flex-wrap: nowrap;
-            }
-            .mode-image {
-                width: calc(50% - 10px);
-                max-width: 400px;
-            }
-        }
-        @media (max-width: 767px) {
-            .images-row {
-                flex-direction: column;
-                align-items: center;
-            }
-            .mode-image {
-                width: 100%;
-                max-width: 400px;
-            }
-        }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            margin: 20px 0;
-            padding: 10px 20px;
-            color: #57068c;
-            text-decoration: none;
-            font-weight: 500;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
-        }
-        .back-link:hover {
-            background-color: #f5f5f5;
-            transform: translateY(-2px);
-        }
-        .back-link i {
-            margin-right: 8px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -144,77 +31,72 @@
                 <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
                 <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
             </div>
+            
             <section class="step" id="sound-setup-section">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)"><i class="fas fa-desktop"></i> Room PC</button>
-                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)"><i class="fas fa-laptop"></i> Laptop</button>
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
+                        <i class="fas fa-headphones"></i> External Sound
+                    </button>
                 </div>
+
                 <div id="room-pc-sound" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
-                        <div class="images-row">
-                            <img src="images/IMG_8485.png.avif" alt="Room PC Rack" class="mode-image">
-                        </div>
                         <div class="instructions">
-                            <ul>
-                                <li>On the top of the rack, there is a black box labeled Furman. Flip the red switch up and turn on the power.</li>
-                                <li>On the second box in the rack labelled "Audio Control", press the button labelled "Cart".</li>
-                                <li>Make sure the "Bass", "Treble" and "Balance" button are set to the 12 'o' clock position. Adjust the volume button as needed.</li>
-                                <li>On the podium computer, in the menu bar in the top right corner, under sound, ensure that "SSL 2+" is the selected device (it will be highlighted blue).</li>
-                                <li>Turn the grey knob in the top right corner of the SSL all the way to the right towards "USB".</li>
-                                <li>Once you're done using the PC, Turn the Monitor Level knob all the way to 0 and switch off the Furman Power in the rack.</li>
-                            </ul>
+                            <p>Room setup instructions coming soon...</p>
                         </div>
                     </div>
                 </div>
+
                 <div id="laptop-sound" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
-                        <div class="images-row">
-                            <img src="images/IMG_8485.png.avif" alt="Laptop Setup" class="mode-image">
-                        </div>
                         <div class="instructions">
-                            <ul>
-                                <li><b>Aux Cable (No video):</b> On the top of the rack, there is a black box labeled Furman. Flip the red switch up and turn on the power.</li>
-                                <li>Plug the aux cable on the rack into your computer or device.</li>
-                                <li>On the second box in the rack labelled "Audio Control", press the button labelled "Device".</li>
-                                <li>Make sure the "Bass", "Treble" and "Balance" button are set to the 12 'o' clock position. Adjust the volume button as needed.</li>
-                                <li>On the bottom box in the rack, make sure sure the knobs for left and right are turned to the vertical/ 12 'o' clock position</li>
-                                <li>On your computer, in the menu bar in the top right corner, under sound, ensure that "External Headphones" is the selected device (it will be highlighted blue).</li>
-                                <li>Once you're done using your computer, press the "Cart" button on the "Audio Control" box before unplugging the aux cord, and switch off the Furman Power in the rack.</li>
-                            </ul>
+                            <p>Laptop setup instructions coming soon...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="external-sound" class="mode-section">
+                    <h2><i class="fas fa-headphones"></i> External Sound</h2>
+                    <div class="mode-content">
+                        <div class="instructions">
+                            <p>External sound setup instructions coming soon...</p>
                         </div>
                     </div>
                 </div>
             </section>
+
             <section class="step" id="video-projection-section" style="display:none;">
-                <h2><i class="fas fa-desktop"></i> Display Settings</h2>
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('macbook-display', this)"><i class="fab fa-apple"></i> MacBook</button>
-                    <button class="mode-button" onclick="toggleMode('windows-display', this)"><i class="fab fa-windows"></i> Windows</button>
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
                 </div>
-                <div id="macbook-display" class="mode-section active">
+
+                <div id="room-pc-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
-                        <img src="images/7th floor laptop_mirror_display.png.avif" alt="MacBook Display Settings" class="mode-image">
                         <div class="instructions">
-                            <ul>
-                                <li>In order to change display settings, open system preferences (in the dock at the bottom of the screen), click on displays, then select the arrangement tab.</li>
-                                <li>If you would like to mirror the displays (such that the screen on the cart and on the wall are the same) make sure the box is checked. If you would like to extend the displays (such that the two screens are separate), make sure the box is unchecked. The blue box with the white tab on the top represents the computer monitor while the other box represents the room's screen. You can move around this second box to determine where the second screen exists in relation to the computer monitor. Eg: if set to be on the left of the blue box with the white bar, you would be able to move your mouse all the way to left of your monitor and onto the screen at the front of the room.</li>
-                            </ul>
+                            <p>Projector setup instructions coming soon...</p>
                         </div>
                     </div>
                 </div>
-                <div id="windows-display" class="mode-section">
+
+                <div id="laptop-video" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <img src="images/d37714_d13a3daa7a674fb1bdc02c4fd5ea4993~mv2-2.gif" alt="Windows Display Settings" class="mode-image">
                         <div class="instructions">
-                            <ul>
-                                <li>First ensure Headphones is selected as the playback device in the sound settings (bottom left corner of the toolbar)</li>
-                                <li>Click the Windows icon on the bottom left corner, open 'Settings' and Click on 'System'</li>
-                                <li>Click on 'Display' and scroll down to 'Multiple Displays' setting.</li>
-                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select 'Duplicate these displays'</li>
-                                <li>If you would like to extend the displays (such that the two screens are separate), select 'Extend these displays' You can adjust how both screens related to each other in the 'Rearrange your displays' section when scrool back to the top of the page.</li>
-                            </ul>
+                            <p>Laptop projector setup instructions coming soon...</p>
                         </div>
                     </div>
                 </div>
@@ -225,36 +107,41 @@
     <script>
         function toggleMode(modeId, button) {
             const parentSection = button.closest('.step');
-            // Hide all mode sections within this parent section
             parentSection.querySelectorAll('.mode-section').forEach(section => {
                 section.classList.remove('active');
             });
-            // Remove active class from all buttons within this parent section
             parentSection.querySelectorAll('.mode-button').forEach(btn => {
                 btn.classList.remove('active');
             });
-            // Show the selected mode section
             document.getElementById(modeId).classList.add('active');
-            // Add active class to the clicked button
             button.classList.add('active');
         }
-        // Function to select default modes on page load
-        function selectDefaultModes() {
-            // Select default for Sound Setup (Room PC Sound)
-            const soundDefaultButton = document.querySelector('#sound-setup-section .mode-button.active');
-            if (soundDefaultButton) {
-                const modeId = soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                toggleMode(modeId, soundDefaultButton);
-            }
-            // Select default for Projector Setup (Room PC Projector)
-            const projectorDefaultButton = document.querySelector('#video-projection-section .mode-button.active');
-            if (projectorDefaultButton) {
-                const modeId = projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                toggleMode(modeId, projectorDefaultButton);
+
+        function showSection(section) {
+            const soundSection = document.getElementById('sound-setup-section');
+            const videoSection = document.getElementById('video-projection-section');
+            const soundTab = document.getElementById('sound-tab');
+            const videoTab = document.getElementById('video-tab');
+            
+            if (section === 'sound') {
+                soundSection.style.display = '';
+                videoSection.style.display = 'none';
+                soundTab.classList.add('active');
+                videoTab.classList.remove('active');
+            } else {
+                soundSection.style.display = 'none';
+                videoSection.style.display = '';
+                soundTab.classList.remove('active');
+                videoTab.classList.add('active');
             }
         }
-        document.addEventListener('DOMContentLoaded', selectDefaultModes);
+
+        // Default to Sound on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('sound');
+        });
     </script>
+
     <script>
     // Cat toggle logic
     let catEnabled = false;
@@ -283,29 +170,6 @@
             logo.title = 'Toggle Cat';
             logo.addEventListener('click', toggleCat);
         }
-    });
-    </script>
-    <script>
-    function showSection(section) {
-        const soundSection = document.getElementById('sound-setup-section');
-        const videoSection = document.getElementById('video-projection-section');
-        const soundTab = document.getElementById('sound-tab');
-        const videoTab = document.getElementById('video-tab');
-        if (section === 'sound') {
-            soundSection.style.display = '';
-            videoSection.style.display = 'none';
-            soundTab.classList.add('active');
-            videoTab.classList.remove('active');
-        } else {
-            soundSection.style.display = 'none';
-            videoSection.style.display = '';
-            soundTab.classList.remove('active');
-            videoTab.classList.add('active');
-        }
-    }
-    // Default to Sound on load
-    document.addEventListener('DOMContentLoaded', function() {
-        showSection('sound');
     });
     </script>
 </body>
