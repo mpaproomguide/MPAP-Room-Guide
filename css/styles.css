@@ -129,6 +129,11 @@ h3 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Make icons white when their tab is selected */
+.mode-button.active i {
+    color: var(--nyu-white) !important;
+}
+
 .main-menu-selector {
     display: flex;
     gap: 12px;
