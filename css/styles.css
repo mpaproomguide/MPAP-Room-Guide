@@ -42,22 +42,31 @@ body {
     padding: 20px;
 }
 
+/* Universal Header Styles */
 header {
-    text-align: left;
+    background-color: var(--nyu-purple);
+    padding: 1rem;
+    text-align: center;
     margin-bottom: 30px;
-    background: var(--nyu-purple);
-    padding: 30px 40px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.top-text, .built-on {
-    color: var(--nyu-white);
-    font-size: 0.9em;
-    margin: 5px 0;
-    opacity: 0.9;
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
+.header-content h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+/* Universal Typography */
 h1 {
     text-align: center;
     margin: 20px 0;
@@ -74,32 +83,41 @@ h2 {
     border-bottom: 3px solid var(--nyu-light-purple);
     padding-bottom: 10px;
     font-size: 1.8em;
+    font-weight: 600;
 }
 
 h3 {
     color: var(--nyu-light-purple);
     margin: 20px 0 10px;
     font-size: 1.4em;
+    font-weight: 600;
 }
 
+/* Universal Button and Link Styles */
 .back-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin: 20px 0;
+    padding: 10px 20px;
     color: var(--nyu-purple);
     text-decoration: none;
-    font-weight: 600;
-    padding: 10px 20px;
-    border: 2px solid var(--nyu-purple);
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
 }
 
 .back-link:hover {
-    background: var(--nyu-purple);
-    color: var(--nyu-white);
+    background-color: var(--nyu-gray);
     transform: translateY(-2px);
 }
 
+.back-link i {
+    margin-right: 8px;
+}
+
+/* Universal Step and Section Styles */
 .step {
     background: var(--nyu-white);
     padding: 25px;
@@ -113,16 +131,19 @@ h3 {
     transform: translateY(-5px);
 }
 
-.mode-selector {
+/* Universal Mode Selector Styles */
+.mode-selector, .main-menu-selector {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     justify-content: center;
-    margin: 20px 0;
+    margin: 16px 0 32px 0;
+    flex-wrap: wrap;
 }
 
 .mode-button {
     padding: 12px 24px;
     font-size: 1.1em;
+    font-weight: 600;
     background: var(--nyu-white);
     color: var(--nyu-purple);
     border: 2px solid var(--nyu-purple);
@@ -146,44 +167,16 @@ h3 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Make icons white when their tab is selected */
-.mode-button.active i {
+.mode-button.active i, .mode-button:hover i {
     color: var(--nyu-white) !important;
 }
 
-.main-menu-selector {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin: 16px 0 32px 0;
-}
-
-.main-menu-selector .mode-button {
-    padding: 12px 24px;
-    font-size: 1.1em;
-    background: var(--nyu-white);
+.mode-button i {
+    margin-right: 8px;
     color: var(--nyu-purple);
-    border: 2px solid var(--nyu-purple);
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
-.main-menu-selector .mode-button:hover {
-    background: var(--nyu-purple);
-    color: var(--nyu-white);
-    transform: translateY(-2px);
-}
-
-.main-menu-selector .mode-button.active {
-    background: var(--nyu-purple);
-    color: var(--nyu-white);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
+/* Universal Mode Section Styles */
 .mode-section {
     background: transparent !important;
     box-shadow: none !important;
@@ -203,7 +196,10 @@ h3 {
 #laptop-sound.mode-section,
 #external-sound.mode-section,
 #room-pc-video.mode-section,
-#laptop-video.mode-section {
+#laptop-video.mode-section,
+#room-pc.mode-section,
+#laptop.mode-section,
+#without-projector.mode-section {
     background: var(--nyu-white);
 }
 
@@ -212,8 +208,11 @@ h3 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Universal Image Styles */
 .mode-image {
     max-width: 50%;
     height: auto;
@@ -222,16 +221,29 @@ h3 {
     margin-bottom: 2rem;
 }
 
+.main-logo-image {
+    display: block;
+    margin: 24px auto 24px auto;
+    max-width: 100%;
+    width: 500px;
+    max-height: 300px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Universal Instructions Styles */
 .instructions {
-    width: 100%;
-    max-width: 800px;
+    overflow-wrap: break-word;
+    max-width: 100%;
     margin: 0 auto;
-    font-size: 1.2em;
+    text-align: left;
 }
 
 .instructions p {
     margin-bottom: 15px;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .instructions ul {
@@ -239,8 +251,32 @@ h3 {
     padding-left: 20px;
     text-align: left;
     display: inline-block;
+    width: 100%;
 }
 
+.instructions ul, .instructions li {
+    font-family: 'NYU Perstare';
+    font-size: 1.15em;
+    font-weight: 600;
+    color: var(--nyu-dark-gray);
+    line-height: 1.7;
+}
+
+.instructions li {
+    margin-bottom: 22px;
+    padding-left: 0;
+}
+
+.instructions li:last-child {
+    margin-bottom: 0;
+}
+
+.instructions strong {
+    color: var(--nyu-light-purple);
+    font-weight: 700;
+}
+
+/* Universal Note and Alert Styles */
 .instruction-note {
     padding-left: 20px;
     padding-bottom: 10px;
@@ -258,14 +294,18 @@ h3 {
     font-weight: 600;
 }
 
+/* Universal Image Row Styles */
 .images-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
-    margin-bottom: 20px;
     justify-content: center;
+    margin: 20px 0;
 }
 
 .images-row .mode-image {
+    width: calc(50% - 10px);
+    max-width: 400px;
     flex: 1;
     max-width: 45%;
     height: auto;
@@ -273,6 +313,20 @@ h3 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Universal Logo Styles */
+.nyu-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 600px;
+    max-height: 120px;
+    height: auto;
+    object-fit: contain;
+    padding: 8px 0;
+}
+
+/* Universal Tips Section */
 .tips {
     background: var(--nyu-white);
     padding: 25px;
@@ -300,6 +354,7 @@ h3 {
     left: -15px;
 }
 
+/* Universal Footer Styles */
 footer {
     text-align: center;
     margin-top: 40px;
@@ -330,16 +385,36 @@ footer {
     color: var(--nyu-white);
 }
 
-.bottom-text {
+.bottom-text, .top-text, .built-on {
     color: var(--nyu-purple);
     font-size: 0.9em;
     opacity: 0.8;
+}
+
+.top-text, .built-on {
+    color: var(--nyu-white);
+    margin: 5px 0;
+    opacity: 0.9;
+}
+
+/* Universal Icon Styles */
+.fas {
+    margin-right: 8px;
+    color: var(--nyu-purple);
+}
+
+h2 .fas, h3 .fas {
+    font-size: 0.9em;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
+    }
+
+    .header-content h1 {
+        font-size: 1.6em;
     }
 
     h1 {
@@ -368,7 +443,7 @@ footer {
         text-align: center;
     }
 
-    .mode-selector {
+    .mode-selector, .main-menu-selector {
         flex-direction: column;
         gap: 10px;
     }
@@ -391,8 +466,37 @@ footer {
         padding: 15px;
     }
 
+    .images-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .images-row .mode-image {
-        max-width: 100%;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .nyu-logo {
+        max-width: 250px;
+        max-height: 80px;
+        padding: 4px 0;
+    }
+
+    .main-logo-image {
+        width: 90vw;
+        max-width: 98vw;
+        max-height: 180px;
+    }
+
+    .fas {
+        margin-right: 5px;
+    }
+
+    .back-link {
+        width: 100%;
+        text-align: center;
+        margin: 15px 0;
+        justify-content: center;
     }
 }
 
@@ -412,52 +516,6 @@ footer {
     animation: fadeIn 0.5s ease-out;
 }
 
-.nyu-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 600px;
-    max-height: 120px;
-    height: auto;
-    object-fit: contain;
-    padding: 8px 0;
-}
-
-/* Icon styles */
-.fas {
-    margin-right: 8px;
-    color: var(--nyu-purple);
-}
-
-h2 .fas, h3 .fas {
-    font-size: 0.9em;
-}
-
-/* Enhanced mobile styles */
-@media (max-width: 768px) {
-    .nyu-logo {
-        max-width: 250px;
-        max-height: 80px;
-        padding: 4px 0;
-    }
-
-    .fas {
-        margin-right: 5px;
-    }
-
-    .mode-section {
-        padding: 15px;
-        margin: 15px 0;
-    }
-
-    .back-link {
-        width: 100%;
-        text-align: center;
-        margin: 15px 0;
-    }
-}
-
 /* Print styles */
 @media print {
     .container {
@@ -475,6 +533,7 @@ h2 .fas, h3 .fas {
     }
 }
 
+/* Utility Classes for Easy Page Creation */
 .mode {
     display: none;
     padding: 2rem;
@@ -484,4 +543,252 @@ h2 .fas, h3 .fas {
 
 .mode.active {
     display: block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.padding-all {
+    padding: 20px;
+}
+
+/* Strong/Bold text in purple for emphasis */
+strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
+    color: var(--nyu-light-purple) !important;
+    font-weight: 600;
+}
+
+/* Page Template Utilities - Easy Page Creation */
+
+/* Standard page wrapper */
+.page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Standard page header */
+.page-header {
+    background-color: var(--nyu-purple);
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.page-header h1 {
+    color: white;
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+/* Standard page title */
+.page-title {
+    text-align: center;
+    margin: 20px 0;
+    color: var(--nyu-purple);
+    font-size: 2.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Quick setup for common layouts */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.three-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.center-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+    .two-column, .three-column {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-wrapper {
+        padding: 10px;
+    }
+    
+    .page-title {
+        font-size: 2em;
+    }
+}
+
+/* Coming Soon Template */
+.coming-soon {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.coming-soon h2 {
+    color: var(--nyu-light-purple);
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.coming-soon p {
+    color: var(--nyu-dark-gray);
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Easy color utilities */
+.text-purple { color: var(--nyu-purple); }
+.text-light-purple { color: var(--nyu-light-purple); }
+.text-white { color: var(--nyu-white); }
+.text-gray { color: var(--nyu-dark-gray); }
+
+.bg-purple { background-color: var(--nyu-purple); }
+.bg-light-purple { background-color: var(--nyu-light-purple); }
+.bg-white { background-color: var(--nyu-white); }
+.bg-gray { background-color: var(--nyu-gray); }
+
+/* Index Page Specific Styles */
+.support-info {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.support-info p {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: var(--nyu-dark-gray);
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.support-info a {
+    color: var(--nyu-purple);
+    text-decoration: none;
+}
+
+.support-info a:hover {
+    text-decoration: underline;
+}
+
+.building-section {
+    margin-bottom: 30px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(87,6,140,0.05);
+    overflow: hidden;
+}
+
+.building-header {
+    background: var(--nyu-purple);
+    color: white;
+    padding: 18px 24px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    border: none;
+    width: 100%;
+    outline: none;
+}
+
+.building-header .fa {
+    transition: transform 0.2s;
+}
+
+.building-header[aria-expanded="true"] .fa {
+    transform: rotate(90deg);
+}
+
+.room-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(.4,0,.2,1), padding 0.3s cubic-bezier(.4,0,.2,1);
+    background: #faf7fd;
+    padding: 0 24px;
+}
+
+.room-list.open {
+    padding: 16px 24px 24px 24px;
+    max-height: 1000px;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.room-link {
+    display: block;
+    background: #e9e1f3;
+    color: var(--nyu-purple);
+    padding: 12px 0;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.room-link:hover {
+    background: var(--nyu-purple);
+    color: white;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--nyu-purple);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.back-to-top:hover {
+    background-color: #4a148c;
+}
+
+.sub-header {
+    background: #7c3aed !important;
+    font-size: 1em !important;
+    padding: 12px 20px !important;
+    margin-top: 8px;
+}
+
+.sub-list {
+    background: #ede9fe;
 } 
