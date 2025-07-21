@@ -27,7 +27,7 @@
 
         <main>
             <h1>Room 303</h1>
-            <div class="main-menu-selector" style="display: flex; gap: 12px; justify-content: center; margin: 16px 0 32px 0;">
+            <div class="main-menu-selector">
                 <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
                 <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
             </div>
@@ -48,14 +48,20 @@
                 <div id="room-pc-sound" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
-                        <div class="images-row">
-                            <img src="images/start_without_projector.jpg" alt="Start Without Projector" class="mode-image">
-                            <img src="images/podium.jpg" alt="Podium Controls" class="mode-image">
-                        </div>
                         <div class="instructions">
                             <ul>
                                 <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Start w/o Projector</strong>" to wake it up.</li>
+                            </ul>
+                        </div>
+                        <img src="images/start_without_projector.jpg" alt="Start Without Projector" class="mode-image">
+                        <div class="instructions">
+                            <ul>
                                 <li>Tap <strong style="color: #8c4bbd">"Podium Mac"</strong> in the top right corner on the Extron panel.</li>
+                            </ul>
+                        </div>
+                        <img src="images/podium.jpg" alt="Podium Controls" class="mode-image">
+                        <div class="instructions">
+                            <ul>
                                 <li>Adjust the volume with the up and down arrows on the left side of the Extron panel.</li>
                                 <li>When finished with the system, click on the <strong style="color: #8c4bbd">"Power"</strong> button on the Extron panel and select <strong style="color: #8c4bbd">"Power Down"</strong>.</li>
                             </ul>
@@ -66,14 +72,20 @@
                 <div id="laptop-sound" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
-                            <div class="images-row">
-                                <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
-                                <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
-                            </div>
                         <div class="instructions">
                             <ul>
                                 <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Start w/o Projector</strong>" to wake it up.</li>
+                            </ul>
+                        </div>
+                        <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
+                        <div class="instructions">
+                            <ul>
                                 <li>Tap <strong style="color: #8c4bbd">"Laptop HDMI"</strong> in the top right corner on the Extron panel.</li>
+                            </ul>
+                        </div>
+                        <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
+                        <div class="instructions">
+                            <ul>
                                 <li>Adjust the volume with the up and down arrows on the left side of the Extron panel.</li>
                                 <li>When finished with the system, click on the <strong style="color: #8c4bbd">"Power"</strong> button on the Extron panel and select <strong style="color: #8c4bbd">"Power Down"</strong>.</li>
                             </ul>
@@ -84,17 +96,24 @@
                 <div id="external-sound" class="mode-section">
                     <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
                     <div class="mode-content">
-                        <div class="images-row">
-                            <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
-                            <img src="images/LaptopVGA.jpg" alt="Laptop HDMI" class="mode-image">
-                        </div>
                         <div class="instructions">
                             <ul>
                                 <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Start w/o Projector</strong>" to wake it up.</li>
+                            </ul>
+                        </div>
+                        <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
+                        <div class="instructions">
+                            <ul>
                                 <li>Tap <strong style="color: #8c4bbd">"Laptop VGA"</strong> in the top right corner on the Extron panel.</li>
-                                <li>Connect your device to the aux cable attached to the podium.</li>
+                            </ul>
+                        </div>
+                        <img src="images/LaptopVGA.jpg" alt="Laptop HDMI" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect your device to the aux cable attached to the podium.
                                     <div class="instruction-note"><strong>For Mac:</strong> In Control Center (top right), select <strong>"External Headphones"</strong> under Sound.</div>
                                     <div class="instruction-note"><strong>For Windows:</strong> Click the speaker icon (bottom right), select the <strong>"Headphones"</strong> device.</div>
+                                </li>
                                 <li>Adjust the volume with the up and down arrows on the left side of the Extron panel.</li>
                                 <li>When finished with the system, click on the <strong style="color: #8c4bbd">"Power"</strong> button on the Extron panel and select <strong style="color: #8c4bbd">"Power Down"</strong>.</li>
                             </ul>
@@ -130,17 +149,24 @@
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="images-row">
-                            <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
-                            <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
-                        </div>
                         <div class="instructions">
                             <ul>
                                 <li>On the podium, there is a black panel labeled <strong style="color: #8c4bbd">Extron</strong>. Tap "<strong style="color: #8c4bbd">Press to Start</strong>" to wake it up.</li>
+                            </ul>
+                        </div>
+                        <img src="images/star w:o projector.jpg" alt="Start Without Projector" class="mode-image">
+                        <div class="instructions">
+                            <ul>
                                 <li>Select <strong style="color: #8c4bbd">"Laptop HDMI"</strong> on the Extron panel.</li>
-                                <li>Connect your laptop to the HDMI cable attached to the podium.</li>
+                            </ul>
+                        </div>
+                        <img src="images/laptophdmi.jpg" alt="Laptop HDMI" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect your laptop to the HDMI cable attached to the podium.
                                     <div class="instruction-note"><strong>For Mac:</strong> Click the Control Center icon (top right), under Display, select <strong>"Mirror Displays"</strong> to mirror or uncheck to extend.</div>
                                     <div class="instruction-note"><strong>For Windows:</strong> Right-click Desktop > Display Settings > Multiple Displays > Choose <strong>"Duplicate"</strong> to mirror or <strong>"Extend"</strong> to extend.</div>
+                                </li>
                                 <li>The projector should turn on and display your laptop screen.</li>
                                 <li>When done, click <strong>'DISPLAY OFF'</strong> to shut down the system.</li>
                                 <li>Turn the power off on the Furman Box at the bottom of the podium.</li>
