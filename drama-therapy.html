@@ -12,8 +12,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
     <style>
-        body { line-height: 1.6; color: #333; background: #f5f5f5; margin: 0; padding: 0; }
-        h1, h2, h3, .mode-button { font-weight: 600; }
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, .mode-button {
+            font-weight: 600;
+        }
         .mode-section { display: none; }
         .mode-section.active { display: block; }
         .mode-button.active { background-color: #4a148c; color: white; }
@@ -23,6 +31,13 @@
         .header-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .header-content h1 { color: white; margin: 0; font-size: 1.8em; font-weight: 600; }
         .nyu-logo { height: 40px; }
+        .instructions ul { list-style-type: disc; padding-left: 20px; }
+        .instructions li { margin-bottom: 20px; }
+        .instructions li:last-child { margin-bottom: 0; }
+        .images-row { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0; }
+        .mode-image { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        @media (min-width: 768px) { .images-row { flex-wrap: nowrap; } .mode-image { width: calc(50% - 10px); max-width: 400px; } }
+        @media (max-width: 767px) { .images-row { flex-direction: column; align-items: center; } .mode-image { width: 100%; max-width: 400px; } }
         .back-link { display: inline-flex; align-items: center; margin: 20px 0; padding: 10px 20px; color: #57068c; text-decoration: none; font-weight: 500; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease; }
         .back-link:hover { background-color: #f5f5f5; transform: translateY(-2px); }
         .back-link i { margin-right: 8px; }
@@ -47,44 +62,89 @@
             </div>
             <section class="step" id="sound-setup-section">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)"><i class="fas fa-desktop"></i> Room PC</button>
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)"><i class="fas fa-desktop"></i> Room Mac</button>
                     <button class="mode-button" onclick="toggleMode('laptop-sound', this)"><i class="fas fa-laptop"></i> Laptop</button>
                     <button class="mode-button" onclick="toggleMode('external-sound', this)"><i class="fas fa-headphones"></i> External Sound</button>
                 </div>
                 <div id="room-pc-sound" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
+                    <h2><i class="fas fa-desktop"></i> Room Mac Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
+                        <div class="instructions">
+                            <ul>
+                                <li><strong style="color: #8c4bbd">Power up the system:</strong> Ensure the Mac is powered on (use the Mac power button on the rack if needed).<br>
+                                    <img src="images/drama-therapy/image1.jpg" alt="Mac Power Button on Rack" class="mode-image">
+                                </li>
+                                <li>Use the <strong style="color: #8c4bbd">Samsung remote</strong> to power on the TV.</li>
+                                <li><strong style="color: #8c4bbd">Set up audio:</strong> Select <strong style="color: #8c4bbd">Samsung TV</strong> as the audio device on the Mac.<br>
+                                    <img src="images/drama-therapy/image3.jpg" alt="Select Samsung TV as Audio Device" class="mode-image">
+                                </li>
+                                <li>Open the <strong style="color: #8c4bbd">audio bar</strong> and select <strong style="color: #8c4bbd">HDMI</strong> as the input source (do <strong style="color: #8c4bbd">not</strong> select HDMI(TV)).<br>
+                                    <img src="images/drama-therapy/image2.jpg" alt="Audio Bar HDMI Input" class="mode-image">
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="laptop-sound" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect your <strong style="color: #8c4bbd">laptop</strong> to the TV with HDMI or a USB-C adapter.</li>
+                                <li>In your laptop's audio settings, set the audio output to <strong style="color: #8c4bbd">Samsung TV</strong> (similar to the Room Mac setup).<br>
+                                    <img src="images/drama-therapy/image3.jpg" alt="Select Samsung TV as Audio Device (Laptop)" class="mode-image">
+                                </li>
+                                <li>Open the <strong style="color: #8c4bbd">audio bar</strong> and select <strong style="color: #8c4bbd">HDMI</strong> as the input source (do <strong style="color: #8c4bbd">not</strong> select HDMI(TV)).<br>
+                                    <img src="images/drama-therapy/image2.jpg" alt="Audio Bar HDMI Input (Laptop)" class="mode-image">
+                                </li>
+                                <li>To use the <strong style="color: #8c4bbd">sound bar</strong>: Connect to the sound bar via the ¼ inch audio cable. Set the input source of the sound bar to <strong style="color: #8c4bbd">Analog</strong>.<br>
+                                    <img src="images/drama-therapy/image4.jpg" alt="Sound Bar Analog Input" class="mode-image">
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="external-sound" class="mode-section">
                     <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
                     <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect your external audio device to the <strong style="color: #8c4bbd">sound bar</strong> using the ¼ inch audio cable and set the sound bar input to <strong style="color: #8c4bbd">Analog</strong>.<br>
+                                    <img src="images/drama-therapy/image4.jpg" alt="Sound Bar Analog Input (External)" class="mode-image">
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
             <section class="step" id="video-projection-section" style="display:none;">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)"><i class="fas fa-desktop"></i> Room PC</button>
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)"><i class="fas fa-desktop"></i> Room Mac</button>
                     <button class="mode-button" onclick="toggleMode('laptop-video', this)"><i class="fas fa-laptop"></i> Laptop</button>
                 </div>
                 <div id="room-pc-video" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
+                    <h2><i class="fas fa-desktop"></i> Room Mac Video</h2>
                     <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
+                        <div class="instructions">
+                            <ul>
+                                <li><strong style="color: #8c4bbd">Power up the system:</strong> Ensure the Mac is powered on (use the Mac power button on the rack if needed).<br>
+                                    <img src="images/drama-therapy/image1.jpg" alt="Mac Power Button on Rack" class="mode-image">
+                                </li>
+                                <li>Use the <strong style="color: #8c4bbd">Samsung remote</strong> to power on the TV.</li>
+                                <li>On the <strong style="color: #8c4bbd">Samsung remote</strong>, select the TV source to <strong style="color: #8c4bbd">HDMI</strong>.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect your <strong style="color: #8c4bbd">laptop</strong> to the TV with HDMI or a USB-C adapter.</li>
+                                <li>Switch the TV source to <strong style="color: #8c4bbd">HDMI</strong> using the <strong style="color: #8c4bbd">Samsung remote</strong>.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -136,7 +196,6 @@
             showSection('sound');
         });
     </script>
-
     <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
 </body>
 </html> 
