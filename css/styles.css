@@ -1,3 +1,20 @@
+/* NYU Perstare Font */
+@font-face {
+    font-family: 'NYU Perstare';
+    src: url('../fonts/NYUPerstare-VF.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NYU Perstare';
+    src: url('../fonts/NYUPerstare-Italic-VF.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
     --nyu-purple: #57068c;
     --nyu-light-purple: #8a2be2;
@@ -13,7 +30,7 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'NYU Perstare';
     line-height: 1.6;
     color: var(--nyu-dark-gray);
     background-color: var(--nyu-gray);
@@ -52,7 +69,7 @@ h1 {
 }
 
 h2 {
-    color: var(--nyu-light-purple);
+    color: var(--nyu-purple);
     margin: 30px 0 20px;
     border-bottom: 3px solid var(--nyu-light-purple);
     padding-bottom: 10px;

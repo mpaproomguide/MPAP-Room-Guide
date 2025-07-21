@@ -13,7 +13,6 @@
     <script src="js/background.js"></script>
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
@@ -93,15 +92,13 @@
         .room-list {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s cubic-bezier(.4,0,.2,1);
+            transition: max-height 0.3s cubic-bezier(.4,0,.2,1), padding 0.3s cubic-bezier(.4,0,.2,1);
             background: #faf7fd;
             padding: 0 24px;
         }
         .room-list.open {
             padding: 16px 24px 24px 24px;
-            max-height: none;
-            overflow-y: visible;
-            transition: none;
+            max-height: 1000px; /* Fixed large value instead of dynamic calculation */
         }
         .room-grid {
             display: grid;
@@ -169,8 +166,8 @@
         </header>
 
         <div class="support-info">
-            <p><strong>For urgent classroom and AV tech support, call:</strong> <a href="tel:12129953355" style="color:#57068c;text-decoration:underline;">(212) 995-3355</a></p>
             <p><strong>Create tickets by emailing to:</strong> <a href="mailto:steinhardt.technology@nyu.edu" style="color:#57068c;text-decoration:underline;">steinhardt.technology@nyu.edu</a></p>
+            <p><strong>For urgent classroom and AV tech support, call:</strong> <a href="tel:12129953355" style="color:#57068c;text-decoration:underline;">(212) 995-3355</a></p>       
             <p><strong>Office Hours:</strong> Mon. through Fri. 8 a.m. - 11 p.m.</p>
         </div>
 
@@ -178,7 +175,7 @@
             <button class="building-header" aria-expanded="false">
                 Education Building <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
+            <div class="room-list">
                 <div class="room-grid">
                     <a href="room303.html" class="room-link">Room 303</a>
                     <a href="room304.html" class="room-link">Room 304</a>
@@ -201,7 +198,7 @@
             <button class="building-header" aria-expanded="false">
                 Film Cart <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
+            <div class="room-list">
                 <div class="room-grid">
                     <a href="room302.html" class="room-link">Rooms 302A-D</a>
                     <a href="room6thFloor.html" class="room-link">6th Floor Conference Room</a>
@@ -214,7 +211,7 @@
             <button class="building-header" aria-expanded="false">
                 Pless Annex <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
+            <div class="room-list">
                 <div class="room-grid" style="justify-content: center;">
                     <a href="acting-lab.html" class="room-link">Acting Lab</a>
                     <a href="drama-therapy.html" class="room-link">Drama Therapy</a>
@@ -226,7 +223,7 @@
             <button class="building-header" aria-expanded="false">
                 Paulson <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
+            <div class="room-list">
                 <div class="room-grid">
                     <a href="room560.html" class="room-link">Room 560</a>
                     <a href="room562.html" class="room-link">Room 562</a>
@@ -242,7 +239,7 @@
             <button class="building-header" aria-expanded="false">
                 3rd North <i class="fa fa-chevron-right"></i>
             </button>
-            <div class="room-list" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, display 0s linear 0.3s;">
+            <div class="room-list">
                 <div class="room-grid" style="justify-content: center;">
                     <a href="roomC205.html" class="room-link">Room C205</a>
                     <a href="roomC207.html" class="room-link">Room C207</a>
@@ -264,8 +261,7 @@
                     otherButton.setAttribute('aria-expanded', 'false');
                     otherButton.querySelector('.fa-chevron-right').style.transform = 'rotate(0deg)';
                     const otherContent = otherButton.nextElementSibling;
-                    otherContent.style.maxHeight = '0';
-                    otherContent.style.display = 'none';
+                    otherContent.classList.remove('open');
                 }
             });
             
@@ -275,17 +271,11 @@
             const content = button.nextElementSibling;
             
             if (!isExpanded) {
-                content.style.display = 'block';
                 icon.style.transform = 'rotate(90deg)';
-                content.style.maxHeight = content.scrollHeight + 'px';
+                content.classList.add('open');
             } else {
                 icon.style.transform = 'rotate(0deg)';
-                content.style.maxHeight = '0';
-                setTimeout(() => {
-                    if (content.style.maxHeight === '0px') {
-                        content.style.display = 'none';
-                    }
-                }, 300); // Match the transition duration
+                content.classList.remove('open');
             }
         }
 
@@ -294,8 +284,7 @@
             document.querySelectorAll('.building-header').forEach((header) => {
                 header.setAttribute('aria-expanded', 'false');
                 const content = header.nextElementSibling;
-                content.style.maxHeight = '0';
-                content.style.display = 'none';
+                content.classList.remove('open');
                 header.addEventListener('click', () => toggleBuilding(header));
             });
         });
@@ -304,7 +293,7 @@
         window.addEventListener('resize', function() {
             document.querySelectorAll('.building-header[aria-expanded="true"]').forEach(header => {
                 const content = header.nextElementSibling;
-                content.style.maxHeight = 'none';
+                content.classList.add('open');
             });
         });
     </script>
