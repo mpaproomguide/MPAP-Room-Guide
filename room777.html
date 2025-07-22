@@ -86,19 +86,17 @@
                 <div id="external-sound" class="mode-section">
                     <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
                     <div class="mode-content">
-                        <img src="images/3.gif" alt="External Sound Source Setup" class="mode-image">
+                        <img src="images/room777_external_sound.png" alt="External Sound Source Setup" class="mode-image">
                         <div class="instructions">
                             <ul>
-                                <li>On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left.</li>
-                                <li>Press the button labeled <strong>"AUX AUDIO"</strong>.</li>
                                 <li>Connect to the podium with the audio cable to the device (with adapters if needed).</li>
-                                <li>Turn the knob on the right of the Crestron box to adjust the volume.</li>
-                                <li>Make sure that at least one of the volume bars is lit up.</li>
-                                <li>Make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them, or press the button to deselect those options.</li>
-                                <li>If using a MacBook: Click on the Control Center icon in the menu bar at the top right corner, under <strong>"Sound"</strong>, ensure that <strong>"External Headphones"</strong> is the selected device (the circle to the left will be blue if so, click it if not).</li>
-                                <li>If using a Windows laptop: Click on the Speaker icon in the menu bar at the lower right corner, ensure that the device starting with <strong>"Headphones"</strong> is the selected device.</li>
+                                <li>Press the button labeled <strong>"AUX AUDIO"</strong>.</li>
+                                <li>On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left.</li>
+                                <li>Turn the <strong>Volume Knob</strong> on the right side of the Crestron box to adjust the volume and make sure that at least one of the volume bars is lit up.</li>
+                                <li>Select <strong>External Headphones</strong> or <strong>Headphones</strong> as the audio output device on your device.</li>
                                 <li>When done, press <strong>"POWER OFF"</strong> on the Crestron box.</li>
                             </ul>
+                            <div class="instruction-note"><strong>Troubleshooting:</strong> Make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.</div>
                         </div>
                     </div>
                 </div>
@@ -132,9 +130,30 @@
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="images-row">
-                            <img src="images/5.avif" alt="Laptop Video Display Settings" class="mode-image">
-                            <img src="images/6.gif" alt="Windows Laptop Video Settings" class="mode-image">
+                        <img src="images/5.avif" alt="Laptop Video Display Settings" class="mode-image">
+                        <div class="image-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="images/room777_laptop_frames/frame_00.png" alt="Windows Display Settings Step 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_01.png" alt="Windows Display Settings Step 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_02.png" alt="Windows Display Settings Step 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_03.png" alt="Windows Display Settings Step 4">
+                                </div>
+                            </div>
+                            <button class="carousel-arrow prev" onclick="changeSlide(-1)">❮</button>
+                            <button class="carousel-arrow next" onclick="changeSlide(1)">❯</button>
+                            <div class="carousel-nav">
+                                <span class="carousel-dot active" onclick="currentSlide(1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(4)"></span>
+                            </div>
                         </div>
                         <div class="instructions">
                             <h3><i class="fas fa-apple-alt"></i> MacBook:</h3>
@@ -193,6 +212,78 @@
         // Default to Sound on load
         document.addEventListener('DOMContentLoaded', function() {
             showSection('sound');
+            // Initialize carousel after DOM is loaded
+            setTimeout(initCarousel, 100);
+        });
+
+        // Carousel functionality
+        let slideIndex = 1;
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (!slides.length) return; // Exit if no slides found
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            // Hide all slides and deactivate all dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide and activate corresponding dot
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+        }
+
+        // Initialize carousel when page loads
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (slides.length > 0 && dots.length > 0) {
+                slideIndex = 1;
+                showSlide(slideIndex);
+            }
+        }
+
+        // Add simplified touch/swipe support
+        function addCarouselTouchSupport() {
+            const carousel = document.querySelector('.carousel-container');
+            if (!carousel) return;
+            
+            let startX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+                
+                if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                    if (diffX > 0) {
+                        changeSlide(1); // Swipe left - next slide
+                    } else {
+                        changeSlide(-1); // Swipe right - previous slide
+                    }
+                }
+            });
+        }
+        
+        // Initialize touch support after carousel is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addCarouselTouchSupport, 200);
         });
     </script>
 

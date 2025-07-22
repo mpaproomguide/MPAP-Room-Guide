@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide</title>
+    <title>MPAP Room Guide - Drama Therapy Lab</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
-
 </head>
 <body>
     <div class="container">
@@ -20,107 +19,137 @@
                 <h1>MPAP Room Guides</h1>
             </div>
         </header>
+
         <a href="index.html" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Room List
         </a>
+
         <main>
-            <h1>Drama Therapy</h1>
+            <h1>Drama Therapy Lab</h1>
             <div class="main-menu-selector">
                 <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
                 <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
             </div>
+            
             <section class="step" id="sound-setup-section">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)"><i class="fas fa-desktop"></i> Room PC</button>
-                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)"><i class="fas fa-laptop"></i> Laptop</button>
-                    <button class="mode-button" onclick="toggleMode('external-sound', this)"><i class="fas fa-headphones"></i> External Sound</button>
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
+                        <i class="fas fa-headphones"></i> External Sound
+                    </button>
                 </div>
+
                 <div id="room-pc-sound" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
+                        <img src="images/drama-therapy/image1.jpg" alt="Room PC Sound Setup" class="mode-image">
                         <div class="instructions">
                             <ul>
-                                <li><strong style="color: #8c4bbd">Power up the system:</strong> Ensure the Room PC is powered on (use the PC power button on the rack if needed).<br>
-                                    <a href="images/drama-therapy/image1.jpg" target="_blank" rel="noopener">
-                                        <img src="images/drama-therapy/image1.jpg" alt="PC Power Button on Rack" class="main-logo-image">
-                                    </a>
-                                </li>
-                                <li>Use the <strong style="color: #8c4bbd">Samsung remote</strong> to power on the TV.</li>
-                                <li><strong style="color: #8c4bbd">Set up audio:</strong> Select <strong style="color: #8c4bbd">Samsung TV</strong> as the audio device on the Room PC.<br>
-                                    <img src="images/drama-therapy/image3.jpg" alt="Select Samsung TV as Audio Device" class="mode-image">
-                                </li>
-                                <li>Open the <strong style="color: #8c4bbd">audio bar</strong> and select <strong style="color: #8c4bbd">HDMI</strong> as the input source (do <strong style="color: #8c4bbd">not</strong> select HDMI(TV)).<br>
-                                    <img src="images/drama-therapy/image2.jpg" alt="Audio Bar HDMI Input" class="mode-image">
-                                </li>
+                                <li><strong>Power up the system:</strong> Ensure the Room PC is powered on (use the PC power button on the rack if needed).</li>
+                                <li>Use the <strong>Samsung remote</strong> to power on the TV.</li>
+                                <li><strong>Set up audio:</strong> Select <strong>Samsung TV</strong> as the audio device on the Room PC.</li>
                             </ul>
+                            <img src="images/drama-therapy/image3.jpg" alt="Select Samsung TV as Audio Device" class="instruction-image">
+                            <ul style="counter-reset: instruction-counter 3;">
+                                <li>Open the <strong>audio bar</strong> and select <strong>HDMI</strong> as the input source (do <strong>not</strong> select HDMI(TV)).</li>
+                            </ul>
+                            <img src="images/drama-therapy/image2.jpg" alt="Audio Bar HDMI Input" class="instruction-image">
+                            <div class="instruction-note"><strong>Troubleshooting:</strong> If you don't have sound, verify that the Samsung TV is selected as your audio output device and that the audio bar is set to HDMI input mode.</div>
                         </div>
                     </div>
                 </div>
+
                 <div id="laptop-sound" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
+                        <div class="images-row">
+                            <img src="images/drama-therapy/image3.jpg" alt="Laptop Audio Settings" class="mode-image">
+                            <img src="images/drama-therapy/image2.jpg" alt="Audio Bar Settings" class="mode-image">
+                        </div>
                         <div class="instructions">
                             <ul>
-                                <li>Connect your <strong style="color: #8c4bbd">laptop</strong> to the TV with HDMI or a USB-C adapter.</li>
-                                <li>In your laptop's audio settings, set the audio output to <strong style="color: #8c4bbd">Samsung TV</strong> (similar to the Room PC setup).<br>
-                                    <img src="images/drama-therapy/image3.jpg" alt="Select Samsung TV as Audio Device (Laptop)" class="mode-image">
-                                </li>
-                                <li>Open the <strong style="color: #8c4bbd">audio bar</strong> and select <strong style="color: #8c4bbd">HDMI</strong> as the input source (do <strong style="color: #8c4bbd">not</strong> select HDMI(TV)).<br>
-                                    <img src="images/drama-therapy/image2.jpg" alt="Audio Bar HDMI Input (Laptop)" class="mode-image">
-                                </li>
-                                <li>To use the <strong style="color: #8c4bbd">sound bar</strong>: Connect to the sound bar via the ¼ inch audio cable. Set the input source of the sound bar to <strong style="color: #8c4bbd">Analog</strong>.<br>
-                                    <img src="images/drama-therapy/image4.jpg" alt="Sound Bar Analog Input" class="mode-image">
-                                </li>
+                                <li>Connect your <strong>laptop</strong> to the TV with HDMI or a USB-C adapter.</li>
+                                <li>In your laptop's audio settings, set the audio output to <strong>Samsung TV</strong> (similar to the Room PC setup).</li>
+                                <li>Open the <strong>audio bar</strong> and select <strong>HDMI</strong> as the input source (do <strong>not</strong> select HDMI(TV)).</li>
+                                <li>To use the <strong>sound bar</strong>: Connect to the sound bar via the ¼ inch audio cable. Set the input source of the sound bar to <strong>Analog</strong>.</li>
                             </ul>
+                            <img src="images/drama-therapy/image4.jpg" alt="Sound Bar Analog Input" class="instruction-image">
+                            <div class="instruction-note"><strong>Troubleshooting:</strong> If using a MacBook, ensure the Samsung TV appears in your audio output options. For Windows laptops, check that the audio is routing through the HDMI connection to the TV.</div>
                         </div>
                     </div>
                 </div>
+
                 <div id="external-sound" class="mode-section">
                     <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
                     <div class="mode-content">
+                        <img src="images/drama-therapy/image4.jpg" alt="External Sound Source Setup" class="mode-image">
                         <div class="instructions">
                             <ul>
-                                <li>Connect your external audio device to the <strong style="color: #8c4bbd">sound bar</strong> using the ¼ inch audio cable and set the sound bar input to <strong style="color: #8c4bbd">Analog</strong>.<br>
-                                    <img src="images/drama-therapy/image4.jpg" alt="Sound Bar Analog Input (External)" class="mode-image">
-                                </li>
+                                <li>Connect your external audio device to the <strong>sound bar</strong> using the ¼ inch audio cable.</li>
+                                <li>Set the sound bar input to <strong>Analog</strong>.</li>
+                                <li>Adjust volume levels on both your external device and the sound bar as needed.</li>
                             </ul>
+                            <div class="instruction-note"><strong>Note:</strong> For phones or tablets, you may need a 3.5mm to ¼ inch adapter. Make sure your device's volume is turned up and the sound bar input is correctly set to Analog.</div>
                         </div>
                     </div>
                 </div>
             </section>
+
             <section class="step" id="video-projection-section" style="display:none;">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)"><i class="fas fa-desktop"></i> Room PC</button>
-                    <button class="mode-button" onclick="toggleMode('laptop-video', this)"><i class="fas fa-laptop"></i> Laptop</button>
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
                 </div>
+
                 <div id="room-pc-video" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
+                        <img src="images/drama-therapy/image1.jpg" alt="Room PC Video Setup" class="mode-image">
                         <div class="instructions">
                             <ul>
-                                <li><strong style="color: #8c4bbd">Power up the system:</strong> Ensure the Room PC is powered on (use the PC power button on the rack if needed).<br>
-                                    <img src="images/drama-therapy/image1.jpg" alt="PC Power Button on Rack" class="main-logo-image">
-                                </li>
-                                <li>Use the <strong style="color: #8c4bbd">Samsung remote</strong> to power on the TV.</li>
-                                <li>On the <strong style="color: #8c4bbd">Samsung remote</strong>, select the TV source to <strong style="color: #8c4bbd">HDMI</strong>.</li>
+                                <li><strong>Power up the system:</strong> Ensure the Room PC is powered on (use the PC power button on the rack if needed).</li>
+                                <li>Use the <strong>Samsung remote</strong> to power on the TV.</li>
+                                <li>On the <strong>Samsung remote</strong>, select the TV source to <strong>HDMI</strong>.</li>
                             </ul>
+                            <div class="instruction-note"><strong>Display Settings:</strong> The Room PC should automatically detect the TV display. If you need to adjust display settings, use the System Preferences to configure mirror or extended display modes.</div>
                         </div>
                     </div>
                 </div>
+
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
                         <div class="instructions">
+                            <h3><i class="fas fa-apple-alt"></i> MacBook:</h3>
                             <ul>
-                                <li>Connect your <strong style="color: #8c4bbd">laptop</strong> to the TV with HDMI or a USB-C adapter.</li>
-                                <li>Switch the TV source to <strong style="color: #8c4bbd">HDMI</strong> using the <strong style="color: #8c4bbd">Samsung remote</strong>.</li>
+                                <li>Connect your <strong>laptop</strong> to the TV with HDMI or a USB-C adapter.</li>
+                                <li>Switch the TV source to <strong>HDMI</strong> using the <strong>Samsung remote</strong>.</li>
+                                <li>Open System Settings, click on Display to configure mirroring or extended display options.</li>
                             </ul>
+                            
+                            <h3><i class="fab fa-windows"></i> Windows:</h3>
+                            <ul>
+                                <li>Connect your laptop with HDMI cable.</li>
+                                <li>Press Windows key + P to open display projection options.</li>
+                                <li>Select your preferred display mode: Duplicate (mirror) or Extend.</li>
+                            </ul>
+                            <div class="instruction-note"><strong>Troubleshooting:</strong> If the TV doesn't display your laptop screen, ensure the HDMI cable is securely connected and that you've selected the correct HDMI input on the Samsung TV remote.</div>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
+
     <script>
         function toggleMode(modeId, button) {
             const parentSection = button.closest('.step');
@@ -133,24 +162,13 @@
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
         }
-        function selectDefaultModes() {
-            const soundDefaultButton = document.querySelector('#sound-setup-section .mode-button.active');
-            if (soundDefaultButton) {
-                const modeId = soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                toggleMode(modeId, soundDefaultButton);
-            }
-            const projectorDefaultButton = document.querySelector('#video-projection-section .mode-button.active');
-            if (projectorDefaultButton) {
-                const modeId = projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                toggleMode(modeId, projectorDefaultButton);
-            }
-        }
-        document.addEventListener('DOMContentLoaded', selectDefaultModes);
+
         function showSection(section) {
             const soundSection = document.getElementById('sound-setup-section');
             const videoSection = document.getElementById('video-projection-section');
             const soundTab = document.getElementById('sound-tab');
             const videoTab = document.getElementById('video-tab');
+            
             if (section === 'sound') {
                 soundSection.style.display = '';
                 videoSection.style.display = 'none';
@@ -163,10 +181,42 @@
                 videoTab.classList.add('active');
             }
         }
+
+        // Default to Sound on load
         document.addEventListener('DOMContentLoaded', function() {
             showSection('sound');
         });
     </script>
-    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
+
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
 </body>
 </html> 
