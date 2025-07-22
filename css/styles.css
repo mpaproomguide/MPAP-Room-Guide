@@ -125,7 +125,8 @@ h3 {
 
 /* Universal Step and Section Styles */
 .step {
-    background: var(--nyu-white);
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.1);
     padding: 25px;
     margin: 20px 0;
     border-radius: 12px;
@@ -217,7 +218,6 @@ h3 {
 #room-pc.mode-section,
 #laptop.mode-section,
 #without-projector.mode-section {
-    background: var(--nyu-white);
 }
 
 .mode-content {
@@ -265,12 +265,29 @@ h3 {
     font-weight: 500;
 }
 
+.instructions {
+    counter-reset: instruction-counter;
+}
+
 .instructions ul {
-    list-style-type: disc;
+    list-style-type: none;
     padding-left: 20px;
     text-align: left;
     display: block;
     width: 100%;
+}
+
+.instructions li {
+    counter-increment: instruction-counter;
+    position: relative;
+}
+
+.instructions li:before {
+    content: counter(instruction-counter) ". ";
+    position: absolute;
+    left: -25px;
+    color: var(--nyu-purple);
+    font-weight: 600;
 }
 
 .instructions ul, .instructions li {
@@ -299,13 +316,22 @@ h3 {
 .instruction-note {
     padding-left: 20px;
     padding-bottom: 10px;
-    margin: 5px 0;
+    margin: 20px 0 5px 20px;
     font-size: 0.95em;
     color: var(--nyu-dark-gray);
     background: rgba(138, 43, 226, 0.05);
     border-left: 3px solid var(--nyu-light-purple);
     padding-left: 15px;
     border-radius: 0 4px 4px 0;
+}
+
+.instruction-image {
+    max-width: 80%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .instruction-note strong {
@@ -430,6 +456,13 @@ h2 .fas, h3 .fas {
 @media (max-width: 768px) {
     .container {
         padding: 10px;
+    }
+    
+    .instruction-image {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        margin: 15px 0;
     }
 
     .header-content h1 {
@@ -719,7 +752,7 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
 .building-section {
     margin-bottom: 30px;
     border-radius: 8px;
-    background: white;
+    backdrop-filter: blur(4px);
     box-shadow: 0 2px 8px rgba(87,6,140,0.05);
     overflow: hidden;
 }

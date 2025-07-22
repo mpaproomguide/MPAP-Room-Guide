@@ -1,6 +1,5 @@
 let waves = [];
 const numWaves = 8;
-let time = 0;
 const baseColor = '#57068c';
 let blurAmount = 1; // Reduced blur amount for a more balanced effect
 
@@ -15,19 +14,25 @@ function setup() {
         waves.push({
             amplitude: map(i, 0, numWaves-1, height * 0.1, height * 0.3),
             frequency: map(i, 0, numWaves-1, 0.001, 0.005),
-            speed: map(i, 0, numWaves-1, 0.5, 2),
             phase: random(TWO_PI),
             harmonic: i + 1,
             opacity: map(i, 0, numWaves-1, 0.15, 0.05)
         });
     }
+    
+    // Draw static wave pattern once
+    drawStaticWaves();
+    noLoop(); // Stop the draw loop after initial render
 }
 
 function draw() {
+    // No continuous drawing needed
+}
+
+function drawStaticWaves() {
     clear();
-    time += 0.001; // Slow animation
     
-    // Draw each wave
+    // Draw each wave as static pattern
     for (let wave of waves) {
         // Draw the wave pattern
         noFill();
@@ -36,10 +41,10 @@ function draw() {
         
         beginShape();
         for (let x = 0; x < width; x += 5) {
-            // Calculate y position using multiple harmonics
+            // Calculate y position using multiple harmonics (static)
             let y = height/2;
             for (let h = 1; h <= wave.harmonic; h++) {
-                y += sin(x * wave.frequency * h + time * wave.speed + wave.phase) * 
+                y += sin(x * wave.frequency * h + wave.phase) * 
                      (wave.amplitude / h);
             }
             vertex(x, y);
@@ -50,7 +55,7 @@ function draw() {
         for (let x = 0; x < width; x += 20) {
             let y = height/2;
             for (let h = 1; h <= wave.harmonic; h++) {
-                y += sin(x * wave.frequency * h + time * wave.speed + wave.phase) * 
+                y += sin(x * wave.frequency * h + wave.phase) * 
                      (wave.amplitude / h);
             }
             fill(color(baseColor + hex(wave.opacity * 255, 2)));
@@ -64,7 +69,16 @@ function draw() {
 
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
-    // Redraw static background on resize
+    // Reinitialize waves for new dimensions
     waves = [];
-    setup();
+    for (let i = 0; i < numWaves; i++) {
+        waves.push({
+            amplitude: map(i, 0, numWaves-1, height * 0.1, height * 0.3),
+            frequency: map(i, 0, numWaves-1, 0.001, 0.005),
+            phase: random(TWO_PI),
+            harmonic: i + 1,
+            opacity: map(i, 0, numWaves-1, 0.15, 0.05)
+        });
+    }
+    drawStaticWaves();
 } 
