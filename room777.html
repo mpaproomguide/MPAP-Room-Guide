@@ -47,18 +47,49 @@
                 <div id="room-pc-sound" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <ul>
-                                <li>On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left.</li>
-                                <li>Press the button labeled <strong>"ROOM PC"</strong>.</li>
-                                <li>The <strong>Volume Knob</strong> is located on the right side of the Crestron box. Make sure that at least one of the volume bars is lit up.</li>
-                            </ul>
-                            <img src="images/1_first_frame.png" alt="Room PC Sound Setup" class="mode-image">
-                            <ul style="counter-reset: instruction-counter 3;">
-                                <li>On the room PC, click the <strong>Control Center</strong> icon in the top-right menu bar. Under <strong>"Sound"</strong>, make sure <strong>"Crestron"</strong> is selected as the output device.</li>
-                            </ul>
-                            <img src="images/room777_crestron_sound_selection.png" alt="Crestron Sound Selection" class="instruction-image">
-                            <div class="instruction-note"><strong>Troubleshooting:</strong> If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.</div>
+                        <div class="step-by-step-container" data-section="room-pc-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the <strong>"ROOM PC"</strong> button.</p>
+                                    <img src="images/1_first_frame.png" alt="Room PC Sound Setup" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the room PC, click the <strong>Control Center</strong> icon in the top-right menu bar. Under <strong>"Sound"</strong>, make sure <strong>"Crestron"</strong> is selected as the output device.</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Crestron Sound Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">The <strong>Volume Knob</strong> is located on the right side of the Crestron box. Make sure that at least one of the volume bars is lit up.</p>
+                                    <img src="images/1_first_frame.png" alt="Room PC Sound Setup" class="step-image">
+                                    <div class="instruction-note" style="margin-top: 20px;">
+                                        <strong>Troubleshooting:</strong> If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">3</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,19 +97,50 @@
                 <div id="laptop-sound" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <ul>
-                                <li>Plug the <strong>HDMI</strong> cable attached to the podium into your device.</li>
-                                <li>On the podium, there is a black box labeled <strong>"Crestron"</strong>. Press <strong>"POWER ON"</strong> on the top left.</li>
-                                <li>Press the button labeled <strong>"LAPTOP"</strong>.</li>
-                                <li>The <strong> Volume Knob</strong> is located on the right side of the Crestron box. Make sure that at least one of the volume bars is lit up.</li>
-                            </ul>
-                            <img src="images/4_first_frame.png" alt="Laptop Sound Setup" class="mode-image">
-                            <ul style="counter-reset: instruction-counter 4;">
-                                <li>On the menu bar in the top right corner (if a MacBook), ensure that <strong>"Crestron"</strong> is the selected device (the circle to the left will be blue if so, click it if not).</li>
-                            </ul>
-                            <img src="images/room777_crestron_sound_selection.png" alt="Crestron Sound Selection" class="instruction-image">
-                            <div class="instruction-note"><strong>Troubleshooting:</strong> If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.</div>
+                        <div class="step-by-step-container" data-section="laptop-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content text-only">
+                                    <p class="step-text">Plug the <strong>HDMI</strong> cable attached to the podium into your device.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 & 3 Combined -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, there is a black box labeled <strong>"Crestron"</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the button labeled <strong>"LAPTOP"</strong>.</p>
+                                    <img src="images/4_first_frame.png" alt="Laptop Sound Setup" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On the menu bar in the top right corner (if a MacBook), ensure that <strong>"Crestron"</strong> is the selected device (the circle to the left will be blue if so, click it if not).</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Crestron Sound Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">3</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Troubleshooting Note (shown after all steps) -->
+                            <div class="instruction-note step-troubleshooting" style="display: none;">
+                                <strong>Troubleshooting:</strong> If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,6 +353,91 @@
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(addCarouselTouchSupport, 200);
         });
+
+        // Step-by-Step Navigation Functions
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum < totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show next step
+                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+                
+                // Show troubleshooting note if on last step
+                if (currentStepNum + 1 === totalSteps) {
+                    const troubleshootingNote = container.querySelector('.step-troubleshooting');
+                    if (troubleshootingNote) {
+                        troubleshootingNote.style.display = 'block';
+                    }
+                }
+            }
+        }
+
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum > 1) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show previous step
+                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prevStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+                
+                // Hide troubleshooting note if leaving last step
+                if (currentStepNum === totalSteps) {
+                    const troubleshootingNote = container.querySelector('.step-troubleshooting');
+                    if (troubleshootingNote) {
+                        troubleshootingNote.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        function updateStepCounter(container, currentStep, totalSteps) {
+            const currentStepSpan = container.querySelector('.current-step');
+            if (currentStepSpan) {
+                currentStepSpan.textContent = currentStep;
+            }
+        }
+
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            
+            // Update Previous button
+            prevBtn.disabled = currentStep === 1;
+            
+            // Update Next button
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.disabled = false;
+            }
+        }
     </script>
 
     <script>
