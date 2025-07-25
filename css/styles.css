@@ -293,7 +293,7 @@ h3 {
 .instructions ul, .instructions li {
     font-family: 'NYU Perstare';
     font-size: 1.15em;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--nyu-dark-gray);
     line-height: 1.7;
 }
@@ -316,7 +316,7 @@ h3 {
 .instruction-note {
     padding-left: 20px;
     padding-bottom: 10px;
-    margin: 20px 0 5px 20px;
+    margin: 35px 0 5px 20px;
     font-size: 0.95em;
     color: var(--nyu-dark-gray);
     background: rgba(138, 43, 226, 0.05);
@@ -326,9 +326,9 @@ h3 {
 }
 
 .instruction-image {
-    max-width: 80%;
+    max-width: 50%;
     height: auto;
-    margin: 20px auto;
+    margin: 10px auto;
     display: block;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -578,10 +578,10 @@ h2 .fas, h3 .fas {
     }
     
     .instruction-image {
-        max-width: 100%;
+        max-width: 80%;
         width: auto;
         height: auto;
-        margin: 15px 0;
+        margin: 8px 0;
     }
 
     .header-content h1 {
