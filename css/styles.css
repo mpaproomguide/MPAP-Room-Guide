@@ -139,7 +139,16 @@ h3 {
 }
 
 /* Universal Mode Selector Styles */
-.mode-selector, .main-menu-selector {
+.mode-selector {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 16px 0 32px 0;
+    flex-wrap: wrap;
+}
+
+/* Main menu selector - horizontal design for desktop */
+.main-menu-selector {
     display: flex;
     gap: 12px;
     justify-content: center;
@@ -777,10 +786,20 @@ h2 .fas, h3 .fas {
         font-size: 1.2em;
     }
 
-    .step,     .mode-section {
-        padding: 15px;
+    .step, .mode-section {
+        padding: 20px 15px;
         margin-top: 0;
         padding-top: 0;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(87, 6, 140, 0.1);
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    /* Override the existing margin and set a new value */
+    .step .mode-selector {
+        margin: 0 0 32px 0 !important;
+        padding-top: 10px !important;
     }
 
     .footer-nav ul {
@@ -793,9 +812,57 @@ h2 .fas, h3 .fas {
         text-align: center;
     }
 
-    .mode-selector, .main-menu-selector {
+    .mode-selector {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    /* Beautiful horizontal design for main menu (Sound/Video) on mobile */
+    .main-menu-selector {
+        flex-direction: row;
+        gap: 8px;
+        justify-content: center;
+        margin: 20px 0 30px 0;
+        padding: 0 10px;
+    }
+    
+    .main-menu-selector .mode-button {
+        flex: 1;
+        max-width: 160px;
+        min-height: 60px;
+        font-size: 1.1em;
+        font-weight: 700;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(87, 6, 140, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .main-menu-selector .mode-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+    
+    .main-menu-selector .mode-button:hover::before {
+        left: 100%;
+    }
+    
+    .main-menu-selector .mode-button.active {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(87, 6, 140, 0.3);
+        background: linear-gradient(135deg, var(--nyu-purple), var(--nyu-light-purple));
+    }
+    
+    .main-menu-selector .mode-button i {
+        font-size: 1.3em;
+        margin-bottom: 4px;
     }
 
     .mode-button {
