@@ -712,12 +712,22 @@ h2 .fas, h3 .fas {
     }
 
     .step-counter {
-        font-size: 0.85em;
-        padding: 4px 10px;
-        background: var(--nyu-purple);
-        color: white;
-        border-radius: 15px;
-        font-weight: 600;
+        display: none; /* Legacy counter hidden */
+    }
+
+    /* Mobile step dots styling */
+    .step-dots {
+        gap: 6px;
+    }
+
+    .step-dot {
+        width: 10px;
+        height: 10px;
+        border-width: 1.5px;
+    }
+
+    .step-dot.active {
+        box-shadow: 0 0 0 2px rgba(87, 6, 140, 0.2);
     }
 
     .step-btn {
@@ -1009,15 +1019,39 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     flex: 1;
 }
 
+/* Circular Step Indicators */
+.step-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(87, 6, 140, 0.3);
+    border: 2px solid rgba(87, 6, 140, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.step-dot.active {
+    background-color: var(--nyu-purple);
+    border-color: var(--nyu-purple);
+    box-shadow: 0 0 0 3px rgba(87, 6, 140, 0.2);
+}
+
+.step-dot:hover {
+    background-color: var(--nyu-light-purple);
+    border-color: var(--nyu-light-purple);
+    transform: scale(1.1);
+}
+
+/* Legacy step counter (hidden but kept for compatibility) */
 .step-counter {
-    background: var(--nyu-purple);
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 600;
-    white-space: nowrap;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none;
 }
 
 
@@ -1133,6 +1167,8 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     gap: 15px;
     flex-shrink: 0;
 }
+
+
 
 .step-btn {
     padding: 4px 12px;

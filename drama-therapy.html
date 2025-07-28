@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
 </head>
 <body>
     <div class="container">
@@ -96,7 +97,13 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">5</span></span>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                        <div class="step-dot" data-step="5"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
@@ -159,7 +166,13 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">5</span></span>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                        <div class="step-dot" data-step="5"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
@@ -213,7 +226,12 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
@@ -278,7 +296,12 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
@@ -336,7 +359,12 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
@@ -451,12 +479,51 @@
             }
         }
 
-        function updateStepCounter(container, currentStep, totalSteps) {
-            const currentStepSpan = container.querySelector('.current-step');
-            if (currentStepSpan) {
-                currentStepSpan.textContent = currentStep;
+                function updateStepCounter(container, currentStep, totalSteps) {
+            // Update circular step indicators
+            const stepDots = container.querySelectorAll('.step-dot');
+            stepDots.forEach((dot, index) => {
+                if (index === currentStep - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function goToStep(sectionId, targetStep) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (targetStep >= 1 && targetStep <= totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show target step
+                const nextStep = container.querySelector(`[data-step="${targetStep}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, targetStep, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, targetStep, totalSteps);
             }
         }
+
+        // Add click listeners to step dots
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepDots = document.querySelectorAll('.step-dot');
+            stepDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetStep = parseInt(this.dataset.step);
+                    const container = this.closest('[data-section]');
+                    const sectionId = container.dataset.section;
+                    goToStep(sectionId, targetStep);
+                });
+            });
+        });
 
         function updateNavigationButtons(container, currentStep, totalSteps) {
             const prevBtn = container.querySelector('.prev-btn');
