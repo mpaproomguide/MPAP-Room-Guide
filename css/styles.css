@@ -665,13 +665,17 @@ h2 .fas, h3 .fas {
 
     .step-image {
         max-width: none !important;
-        width: 96% !important;
+        width: 100% !important;
         height: auto;
-        margin: 15px auto;
+        margin: 25px auto;
         transform: none;
         display: block;
         flex-shrink: 0;
+        max-height: 300px;
+        object-fit: contain;
     }
+    
+
 
     .step-navigation {
         flex-direction: row;
@@ -725,6 +729,12 @@ h2 .fas, h3 .fas {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        min-height: 400px;
+    }
+    
+    .step-content:has(.step-image) {
+        justify-content: center;
+        gap: 20px;
     }
 
     .header-content h1 {
@@ -1014,6 +1024,18 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     flex-shrink: 0;
 }
 
+/* Large step image for specific cases */
+.large-step-image {
+    max-width: 100vw !important;
+    max-height: 90vh !important;
+    width: 100vw !important;
+    height: 90vh !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
 .step-navigation {
     display: flex;
     justify-content: space-between;
@@ -1199,11 +1221,14 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
 
 /* Index Page Specific Styles */
 .support-info {
-    background-color: white;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 20px;
     margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(87, 6, 140, 0.1);
+    transition: transform 0.3s ease;
 }
 
 .support-info p {
@@ -1259,7 +1284,9 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(.4,0,.2,1), padding 0.3s cubic-bezier(.4,0,.2,1);
-    background: #faf7fd;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding: 0 24px;
 }
 

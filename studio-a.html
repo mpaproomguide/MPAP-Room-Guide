@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide</title>
+    <title>MPAP Room Guide - Studio A</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -19,33 +19,83 @@
                 <h1>MPAP Room Guides</h1>
             </div>
         </header>
+
         <a href="index.html" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Room List
         </a>
+
         <main>
-            <h1>Room 570</h1>
+            <h1>Studio A</h1>
             <div class="main-menu-selector">
                 <button id="video-tab" class="mode-button active" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
             </div>
+            
             <section class="step" id="video-projection-section">
                 <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('laptop-video', this)">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
                         <i class="fas fa-laptop"></i> Laptop
                     </button>
                 </div>
 
-                <div id="laptop-video" class="mode-section active">
-                    <h2><i class="fas fa-laptop"></i> Laptop Setup</h2>
+                <div id="room-pc-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="room-pc-video">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Power up the Mac and TV. Normally the Mac should be on all the time. If Mac is turned off, it can be found inside the closet on the right side of the room. Use the remote control to open the TV, select <strong>HDMI-3</strong> as the source.</p>
+                                    <img src="images/image3.jpg" alt="TV Remote Control for Studio A" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the computer, open System Settings (in the dock at the bottom of the screen), click on displays. Configure your display preferences: For mirroring, select projector as the main display and built-in display as mirror for projector. For extending, select Extended display and arrange the monitors in the Arrange window.</p>
+                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">2</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-video" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
                         <div class="step-by-step-container" data-section="laptop-video">
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Connect your laptop to the HDMI input panel located on the back wall of the room. Login to the Crestron panel using passcode <strong>2021</strong>.</p>
-                                    <img src="images/image6.jpg" alt="Paulson 570 HDMI Input Panel Location" class="step-image">
-                                    <div class="instruction-note">
-                                        <strong>Note:</strong> The Crestron panel position is separate from the HDMI input panel.
-                                    </div>
+                                    <p class="step-text">Connect to the system via HDMI adapter. Use the remote control to select <strong>HDMI-3</strong> as the TV source.</p>
+                                    <img src="images/image3.jpg" alt="TV Remote Control for Studio A" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On your laptop, open System Settings and click on displays. Configure your display preferences: For mirroring, select projector as the main display and built-in display as mirror for projector. For extending, select Extended display and arrange the monitors in the Arrange window.</p>
+                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
                                 </div>
                             </div>
                             
@@ -57,11 +107,11 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">1</span></span>
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">2</span></span>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -70,6 +120,7 @@
             </section>
         </main>
     </div>
+
     <script>
         function toggleMode(modeId, button) {
             const parentSection = button.closest('.step');
@@ -81,7 +132,27 @@
             });
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
+            
+            // Reset all step containers in the newly activated section to step 1
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                // Hide all steps
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                // Show step 1
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                // Reset step counter and navigation buttons
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
         }
+
         function showSection(section) {
             const videoSection = document.getElementById('video-projection-section');
             const videoTab = document.getElementById('video-tab');
@@ -163,6 +234,37 @@
                 nextBtn.disabled = false;
             }
         }
+    </script>
+
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
     </script>
 </body>
 </html> 

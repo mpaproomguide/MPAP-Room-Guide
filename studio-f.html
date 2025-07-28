@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide - Drama Therapy Lab</title>
+    <title>MPAP Room Guide - Studio F</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -25,7 +25,7 @@
         </a>
 
         <main>
-            <h1>Drama Therapy Lab</h1>
+            <h1>Studio F</h1>
             <div class="main-menu-selector">
                 <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
                 <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
@@ -39,9 +39,6 @@
                     <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
                         <i class="fas fa-laptop"></i> Laptop
                     </button>
-                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
-                        <i class="fas fa-headphones"></i> External Sound
-                    </button>
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
@@ -51,40 +48,8 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text"><strong>Power up the system:</strong> Ensure the Room PC is powered on (use the PC power button on the rack if needed).</p>
-                                    <img src="images/drama-therapy/image1.jpg" alt="Room PC Sound Setup" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">Use the <strong>Samsung remote</strong> to power on the TV.</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 3 -->
-                            <div class="instruction-step" data-step="3">
-                                <div class="step-content">
-                                    <p class="step-text"><strong>Set up audio:</strong> Select <strong>Samsung TV</strong> as the audio device on the Room PC.</p>
-                                    <img src="images/drama-therapy/image3.jpg" alt="Select Samsung TV as Audio Device" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 4 -->
-                            <div class="instruction-step" data-step="4">
-                                <div class="step-content">
-                                    <p class="step-text">Open the <strong>audio bar</strong> and select <strong>HDMI</strong> as the input source (do <strong>not</strong> select HDMI(TV)).</p>
-                                    <img src="images/drama-therapy/image2.jpg" alt="Audio Bar HDMI Input" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 5 -->
-                            <div class="instruction-step" data-step="5">
-                                <div class="step-content">
-                                    <div class="instruction-note">
-                                        <strong>Troubleshooting:</strong> If you don't have sound, verify that the Samsung TV is selected as your audio output device and that the audio bar is set to HDMI input mode.
-                                    </div>
+                                    <p class="step-text">Select <strong>Scarlett</strong> as the audio device. Then select Input source on the console to <strong>FocusRite 5.1</strong>. Turn up the volume and check mute-all is disabled.</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Audio Device Selection" class="step-image">
                                 </div>
                             </div>
                             
@@ -96,7 +61,7 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">5</span></span>
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">1</span></span>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
@@ -114,40 +79,8 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Connect your <strong>laptop</strong> to the TV with HDMI or a USB-C adapter.</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">In your laptop's audio settings, set the audio output to <strong>Samsung TV</strong> (similar to the Room PC setup).</p>
-                                    <img src="images/drama-therapy/image3.jpg" alt="Laptop Audio Settings" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 3 -->
-                            <div class="instruction-step" data-step="3">
-                                <div class="step-content">
-                                    <p class="step-text">Open the <strong>audio bar</strong> and select <strong>HDMI</strong> as the input source (do <strong>not</strong> select HDMI(TV)).</p>
-                                    <img src="images/drama-therapy/image2.jpg" alt="Audio Bar Settings" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 4 -->
-                            <div class="instruction-step" data-step="4">
-                                <div class="step-content">
-                                    <p class="step-text">To use the <strong>sound bar</strong>: Connect to the sound bar via the ¼ inch audio cable. Set the input source of the sound bar to <strong>Analog</strong>.</p>
-                                    <img src="images/drama-therapy/image4.jpg" alt="Sound Bar Analog Input" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 5 -->
-                            <div class="instruction-step" data-step="5">
-                                <div class="step-content">
-                                    <div class="instruction-note">
-                                        <strong>Troubleshooting:</strong> If using a MacBook, ensure the Samsung TV appears in your audio output options. For Windows laptops, check that the audio is routing through the HDMI connection to the TV.
-                                    </div>
+                                    <p class="step-text">Connect to the 3.5mm headphone jack on the right side of the rack. Change audio setting on your laptop to headphone. Select <strong>AUX</strong> on the console. Turn up the volume and check mute-all is disabled.</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Audio Device Selection" class="step-image">
                                 </div>
                             </div>
                             
@@ -159,64 +92,10 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">5</span></span>
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">1</span></span>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="external-sound" class="mode-section">
-                    <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="external-sound">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Connect your external audio device to the <strong>sound bar</strong> using the ¼ inch audio cable.</p>
-                                    <img src="images/drama-therapy/image4.jpg" alt="External Sound Source Setup" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">Set the sound bar input to <strong>Analog</strong>.</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 3 -->
-                            <div class="instruction-step" data-step="3">
-                                <div class="step-content">
-                                    <p class="step-text">Adjust volume levels on both your external device and the sound bar as needed.</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 4 -->
-                            <div class="instruction-step" data-step="4">
-                                <div class="step-content">
-                                    <div class="instruction-note">
-                                        <strong>Note:</strong> For phones or tablets, you may need a 3.5mm to ¼ inch adapter. Make sure your device's volume is turned up and the sound bar input is correctly set to Analog.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('external-sound')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
                                     <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
@@ -242,31 +121,28 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text"><strong>Power up the system:</strong> Ensure the Room PC is powered on (use the PC power button on the rack if needed).</p>
-                                    <img src="images/drama-therapy/image1.jpg" alt="Room PC Video Setup" class="step-image">
+                                    <p class="step-text">The Room iMac can be turned on by pressing the button on the back of its display.</p>
                                 </div>
                             </div>
                             
                             <!-- Step 2 -->
                             <div class="instruction-step" data-step="2">
                                 <div class="step-content">
-                                    <p class="step-text">Use the <strong>Samsung remote</strong> to power on the TV.</p>
+                                    <p class="step-text">Use the Samsung remote to start up the TV, set the TV source to <strong>HDMI-1</strong>. Do not change the TV source to another source, use the selector on the rack to select your desired input.</p>
                                 </div>
                             </div>
                             
                             <!-- Step 3 -->
                             <div class="instruction-step" data-step="3">
                                 <div class="step-content">
-                                    <p class="step-text">On the <strong>Samsung remote</strong>, select the TV source to <strong>HDMI</strong>.</p>
+                                    <p class="step-text">Select <strong>SONY TV</strong> as the external display on Room Mac.</p>
                                 </div>
                             </div>
                             
                             <!-- Step 4 -->
                             <div class="instruction-step" data-step="4">
                                 <div class="step-content">
-                                    <div class="instruction-note">
-                                        <strong>Display Settings:</strong> The Room PC should automatically detect the TV display. If you need to adjust display settings, use the System Preferences to configure mirror or extended display modes.
-                                    </div>
+                                    <p class="step-text">Press Source Button to Change INPUT to <strong>1</strong>.</p>
                                 </div>
                             </div>
                             
@@ -296,35 +172,21 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Connect your <strong>laptop</strong> to the TV with HDMI or a USB-C adapter.</p>
+                                    <p class="step-text">Connect with HDMI outlet.</p>
                                 </div>
                             </div>
                             
                             <!-- Step 2 -->
                             <div class="instruction-step" data-step="2">
                                 <div class="step-content">
-                                    <p class="step-text">Switch the TV source to <strong>HDMI</strong> using the <strong>Samsung remote</strong>.</p>
+                                    <p class="step-text">Press Source Button to Change INPUT to <strong>2</strong>.</p>
                                 </div>
                             </div>
                             
                             <!-- Step 3 -->
                             <div class="instruction-step" data-step="3">
                                 <div class="step-content">
-                                    <h3><i class="fas fa-apple-alt"></i> MacBook:</h3>
-                                    <p class="step-text">Open System Settings, click on Display to configure mirroring or extended display options.</p>
-                                    
-                                    <h3><i class="fab fa-windows"></i> Windows:</h3>
-                                    <p class="step-text">Press Windows key + P to open display projection options.</p>
-                                    <p class="step-text">Select your preferred display mode: Duplicate (mirror) or Extend.</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 4 -->
-                            <div class="instruction-step" data-step="4">
-                                <div class="step-content">
-                                    <div class="instruction-note">
-                                        <strong>Troubleshooting:</strong> If the TV doesn't display your laptop screen, ensure the HDMI cable is securely connected and that you've selected the correct HDMI input on the Samsung TV remote.
-                                    </div>
+                                    <p class="step-text">Select <strong>SONY TV</strong> as the external display on Your Laptop.</p>
                                 </div>
                             </div>
                             
@@ -336,7 +198,7 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">3</span></span>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">

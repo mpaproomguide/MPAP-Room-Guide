@@ -262,6 +262,25 @@
             });
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
+            
+            // Reset all step containers in the newly activated section to step 1
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                // Hide all steps
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                // Show step 1
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                // Reset step counter and navigation buttons
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
         }
 
         function showSection(section) {

@@ -36,9 +36,6 @@
                     <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
                         <i class="fas fa-desktop"></i> Room PC
                     </button>
-                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
-                        <i class="fas fa-laptop"></i> Laptop
-                    </button>
                     <button class="mode-button" onclick="toggleMode('external-sound', this)">
                         <i class="fas fa-headphones"></i> External Sound
                     </button>
@@ -47,26 +44,110 @@
                 <div id="room-pc-sound" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Room setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="room-pc-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Turn on the power switch on the <strong>Furman</strong> on the rack.</p>
+                                    <img src="images/rack-ins-final2.jpg" alt="Furman Box in Rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Just below the <strong>Furman</strong> unit, make sure the power switch on the <strong>ART MX822</strong> is turned on, and that the <strong>LEVEL</strong> knobs for both the <strong>MAC SSL</strong> and <strong>MASTER</strong> channels are turned up.</p>
+                                    <img src="images/ART Step.jpg" alt="ART MX822 Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On the back of the cart, locate the <strong>SSL 2+</strong> interface. Make sure the <strong>MONITOR MIX</strong> knob is turned fully to the right, and set the <strong>MONITOR LEVEL</strong> knob to at least the 9 o'clock position.</p>
+                                    <img src="images/ssl2-gallery.gif" alt="SSL 2+ Interface" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">On the room PC, go to the toolbar in the top right corner and under Sound Settings, select <strong>SSL 2+</strong> (It would be highlighted blue when selected).</p>
+                                    <img src="images/ssl-audio.jpg" alt="SSL 2+ Selection" class="step-image">
+                                    <div class="instruction-note">
+                                        <strong>Note:</strong> In case the SSL 2+ doesn't show up in the output settings, replug the USB-C cable on the box.
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div id="laptop-sound" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
-                    <div class="mode-content">
-                        <div class="instructions">
-                            <p>Laptop setup instructions coming soon...</p>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div id="external-sound" class="mode-section">
-                    <h2><i class="fas fa-headphones"></i> External Sound</h2>
+                    <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>External sound setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="external-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect to the aux cable in the room, and then turn on the power switch on the <strong>Furman</strong>.</p>
+                                    <img src="images/rack-ins-final2.jpg" alt="Furman Box in Rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Just below the <strong>Furman</strong> unit, make sure the power switch on the <strong>ART MX822</strong> is turned on, and that the <strong>LEVEL</strong> knobs for both the <strong>MAC SSL</strong> and <strong>MASTER</strong> channels are turned up.</p>
+                                    <img src="images/ursuckin.jpg" alt="Aux Cable Connection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On your device, make sure <strong>External Headphones</strong> is selected as the playback device.</p>
+                                    <img src="images/external-headphones-selection.png" alt="External Headphones Selection" class="step-image large-step-image">
+                                </div>
+                            </div>
+                            
+
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('external-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">3</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,8 +166,62 @@
                 <div id="room-pc-video" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Projector setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="room-pc-video">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Turn on the TV using the remote in the room.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">By default, the room PC should be projected on the monitor. In case it isn't, press <strong>Input</strong> on the remote and ensure <strong>HDMI 2</strong> is selected.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On the computer, open system preferences (in the dock at the bottom of the screen), click on displays, then select the arrangement tab.</p>
+                                    <img src="images/Screenshot 2024-08-29 at 1.06.30 PM.png" alt="Display Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">If you would like to mirror the displays (such that the screen on the cart and on the wall are the same) make sure the box is checked. If you would like to extend the displays (such that the two screens are separate), make sure the box is unchecked.</p>
+                                    <div class="instruction-note">
+                                        <strong>Note:</strong> The blue box with the white tab on the top represents the computer monitor while the other box represents the room's screen. You can move around this second box to determine where the second screen exists in relation to the computer monitor.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 5 -->
+                            <div class="instruction-step" data-step="5">
+                                <div class="step-content">
+                                    <p class="step-text">When done, use the remote to turn off the projector.</p>
+                                    <p class="step-text">Turn the red switch "off" on the Furman box in the rack.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">5</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,8 +229,74 @@
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Laptop projector setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="laptop-video">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect your laptop to the HDMI cable in the room.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">When the TV is turned on, you should automatically see your laptop being projected onto it. In case it's not, click <strong>Input</strong> on the TV remote and ensure <strong>HDMI 1</strong> is selected.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <h3><i class="fas fa-apple-alt"></i> MacBook:</h3>
+                                    <p class="step-text">In order to change display settings, open system preferences (in the dock at the bottom of the screen), click on displays, then select the arrangement tab.</p>
+                                    <p class="step-text">If you would like to mirror the displays make sure the box is checked. If you would like to extend the displays, make sure the box is unchecked.</p>
+                                    <img src="images/7th floor laptop_mirror_display.png.avif" alt="MacBook Display Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <h3><i class="fab fa-windows"></i> Windows:</h3>
+                                    <p class="step-text">First ensure SAMSUNG is selected as the playback device in the sound settings (bottom left corner of the toolbar).</p>
+                                    <p class="step-text">Click the Windows icon on the bottom left corner, open 'Settings' and Click on 'System'.</p>
+                                    <p class="step-text">Click on 'Display' and scroll down to 'Multiple Displays' setting.</p>
+                                    <img src="images/Windows_Aux.png" alt="Windows Display Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 5 -->
+                            <div class="instruction-step" data-step="5">
+                                <div class="step-content">
+                                    <h3><i class="fab fa-windows"></i> Windows (continued):</h3>
+                                    <p class="step-text">If you would like to mirror the displays select 'Duplicate these displays'.</p>
+                                    <p class="step-text">If you would like to extend the displays, select 'Extend these displays'. You can adjust how both screens relate to each other in the 'Rearrange your displays' section.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 6 -->
+                            <div class="instruction-step" data-step="6">
+                                <div class="step-content">
+                                    <p class="step-text">When done, use the remote to turn off the TV.</p>
+                                    <p class="step-text">Turn the red switch "off" on the Furman box in the rack.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">6</span></span>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,6 +315,25 @@
             });
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
+            
+            // Reset all step containers in the newly activated section to step 1
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                // Hide all steps
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                // Show step 1
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                // Reset step counter and navigation buttons
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
         }
 
         function showSection(section) {
@@ -139,6 +359,75 @@
         document.addEventListener('DOMContentLoaded', function() {
             showSection('sound');
         });
+
+        // Step-by-Step Navigation Functions
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum < totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show next step
+                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+            }
+        }
+
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum > 1) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show previous step
+                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prevStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+            }
+        }
+
+        function updateStepCounter(container, currentStep, totalSteps) {
+            const currentStepSpan = container.querySelector('.current-step');
+            if (currentStepSpan) {
+                currentStepSpan.textContent = currentStep;
+            }
+        }
+
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            
+            // Update Previous button
+            prevBtn.disabled = currentStep === 1;
+            
+            // Update Next button
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.disabled = false;
+            }
+        }
     </script>
 
     <script>

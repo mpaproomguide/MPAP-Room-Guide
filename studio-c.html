@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide - Acting Lab</title>
+    <title>MPAP Room Guide - Studio C</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -25,102 +25,12 @@
         </a>
 
         <main>
-            <h1>Acting Lab</h1>
+            <h1>Studio C</h1>
             <div class="main-menu-selector">
-                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
-                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+                <button id="video-tab" class="mode-button active" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
             </div>
             
-            <section class="step" id="sound-setup-section">
-                <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
-                        <i class="fas fa-desktop"></i> Room PC
-                    </button>
-                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
-                        <i class="fas fa-headphones"></i> External Audio
-                    </button>
-                </div>
-
-                <div id="room-pc-sound" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="room-pc-sound">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Navigate to the control center located on the menu bar at the top of the screen. Select sound and make sure output is routed to SAMSUNG.</p>
-                                    <img src="images/acting-lab-image3.jpg" alt="Mac Control Center Sound Settings" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">On the Yamaha sound bar, make sure the source is changed to TV. Control the volume directly from the soundbar or on the remote.</p>
-                                    <img src="images/acting-lab-image2.jpg" alt="Yamaha Soundbar Controls" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 3 -->
-                            <div class="instruction-step" data-step="3">
-                                <div class="step-content">
-                                    <p class="step-text">Use the volume buttons to adjust the sound level as needed.</p>
-                                    <img src="images/acting-lab-volume-buttons.jpg" alt="Volume Buttons" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">3</span></span>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="external-sound" class="mode-section">
-                    <h2><i class="fas fa-headphones"></i> External Audio Device</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="external-sound">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">For external audio, connect device with the audio jack and ensure soundbar is switched to analog.</p>
-                                    <img src="images/acting-lab-image1.jpg" alt="External Audio Jack Connection" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('external-sound')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">1</span></span>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="step" id="video-projection-section" style="display:none;">
+            <section class="step" id="video-projection-section">
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
                         <i class="fas fa-desktop"></i> Room PC
@@ -137,8 +47,35 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Turn on TV with remote. Select source 1 labelled acting lab. The mac will likely be asleep, press any key to wake up.</p>
-                                    <img src="images/acting-lab-image4.jpg" alt="TV Remote and Source Selection" class="step-image">
+                                    <p class="step-text">Mac is located on the back of the desk, the power switch for the mac is on the rear left side, you need to reach inside the desk to switch the power on.</p>
+                                    <img src="images/image2.jpg" alt="Studio C Mac Power Switch Location" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Turn on the projector with the remote. If there is no power, on the front left of the room, near the projector screen, there is a power switch for the projector that needs to be turned on.</p>
+                                    <img src="images/image5.jpg" alt="Studio C Projector Power Switch" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On the computer, open System Settings (in the dock at the bottom of the screen), click on displays. Configure your display preferences: For mirroring, select MXX-A as the main display and built-in display as mirror for MXX-A. For extending, select Extended display and arrange the monitors in the Arrange window.</p>
+                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">On the HDMI source selector on the rack, first press the <strong>PROJECTOR</strong> button to select output, then press select <strong>MAC</strong> as input source.</p>
+                                    <img src="images/image9.jpg" alt="Studio C HDMI Source Selector" class="step-image">
+                                    <div class="instruction-note">
+                                        <strong>Note:</strong> The order of button pressing is necessary.
+                                    </div>
                                 </div>
                             </div>
                             
@@ -150,11 +87,11 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">1</span></span>
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">4</span></span>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -168,8 +105,19 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Turn on TV with remote. Select source 2. Laptop will display on TV.</p>
-                                    <img src="images/acting-lab-image5.jpg" alt="TV Source Selection for Laptop" class="step-image">
+                                    <p class="step-text">On your laptop, open System Settings and click on displays. Configure your display preferences: For mirroring, select MXX-A as the main display and built-in display as mirror for MXX-A. For extending, select Extended display and arrange the monitors in the Arrange window.</p>
+                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the HDMI source selector on the rack, first press the <strong>PROJECTOR</strong> button to select output, then press select <strong>LAPTOP</strong> as input source.</p>
+                                    <img src="images/image9.jpg" alt="Studio C HDMI Source Selector" class="step-image">
+                                    <div class="instruction-note">
+                                        <strong>Note:</strong> The order of button pressing is necessary.
+                                    </div>
                                 </div>
                             </div>
                             
@@ -181,11 +129,11 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">1</span></span>
+                                    <span class="step-counter">Step <span class="current-step">1</span> of <span class="total-steps">2</span></span>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -228,27 +176,16 @@
         }
 
         function showSection(section) {
-            const soundSection = document.getElementById('sound-setup-section');
             const videoSection = document.getElementById('video-projection-section');
-            const soundTab = document.getElementById('sound-tab');
             const videoTab = document.getElementById('video-tab');
             
-            if (section === 'sound') {
-                soundSection.style.display = '';
-                videoSection.style.display = 'none';
-                soundTab.classList.add('active');
-                videoTab.classList.remove('active');
-            } else {
-                soundSection.style.display = 'none';
-                videoSection.style.display = '';
-                soundTab.classList.remove('active');
-                videoTab.classList.add('active');
-            }
+            videoSection.style.display = '';
+            videoTab.classList.add('active');
         }
 
-        // Default to Sound on load
+        // Default to Video on load
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('sound');
+            showSection('video');
         });
 
         // Step-by-Step Navigation Functions
