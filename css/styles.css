@@ -235,7 +235,8 @@ h3 {
 
 /* Universal Image Styles */
 .mode-image {
-    max-width: 50%;
+    width: 100%;
+    max-width: min(600px, calc(100vw - 40px));
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -243,6 +244,8 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     display: block;
+    object-fit: contain;
+    box-sizing: border-box;
 }
 
 .main-logo-image {
@@ -342,12 +345,15 @@ h3 {
 }
 
 .instruction-image {
-    max-width: 50%;
+    width: 100%;
+    max-width: min(600px, calc(100vw - 40px));
     height: auto;
     margin: 10px auto;
     display: block;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    object-fit: contain;
+    box-sizing: border-box;
 }
 
 .instruction-note strong {
@@ -366,12 +372,13 @@ h3 {
 
 .images-row .mode-image {
     width: calc(50% - 10px);
-    max-width: 400px;
-    flex: 1;
     max-width: 45%;
+    flex: 1;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    object-fit: contain;
+    box-sizing: border-box;
 }
 
 /* Image Carousel Container */
@@ -594,19 +601,27 @@ h2 .fas, h3 .fas {
     }
     
     .instruction-image {
-        max-width: 96% !important;
-        width: 96% !important;
+        width: 100%;
+        max-width: min(500px, calc(100vw - 20px));
         height: auto;
         margin: 15px auto;
         display: block;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        object-fit: contain;
+        box-sizing: border-box;
     }
 
     .mode-image {
-        max-width: 96% !important;
-        width: 96% !important;
+        width: 100%;
+        max-width: min(500px, calc(100vw - 20px));
         height: auto;
         margin: 15px auto;
         display: block;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        object-fit: contain;
+        box-sizing: border-box;
     }
 
     /* Step-by-Step Mobile Styles */
@@ -628,10 +643,18 @@ h2 .fas, h3 .fas {
         width: 100%;
     }
 
-    /* Keep images centered on mobile */
+    /* Unified image sizing for mobile - consistent with desktop */
     .step-image {
-        margin: 15px auto !important;
-        display: block !important;
+        width: 100%;
+        max-width: min(500px, calc(100vw - 20px));
+        height: auto;
+        margin: 15px auto;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        flex-shrink: 0;
+        object-fit: contain;
+        box-sizing: border-box;
     }
 
     /* Mobile text-only steps styling */
@@ -786,8 +809,11 @@ h2 .fas, h3 .fas {
     }
 
     .mode-image {
-        max-width: 100%;
+        width: 100%;
+        max-width: min(500px, calc(100vw - 20px));
         margin-bottom: 20px;
+        object-fit: contain;
+        box-sizing: border-box;
     }
 
     .instructions {
@@ -801,7 +827,9 @@ h2 .fas, h3 .fas {
 
     .images-row .mode-image {
         width: 100%;
-        max-width: 400px;
+        max-width: min(400px, calc(100vw - 20px));
+        object-fit: contain;
+        box-sizing: border-box;
     }
 
     .nyu-logo {
@@ -1013,9 +1041,9 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
 }
 
 .step-image {
-    /* Responsive sizing that prevents scrolling and stays centered */
-    width: clamp(280px, 85vw, 700px);
-    max-height: clamp(180px, 50vh, 450px);
+    /* Unified responsive sizing that prevents cutoff and works across all screen sizes */
+    width: 100%;
+    max-width: min(600px, calc(100vw - 40px));
     height: auto;
     margin: 8px auto;
     display: block;
@@ -1023,8 +1051,8 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     flex-shrink: 0;
     object-fit: contain;
-    /* Ensure centering and prevent overflow */
-    max-width: calc(100vw - 40px);
+    /* Ensure images never exceed container bounds */
+    box-sizing: border-box;
 }
 
 .step-navigation {
