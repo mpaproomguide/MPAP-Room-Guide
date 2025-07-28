@@ -1,0 +1,109 @@
+POTENTIAL CSS INCONSISTENCIES & LAYOUT ISSUES
+==============================================
+
+After analyzing the codebase, here are potential issues similar to the container width problem:
+
+1. MISSING WIDTH DECLARATIONS ON CONTAINERS
+-------------------------------------------
+ISSUE: Several container elements don't have explicit width set
+AFFECTED ELEMENTS:
+- `.mode-section` - No width property (only children have width: 100%)
+- `.instruction-step` - NOW FIXED with width: 100%
+- `.step` class - No width property defined
+
+POTENTIAL PROBLEM: These containers might shrink with minimal content
+SOLUTION: Add width: 100% to ensure consistent layout
+
+2. CONFLICTING MOBILE STYLES
+----------------------------
+ISSUE: Mobile CSS uses :has() selector which has limited browser support
+LOCATION: Lines 638-650
+```css
+.step-content:not(:has(.step-image)),
+.step-content.text-only {
+    align-items: center;
+    justify-content: center !important;
+    height: 100%;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+}
+```
+POTENTIAL PROBLEM: Older browsers won't apply these styles
+SOLUTION: Use .text-only class consistently or JavaScript fallback
+
+3. INCONSISTENT MAX-WIDTH VALUES
+--------------------------------
+ISSUE: Different max-width values throughout the codebase
+- Container: max-width: 1200px
+- Step notes: max-width: 900px  
+- Text-only steps: max-width: 800px
+- Images: max-width: 50% / 45% / 600px (inconsistent)
+
+POTENTIAL PROBLEM: Content may appear misaligned at certain viewport widths
+SOLUTION: Standardize max-width values or use CSS custom properties
+
+4. FLEXBOX ALIGNMENT INCONSISTENCIES
+------------------------------------
+ISSUE: Mixed use of alignment properties
+- Some elements use `align-items: flex-start`
+- Others use `align-items: center`
+- `.mode-content` uses `align-items: flex-start` but children might expect center
+
+POTENTIAL PROBLEM: Child elements may not align as expected
+SOLUTION: Be explicit about alignment at each level
+
+5. IMPORTANT FLAGS OVERUSE
+--------------------------
+ISSUE: Multiple !important declarations in mobile styles
+LOCATIONS:
+- Lines 596, 604: max-width: 96% !important;
+- Lines 632-633: margin/display !important;
+- Line 641: justify-content: center !important;
+
+POTENTIAL PROBLEM: Difficult to override, specificity wars
+SOLUTION: Refactor to avoid !important where possible
+
+6. MISSING BOX-SIZING ON SOME ELEMENTS
+--------------------------------------
+ISSUE: While * has box-sizing: border-box, some specific elements redefine widths
+POTENTIAL PROBLEM: Padding/borders might cause overflow
+SOLUTION: Ensure box-sizing is considered when setting widths
+
+7. STEP-BY-STEP-CONTAINER MOBILE STYLES
+---------------------------------------
+ISSUE: Mobile version has different padding/margin than desktop
+Desktop: padding: 0 10px 25px 10px;
+Mobile: padding: 0 5px 15px 5px;
+
+POTENTIAL PROBLEM: Inconsistent spacing across breakpoints
+SOLUTION: Use relative units or CSS clamp()
+
+8. HEIGHT CONSTRAINTS WITHOUT OVERFLOW HANDLING
+-----------------------------------------------
+ISSUE: .instruction-step has fixed height: 550px (mobile: 500px)
+POTENTIAL PROBLEM: Content might overflow or create scrollbars unexpectedly
+CURRENT MITIGATION: overflow-y: auto is set, but might not be obvious to users
+
+9. CAROUSEL AND INTERACTIVE ELEMENTS
+------------------------------------
+ISSUE: .image-carousel has fixed max-width: 600px
+POTENTIAL PROBLEM: Might not scale well on different screen sizes
+SOLUTION: Consider responsive max-width using vw units
+
+10. Z-INDEX WITHOUT STACKING CONTEXT
+------------------------------------
+ISSUE: No z-index management system visible
+POTENTIAL PROBLEM: Overlapping elements might not layer correctly
+SOLUTION: Establish z-index scale in CSS variables
+
+RECOMMENDATIONS:
+================
+1. Add width: 100% to all container elements that should fill their parent
+2. Standardize max-width values using CSS custom properties
+3. Create explicit layout classes (.full-width, .centered-content, etc.)
+4. Reduce reliance on !important flags
+5. Test with :has() polyfill or alternative selectors
+6. Implement consistent spacing system
+7. Consider using CSS Grid for more predictable layouts
+8. Add /* Layout Container */ comments to identify structural elements 

@@ -1,0 +1,37 @@
+CSS INCONSISTENCIES FOUND AFTER CONVERSATION ANALYSIS
+
+## MAJOR CONFLICT DISCOVERED
+There were TWO conflicting mobile `.mode-selector` rules:
+
+1. Line 797: `.step .mode-selector { margin: 0 0 32px 0 !important; padding-top: 10px !important; }`
+2. Line 812: `.mode-selector { margin: 40px 0 32px 0 !important; }`
+
+The second rule was overriding our specific fix, which explains why the user's spacing adjustments might not have been working as expected.
+
+## FIXED
+- Removed the conflicting `margin: 40px 0 32px 0 !important;` from the general `.mode-selector` rule
+- Kept the more specific `.step .mode-selector` rule that we worked on with the user
+
+## OTHER POTENTIAL ISSUES TO MONITOR
+
+### 1. Multiple Image Class Definitions
+- `.step-image`, `.mode-image`, `.instruction-image` all have similar but slightly different responsive sizing
+- All use `min(500px, calc(100vw - 20px))` pattern but with different base values
+- Could be consolidated for consistency
+
+### 2. Duplicate Mobile Media Query Sections  
+- There appear to be multiple `@media (max-width: 768px)` sections
+- Some rules might be scattered across different sections
+- Could be consolidated for maintainability
+
+### 3. Margin/Padding Inconsistencies
+- Various elements use different margin patterns (16px, 20px, 25px, 32px)
+- Some use `margin: X 0 Y 0` while others use `margin-top: X; margin-bottom: Y`
+- Could standardize spacing scale
+
+### 4. !important Overuse
+- Many mobile rules use `!important` which can make future changes difficult
+- Should review if all are necessary or if specificity can be used instead
+
+## LESSON LEARNED
+This exact type of conflicting rule is what caused the original issue. When debugging CSS, always search for ALL instances of the selector being modified to check for conflicts. 
