@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide - Room 876</title>
+    <title>MPAP Room Guide - Room 777</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -26,7 +26,7 @@
         </a>
 
         <main>
-            <h1>Room 876</h1>
+            <h1>Room 777</h1>
             <div class="main-menu-selector">
                 <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
                 <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
@@ -76,14 +76,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Step 4 -->
-                            <div class="instruction-step" data-step="4">
-                                <div class="step-content">
-                                    <p class="step-text">When done, press <strong>"POWER OFF"</strong> on the Crestron box.</p>
-                                    <img src="images/cwestron.JPG" alt="Crestron Box Power Off" class="step-image">
-                                </div>
-                            </div>
-                            
                             <!-- Navigation Controls -->
                             <div class="step-navigation">
                                 <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
@@ -96,7 +88,6 @@
                                         <div class="step-dot active" data-step="1"></div>
                                         <div class="step-dot" data-step="2"></div>
                                         <div class="step-dot" data-step="3"></div>
-                                        <div class="step-dot" data-step="4"></div>
                                     </div>
                                 </div>
                                 
@@ -147,14 +138,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Step 5 -->
-                            <div class="instruction-step" data-step="5">
-                                <div class="step-content">
-                                    <p class="step-text">When done, press <strong>"POWER OFF"</strong> on the Crestron box.</p>
-                                    <img src="images/cwestron.JPG" alt="Crestron Box Power Off" class="step-image">
-                                </div>
-                            </div>
-                            
                             <!-- Navigation Controls -->
                             <div class="step-navigation">
                                 <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-sound')" disabled>
@@ -168,7 +151,6 @@
                                         <div class="step-dot" data-step="2"></div>
                                         <div class="step-dot" data-step="3"></div>
                                         <div class="step-dot" data-step="4"></div>
-                                        <div class="step-dot" data-step="5"></div>
                                     </div>
                                 </div>
                                 
@@ -278,14 +260,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">When done, press <strong>"POWER OFF"</strong> on the Crestron box.</p>
-                                    <img src="images/cwestron.JPG" alt="Crestron Box Power Off" class="step-image">
-                                </div>
-                            </div>
-                            
                             <!-- Navigation Controls -->
                             <div class="step-navigation">
                                 <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
@@ -296,11 +270,10 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
-                                        <div class="step-dot" data-step="2"></div>
                                     </div>
                                 </div>
                                 
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')" disabled>
                                     <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
@@ -311,53 +284,46 @@
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="step-by-step-container" data-section="laptop-video">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Plug the <strong>HDMI</strong> cable attached to the podium into your device.</p>
-                                    <img src="images/hdmi.jpg" alt="HDMI Cable Connection" class="step-image">
+                        <div class="image-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="images/room777_laptop_frames/frame_00.png" alt="Windows Display Settings Step 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_01.png" alt="Windows Display Settings Step 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_02.png" alt="Windows Display Settings Step 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_03.png" alt="Windows Display Settings Step 4">
                                 </div>
                             </div>
+                            <button class="carousel-arrow prev" onclick="changeSlide(-1)">❮</button>
+                            <button class="carousel-arrow next" onclick="changeSlide(1)">❯</button>
+                            <div class="carousel-nav">
+                                <span class="carousel-dot active" onclick="currentSlide(1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(4)"></span>
+                            </div>
+                        </div>
+                        <div class="instructions">
+                            <h3><i class="fas fa-apple-alt"></i> MacBook:</h3>
+                            <ul>
+                                <li>Open System Settings, click on display.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select <strong>'Mirror for Crestron'</strong>.</li>
+                                <li>If you would like to extend the displays (such that the two screens are separate), select <strong>'Stop Mirroring'</strong> then make sure to select <strong>Extended display</strong>. You can adjust how both screens relate to each other in the arrangement tab.</li>
+                            </ul>
                             
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">On the podium, there is a black box labeled <strong>"Crestron"</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the button labeled <strong>"LAPTOP"</strong>.</p>
-                                    <img src="images/4_first_frame.png" alt="Laptop Video Setup" class="step-image">
-                                    <div class="instruction-note" style="margin-top: 20px;">
-                                        The projector should descend and project the screen automatically.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Step 3 -->
-                            <div class="instruction-step" data-step="3">
-                                <div class="step-content">
-                                    <p class="step-text">When done, press <strong>"POWER OFF"</strong> on the Crestron box.</p>
-                                    <img src="images/cwestron.JPG" alt="Crestron Box Power Off" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <div class="step-dots">
-                                        <div class="step-dot active" data-step="1"></div>
-                                        <div class="step-dot" data-step="2"></div>
-                                        <div class="step-dot" data-step="3"></div>
-                                    </div>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
+                            <h3><i class="fab fa-windows"></i> Windows:</h3>
+                            <ul>
+                                <li>Click the Windows icon on the bottom left corner, open <strong>'Settings'</strong> and click on <strong>'System'</strong>.</li>
+                                <li>Click on <strong>'Display'</strong> and scroll down to <strong>'Multiple Displays'</strong> setting.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select <strong>'Duplicate these displays'</strong>.</li>
+                                <li>If you would like to extend the displays (such that the two screens are separate), select <strong>'Extend these displays'</strong>. You can adjust how both screens relate to each other in the <strong>'Rearrange your displays'</strong> section when you scroll back to the top of the page.</li>
+                            </ul>
+                            <img src="images/5.avif" alt="Laptop Video Display Settings" class="mode-image">
                         </div>
                     </div>
                 </div>
