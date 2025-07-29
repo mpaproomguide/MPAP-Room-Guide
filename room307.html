@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
 </head>
 <body>
     <div class="container">
@@ -45,19 +46,139 @@
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
+                    <h2><i class="fas fa-desktop"></i> Room PC</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Room setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="room-pc-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the rack near the back of the room</p>
+                                    <img src="images/306-rack.jpg" alt="Room 307 rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the top of the rack, there is a black box labeled <strong>Furman</strong>. Flip the red switch up and turn on the power.</p>
+                                    <img src="images/306-switch.jpg" alt="Room 307 Furman switch" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Towards the bottom of the rack, on the box labelled <strong>"Audio Control"</strong>, press the button labelled <strong>"Cart SSL"</strong>.</p>
+                                    <img src="images/306-cart.jpg" alt="Room 307 Cart SSL button" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">On the computer, in the menu bar in the top right corner, ensure that <strong>"SSL 2+"</strong> is the selected device.</p>
+                                    <img src="images/ssl-audio.jpg" alt="SSL 2+ Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 5 -->
+                            <div class="instruction-step" data-step="5">
+                                <div class="step-content">
+                                    <p class="step-text">On the back of the cart, locate the <strong>SSL 2+</strong> interface. Make sure the <strong>MONITOR MIX</strong> knob is turned fully to the right, and set the <strong>MONITOR LEVEL</strong> knob to at least the 9 o'clock position.</p>
+                                    <img src="images/ssl2-gallery.gif" alt="SSL 2+ Interface" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                        <div class="step-dot" data-step="5"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div id="laptop-sound" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
+                    <h2><i class="fas fa-laptop"></i> Laptop</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Laptop setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="laptop-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the rack near the back of the room</p>
+                                    <img src="images/306-rack.jpg" alt="Room 307 rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the top of the rack, there is a black box labeled <strong>Furman</strong>. Flip the red switch up and turn on the power.</p>
+                                    <img src="images/306-switch.jpg" alt="Room 307 Furman switch" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Towards the bottom of the rack, on the box labelled <strong>"Audio Control"</strong>, press the button labelled <strong>"DVD/HDMI SWITCHER"</strong>.</p>
+                                    <img src="images/306-cart-switcher.jpg" alt="Room 307 DVD/HDMI SWITCHER button" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">On the remote strapped to the <strong>HDMI switcher</strong>, press <strong>2</strong>, labelled <strong>LAPTOP</strong>.</p>
+                                    <img src="images/306-222.jpg" alt="Room 307 HDMI switcher remote" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 5 -->
+                            <div class="instruction-step" data-step="5">
+                                <div class="step-content">
+                                    <p class="step-text">Connect to the HDMI cable on the desk, and set your sound output to <strong>HDMI SPLITTER</strong>.</p>
+                                    <img src="images/306-soundoun.jpeg" alt="Room 307 sound settings" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                        <div class="step-dot" data-step="5"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,8 +186,61 @@
                 <div id="external-sound" class="mode-section">
                     <h2><i class="fas fa-headphones"></i> External Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>External sound setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="external-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect your device to the aux cable attached to the podium.</p>
+                                    <img src="images/306-auxy.avif" alt="Room 307 aux cable" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the rack near the back of the room</p>
+                                    <img src="images/306-rack.jpg" alt="Room 307 rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, the Audio Control Box, select <strong>Mini Plug</strong>.</p>
+                                    <img src="images/306-minplug.jpg" alt="Room 307 Mini Plug selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">On your device, make sure <strong>External Headphones</strong> is selected as the playback device.</p>
+                                    <img src="images/external-headphones-selection.png" alt="External Headphones Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('external-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,8 +259,52 @@
                 <div id="room-pc-video" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Projector setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="room-pc-video">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the rack near the back of the room</p>
+                                    <img src="images/306-rack.jpg" alt="Room 307 rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the remote strapped to the <strong>HDMI switcher</strong>, press <strong>3</strong>, labelled <strong>"CART SSL"</strong>.</p>
+                                    <img src="images/306-hdmi-switcher.jpg" alt="Room 307 HDMI switcher remote" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Aim the remote labeled <strong>"ROOM 307 PROJECTOR"</strong> at the projector in the room and press the on/off button in the top right corner.</p>
+                                    <img src="images/306-projection.jpeg" alt="Room 307 Projector" class="step-image">
+                                </div>
+                            </div>
+                            
+
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,8 +312,50 @@
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Laptop projector setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="laptop-video">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the rack near the back of the room</p>
+                                    <img src="images/306-rack.jpg" alt="Room 307 rack" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the remote strapped to the <strong>HDMI switcher</strong>, press <strong>2</strong>, labelled <strong>LAPTOP</strong>.</p>
+                                    <img src="images/306-222.jpg" alt="Room 307 HDMI switcher remote" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Aim the remote labeled <strong>"ROOM 307 PROJECTOR"</strong> at the projector in the room and press the on/off button in the top right corner.</p>
+                                    <img src="images/306-projection.jpeg" alt="Room 307 Projector" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,6 +374,25 @@
             });
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
+            
+            // Reset all step containers in the newly activated section to step 1
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                // Hide all steps
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                // Show step 1
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                // Reset step counter and navigation buttons
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
         }
 
         function showSection(section) {
@@ -139,6 +418,114 @@
         document.addEventListener('DOMContentLoaded', function() {
             showSection('sound');
         });
+
+        // Step-by-Step Navigation Functions
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum < totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show next step
+                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+            }
+        }
+
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum > 1) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show previous step
+                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prevStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+            }
+        }
+
+        function updateStepCounter(container, currentStep, totalSteps) {
+            // Update circular step indicators
+            const stepDots = container.querySelectorAll('.step-dot');
+            stepDots.forEach((dot, index) => {
+                if (index === currentStep - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function goToStep(sectionId, targetStep) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (targetStep >= 1 && targetStep <= totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show target step
+                const nextStep = container.querySelector(`[data-step="${targetStep}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, targetStep, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, targetStep, totalSteps);
+            }
+        }
+
+        // Add click listeners to step dots
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepDots = document.querySelectorAll('.step-dot');
+            stepDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetStep = parseInt(this.dataset.step);
+                    const container = this.closest('[data-section]');
+                    const sectionId = container.dataset.section;
+                    goToStep(sectionId, targetStep);
+                });
+            });
+        });
+
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            
+            // Update Previous button
+            prevBtn.disabled = currentStep === 1;
+            
+            // Update Next button
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.disabled = false;
+            }
+        }
     </script>
 
     <script>

@@ -1177,6 +1177,51 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     box-shadow: none;
 }
 
+/* Specific styling for room 306 switch image to make it smaller */
+.step-image[src*="306-switch"] {
+    max-width: 75%;
+    max-height: 400px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for room 306 soundoun image to make it smaller */
+.step-image[src*="306-soundoun"] {
+    max-width: 85%;
+    max-height: 425px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for room 306 auxy image to make it smaller */
+.step-image[src*="306-auxy"] {
+    max-width: 75%;
+    max-height: 400px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for room 306 projection image to make it smaller */
+.step-image[src*="306-projection"] {
+    max-width: 75%;
+    max-height: 400px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for room 777 crestron sound selection image to make it smaller */
+.step-image[src*="room777_crestron_sound_selection"] {
+    max-width: 75%;
+    max-height: 400px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
 /* Specific styling for remote images to make them smaller */
 .step-image[src*="remote"] {
     max-width: 70%;
