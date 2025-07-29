@@ -1159,6 +1159,33 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     box-sizing: border-box;
 }
 
+/* Specific styling for rack location images to make them smaller */
+.step-image[src*="305rackkk"] {
+    max-width: 85%;
+    max-height: 450px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for room 306 rack image to make it smaller */
+.step-image[src*="306-rack"] {
+    max-width: 85%;
+    max-height: 450px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for remote images to make them smaller */
+.step-image[src*="remote"] {
+    max-width: 70%;
+    max-height: 350px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
 .step-navigation {
     display: flex;
     justify-content: space-between;
