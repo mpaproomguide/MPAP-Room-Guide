@@ -128,7 +128,7 @@ h3 {
     backdrop-filter: blur(8px);
     background: rgba(255, 255, 255, 0.1);
     padding: 25px;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
@@ -636,7 +636,7 @@ h2 .fas, h3 .fas {
     /* Step-by-Step Mobile Styles */
     .step-by-step-container {
         padding: 0 5px 2px 5px;
-        margin: 0 0 15px 0;
+        margin: 0;
     }
 
     .step-text {
@@ -708,6 +708,8 @@ h2 .fas, h3 .fas {
         gap: 8px;
         margin-top: auto;
         padding-top: 15px;
+        padding-bottom: 0;
+        margin-bottom: 0;
         flex-shrink: 0;
     }
 
@@ -1006,7 +1008,7 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 0 10px 3px 10px;
-    margin: 0 0 20px 0;
+    margin: 0;
     width: 100%;
 }
 
@@ -1163,6 +1165,8 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     align-items: center;
     margin-top: auto;
     padding-top: 15px;
+    padding-bottom: 0;
+    margin-bottom: 0;
     border-top: 1px solid rgba(87, 6, 140, 0.2);
     gap: 15px;
     flex-shrink: 0;
