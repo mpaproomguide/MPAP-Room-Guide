@@ -48,18 +48,12 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Power up the Mac and TV. Normally the Mac should be on all the time. If Mac is turned off, it can be found inside the closet on the right side of the room. Use the remote control to open the TV, select <strong>HDMI-3</strong> as the source.</p>
+                                    <p class="step-text">Use the remote control to turn on the TV and select <strong>HDMI-3</strong> as the source.</p>
                                     <img src="images/image3.jpg" alt="TV Remote Control for Studio A" class="step-image">
                                 </div>
                             </div>
                             
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">On the computer, open System Settings (in the dock at the bottom of the screen), click on displays. Configure your display preferences: For mirroring, select projector as the main display and built-in display as mirror for projector. For extending, select Extended display and arrange the monitors in the Arrange window.</p>
-                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
-                                </div>
-                            </div>
+
                             
                             <!-- Navigation Controls -->
                             <div class="step-navigation">
@@ -71,7 +65,6 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
-                                        <div class="step-dot" data-step="2"></div>
                                     </div>
                                 </div>
                                 
@@ -95,13 +88,7 @@
                                 </div>
                             </div>
                             
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">On your laptop, open System Settings and click on displays. Configure your display preferences: For mirroring, select projector as the main display and built-in display as mirror for projector. For extending, select Extended display and arrange the monitors in the Arrange window.</p>
-                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
-                                </div>
-                            </div>
+
                             
                             <!-- Navigation Controls -->
                             <div class="step-navigation">
@@ -113,7 +100,6 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
-                                        <div class="step-dot" data-step="2"></div>
                                     </div>
                                 </div>
                                 
@@ -171,7 +157,28 @@
         // Default to Video on load
         document.addEventListener('DOMContentLoaded', function() {
             showSection('video');
+            
+            // Initialize navigation buttons for single-step scenarios
+            initializeSingleStepNavigation();
         });
+        
+        function initializeSingleStepNavigation() {
+            const containers = document.querySelectorAll('.step-by-step-container');
+            containers.forEach(container => {
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                if (totalSteps === 1) {
+                    // For single-step scenarios, disable both buttons and show check mark
+                    const prevBtn = container.querySelector('.prev-btn');
+                    const nextBtn = container.querySelector('.next-btn');
+                    
+                    if (prevBtn) prevBtn.disabled = true;
+                    if (nextBtn) {
+                        nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                        nextBtn.disabled = true;
+                    }
+                }
+            });
+        }
 
         // Step-by-Step Navigation Functions
         function nextStep(sectionId) {

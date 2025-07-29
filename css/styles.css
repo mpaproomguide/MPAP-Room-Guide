@@ -839,6 +839,17 @@ h2 .fas, h3 .fas {
         padding: 0 10px;
     }
     
+    .room774-menu {
+        margin-top: 40px !important;
+    }
+    
+    .room774-menu + section h2,
+    #desktop-section h2,
+    #laptop-section h2 {
+        margin-top: 40px;
+        padding-top: 20px;
+    }
+    
     .main-menu-selector .mode-button {
         flex: 1;
         max-width: 160px;
@@ -934,6 +945,18 @@ h2 .fas, h3 .fas {
         margin: 15px 0;
         justify-content: center;
     }
+}
+
+/* Room 774 specific styling */
+.room774-menu {
+    margin-top: 40px !important;
+}
+
+.room774-menu + section h2,
+#desktop-section h2,
+#laptop-section h2 {
+    margin-top: 40px;
+    padding-top: 20px;
 }
 
 /* Animation for sections */
@@ -1226,6 +1249,15 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
 .step-image[src*="remote"] {
     max-width: 70%;
     max-height: 350px;
+    object-fit: contain;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Specific styling for Apollo interface image to make it slightly smaller */
+.step-image[src*="ApolloTSmkII"] {
+    max-width: 85%;
+    max-height: 500px;
     object-fit: contain;
     background: transparent;
     box-shadow: none;
