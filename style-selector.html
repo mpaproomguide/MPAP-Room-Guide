@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide - Style Selector</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .style-selector {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(87, 6, 140, 0.15);
+        }
+        
+        .style-option {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #e9e1f3;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--nyu-dark-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .style-option:hover {
+            border-color: var(--nyu-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(87, 6, 140, 0.2);
+        }
+        
+        .style-icon {
+            font-size: 2.5em;
+            color: var(--nyu-purple);
+            margin-right: 20px;
+            width: 60px;
+            text-align: center;
+        }
+        
+        .style-info h3 {
+            color: var(--nyu-purple);
+            margin: 0 0 8px 0;
+            font-size: 1.4em;
+        }
+        
+        .style-info p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .style-badge {
+            background: var(--nyu-light-purple);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <div class="style-selector">
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--nyu-purple);">
+                Choose Your Navigation Style
+            </h2>
+            
+            <a href="index.html" class="style-option">
+                <div class="style-icon">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="style-info">
+                    <h3>Accordion Style</h3>
+                    <p>Traditional collapsible sections with floor-by-floor navigation. Clean and familiar interface.</p>
+                </div>
+                <div class="style-badge">Current</div>
+            </a>
+            
+            <a href="index2.html" class="style-option">
+                <div class="style-icon">
+                    <i class="fas fa-th-large"></i>
+                </div>
+                <div class="style-info">
+                    <h3>3D Navigator Style</h3>
+                    <p>Modern card-based interface with interactive building tabs and visual room layouts.</p>
+                </div>
+                <div class="style-badge">New</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

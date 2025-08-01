@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYU MPAP Room Guides</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css?v=1.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <div class="support-info">
+                            <p><strong>Create tickets by emailing to:</strong> <a href="mailto:steinhardt.technology@nyu.edu">steinhardt.technology@nyu.edu</a></p>
+                <p><strong>For urgent classroom and AV tech support, call:</strong> <a href="tel:12129953355">(212) 995-3355</a></p>       
+            <p><strong>Office Hours:</strong> Mon. through Fri. 8 a.m. - 11 p.m.</p>
+        </div>
+
+        <div class="building-section">
+            <button class="building-header" aria-expanded="false">
+                Education Building <i class="fa fa-chevron-right"></i>
+            </button>
+            <div class="room-list">
+                <div class="room-grid">
+                    <a href="room303.html" class="room-link">Room 303</a>
+                    <a href="room304.html" class="room-link">Room 304</a>
+                    <a href="room305.html" class="room-link">Room 305</a>
+                    <a href="room306.html" class="room-link">Room 306</a>
+                    <a href="room307.html" class="room-link">Room 307</a>
+                    <a href="room770.html" class="room-link">Room 770</a>
+                    <a href="room771.html" class="room-link">Room 771</a>
+                    <a href="room777.html" class="room-link">Room 777</a>
+                    <a href="room778.html" class="room-link">Room 778</a>
+                    <a href="room779.html" class="room-link">Room 779</a>
+                    <a href="room876.html" class="room-link">Room 876</a>
+                    <a href="room985.html" class="room-link">Room 985 *</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="building-section">
+            <button class="building-header" aria-expanded="false">
+                8th Floor Studios <i class="fa fa-chevron-right"></i>
+            </button>
+            <div class="room-list">
+                <div class="room-grid">
+                    <a href="studio-a.html" class="room-link">Studio A</a>
+                    <a href="studio-c.html" class="room-link">Studio C</a>
+                    <a href="studio-d1.html" class="room-link">Studio D1 *</a>
+                    <a href="studio-e.html" class="room-link">Studio E</a>
+                    <a href="studio-f.html" class="room-link">Studio F</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="building-section">
+            <button class="building-header" aria-expanded="false">
+                Film Cart <i class="fa fa-chevron-right"></i>
+            </button>
+            <div class="room-list">
+                <div class="room-grid">
+                    <a href="room302.html" class="room-link">Rooms 302A-D</a>
+                    <a href="room6thFloor.html" class="room-link">6th Floor Conference Room</a>
+                    <a href="room774.html" class="room-link">Room 774</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="building-section">
+            <button class="building-header" aria-expanded="false">
+                Pless Annex <i class="fa fa-chevron-right"></i>
+            </button>
+            <div class="room-list">
+                <div class="room-grid">
+                    <a href="acting-lab.html" class="room-link">Acting Lab</a>
+                    <a href="drama-therapy.html" class="room-link">Drama Therapy</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="building-section">
+            <button class="building-header" aria-expanded="false">
+                Paulson <i class="fa fa-chevron-right"></i>
+            </button>
+            <div class="room-list">
+                <div class="room-grid">
+                    <a href="room560.html" class="room-link">Room 560</a>
+                    <a href="room562.html" class="room-link">Room 562</a>
+                    <a href="room570.html" class="room-link">Room 570</a>
+                    <a href="room582.html" class="room-link">Room 582</a>
+                    <a href="room623.html" class="room-link">Room 623</a>
+                    <a href="room624.html" class="room-link">Room 624</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="building-section">
+            <button class="building-header" aria-expanded="false">
+                3rd North <i class="fa fa-chevron-right"></i>
+            </button>
+            <div class="room-list">
+                <div class="room-grid">
+                    <a href="roomC205.html" class="room-link">Room C205</a>
+                    <a href="roomC207.html" class="room-link">Room C207</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© NYU MPAP Room Guide</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" class="style-switch-btn">
+                    <i class="fas fa-th-large"></i>
+                    Try New 3D Navigator Style
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function toggleBuilding(button) {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // Close all other building sections first
+            document.querySelectorAll('.building-header').forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    otherButton.querySelector('.fa-chevron-right').style.transform = 'rotate(0deg)';
+                    const otherContent = otherButton.nextElementSibling;
+                    otherContent.classList.remove('open');
+                }
+            });
+            
+            // Toggle the clicked section
+            button.setAttribute('aria-expanded', !isExpanded);
+            const icon = button.querySelector('.fa-chevron-right');
+            const content = button.nextElementSibling;
+            
+            if (!isExpanded) {
+                icon.style.transform = 'rotate(90deg)';
+                content.classList.add('open');
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+                content.classList.remove('open');
+            }
+        }
+
+        // Initialize sections
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.building-header').forEach((header) => {
+                header.setAttribute('aria-expanded', 'false');
+                const content = header.nextElementSibling;
+                content.classList.remove('open');
+                header.addEventListener('click', () => toggleBuilding(header));
+            });
+        });
+
+        // Ensure open sections always show all content after resizing
+        window.addEventListener('resize', function() {
+            document.querySelectorAll('.building-header[aria-expanded="true"]').forEach(header => {
+                const content = header.nextElementSibling;
+                content.classList.add('open');
+            });
+        });
+    </script>
+
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
+</body>
+</html> 

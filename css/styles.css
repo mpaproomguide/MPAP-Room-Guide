@@ -1721,3 +1721,290 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
         touch-action: none; /* Prevents default touch behaviors */
     }
 }
+
+/* Style Switch Button */
+.style-switch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--nyu-purple), var(--nyu-light-purple));
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(87, 6, 140, 0.2);
+}
+
+.style-switch-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(87, 6, 140, 0.3);
+    color: white;
+}
+
+.style-switch-btn i {
+    font-size: 1.1em;
+}
+
+/* 3D Building Navigator */
+.building-navigator {
+    margin: 30px 0;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(87, 6, 140, 0.15);
+    overflow: hidden;
+}
+
+.navigator-controls {
+    display: flex;
+    background: linear-gradient(135deg, var(--nyu-purple), var(--nyu-light-purple));
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.navigator-controls::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 20px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-btn.active::before {
+    width: 80%;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn i {
+    font-size: 1.6em;
+    opacity: 0.9;
+    color: white;
+}
+
+.nav-btn span {
+    font-size: 1.0em;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+    color: white;
+}
+
+.building-viewport {
+    position: relative;
+    min-height: 500px;
+}
+
+.building-display {
+    display: none;
+    padding: 30px;
+    animation: fadeIn 0.5s ease;
+}
+
+.building-display.active {
+    display: block;
+}
+
+.building-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.building-title h2 {
+    color: var(--nyu-purple);
+    margin-bottom: 8px;
+    font-size: 1.8em;
+}
+
+.building-title h2 i {
+    color: var(--nyu-purple);
+    margin-right: 8px;
+}
+
+.building-title p {
+    color: #666;
+    font-size: 1em;
+    margin: 0;
+}
+
+/* 3D Room Grids */
+.room-grid-3d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.room-3d, .studio-3d, .cart-3d, .pless-3d, .paulson-3d, .north-3d {
+    background: linear-gradient(145deg, #f8f5ff, #e9e1f3);
+    border: 2px solid #d4c5f7;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--nyu-purple);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+.room-3d::before, .studio-3d::before, .cart-3d::before, .pless-3d::before, .paulson-3d::before, .north-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.room-3d:hover::before, .studio-3d:hover::before, .cart-3d:hover::before, .pless-3d:hover::before, .paulson-3d:hover::before, .north-3d:hover::before {
+    left: 100%;
+}
+
+.room-3d:hover, .studio-3d:hover, .cart-3d:hover, .pless-3d:hover, .paulson-3d:hover, .north-3d:hover {
+    transform: perspective(1000px) rotateX(10deg) translateY(-8px);
+    box-shadow: 0 12px 30px rgba(87, 6, 140, 0.3);
+    border-color: var(--nyu-purple);
+}
+
+.room-number, .studio-letter, .cart-number, .space-name {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--nyu-purple);
+}
+
+.room-type, .studio-type, .cart-type, .space-type {
+    font-size: 0.8em;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Studio Layout */
+.studio-layout, .film-cart-layout, .pless-layout, .paulson-layout, .north-layout, .education-layout {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.studio-grid, .cart-grid, .pless-grid, .paulson-grid, .north-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navigator-controls {
+        padding: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+        padding: 16px 8px;
+        min-width: 80px;
+        flex: 0 1 auto;
+    }
+    
+    .nav-btn span {
+        font-size: 0.9em;
+        line-height: 1.1;
+    }
+    
+    .building-display {
+        padding: 20px;
+    }
+    
+    .building-title h2 {
+        font-size: 1.4em;
+    }
+    
+    .room-grid-3d, .studio-grid, .cart-grid, .pless-grid, .paulson-grid, .north-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 12px;
+    }
+    
+    .room-3d, .studio-3d, .cart-3d, .pless-3d, .paulson-3d, .north-3d {
+        padding: 16px;
+    }
+    
+    .room-number, .studio-letter, .cart-number, .space-name {
+        font-size: 1.2em;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .navigator-controls {
+        justify-content: space-around;
+    }
+    
+    .nav-btn {
+        padding: 14px 6px;
+        min-width: 70px;
+    }
+    
+    .nav-btn span {
+        font-size: 0.8em;
+    }
+}
