@@ -58,7 +58,7 @@
                             <div class="instruction-step" data-step="2">
                                 <div class="step-content">
                                     <p class="step-text">On the Yamaha sound bar, make sure the source is changed to TV. Control the volume directly from the soundbar or on the remote.</p>
-                                    <img src="images/acting-lab-image2.jpg" alt="Yamaha Soundbar Controls" class="step-image">
+                                    <img src="images/yamaha-soundbar.jpg" alt="Yamaha Soundbar Controls" class="step-image">
                                 </div>
                             </div>
                             
@@ -66,7 +66,7 @@
                             <div class="instruction-step" data-step="3">
                                 <div class="step-content">
                                     <p class="step-text">Use the volume buttons to adjust the sound level as needed.</p>
-                                    <img src="images/acting-lab-volume-buttons.jpg" alt="Volume Buttons" class="step-image">
+                                    <img src="images/acting-lab-remote.jpg" alt="Volume Buttons" class="step-image">
                                 </div>
                             </div>
                             
@@ -142,7 +142,15 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Turn on TV with remote. Select source 1 labelled acting lab. The mac will likely be asleep, press any key to wake up.</p>
+                                    <p class="step-text">Turn on TV with remote.</p>
+                                    <img src="images/acting-lab-tv-remote.jpg" alt="TV Remote" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Select <strong>Source 1</strong> labelled <strong>Acting Lab</strong>. The Mac will likely be asleep, press any key to wake up.</p>
                                     <img src="images/acting-lab-image4.jpg" alt="TV Remote and Source Selection" class="step-image">
                                 </div>
                             </div>
@@ -155,11 +163,14 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <div class="step-dots" style="display: none;"></div>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
                         </div>
@@ -172,6 +183,14 @@
                         <div class="step-by-step-container" data-section="laptop-video">
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect Laptop to HDMI.</p>
+                                    <img src="images/acting-lab-hdmi-adapter.jpg" alt="HDMI Adapter Connection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
                                 <div class="step-content">
                                     <p class="step-text">Turn on TV with remote. Select source 2. Laptop will display on TV.</p>
                                     <img src="images/acting-lab-image5.jpg" alt="TV Source Selection for Laptop" class="step-image">
@@ -186,11 +205,14 @@
                                 
                                 <!-- Step Progress Indicator -->
                                 <div class="step-progress">
-                                    <div class="step-dots" style="display: none;"></div>
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                    </div>
                                 </div>
                                 
                                 <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-check"></i>
+                                    <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
                         </div>

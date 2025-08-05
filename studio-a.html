@@ -48,6 +48,27 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
+                                    <p class="step-text"><strong>Red:</strong> Main Desk – monitor, keyboard, and input access for the studio Mac. HDMI and audio jack are on the right side of the desk.</p>
+                                    <p class="step-text"><strong>Green:</strong> Closet – houses the Mac itself. If it's ever off, you can check here to power it back on.</p>
+                                    <div class="image-carousel">
+                                        <div class="carousel-container">
+                                            <div class="carousel-slide active">
+                                                <img src="images/studio-a-comp-locations.jpg" alt="Studio A Computer Locations" class="step-image">
+                                            </div>
+                                            <div class="carousel-slide">
+                                                <img src="images/studio-a-unnamed.jpg" alt="Studio A Additional View" class="step-image">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-arrow prev" onclick="changeSlide(-1)">❮</button>
+                                        <button class="carousel-arrow next" onclick="changeSlide(1)">❯</button>
+                                        <div class="carousel-counter">1/2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
                                     <p class="step-text">Use the remote control to turn on the TV and select <strong>HDMI-3</strong> as the source.</p>
                                     <img src="images/image3.jpg" alt="TV Remote Control for Studio A" class="step-image">
                                 </div>
@@ -65,6 +86,7 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
                                     </div>
                                 </div>
                                 
@@ -83,7 +105,15 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Connect to the system via HDMI adapter. Use the remote control to select <strong>HDMI-3</strong> as the TV source.</p>
+                                    <p class="step-text">Connect to the system via HDMI adapter.</p>
+                                    <img src="images/hdmi.jpg" alt="HDMI Connector" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Use the remote control to select <strong>HDMI-3</strong> as the TV source.</p>
                                     <img src="images/image3.jpg" alt="TV Remote Control for Studio A" class="step-image">
                                 </div>
                             </div>
@@ -100,6 +130,7 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
                                     </div>
                                 </div>
                                 
@@ -160,6 +191,9 @@
             
             // Initialize navigation buttons for single-step scenarios
             initializeSingleStepNavigation();
+            
+            // Initialize carousel after DOM is loaded
+            setTimeout(initCarousel, 100);
         });
         
         function initializeSingleStepNavigation() {
@@ -179,6 +213,79 @@
                 }
             });
         }
+
+        // Carousel functionality
+        let slideIndex = 1;
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const counter = document.querySelector('.carousel-counter');
+            
+            if (!slides.length) return; // Exit if no slides found
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // Show current slide
+            slides[slideIndex - 1].classList.add('active');
+            
+            // Update counter
+            if (counter) {
+                counter.textContent = `${slideIndex}/${slides.length}`;
+            }
+        }
+
+        // Initialize carousel when page loads
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const counter = document.querySelector('.carousel-counter');
+            
+            if (slides.length > 0) {
+                slideIndex = 1;
+                showSlide(slideIndex);
+            }
+        }
+
+        // Add simplified touch/swipe support
+        function addCarouselTouchSupport() {
+            const carousel = document.querySelector('.carousel-container');
+            if (!carousel) return;
+            
+            let startX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+                
+                if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                    if (diffX > 0) {
+                        changeSlide(1); // Swipe left - next slide
+                    } else {
+                        changeSlide(-1); // Swipe right - previous slide
+                    }
+                }
+            });
+        }
+        
+        // Initialize touch support after carousel is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addCarouselTouchSupport, 200);
+        });
 
         // Step-by-Step Navigation Functions
         function nextStep(sectionId) {

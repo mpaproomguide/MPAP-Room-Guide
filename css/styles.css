@@ -421,9 +421,40 @@ h3 {
 
 .carousel-slide img {
     width: 100%;
-    height: auto;
+    height: 400px;
+    object-fit: cover;
     display: block;
     border-radius: 8px;
+}
+
+/* Zoom out the second image */
+.carousel-slide:nth-child(2) img {
+    object-fit: contain;
+    background-color: #f8f8f8;
+}
+
+/* Make Studio D PC image smaller */
+.step-image[src*="studio-d-pc"] {
+    max-width: 60%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Make Studio D aux image smaller */
+.step-image[src*="auxy.avif"] {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Make Studio D sound image smaller */
+.step-image[src*="studio-d-sound"] {
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
 }
 
 /* Navigation Controls */
@@ -457,6 +488,20 @@ h3 {
 
 .carousel-dot:hover {
     background-color: rgba(255,255,255,0.8);
+}
+
+/* Carousel Counter */
+.carousel-counter {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 10;
 }
 
 /* Arrow Navigation */
@@ -502,10 +547,21 @@ h3 {
         min-height: 250px;
     }
     
+    .carousel-slide img {
+        height: 300px;
+    }
+    
     .carousel-arrow {
         width: 35px;
         height: 35px;
         font-size: 16px;
+    }
+    
+    .carousel-counter {
+        bottom: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }
 
@@ -654,7 +710,7 @@ h2 .fas, h3 .fas {
 
     /* Unified image sizing for mobile - consistent with desktop */
     .step-image {
-        width: 100%;
+        width: 9%;
         max-width: min(500px, calc(100vw - 20px));
         height: auto;
         margin: 15px auto;
