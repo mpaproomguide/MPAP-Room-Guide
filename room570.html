@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
     <script src="js/lightbox.js"></script>
+    <script src="js/lightbox.js"></script>
 </head>
 <body>
     <div class="container">
@@ -24,47 +25,67 @@
             <i class="fas fa-arrow-left"></i> Back to Room List
         </a>
         <main>
-            <h1>Room 570</h1>
-            <div class="main-menu-selector">
-                <button id="video-tab" class="mode-button active" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
-            </div>
-            <section class="step" id="video-projection-section">
-                <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('laptop-video', this)">
-                        <i class="fas fa-laptop"></i> Laptop
-                    </button>
-                </div>
-
-                <div id="laptop-video" class="mode-section active">
-                    <h2><i class="fas fa-laptop"></i> Laptop Setup</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="laptop-video">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Connect your laptop to the HDMI input panel located on the back wall of the room. Login to the Crestron panel using passcode <strong>2021</strong>.</p>
-                                    <img src="images/image6.jpg" alt="Paulson 570 HDMI Input Panel Location" class="step-image">
-                                    <div class="instruction-note">
-                                        <strong>Note:</strong> The Crestron panel position is separate from the HDMI input panel.
+            <h1>Room 570 (Paulson Hall)</h1>
+            <section class="step" id="paulson-570-steps">
+                <div class="mode-content">
+                    <div class="step-by-step-container" data-section="paulson-570-steps">
+                        <!-- Step 1: Locate panel & code (carousel) -->
+                        <div class="instruction-step active" data-step="1">
+                            <div class="step-content">
+                                <p class="step-text">Locate the Crestron panel and enter access code <strong>2021</strong>.</p>
+                                <div class="image-carousel">
+                                    <div class="carousel-container">
+                                        <div class="carousel-slide active">
+                                            <img src="images/paulson/image4.jpg" alt="Crestron panel view 1" class="step-image">
+                                        </div>
+                                        <div class="carousel-slide">
+                                            <img src="images/paulson/image3.png" alt="Crestron panel view 2" class="step-image">
+                                        </div>
                                     </div>
+                                    <button class="carousel-arrow prev" onclick="changeSlideScoped(this,-1)">❮</button>
+                                    <button class="carousel-arrow next" onclick="changeSlideScoped(this,1)">❯</button>
                                 </div>
                             </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <div class="step-dots" style="display: none;"></div>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-check"></i>
-                                </button>
+                        </div>
+
+                        <!-- Step 2: Select LA.1 Panel -->
+                        <div class="instruction-step" data-step="2">
+                            <div class="step-content">
+                                <p class="step-text">Select <strong>LA.1 Panel</strong> on the Crestron touch panel.</p>
+                                <img src="images/paulson/image9.png" alt="Select LA.1 Panel" class="step-image">
                             </div>
+                        </div>
+
+                        <!-- Step 3: Sound device -->
+                        <div class="instruction-step" data-step="3">
+                            <div class="step-content">
+                                <p class="step-text">For sound, on your computer select “Crestron” as the audio playback device.</p>
+                                <img src="images/paulson/image1.png" alt="Select Crestron as audio device" class="step-image">
+                            </div>
+                        </div>
+
+                        <!-- Navigation Controls -->
+                        <div class="step-navigation">
+                            <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('paulson-570-steps')" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="step-progress">
+                                <div class="step-dots">
+                                    <div class="step-dot active" data-step="1"></div>
+                                    <div class="step-dot" data-step="2"></div>
+                                    <div class="step-dot" data-step="3"></div>
+                                </div>
+                            </div>
+                            <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('paulson-570-steps')">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="instruction-note" style="margin-top: 16px;">
+                            <ul>
+                                <li><em>*If connected to an iPad, the volume can only be adjusted by the panel*</em></li>
+                                <li>If there’s no sound: Ensure the program volume on the Crestron touch panel is up</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -72,137 +93,78 @@
         </main>
     </div>
     <script>
-        function toggleMode(modeId, button) {
-            const parentSection = button.closest('.step');
-            parentSection.querySelectorAll('.mode-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            parentSection.querySelectorAll('.mode-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById(modeId).classList.add('active');
-            button.classList.add('active');
-        }
-        function showSection(section) {
-            const videoSection = document.getElementById('video-projection-section');
-            const videoTab = document.getElementById('video-tab');
-            
-            videoSection.style.display = '';
-            videoTab.classList.add('active');
-        }
-
-        // Default to Video on load
-        document.addEventListener('DOMContentLoaded', function() {
-            showSection('video');
-        });
-
-        // Step-by-Step Navigation Functions
+        // Step navigation (single section)
         function nextStep(sectionId) {
             const container = document.querySelector(`[data-section="${sectionId}"]`);
-            const currentStep = container.querySelector('.instruction-step.active');
-            const currentStepNum = parseInt(currentStep.dataset.step);
-            const totalSteps = container.querySelectorAll('.instruction-step').length;
-            
-            if (currentStepNum < totalSteps) {
-                // Hide current step
-                currentStep.classList.remove('active');
-                
-                // Show next step
-                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
-                nextStep.classList.add('active');
-                
-                // Update progress counter
-                updateStepCounter(container, currentStepNum + 1, totalSteps);
-                
-                // Update button states
-                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+            const current = container.querySelector('.instruction-step.active');
+            const num = parseInt(current.dataset.step);
+            const total = container.querySelectorAll('.instruction-step').length;
+            if (num < total) {
+                current.classList.remove('active');
+                const nxt = container.querySelector(`[data-step="${num + 1}"]`);
+                nxt.classList.add('active');
+                updateStepCounter(container, num + 1, total);
+                updateNavigationButtons(container, num + 1, total);
             }
         }
-
         function previousStep(sectionId) {
             const container = document.querySelector(`[data-section="${sectionId}"]`);
-            const currentStep = container.querySelector('.instruction-step.active');
-            const currentStepNum = parseInt(currentStep.dataset.step);
-            const totalSteps = container.querySelectorAll('.instruction-step').length;
-            
-            if (currentStepNum > 1) {
-                // Hide current step
-                currentStep.classList.remove('active');
-                
-                // Show previous step
-                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
-                prevStep.classList.add('active');
-                
-                // Update progress counter
-                updateStepCounter(container, currentStepNum - 1, totalSteps);
-                
-                // Update button states
-                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+            const current = container.querySelector('.instruction-step.active');
+            const num = parseInt(current.dataset.step);
+            const total = container.querySelectorAll('.instruction-step').length;
+            if (num > 1) {
+                current.classList.remove('active');
+                const prv = container.querySelector(`[data-step="${num - 1}"]`);
+                prv.classList.add('active');
+                updateStepCounter(container, num - 1, total);
+                updateNavigationButtons(container, num - 1, total);
             }
         }
-
-                function updateStepCounter(container, currentStep, totalSteps) {
-            // Update circular step indicators
-            const stepDots = container.querySelectorAll('.step-dot');
-            stepDots.forEach((dot, index) => {
-                if (index === currentStep - 1) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+        function updateStepCounter(container, current, total) {
+            container.querySelectorAll('.step-dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === current - 1);
             });
         }
-
-        function goToStep(sectionId, targetStep) {
-            const container = document.querySelector(`[data-section="${sectionId}"]`);
-            const currentStep = container.querySelector('.instruction-step.active');
-            const totalSteps = container.querySelectorAll('.instruction-step').length;
-            
-            if (targetStep >= 1 && targetStep <= totalSteps) {
-                // Hide current step
-                currentStep.classList.remove('active');
-                
-                // Show target step
-                const nextStep = container.querySelector(`[data-step="${targetStep}"]`);
-                nextStep.classList.add('active');
-                
-                // Update progress counter
-                updateStepCounter(container, targetStep, totalSteps);
-                
-                // Update button states
-                updateNavigationButtons(container, targetStep, totalSteps);
+        function updateNavigationButtons(container, current, total) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            if (prevBtn) prevBtn.disabled = current === 1;
+            if (nextBtn) {
+                if (current === total) {
+                    nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    nextBtn.disabled = false;
+                }
             }
         }
-
-        // Add click listeners to step dots
+        // Scoped carousel controls
+        function changeSlideScoped(button, delta) {
+            const carousel = button.closest('.image-carousel');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            let activeIndex = 0;
+            slides.forEach((s, i) => { if (s.classList.contains('active')) activeIndex = i; });
+            let nextIndex = activeIndex + delta;
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            if (nextIndex >= slides.length) nextIndex = 0;
+            slides[activeIndex].classList.remove('active');
+            slides[nextIndex].classList.add('active');
+        }
         document.addEventListener('DOMContentLoaded', function() {
-            const stepDots = document.querySelectorAll('.step-dot');
-            stepDots.forEach(dot => {
+            document.querySelectorAll('.step-dot').forEach(dot => {
                 dot.addEventListener('click', function() {
-                    const targetStep = parseInt(this.dataset.step);
+                    const target = parseInt(this.dataset.step);
                     const container = this.closest('[data-section]');
-                    const sectionId = container.dataset.section;
-                    goToStep(sectionId, targetStep);
+                    const total = container.querySelectorAll('.instruction-step').length;
+                    container.querySelectorAll('.instruction-step').forEach(s => s.classList.remove('active'));
+                    const step = container.querySelector(`[data-step="${target}"]`);
+                    if (step) step.classList.add('active');
+                    updateStepCounter(container, target, total);
+                    updateNavigationButtons(container, target, total);
                 });
             });
         });
-
-        function updateNavigationButtons(container, currentStep, totalSteps) {
-            const prevBtn = container.querySelector('.prev-btn');
-            const nextBtn = container.querySelector('.next-btn');
-            
-            // Update Previous button
-            prevBtn.disabled = currentStep === 1;
-            
-            // Update Next button
-            if (currentStep === totalSteps) {
-                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
-                nextBtn.disabled = true;
-            } else {
-                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-                nextBtn.disabled = false;
-            }
-        }
     </script>
 </body>
 </html> 

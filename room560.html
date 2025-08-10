@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
 
 </head>
 <body>
@@ -25,99 +26,132 @@
         </a>
         <main>
             <h1>Room 560</h1>
-            <div class="main-menu-selector">
-                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
-                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
-            </div>
-            <section class="step" id="sound-setup-section">
-                <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)"><i class="fas fa-desktop"></i> Room PC</button>
-                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)"><i class="fas fa-laptop"></i> Laptop</button>
-                    <button class="mode-button" onclick="toggleMode('external-sound', this)"><i class="fas fa-headphones"></i> External Sound</button>
-                </div>
-                <div id="room-pc-sound" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
-                    <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
-                    </div>
-                </div>
-                <div id="laptop-sound" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
-                    <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
-                    </div>
-                </div>
-                <div id="external-sound" class="mode-section">
-                    <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
-                    <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
-                    </div>
-                </div>
-            </section>
-            <section class="step" id="video-projection-section" style="display:none;">
-                <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)"><i class="fas fa-desktop"></i> Room PC</button>
-                    <button class="mode-button" onclick="toggleMode('laptop-video', this)"><i class="fas fa-laptop"></i> Laptop</button>
-                </div>
-                <div id="room-pc-video" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
-                    <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
-                    </div>
-                </div>
-                <div id="laptop-video" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
-                    <div class="mode-content">
-                        <div class="instructions"><p>Coming soon...</p></div>
+            <section class="step" id="paulson-560-steps">
+                <div class="mode-content">
+                    <div class="step-by-step-container" data-section="paulson-560-steps">
+                        <!-- Step 1 -->
+                        <div class="instruction-step active" data-step="1">
+                            <div class="step-content">
+                                <p class="step-text">Locate the Crestron panel and enter access code <strong>2021</strong>.</p>
+                                <img src="images/paulson/image3.png" alt="Crestron panel access code" class="step-image">
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="instruction-step" data-step="2">
+                            <div class="step-content">
+                                <p class="step-text">Plug in the HDMI cable attached to the rack to your computer.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="instruction-step" data-step="3">
+                            <div class="step-content">
+                                <p class="step-text">Select <strong>HDMI</strong> on the Crestron touch panel.</p>
+                                <img src="images/paulson/image9.png" alt="Select HDMI on Crestron" class="step-image">
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="instruction-step" data-step="4">
+                            <div class="step-content">
+                                <p class="step-text">For sound, on your computer select “Crestron” as the audio playback device.</p>
+                                <img src="images/paulson/image1.png" alt="Select Crestron as audio device" class="step-image">
+                            </div>
+                        </div>
+
+                        <!-- Navigation Controls -->
+                        <div class="step-navigation">
+                            <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('paulson-560-steps')" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="step-progress">
+                                <div class="step-dots">
+                                    <div class="step-dot active" data-step="1"></div>
+                                    <div class="step-dot" data-step="2"></div>
+                                    <div class="step-dot" data-step="3"></div>
+                                    <div class="step-dot" data-step="4"></div>
+                                </div>
+                            </div>
+                            <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('paulson-560-steps')">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="instruction-note" style="margin-top: 16px;">
+                            <ul>
+                                <li><em>*If connected to an iPad, the volume can only be adjusted by the panel*</em></li>
+                                <li>If there’s no sound: Ensure the program volume on the Crestron touch panel is up</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
     <script>
-        function toggleMode(modeId, button) {
-            const parentSection = button.closest('.step');
-            parentSection.querySelectorAll('.mode-section').forEach(section => {
-                section.classList.remove('active');
+        // Step-by-Step Navigation Functions (single section)
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            if (currentStepNum < totalSteps) {
+                currentStep.classList.remove('active');
+                const next = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                next.classList.add('active');
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+            }
+        }
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            if (currentStepNum > 1) {
+                currentStep.classList.remove('active');
+                const prev = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prev.classList.add('active');
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+            }
+        }
+        function updateStepCounter(container, currentStep, totalSteps) {
+            const stepDots = container.querySelectorAll('.step-dot');
+            stepDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentStep - 1);
             });
-            parentSection.querySelectorAll('.mode-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById(modeId).classList.add('active');
-            button.classList.add('active');
         }
-        function selectDefaultModes() {
-            const soundDefaultButton = document.querySelector('#sound-setup-section .mode-button.active');
-            if (soundDefaultButton) {
-                const modeId = soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                toggleMode(modeId, soundDefaultButton);
-            }
-            const projectorDefaultButton = document.querySelector('#video-projection-section .mode-button.active');
-            if (projectorDefaultButton) {
-                const modeId = projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                toggleMode(modeId, projectorDefaultButton);
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            if (prevBtn) prevBtn.disabled = currentStep === 1;
+            if (nextBtn) {
+                if (currentStep === totalSteps) {
+                    nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    nextBtn.disabled = false;
+                }
             }
         }
-        document.addEventListener('DOMContentLoaded', selectDefaultModes);
-        function showSection(section) {
-            const soundSection = document.getElementById('sound-setup-section');
-            const videoSection = document.getElementById('video-projection-section');
-            const soundTab = document.getElementById('sound-tab');
-            const videoTab = document.getElementById('video-tab');
-            if (section === 'sound') {
-                soundSection.style.display = '';
-                videoSection.style.display = 'none';
-                soundTab.classList.add('active');
-                videoTab.classList.remove('active');
-            } else {
-                soundSection.style.display = 'none';
-                videoSection.style.display = '';
-                soundTab.classList.remove('active');
-                videoTab.classList.add('active');
-            }
-        }
+        // Enable clicking on dots
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('sound');
+            document.querySelectorAll('.step-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetStep = parseInt(this.dataset.step);
+                    const container = this.closest('[data-section]');
+                    const total = container.querySelectorAll('.instruction-step').length;
+                    // hide current
+                    container.querySelectorAll('.instruction-step').forEach(s => s.classList.remove('active'));
+                    const next = container.querySelector(`[data-step="${targetStep}"]`);
+                    if (next) next.classList.add('active');
+                    updateStepCounter(container, targetStep, total);
+                    updateNavigationButtons(container, targetStep, total);
+                });
+            });
         });
     </script>
 </body>

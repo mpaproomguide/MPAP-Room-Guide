@@ -1087,7 +1087,7 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 0 10px 3px 10px;
-    margin: 0;
+    margin: 20px 0 0 0; /* add breathing room when there are no tabs above */
     width: 100%;
 }
 
