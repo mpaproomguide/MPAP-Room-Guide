@@ -35,31 +35,40 @@
                                 <div class="image-carousel">
                                     <div class="carousel-container">
                                         <div class="carousel-slide active">
-                                            <img src="images/paulson/image4.jpg" alt="Crestron panel view (wide)" class="step-image" loading="lazy">
-                                        </div>
-                                        <div class="carousel-slide">
                                             <img src="images/paulson/image3.png" alt="Crestron panel with access code entry" class="step-image" loading="lazy">
                                         </div>
                                     </div>
-                                    <button class="carousel-arrow prev" onclick="changeSlideScoped(this,-1)">❮</button>
-                                    <button class="carousel-arrow next" onclick="changeSlideScoped(this,1)">❯</button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 2: Select LA.1 Panel -->
+                        <!-- Step 2: Plug HDMI -->
                         <div class="instruction-step" data-step="2">
                             <div class="step-content">
-                                <p class="step-text">Select <strong>LA.1 Panel</strong> on the Crestron touch panel.</p>
-                                <img src="images/paulson/image9.png" alt="Crestron: LA.1 Panel selected" class="step-image" loading="lazy">
+                                <p class="step-text">Plug the HDMI cable attached to the rack into your computer.</p>
+                                <img src="images/hdmi.jpg" alt="HDMI cable connected to laptop" class="step-image" loading="lazy">
                             </div>
                         </div>
 
-                        <!-- Step 3: Sound device -->
+                        <!-- Step 3: Select HDMI -->
                         <div class="instruction-step" data-step="3">
+                            <div class="step-content">
+                                <p class="step-text">Select <strong>HDMI</strong> on the Crestron touch panel.</p>
+                                <img src="images/paulson/image9.png" alt="Crestron touch panel: HDMI input selected" class="step-image" loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Sound device -->
+                        <div class="instruction-step" data-step="4">
                             <div class="step-content">
                                 <p class="step-text">For sound, on your computer select “Crestron” as the audio playback device.</p>
                                 <img src="images/paulson/image1.png" alt="System settings: Crestron selected as audio output" class="step-image" loading="lazy">
+                                <div class="instruction-note" style="margin-top: 16px;">
+                                    <ul>
+                                        <li><em>*If connected to an iPad, the volume can only be adjusted by the panel*</em></li>
+                                        <li>If there’s no sound: Ensure the program volume on the Crestron touch panel is up</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -73,6 +82,7 @@
                                     <div class="step-dot active" data-step="1"></div>
                                     <div class="step-dot" data-step="2"></div>
                                     <div class="step-dot" data-step="3"></div>
+                                    <div class="step-dot" data-step="4"></div>
                                 </div>
                             </div>
                             <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('paulson-582-steps')">
@@ -80,12 +90,6 @@
                             </button>
                         </div>
 
-                        <div class="instruction-note" style="margin-top: 16px;">
-                            <ul>
-                                <li><em>*If connected to an iPad, the volume can only be adjusted by the panel*</em></li>
-                                <li>If there’s no sound: Ensure the program volume on the Crestron touch panel is up</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </section>

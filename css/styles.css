@@ -223,15 +223,7 @@ h3 {
 
 
 
-#room-pc-sound.mode-section,
-#laptop-sound.mode-section,
-#external-sound.mode-section,
-#room-pc-video.mode-section,
-#laptop-video.mode-section,
-#room-pc.mode-section,
-#laptop.mode-section,
-#without-projector.mode-section {
-}
+/* Reserved selectors for mode sections (kept for documentation of supported IDs) */
 
 .mode-content {
     display: flex;
@@ -370,6 +362,18 @@ h3 {
     font-weight: 600;
 }
 
+/* Footnote list spacing inside instruction notes (e.g., Paulson pages) */
+.instruction-note ul {
+    list-style: disc;
+    list-style-position: outside;
+    padding-left: 24px; /* add extra indent so bullets aren't tight to the border */
+    margin: 8px 0;
+}
+
+.instruction-note li {
+    margin: 6px 0;
+}
+
 /* Universal Image Row Styles */
 .images-row {
     display: flex;
@@ -431,6 +435,21 @@ h3 {
 .carousel-slide:nth-child(2) img {
     object-fit: contain;
     background-color: #f8f8f8;
+}
+
+/* Room 623 and 624: focus carousel images slightly down from top, keep horizontal crop */
+#paulson-623-steps .carousel-slide img,
+#paulson-624-steps .carousel-slide img {
+    object-position: 50% 8%;
+    object-fit: cover;
+}
+
+/* Room 623 & 624 step 3 images: crop verticals to a horizontal view */
+#paulson-623-steps .instruction-step[data-step="3"] .step-image,
+#paulson-624-steps .instruction-step[data-step="3"] .step-image {
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 8%;
 }
 
 /* Make Studio D PC image smaller */
@@ -502,6 +521,21 @@ h3 {
     font-size: 14px;
     font-weight: 600;
     z-index: 10;
+}
+
+/* Carousel caption overlay */
+.carousel-caption {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 10;
+    max-width: calc(100% - 30px);
 }
 
 /* Arrow Navigation */
