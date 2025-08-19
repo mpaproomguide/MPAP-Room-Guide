@@ -32,13 +32,8 @@
             </div>
             
             <section class="step" id="video-projection-section">
-                <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
-                        <i class="fas fa-desktop"></i> Room PC
-                    </button>
-                </div>
 
-                <div id="room-pc-video" class="mode-section active">
+                <div id="room-pc-video" class="mode-section active" style="padding-top: 12px;">
                     <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
                         <div class="step-by-step-container" data-section="room-pc-video">
@@ -53,12 +48,15 @@
                                                 <img src="images/studio-a-comp-locations.jpg" alt="Studio A Computer Locations" class="step-image">
                                             </div>
                                             <div class="carousel-slide">
-                                                <img src="images/studio-a-unnamed.jpg" alt="Studio A Additional View" class="step-image">
+                                                <img src="images/studios/Studio A/studio_a_room_pc_closet.jpg" alt="Studio A Room PC Closet" class="step-image">
+                                            </div>
+                                            <div class="carousel-slide">
+                                                <img src="images/studios/Studio A/studio_a_room_pc_closet_mac.jpg" alt="Studio A Room PC Closet Mac" class="step-image">
                                             </div>
                                         </div>
                                         <button class="carousel-arrow prev" onclick="changeSlide(-1)">❮</button>
                                         <button class="carousel-arrow next" onclick="changeSlide(1)">❯</button>
-                                        <div class="carousel-counter">1/2</div>
+                                        <div class="carousel-counter">1/3</div>
                                     </div>
                                 </div>
                             </div>
@@ -98,49 +96,7 @@
                     </div>
                 </div>
 
-                <div id="laptop-video" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="laptop-video">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Connect to the system via HDMI adapter.</p>
-                                    <img src="images/hdmi.jpg" alt="HDMI Connector" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">Use the remote control to select <strong>HDMI-3</strong> as the TV source.</p>
-                                    <img src="images/image3.jpg" alt="TV Remote Control for Studio A" class="step-image">
-                                </div>
-                            </div>
-                            
-
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <div class="step-dots">
-                                        <div class="step-dot active" data-step="1"></div>
-                                        <div class="step-dot" data-step="2"></div>
-                                    </div>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </section>
         </main>
     </div>
