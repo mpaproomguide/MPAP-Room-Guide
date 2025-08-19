@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPAP Room Guide - Studio E</title>
+    <title>MPAP Room Guide - Studio D</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css">
@@ -26,107 +26,48 @@
         </a>
 
         <main>
-            <h1>Studio E</h1>
-            <div class="main-menu-selector">
-                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
-                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
-            </div>
+            <h1>Studio D</h1>
             
-            <section class="step" id="sound-setup-section">
+            <div class="main-menu-selector">
+                <button id="sound-tab" class="mode-button" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
+                <button id="video-tab" class="mode-button active" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+            </div>
+
+            <section class="step" id="sound-setup-section" style="display:none;">
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
                         <i class="fas fa-desktop"></i> Room PC
                     </button>
-                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
-                        <i class="fas fa-laptop"></i> Laptop
-                    </button>
                 </div>
 
                 <div id="room-pc-sound" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
+                    <h2><i class="fas fa-volume-up"></i> Audio</h2>
                     <div class="mode-content">
                         <div class="step-by-step-container" data-section="room-pc-sound">
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Select <strong>Scarlett</strong> as the audio device.</p>
-                                    <img src="images/studios/Studio E/e_audio_source.jpg" alt="Audio Device Selection" class="step-image">
+                                <div class="step-content text-only">
+                                    <p class="step-text">Select <strong>HDX</strong> as the audio device.</p>
                                 </div>
                             </div>
-                            
+
                             <!-- Step 2 -->
                             <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">Select <strong>Focusrite Surround</strong> on the rack.</p>
-                                    <div class="image-carousel">
-                                        <div class="carousel-container">
-                                            <div class="carousel-slide active">
-                                                <img src="images/studios/Studio E/e_room_viewRacklocation.jpeg" alt="Studio E Room View Rack Location" class="step-image">
-                                            </div>
-                                            <div class="carousel-slide">
-                                                <img src="images/studios/Studio E/E_audio_controllerlooking.jpeg" alt="Studio E Audio Controller" class="step-image">
-                                            </div>
-                                        </div>
-                                        <button class="carousel-arrow prev" onclick="changeSlide(this, -1)">❮</button>
-                                        <button class="carousel-arrow next" onclick="changeSlide(this, 1)">❯</button>
-                                        <div class="carousel-counter">1/2</div>
-                                    </div>
+                                <div class="step-content text-only">
+                                    <p class="step-text">Select <strong>Speaker</strong>.</p>
                                 </div>
                             </div>
-                            
+
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content text-only">
+                                    <p class="step-text">Turn up the <strong>volume knob</strong>.</p>
+                                </div>
+                            </div>
+
                             <!-- Navigation Controls -->
                             <div class="step-navigation">
                                 <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <div class="step-dots">
-                                        <div class="step-dot active" data-step="1"></div>
-                                        <div class="step-dot" data-step="2"></div>
-                                    </div>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="laptop-sound" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="laptop-sound">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Find audio jack cable on the right side of the rack. Set audio output to <strong>External Headphones</strong>.</p>
-                                    <img src="images/studios/Studio E/e_room_viewLaptop Cabeles.jpeg" alt="Laptop Audio Cable Location" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 2 -->
-                            <div class="instruction-step" data-step="2">
-                                <div class="step-content">
-                                    <p class="step-text">On the rack panel, make sure <strong>Aux</strong> is amplified for a reasonable amount.</p>
-                                    <img src="images/studios/Studio E/E_audio_racklooker.jpeg" alt="Studio E Aux Amplified" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Step 3 -->
-                            <div class="instruction-step" data-step="3">
-                                <div class="step-content">
-                                    <p class="step-text">Select <strong>SCM262</strong>, and adjust the volume with the large knob.</p>
-                                    <img src="images/studios/Studio E/E_audio_controllerlaptoplook.jpeg" alt="Studio E SCM262 Volume" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-sound')" disabled>
                                     <i class="fas fa-chevron-left"></i>
                                 </button>
                                 
@@ -139,7 +80,7 @@
                                     </div>
                                 </div>
                                 
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
                                     <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
@@ -148,7 +89,7 @@
                 </div>
             </section>
 
-            <section class="step" id="video-projection-section" style="display:none;">
+            <section class="step" id="video-projection-section">
                 <div class="mode-selector">
                     <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
                         <i class="fas fa-desktop"></i> Room PC
@@ -165,8 +106,26 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">The Room Mac can be turned on using the Mac Power button on the rack. Use the remote control to open the projector.</p>
-                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
+                                    
+                                    <p class="step-text"><strong>Red:</strong> The main desk, access to studio Mac, and video related utilities. Remote will be placed on the desk, studio Mac can be found under the desk. The HDMI adapter is on the rack down the desk. The HDMI source switcher is on the desk.</p>
+                                    <p class="step-text"><strong>Green:</strong> This small right section of the console will provide buttons and knobs for straightforward audio setup if audio playback is needed. The headphone audio jack can be found near this area.</p>
+                                    <img src="images/studios/Studio D/d_room_view.jpg" alt="Studio D Opening View" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">If the Mac is off, turn it on from under the desk.</p>
+                                    <img src="images/studio-d-pc.jpg" alt="Studio D Mac Power Switch" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Ensure <strong>Desktop</strong> is selected on the HDMI Switcher.</p>
+                                    <img src="images/studio-d-hdmi-switcher.jpg" alt="Studio D HDMI Switcher" class="step-image">
                                 </div>
                             </div>
                             
@@ -180,6 +139,8 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
                                     </div>
                                 </div>
                                 
@@ -198,8 +159,33 @@
                             <!-- Step 1 -->
                             <div class="instruction-step active" data-step="1">
                                 <div class="step-content">
-                                    <p class="step-text">Connect with HDMI outlet. In laptop display setting select mirroring onto external screen.</p>
-                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
+                                    <p class="step-text"><strong>Red:</strong> Main desk with studio Mac, remote, HDMI adapter on rack, and source switcher</p>
+                                    <p class="step-text"><strong>Green:</strong> Audio controls and headphone jack</p>
+                                    <img src="images/studio-d1.jpg" alt="Studio D Opening View" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">If the Mac is off, turn it on from under the desk.</p>
+                                    <img src="images/studio-d-pc.jpg" alt="Studio D Mac Power Switch" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Ensure <strong>Laptop</strong> is selected on the HDMI Switcher.</p>
+                                    <img src="images/studio-d-hdmi-switcher.jpg" alt="Studio D HDMI Switcher" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">[PLACEHOLDER: Additional laptop setup instructions]</p>
+                                    <img src="images/placeholder.jpg" alt="Studio D Laptop Setup" class="step-image">
                                 </div>
                             </div>
                             
@@ -213,6 +199,9 @@
                                 <div class="step-progress">
                                     <div class="step-dots">
                                         <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
                                     </div>
                                 </div>
                                 
@@ -266,75 +255,41 @@
             const videoTab = document.getElementById('video-tab');
             
             if (section === 'sound') {
-                soundSection.style.display = '';
-                videoSection.style.display = 'none';
-                soundTab.classList.add('active');
-                videoTab.classList.remove('active');
+                if (soundSection) soundSection.style.display = '';
+                if (videoSection) videoSection.style.display = 'none';
+                if (soundTab) soundTab.classList.add('active');
+                if (videoTab) videoTab.classList.remove('active');
             } else {
-                soundSection.style.display = 'none';
-                videoSection.style.display = '';
-                soundTab.classList.remove('active');
-                videoTab.classList.add('active');
+                if (soundSection) soundSection.style.display = 'none';
+                if (videoSection) videoSection.style.display = '';
+                if (soundTab) soundTab.classList.remove('active');
+                if (videoTab) videoTab.classList.add('active');
             }
         }
 
         // Default to Sound on load
         document.addEventListener('DOMContentLoaded', function() {
             showSection('sound');
-            // Initialize carousels after DOM is loaded
-            setTimeout(initCarouselScoped, 100);
-            setTimeout(addCarouselTouchSupport, 200);
+            
+            // Initialize navigation buttons for single-step scenarios
+            initializeSingleStepNavigation();
         });
-
-        // Carousel functionality (scoped per carousel)
-        function changeSlide(button, delta) {
-            const carousel = button.closest('.image-carousel');
-            if (!carousel) return;
-            changeSlideByCarousel(carousel, delta);
-        }
-
-        function changeSlideByCarousel(carousel, delta) {
-            const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
-            const counter = carousel.querySelector('.carousel-counter');
-            if (!slides.length) return;
-            let index = slides.findIndex(s => s.classList.contains('active'));
-            if (index < 0) index = 0;
-            index += delta;
-            if (index >= slides.length) index = 0;
-            if (index < 0) index = slides.length - 1;
-            slides.forEach(s => s.classList.remove('active'));
-            slides[index].classList.add('active');
-            if (counter) counter.textContent = `${index + 1}/${slides.length}`;
-        }
-
-        function initCarouselScoped() {
-            document.querySelectorAll('.image-carousel').forEach(carousel => {
-                const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
-                const counter = carousel.querySelector('.carousel-counter');
-                if (!slides.length) return;
-                // Ensure only the first slide is active on load
-                slides.forEach(s => s.classList.remove('active'));
-                slides[0].classList.add('active');
-                if (counter) counter.textContent = `1/${slides.length}`;
-            });
-        }
-
-        // Add simplified touch/swipe support for each carousel
-        function addCarouselTouchSupport() {
-            document.querySelectorAll('.image-carousel .carousel-container').forEach(container => {
-                let startX = 0;
-                container.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                });
-                container.addEventListener('touchend', (e) => {
-                    const endX = e.changedTouches[0].clientX;
-                    const diffX = startX - endX;
-                    if (Math.abs(diffX) > 50) {
-                        const carousel = container.closest('.image-carousel');
-                        if (!carousel) return;
-                        changeSlideByCarousel(carousel, diffX > 0 ? 1 : -1);
+        
+        function initializeSingleStepNavigation() {
+            const containers = document.querySelectorAll('.step-by-step-container');
+            containers.forEach(container => {
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                if (totalSteps === 1) {
+                    // For single-step scenarios, disable both buttons and show check mark
+                    const prevBtn = container.querySelector('.prev-btn');
+                    const nextBtn = container.querySelector('.next-btn');
+                    
+                    if (prevBtn) prevBtn.disabled = true;
+                    if (nextBtn) {
+                        nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                        nextBtn.disabled = true;
                     }
-                });
+                }
             });
         }
 
@@ -478,4 +433,4 @@
     });
     </script>
 </body>
-</html> 
+</html>

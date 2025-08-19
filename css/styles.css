@@ -1367,6 +1367,14 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     box-shadow: none;
 }
 
+/* Studio E: make e_audio_source image smaller */
+.step-image[src*="e_audio_source"] {
+    max-width: 35%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
 .step-navigation {
     display: flex;
     justify-content: space-between;
