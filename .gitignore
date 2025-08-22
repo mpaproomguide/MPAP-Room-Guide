@@ -4,3 +4,4 @@ docs/
 *.tmp
 *.cache
 CURSOR_RULES_ADDITION.md
+qr_codes/
