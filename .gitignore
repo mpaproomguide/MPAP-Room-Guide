@@ -4,4 +4,7 @@ docs/
 *.tmp
 *.cache
 CURSOR_RULES_ADDITION.md
-qr_codes/
+# Exclude generated QR code images but keep source files
+qr_codes/*.png
+qr_codes/*.jpg
+qr_codes/*.jpeg
