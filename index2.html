@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYU MPAP Room Guides</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css?v=1.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <div class="support-info">
+                            <p><strong>Create tickets by emailing to:</strong> <a href="mailto:steinhardt.technology@nyu.edu">steinhardt.technology@nyu.edu</a></p>
+                <p><strong>For urgent classroom and AV tech support, call:</strong> <a href="tel:12129953355">(212) 995-3355</a></p>       
+            <p><strong>Office Hours:</strong> Mon. through Fri. 8 a.m. - 11 p.m.</p>
+        </div>
+
+        <div class="building-navigator">
+            <div class="navigator-controls">
+                <button class="nav-btn active" data-building="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Education</span>
+                </button>
+                <button class="nav-btn" data-building="studios">
+                    <i class="fas fa-microphone"></i>
+                    <span>Studios</span>
+                </button>
+                <button class="nav-btn" data-building="film-cart">
+                    <i class="fas fa-video"></i>
+                    <span>Film Cart</span>
+                </button>
+                <button class="nav-btn" data-building="pless">
+                    <i class="fas fa-theater-masks"></i>
+                    <span>Pless</span>
+                </button>
+                <button class="nav-btn" data-building="paulson">
+                    <i class="fas fa-music"></i>
+                    <span>Paulson</span>
+                </button>
+            </div>
+
+            <div class="building-viewport">
+                <div class="building-display active" data-building="education">
+                    <div class="building-title">
+                        <h2><i class="fas fa-graduation-cap"></i> Education Building</h2>
+                        <p>Classrooms and general purpose spaces</p>
+                    </div>
+                    <div class="education-layout">
+                        <div class="room-grid-3d">
+                            <a href="room303.html" class="room-3d" data-room="303">
+                                <div class="room-number">303</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room304.html" class="room-3d" data-room="304">
+                                <div class="room-number">304</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room305.html" class="room-3d" data-room="305">
+                                <div class="room-number">305</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room306.html" class="room-3d" data-room="306">
+                                <div class="room-number">306</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room307.html" class="room-3d" data-room="307">
+                                <div class="room-number">307</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room770.html" class="room-3d" data-room="770">
+                                <div class="room-number">770</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room771.html" class="room-3d" data-room="771">
+                                <div class="room-number">771</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room777.html" class="room-3d" data-room="777">
+                                <div class="room-number">777</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room778.html" class="room-3d" data-room="778">
+                                <div class="room-number">778</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room779.html" class="room-3d" data-room="779">
+                                <div class="room-number">779</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room876.html" class="room-3d" data-room="876">
+                                <div class="room-number">876</div>
+                                <div class="room-type">Classroom</div>
+                            </a>
+                            <a href="room985.html" class="room-3d" data-room="985">
+                                <div class="room-number">985 *</div>
+                                <div class="room-type">Special</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="building-display" data-building="studios">
+                    <div class="building-title">
+                        <h2><i class="fas fa-microphone"></i> 8th Floor Studios</h2>
+                        <p>Recording studios</p>
+                    </div>
+                    <div class="studio-layout">
+                        <div class="studio-grid">
+                            <a href="studio-a.html" class="studio-3d" data-studio="A">
+                                <div class="studio-letter">A</div>
+                                <div class="studio-type">Studio</div>
+                            </a>
+                            <a href="studio-c.html" class="studio-3d" data-studio="C">
+                                <div class="studio-letter">C</div>
+                                <div class="studio-type">Studio</div>
+                            </a>
+                            <a href="studio-d1.html" class="studio-3d" data-studio="D1">
+                                <div class="studio-letter">D1</div>
+                                <div class="studio-type">Studio *</div>
+                            </a>
+                            <a href="studio-e.html" class="studio-3d" data-studio="E">
+                                <div class="studio-letter">E</div>
+                                <div class="studio-type">Studio</div>
+                            </a>
+                            <a href="studio-f.html" class="studio-3d" data-studio="F">
+                                <div class="studio-letter">F</div>
+                                <div class="studio-type">Studio</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="building-display" data-building="film-cart">
+                    <div class="building-title">
+                        <h2><i class="fas fa-video"></i> Film Cart</h2>
+                        <p>Workstations designed for film scoring</p>
+                    </div>
+                    <div class="film-cart-layout">
+                        <div class="cart-grid">
+                            <a href="room302.html" class="cart-3d" data-cart="302">
+                                <div class="cart-number">302A-D</div>
+                                <div class="cart-type">Equipment Rooms</div>
+                            </a>
+                            <a href="room6thFloor.html" class="cart-3d" data-cart="6th">
+                                <div class="cart-number">6th Floor</div>
+                                <div class="cart-type">Conference Room</div>
+                            </a>
+                            <a href="room774.html" class="cart-3d" data-cart="774">
+                                <div class="cart-number">774</div>
+                                <div class="cart-type">Specialized Space</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="building-display" data-building="pless">
+                    <div class="building-title">
+                        <h2><i class="fas fa-theater-masks"></i> Pless Annex</h2>
+                        <p>Performance and drama therapy spaces</p>
+                    </div>
+                    <div class="pless-layout">
+                        <div class="pless-grid">
+                            <a href="acting-lab.html" class="pless-3d" data-space="acting">
+                                <div class="space-name">Acting Lab</div>
+                                <div class="space-type">Performance Space</div>
+                            </a>
+                            <a href="drama-therapy.html" class="pless-3d" data-space="drama">
+                                <div class="space-name">Drama Therapy</div>
+                                <div class="space-type">Therapy Space</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="building-display" data-building="paulson">
+                    <div class="building-title">
+                        <h2><i class="fas fa-music"></i> Paulson</h2>
+                        <p>Music and audio production facilities</p>
+                    </div>
+                    <div class="paulson-layout">
+                        <div class="paulson-grid">
+                            <a href="room560.html" class="paulson-3d" data-room="560">
+                                <div class="room-number">560</div>
+                                <div class="room-type">Music Room</div>
+                            </a>
+                            <a href="room562.html" class="paulson-3d" data-room="562">
+                                <div class="room-number">562</div>
+                                <div class="room-type">Music Room</div>
+                            </a>
+                            <a href="room570.html" class="paulson-3d" data-room="570">
+                                <div class="room-number">570</div>
+                                <div class="room-type">Music Room</div>
+                            </a>
+                            <a href="room582.html" class="paulson-3d" data-room="582">
+                                <div class="room-number">582</div>
+                                <div class="room-type">Music Room</div>
+                            </a>
+                            <a href="room623.html" class="paulson-3d" data-room="623">
+                                <div class="room-number">623</div>
+                                <div class="room-type">Music Room</div>
+                            </a>
+                            <a href="room624.html" class="paulson-3d" data-room="624">
+                                <div class="room-number">624</div>
+                                <div class="room-type">Music Room</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© NYU MPAP Room Guide</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" class="style-switch-btn">
+                    <i class="fas fa-list"></i>
+                    Switch to Accordion Style
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function toggleBuilding(button) {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // Close all other building sections first
+            document.querySelectorAll('.building-header').forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    otherButton.querySelector('.fa-chevron-right').style.transform = 'rotate(0deg)';
+                    const otherContent = otherButton.nextElementSibling;
+                    otherContent.classList.remove('open');
+                }
+            });
+            
+            // Toggle the clicked section
+            button.setAttribute('aria-expanded', !isExpanded);
+            const icon = button.querySelector('.fa-chevron-right');
+            const content = button.nextElementSibling;
+            
+            if (!isExpanded) {
+                icon.style.transform = 'rotate(90deg)';
+                content.classList.add('open');
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+                content.classList.remove('open');
+            }
+        }
+
+        // Initialize sections
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.building-header').forEach((header) => {
+                header.setAttribute('aria-expanded', 'false');
+                const content = header.nextElementSibling;
+                content.classList.remove('open');
+                header.addEventListener('click', () => toggleBuilding(header));
+            });
+        });
+
+        // Ensure open sections always show all content after resizing
+        window.addEventListener('resize', function() {
+            document.querySelectorAll('.building-header[aria-expanded="true"]').forEach(header => {
+                const content = header.nextElementSibling;
+                content.classList.add('open');
+            });
+        });
+    </script>
+
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
+
+    <script>
+        // 3D Building Navigator
+        document.addEventListener('DOMContentLoaded', function() {
+            // Building navigation
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const buildingDisplays = document.querySelectorAll('.building-display');
+            
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetBuilding = this.dataset.building;
+                    
+                    // Update active nav button
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update active building display
+                    buildingDisplays.forEach(display => {
+                        display.classList.remove('active');
+                        if (display.dataset.building === targetBuilding) {
+                            display.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Floor navigation (for Education Building)
+            const floorBtns = document.querySelectorAll('.floor-btn');
+            const floorViews = document.querySelectorAll('.floor-view');
+            
+            floorBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetFloor = this.dataset.floor;
+                    
+                    // Update active floor button
+                    floorBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update active floor view
+                    floorViews.forEach(view => {
+                        view.classList.remove('active');
+                        if (view.dataset.floor === targetFloor) {
+                            view.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Add hover effects for 3D rooms
+            const roomElements = document.querySelectorAll('.room-3d, .studio-3d, .cart-3d, .pless-3d, .paulson-3d, .north-3d');
+            
+            roomElements.forEach(room => {
+                room.addEventListener('mouseenter', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(10deg) translateY(-8px)';
+                });
+                
+                room.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0deg) translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

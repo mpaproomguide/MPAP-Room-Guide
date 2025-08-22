@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+        <main>
+            <h1>Room C207</h1>
+            <div class="main-menu-selector">
+                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
+                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+            </div>
+            <section class="step" id="sound-setup-section">
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)"><i class="fas fa-desktop"></i> Room PC</button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)"><i class="fas fa-laptop"></i> Laptop</button>
+                    <button class="mode-button" onclick="toggleMode('external-sound', this)"><i class="fas fa-headphones"></i> External Sound</button>
+                </div>
+                <div id="room-pc-sound" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
+                    <div class="mode-content">
+                        <div class="instructions"><p>Coming soon...</p></div>
+                    </div>
+                </div>
+                <div id="laptop-sound" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
+                    <div class="mode-content">
+                        <div class="instructions"><p>Coming soon...</p></div>
+                    </div>
+                </div>
+                <div id="external-sound" class="mode-section">
+                    <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
+                    <div class="mode-content">
+                        <div class="instructions"><p>Coming soon...</p></div>
+                    </div>
+                </div>
+            </section>
+            <section class="step" id="video-projection-section" style="display:none;">
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)"><i class="fas fa-desktop"></i> Room PC</button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)"><i class="fas fa-laptop"></i> Laptop</button>
+                </div>
+                <div id="room-pc-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
+                    <div class="mode-content">
+                        <div class="instructions"><p>Coming soon...</p></div>
+                    </div>
+                </div>
+                <div id="laptop-video" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
+                    <div class="mode-content">
+                        <div class="instructions"><p>Coming soon...</p></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        function toggleMode(modeId, button) {
+            const parentSection = button.closest('.step');
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(modeId).classList.add('active');
+            button.classList.add('active');
+        }
+        function selectDefaultModes() {
+            const soundDefaultButton = document.querySelector('#sound-setup-section .mode-button.active');
+            if (soundDefaultButton) {
+                const modeId = soundDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, soundDefaultButton);
+            }
+            const projectorDefaultButton = document.querySelector('#video-projection-section .mode-button.active');
+            if (projectorDefaultButton) {
+                const modeId = projectorDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, projectorDefaultButton);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', selectDefaultModes);
+        function showSection(section) {
+            const soundSection = document.getElementById('sound-setup-section');
+            const videoSection = document.getElementById('video-projection-section');
+            const soundTab = document.getElementById('sound-tab');
+            const videoTab = document.getElementById('video-tab');
+            if (section === 'sound') {
+                soundSection.style.display = '';
+                videoSection.style.display = 'none';
+                soundTab.classList.add('active');
+                videoTab.classList.remove('active');
+            } else {
+                soundSection.style.display = 'none';
+                videoSection.style.display = '';
+                soundTab.classList.remove('active');
+                videoTab.classList.add('active');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('sound');
+        });
+    </script>
+</body>
+</html> 

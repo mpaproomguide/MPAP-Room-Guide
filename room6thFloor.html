@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYU 6th Floor Conference Room Guide</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>6th Floor Conference Room</h1>
+            <div class="main-menu-selector">
+                <button id="audio-tab" class="mode-button active" onclick="showSection('audio')"><i class="fas fa-volume-up"></i> Audio</button>
+                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+            </div>
+
+            <section class="step" id="audio-setup-section">
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('desktop-audio', this)">
+                        <i class="fas fa-desktop"></i> Desktop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-audio', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                </div>
+
+                <div id="desktop-audio" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Desktop Audio</h2>
+                    <div class="mode-content">
+                        <img src="images/DesktopMode.jpg" alt="Desktop Audio Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Select <strong style="color: #8c4bbd">Universal Audio Thunderbolt</strong> as your output device</li>
+                                <li>Turn <strong style="color: #8c4bbd">Apollo x6</strong> volume up</li>
+                                <li>Turn <strong style="color: #8c4bbd">MAC pot</strong> up on the mixer</li>
+                                <li>Turn <strong style="color: #8c4bbd">Master Level pot</strong> up on the mixer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-audio" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Audio</h2>
+                    <div class="mode-content">
+                        <img src="images/LaptopMode.jpg" alt="Laptop Audio Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Connect to the <strong style="color: #8c4bbd">3.5mm jack</strong> on the table</li>
+                                <li>Turn <strong style="color: #8c4bbd">AUX pot</strong> up on the mixer</li>
+                                <li>Turn <strong style="color: #8c4bbd">Master Level pot</strong> up on the mixer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step" id="video-setup-section" style="display:none;">
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('desktop-video', this)">
+                        <i class="fas fa-desktop"></i> Desktop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                </div>
+
+                <div id="desktop-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Desktop Video</h2>
+                    <div class="mode-content">
+                        <img src="images/Display6thFlr.jpg" alt="Desktop Display Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Make sure <strong style="color: #8c4bbd">HDMI</strong> is plugged in to the <strong style="color: #8c4bbd">Film cart</strong></li>
+                                <li>Turn TV on with the remote</li>
+                                <li>Press the <strong style="color: #8c4bbd">home button</strong> on the remote</li>
+                                <li>Press the left button till you see <strong style="color: #8c4bbd">"Source"</strong></li>
+                                <li>Click <strong style="color: #8c4bbd">Source</strong> and select <strong style="color: #8c4bbd">HDMI 2</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-video" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
+                    <div class="mode-content">
+                        <img src="images/Display6thFlr.jpg" alt="Laptop Display Setup" class="mode-image">
+                        <div class="instructions">
+                            <ul>
+                                <li>Plug the <strong style="color: #8c4bbd">dark grey HDMI cable</strong> into your laptop</li>
+                                <li>Turn TV on with the remote</li>
+                                <li>Press the <strong style="color: #8c4bbd">home button</strong> on the remote</li>
+                                <li>Press the left button till you see <strong style="color: #8c4bbd">"Source"</strong></li>
+                                <li>Click <strong style="color: #8c4bbd">Source</strong> and select <strong style="color: #8c4bbd">HDMI 3</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            const parentSection = button.closest('.step');
+            
+            // Hide all mode sections within this parent section
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons within this parent section
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show the selected mode section
+            document.getElementById(modeId).classList.add('active');
+            
+            // Add active class to the clicked button
+            button.classList.add('active');
+        }
+
+        // Function to select default modes on page load
+        function selectDefaultModes() {
+            // Select default for Audio Setup (Desktop Audio)
+            const audioDefaultButton = document.querySelector('#audio-setup-section .mode-button.active');
+            if (audioDefaultButton) {
+                const modeId = audioDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, audioDefaultButton);
+            }
+
+            // Select default for Video Setup (Desktop Video)
+            const videoDefaultButton = document.querySelector('#video-setup-section .mode-button.active');
+            if (videoDefaultButton) {
+                const modeId = videoDefaultButton.getAttribute('onclick').match(/'([^']+)'/)[1];
+                toggleMode(modeId, videoDefaultButton);
+            }
+        }
+
+        function showSection(section) {
+            const audioSection = document.getElementById('audio-setup-section');
+            const videoSection = document.getElementById('video-setup-section');
+            const audioTab = document.getElementById('audio-tab');
+            const videoTab = document.getElementById('video-tab');
+
+            if (section === 'audio') {
+                audioSection.style.display = '';
+                videoSection.style.display = 'none';
+                audioTab.classList.add('active');
+                videoTab.classList.remove('active');
+            } else {
+                audioSection.style.display = 'none';
+                videoSection.style.display = '';
+                audioTab.classList.remove('active');
+                videoTab.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            selectDefaultModes();
+            showSection('audio');
+        });
+    </script>
+    <script src="js/oneko.js" data-cat="js/images/oneko.gif"></script>
+</body>
+</html>

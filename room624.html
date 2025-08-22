@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
+    
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+        <main>
+            <h1>Room 624</h1>
+            <section class="step" id="paulson-624-steps">
+                <div class="mode-content">
+                    <div class="step-by-step-container" data-section="paulson-624-steps">
+                        <!-- Step 1: Turn on TV -->
+                        <div class="instruction-step active" data-step="1">
+                            <div class="step-content">
+                                <p class="step-text">Turn on the TV in the room, using the button located under the middle of TV.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Locate Panel & Code (carousel) -->
+                        <div class="instruction-step" data-step="2">
+                            <div class="step-content">
+                                <p class="step-text">Locate the Crestron panel and enter code <strong>2021</strong>.</p>
+                                <div class="image-carousel">
+                                    <div class="carousel-container">
+                                        <div class="carousel-slide active">
+                                            <img src="images/paulson/image8.jpg" alt="Crestron panel view" class="step-image">
+                                        </div>
+                                        <div class="carousel-slide">
+                                            <img src="images/paulson/image3.png" alt="Crestron panel access code entry" class="step-image">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-arrow prev" onclick="changeSlideScoped(this,-1)">❮</button>
+                                    <button class="carousel-arrow next" onclick="changeSlideScoped(this,1)">❯</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Plug HDMI -->
+                        <div class="instruction-step" data-step="3">
+                            <div class="step-content">
+                                <p class="step-text">Plug the HDMI cable attached to the rack into your computer.</p>
+                                <img src="images/paulson/image16.jpg" alt="Crestron panel view" class="step-image">
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Select HDMI -->
+                        <div class="instruction-step" data-step="4">
+                            <div class="step-content">
+                                <p class="step-text">Select <strong>HDMI</strong> on the Crestron touch panel.</p>
+                                <img src="images/paulson/image9.png" alt="Select HDMI on Crestron" class="step-image">
+                                <div class="instruction-note" style="margin-top: 16px;">
+                                    <ul>
+                                        <li><em>HDMI is video only.</em></li>
+                                        <li>For sound, plug in the audio jack to your computer and control volume on the Crestron panel.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Controls -->
+                        <div class="step-navigation">
+                            <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('paulson-624-steps')" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="step-progress">
+                                <div class="step-dots">
+                                    <div class="step-dot active" data-step="1"></div>
+                                    <div class="step-dot" data-step="2"></div>
+                                    <div class="step-dot" data-step="3"></div>
+                                    <div class="step-dot" data-step="4"></div>
+                                </div>
+                            </div>
+                            <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('paulson-624-steps')">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+        // Step navigation (single section)
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const current = container.querySelector('.instruction-step.active');
+            const num = parseInt(current.dataset.step);
+            const total = container.querySelectorAll('.instruction-step').length;
+            if (num < total) {
+                current.classList.remove('active');
+                const nxt = container.querySelector(`[data-step="${num + 1}"]`);
+                nxt.classList.add('active');
+                updateStepCounter(container, num + 1, total);
+                updateNavigationButtons(container, num + 1, total);
+            }
+        }
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const current = container.querySelector('.instruction-step.active');
+            const num = parseInt(current.dataset.step);
+            const total = container.querySelectorAll('.instruction-step').length;
+            if (num > 1) {
+                current.classList.remove('active');
+                const prv = container.querySelector(`[data-step="${num - 1}"]`);
+                prv.classList.add('active');
+                updateStepCounter(container, num - 1, total);
+                updateNavigationButtons(container, num - 1, total);
+            }
+        }
+        function updateStepCounter(container, current, total) {
+            container.querySelectorAll('.step-dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === current - 1);
+            });
+        }
+        function updateNavigationButtons(container, current, total) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            if (prevBtn) prevBtn.disabled = current === 1;
+            if (nextBtn) {
+                if (current === total) {
+                    nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    nextBtn.disabled = false;
+                }
+            }
+        }
+        // Scoped carousel controls
+        function changeSlideScoped(button, delta) {
+            const carousel = button.closest('.image-carousel');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            let activeIndex = 0;
+            slides.forEach((s, i) => { if (s.classList.contains('active')) activeIndex = i; });
+            let nextIndex = activeIndex + delta;
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            if (nextIndex >= slides.length) nextIndex = 0;
+            slides[activeIndex].classList.remove('active');
+            slides[nextIndex].classList.add('active');
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.step-dot').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const target = parseInt(this.dataset.step);
+                    const container = this.closest('[data-section]');
+                    const total = container.querySelectorAll('.instruction-step').length;
+                    container.querySelectorAll('.instruction-step').forEach(s => s.classList.remove('active'));
+                    const step = container.querySelector(`[data-step="${target}"]`);
+                    if (step) step.classList.add('active');
+                    updateStepCounter(container, target, total);
+                    updateNavigationButtons(container, target, total);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

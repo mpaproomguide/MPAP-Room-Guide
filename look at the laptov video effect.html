@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPAP Room Guide - Room 777</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Room List
+        </a>
+
+        <main>
+            <h1>Room 777</h1>
+            <div class="main-menu-selector">
+                <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
+                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+            </div>
+            
+            <section class="step" id="sound-setup-section">
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-sound', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-sound', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('external-sound', this)">
+                        <i class="fas fa-headphones"></i> External Sound
+                    </button>
+                </div>
+
+                <div id="room-pc-sound" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="room-pc-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the <strong>"ROOM PC"</strong> button.</p>
+                                    <img src="images/1_first_frame.png" alt="Room PC Sound Setup" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the room PC, click the <strong>Control Center</strong> icon in the top-right menu bar. Under <strong>"Sound"</strong>, make sure <strong>"Crestron"</strong> is selected as the output device.</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Crestron Sound Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Adjust audio level with the <strong>Volume knob</strong> on the <strong>Crestron</strong>.</p>
+                                    <img src="images/volume_knob_step3.png" alt="Volume Knob on Crestron Box" class="step-image">
+                                    <div class="instruction-note" style="margin-top: 20px;">
+                                        If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-sound" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="laptop-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Plug the <strong>HDMI</strong> cable attached to the podium into your device.</p>
+                                    <img src="images/hdmi.jpg" alt="HDMI Cable Connection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 & 3 Combined -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, there is a black box labeled <strong>"Crestron"</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the button labeled <strong>"LAPTOP"</strong>.</p>
+                                    <img src="images/4_first_frame.png" alt="Laptop Sound Setup" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On the menu bar in the top right corner (if a MacBook), ensure that <strong>"Crestron"</strong> is the selected device (the circle to the left will be blue if so, click it if not).</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Crestron Sound Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">Adjust audio level with the <strong>Volume knob</strong> on the <strong>Crestron</strong>.</p>
+                                    <img src="images/volume_knob_step3.png" alt="Volume Knob on Crestron Box" class="step-image">
+                                    <div class="instruction-note" style="margin-top: 20px;">
+                                        <strong>Troubleshooting:</strong> If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="external-sound" class="mode-section">
+                    <h2><i class="fas fa-headphones"></i> External Sound Source</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="external-sound">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect your device to the aux cable.</p>
+                                    <img src="images/auxy.avif" alt="Aux Cable Connection" class="step-image" style="max-width: 90%;">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2 -->
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the <strong>"AUX AUDIO"</strong> button.</p>
+                                    <img src="images/REMOTER.jpg" alt="External Sound Source Setup" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3 -->
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Select <strong>External Headphones</strong> or <strong>Headphones</strong> as the audio output device on your device.</p>
+                                    <img src="images/room777_external_sound_step5.png" alt="External Sound Device Selection" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Step 4 -->
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">Adjust audio level with the <strong>Volume knob</strong> on the <strong>Crestron</strong>.</p>
+                                    <img src="images/volume_knob_step3.png" alt="Volume Knob on Crestron Box" class="step-image">
+                                    <div class="instruction-note" style="margin-top: 20px;">
+                                        If you still don't have sound, make sure that neither <strong>EXT MIXER</strong> nor <strong>AUDIO MUTE</strong> have a red light beneath them on the Crestron box. If they do, press those buttons to deselect them.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 5 -->
+                            <div class="instruction-step" data-step="5">
+                                <div class="step-content">
+                                    <p class="step-text">When done, press <strong>"POWER OFF"</strong> on the Crestron box.</p>
+                                    <img src="images/cwestron.JPG" alt="Crestron Box Power Off" class="step-image">
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('external-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                        <div class="step-dot" data-step="5"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step" id="video-projection-section" style="display:none;">
+                <div class="mode-selector">
+                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
+                        <i class="fas fa-desktop"></i> Room PC
+                    </button>
+                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
+                        <i class="fas fa-laptop"></i> Laptop
+                    </button>
+                </div>
+
+                <div id="room-pc-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="room-pc-video">
+                            <!-- Step 1 -->
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">On the podium, there is a black box labeled <strong>Crestron</strong>. Press <strong>"POWER ON"</strong> on the top left, then press the <strong>"ROOM PC"</strong> button.</p>
+                                    <img src="images/1_first_frame.png" alt="Room PC Video Setup" class="step-image">
+                                    <div class="instruction-note" style="margin-top: 20px;">
+                                        The projector should descend and project the screen automatically.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Controls -->
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                
+                                <!-- Step Progress Indicator -->
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')" disabled>
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="laptop-video" class="mode-section">
+                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
+                    <div class="mode-content">
+                        <div class="image-carousel">
+                            <div class="carousel-container">
+                                <div class="carousel-slide active">
+                                    <img src="images/room777_laptop_frames/frame_00.png" alt="Windows Display Settings Step 1">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_01.png" alt="Windows Display Settings Step 2">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_02.png" alt="Windows Display Settings Step 3">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="images/room777_laptop_frames/frame_03.png" alt="Windows Display Settings Step 4">
+                                </div>
+                            </div>
+                            <button class="carousel-arrow prev" onclick="changeSlide(-1)">❮</button>
+                            <button class="carousel-arrow next" onclick="changeSlide(1)">❯</button>
+                            <div class="carousel-nav">
+                                <span class="carousel-dot active" onclick="currentSlide(1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide(4)"></span>
+                            </div>
+                        </div>
+                        <div class="instructions">
+                            <h3><i class="fas fa-apple-alt"></i> MacBook:</h3>
+                            <ul>
+                                <li>Open System Settings, click on display.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select <strong>'Mirror for Crestron'</strong>.</li>
+                                <li>If you would like to extend the displays (such that the two screens are separate), select <strong>'Stop Mirroring'</strong> then make sure to select <strong>Extended display</strong>. You can adjust how both screens relate to each other in the arrangement tab.</li>
+                            </ul>
+                            
+                            <h3><i class="fab fa-windows"></i> Windows:</h3>
+                            <ul>
+                                <li>Click the Windows icon on the bottom left corner, open <strong>'Settings'</strong> and click on <strong>'System'</strong>.</li>
+                                <li>Click on <strong>'Display'</strong> and scroll down to <strong>'Multiple Displays'</strong> setting.</li>
+                                <li>If you would like to mirror the displays (such that the screen on the podium and on the wall are the same) make sure to select <strong>'Duplicate these displays'</strong>.</li>
+                                <li>If you would like to extend the displays (such that the two screens are separate), select <strong>'Extend these displays'</strong>. You can adjust how both screens relate to each other in the <strong>'Rearrange your displays'</strong> section when you scroll back to the top of the page.</li>
+                            </ul>
+                            <img src="images/5.avif" alt="Laptop Video Display Settings" class="mode-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            const parentSection = button.closest('.step');
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(modeId).classList.add('active');
+            button.classList.add('active');
+            
+            // Reset all step containers in the newly activated section to step 1
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                // Hide all steps
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                // Show step 1
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                // Reset step counter and navigation buttons
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
+        }
+
+        function showSection(section) {
+            const soundSection = document.getElementById('sound-setup-section');
+            const videoSection = document.getElementById('video-projection-section');
+            const soundTab = document.getElementById('sound-tab');
+            const videoTab = document.getElementById('video-tab');
+            
+            if (section === 'sound') {
+                soundSection.style.display = '';
+                videoSection.style.display = 'none';
+                soundTab.classList.add('active');
+                videoTab.classList.remove('active');
+            } else {
+                soundSection.style.display = 'none';
+                videoSection.style.display = '';
+                soundTab.classList.remove('active');
+                videoTab.classList.add('active');
+            }
+        }
+
+        // Default to Sound on load
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('sound');
+            // Initialize carousel after DOM is loaded
+            setTimeout(initCarousel, 100);
+        });
+
+        // Carousel functionality
+        let slideIndex = 1;
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (!slides.length) return; // Exit if no slides found
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            // Hide all slides and deactivate all dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show current slide and activate corresponding dot
+            slides[slideIndex - 1].classList.add('active');
+            dots[slideIndex - 1].classList.add('active');
+        }
+
+        // Initialize carousel when page loads
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (slides.length > 0 && dots.length > 0) {
+                slideIndex = 1;
+                showSlide(slideIndex);
+            }
+        }
+
+        // Add simplified touch/swipe support
+        function addCarouselTouchSupport() {
+            const carousel = document.querySelector('.carousel-container');
+            if (!carousel) return;
+            
+            let startX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].clientX;
+                const diffX = startX - endX;
+                
+                if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                    if (diffX > 0) {
+                        changeSlide(1); // Swipe left - next slide
+                    } else {
+                        changeSlide(-1); // Swipe right - previous slide
+                    }
+                }
+            });
+        }
+        
+        // Initialize touch support after carousel is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(addCarouselTouchSupport, 200);
+        });
+
+        // Step-by-Step Navigation Functions
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum < totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show next step
+                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+                
+                // Show troubleshooting note if on last step
+                if (currentStepNum + 1 === totalSteps) {
+                    const troubleshootingNote = container.querySelector('.step-troubleshooting');
+                    if (troubleshootingNote) {
+                        troubleshootingNote.style.display = 'block';
+                    }
+                }
+            }
+        }
+
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum > 1) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show previous step
+                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prevStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+                
+                // Hide troubleshooting note if leaving last step
+                if (currentStepNum === totalSteps) {
+                    const troubleshootingNote = container.querySelector('.step-troubleshooting');
+                    if (troubleshootingNote) {
+                        troubleshootingNote.style.display = 'none';
+                    }
+                }
+            }
+        }
+
+        function updateStepCounter(container, currentStep, totalSteps) {
+            // Update circular step indicators
+            const stepDots = container.querySelectorAll('.step-dot');
+            stepDots.forEach((dot, index) => {
+                if (index === currentStep - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function goToStep(sectionId, targetStep) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (targetStep >= 1 && targetStep <= totalSteps) {
+                // Hide current step
+                currentStep.classList.remove('active');
+                
+                // Show target step
+                const nextStep = container.querySelector(`[data-step="${targetStep}"]`);
+                nextStep.classList.add('active');
+                
+                // Update progress counter
+                updateStepCounter(container, targetStep, totalSteps);
+                
+                // Update button states
+                updateNavigationButtons(container, targetStep, totalSteps);
+            }
+        }
+
+        // Add click listeners to step dots
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepDots = document.querySelectorAll('.step-dot');
+            stepDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetStep = parseInt(this.dataset.step);
+                    const container = this.closest('[data-section]');
+                    const sectionId = container.dataset.section;
+                    goToStep(sectionId, targetStep);
+                });
+            });
+        });
+
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            
+            // Update Previous button
+            prevBtn.disabled = currentStep === 1;
+            
+            // Update Next button
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.disabled = false;
+            }
+        }
+    </script>
+
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            // Enable cat: dynamically load oneko.js
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            // Disable cat: remove cat div and script
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
+</body>
+</html> 

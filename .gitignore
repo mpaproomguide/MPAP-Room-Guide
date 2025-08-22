@@ -1,0 +1,6 @@
+.DS_Store
+docs/
+*.log
+*.tmp
+*.cache
+CURSOR_RULES_ADDITION.md
