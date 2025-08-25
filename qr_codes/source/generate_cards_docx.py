@@ -207,6 +207,7 @@ def add_card(document: Document, logo_png: bytes, support_qr: Path, room_qr: Pat
 def main():
     parser = argparse.ArgumentParser(description="Generate two-up DOCX QR cards")
     parser.add_argument("--include", dest="includes", action="append", help="Label to include (repeat for multiple)")
+    parser.add_argument("--output", dest="output", help="Output DOCX path (default: qr_codes/print_cards.docx)")
     args = parser.parse_args()
     include_labels = set(s.strip() for s in args.includes) if args.includes else None
 
@@ -295,8 +296,11 @@ def main():
         if idx + 2 < len(room_pngs):
             doc.add_page_break()
 
-    doc.save(OUTPUT_DOCX)
-    print(f"Wrote {OUTPUT_DOCX}")
+    out_path = Path(args.output).resolve() if args.output else OUTPUT_DOCX
+    # Ensure parent directory exists
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    doc.save(out_path)
+    print(f"Wrote {out_path}")
 
 if __name__ == "__main__":
     main()
