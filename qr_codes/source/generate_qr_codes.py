@@ -29,6 +29,11 @@ ROOMS = [
         "description": "8th Floor Studio - Video and Sound setup with HDX audio"
     },
     {
+        "name": "Studio D1",
+        "url": "studio-d1.html", 
+        "description": "8th Floor Studio D1 setup guide"
+    },
+    {
         "name": "Studio E",
         "url": "studio-e.html",
         "description": "8th Floor Studio - Audio setup with Focusrite Surround"
@@ -43,10 +48,26 @@ ROOMS = [
         "url": "acting-lab.html",
         "description": "Acting Lab setup and configuration"
     },
+
     {
-        "name": "Room 302",
+        "name": "Room 302 A",
         "url": "room302.html",
-        "description": "Room 302 setup guide"
+        "description": "Room 302 A setup guide"
+    },
+    {
+        "name": "Room 302 B",
+        "url": "room302.html",
+        "description": "Room 302 B setup guide"
+    },
+    {
+        "name": "Room 302 C",
+        "url": "room302.html",
+        "description": "Room 302 C setup guide"
+    },
+    {
+        "name": "Room 302 D",
+        "url": "room302.html",
+        "description": "Room 302 D setup guide"
     },
     {
         "name": "Room 303",
@@ -109,9 +130,9 @@ ROOMS = [
         "description": "Room 624 setup guide"
     },
     {
-        "name": "6th Floor",
+        "name": "6th Floor Conference Room",
         "url": "room6thFloor.html",
-        "description": "6th Floor room setup guide"
+        "description": "6th Floor Conference Room setup guide"
     },
     {
         "name": "Room 770",
