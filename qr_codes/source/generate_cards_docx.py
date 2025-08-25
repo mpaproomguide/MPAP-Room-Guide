@@ -11,6 +11,7 @@ Output: qr_codes/print_cards.docx
 from pathlib import Path
 import io
 import re
+import argparse
 from docx import Document
 from docx.shared import Inches, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -204,6 +205,11 @@ def add_card(document: Document, logo_png: bytes, support_qr: Path, room_qr: Pat
     return table
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate two-up DOCX QR cards")
+    parser.add_argument("--include", dest="includes", action="append", help="Label to include (repeat for multiple)")
+    args = parser.parse_args()
+    include_labels = set(s.strip() for s in args.includes) if args.includes else None
+
     doc = Document()
     # Portrait US Letter, two stacked cards per page
     section = doc.sections[0]
@@ -247,16 +253,19 @@ def main():
     if not room_pngs:
         raise SystemExit("No room QR PNGs found in qr_codes/. Run generate_qr_codes.py first.")
 
-    # Include only Education, Studios, Film Cart
+    # Map filename to display label
     def label_from(p: Path) -> str:
         return p.stem.replace("_QR", "").replace("_", " ")
 
-    education = {"Room 303","Room 304","Room 305","Room 306","Room 307","Room 770","Room 771","Room 777","Room 778","Room 779","Room 876","Room 985"}
-    filmcart = {"Room 302 A","Room 302 B","Room 302 C","Room 302 D","6th Floor Conference Room","Room 774"}
-    studios = {"Studio A","Studio C","Studio D","Studio D1","Studio E","Studio F"}
-    allowed = education | filmcart | studios
-
-    room_pngs = [p for p in room_pngs if label_from(p) in allowed]
+    if include_labels:
+        room_pngs = [p for p in room_pngs if label_from(p) in include_labels]
+    else:
+        # Default set: Education, Studios, Film Cart
+        education = {"Room 303","Room 304","Room 305","Room 306","Room 307","Room 770","Room 771","Room 777","Room 778","Room 779","Room 876","Room 985"}
+        filmcart = {"Room 302 A","Room 302 B","Room 302 C","Room 302 D","6th Floor Conference Room","Room 774"}
+        studios = {"Studio A","Studio C","Studio D","Studio D1","Studio E","Studio F"}
+        allowed = education | filmcart | studios
+        room_pngs = [p for p in room_pngs if label_from(p) in allowed]
     # Sort: Studios first A..F, then Education numeric, then Film cart
     def sort_key(p: Path):
         lbl = label_from(p)
