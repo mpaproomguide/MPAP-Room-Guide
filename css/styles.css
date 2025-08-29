@@ -902,7 +902,7 @@ h2 .fas, h3 .fas {
         border-radius: 16px;
         box-shadow: 0 6px 20px rgba(87, 6, 140, 0.1);
         backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.95);
+        background: transparent;
     }
     
     /* Override the existing margin and set a new value */
