@@ -432,7 +432,7 @@ h3 {
 
 /* Zoom out the second image */
 .carousel-slide:nth-child(2) img {
-    object-fit: contain;
+    object-fit: cover;
     background-color: transparent;
 }
 
