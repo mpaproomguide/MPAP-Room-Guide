@@ -425,14 +425,14 @@ h3 {
 .carousel-slide img {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     border-radius: 8px;
 }
 
 /* Zoom out the second image */
 .carousel-slide:nth-child(2) img {
-    object-fit: cover;
+    object-fit: contain;
     background-color: transparent;
 }
 
