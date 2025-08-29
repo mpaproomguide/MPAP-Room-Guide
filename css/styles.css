@@ -401,8 +401,7 @@ h3 {
     margin: 20px auto;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    background-color: #f8f8f8;
+    background-color: transparent;
 }
 
 .carousel-container {
@@ -434,7 +433,7 @@ h3 {
 /* Zoom out the second image */
 .carousel-slide:nth-child(2) img {
     object-fit: contain;
-    background-color: #f8f8f8;
+    background-color: transparent;
 }
 
 /* Room 623 and 624: focus carousel images slightly down from top, keep horizontal crop */
