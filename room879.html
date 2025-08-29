@@ -47,8 +47,35 @@
                 <div id="room-pc-sound" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Room setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="room-pc-sound">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the <strong>Crestron</strong> panel. Select <strong>Mac Mini</strong> from the top row.</p>
+                                    <img src="images/IMG_1824.jpg" alt="Select Mac Mini on Crestron" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Click the <strong>Room Audio</strong> box. Audio from the Mac Mini will play from the speakers. Control volume on the right side of the Crestron panel.</p>
+                                    <img src="images/IMG_1825.jpg" alt="Room Audio on Crestron" class="step-image">
+                                    <img src="images/IMG_1824_copy.jpg" alt="Alternate view of Crestron panel" class="step-image" style="margin-top:12px;">
+                                </div>
+                            </div>
+
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,8 +83,49 @@
                 <div id="laptop-sound" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Laptop setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="laptop-sound">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect the <strong>HDMI</strong> cable in the room to your laptop.</p>
+                                    <img src="images/laptophdmi.jpg" alt="Connect HDMI" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the <strong>Crestron</strong> panel, select <strong>BYOD Laptop</strong> from the top row.</p>
+                                    <img src="images/4_first_frame.png" alt="Select BYOD Laptop on Crestron" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">On your device, select <strong>Crestron 420</strong> as the audio output.</p>
+                                    <img src="images/room777_crestron_sound_selection.png" alt="Select Crestron 420 audio output" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="4">
+                                <div class="step-content">
+                                    <p class="step-text">Click the <strong>Room Audio</strong> box. Audio will play from the speakers. Control volume on the right side of the Crestron panel.</p>
+                                    <img src="images/IMG_1825.jpg" alt="Room Audio on Crestron" class="step-image">
+                                    <img src="images/IMG_1824_copy.jpg" alt="Alternate view of Crestron panel" class="step-image" style="margin-top:12px;">
+                                </div>
+                            </div>
+
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                        <div class="step-dot" data-step="4"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,8 +133,41 @@
                 <div id="external-sound" class="mode-section">
                     <h2><i class="fas fa-headphones"></i> External Sound</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>External sound setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="external-sound">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Connect to the <strong>aux</strong> cable in the room.</p>
+                                    <img src="images/auxy.avif" alt="Connect aux cable" class="step-image" style="max-width: 90%;">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">On the <strong>Crestron</strong> panel, select <strong>Aux Mini</strong> from the top row.</p>
+                                    <img src="images/IMG_1823.jpg" alt="Select Aux Mini on Crestron" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">Click the <strong>Room Audio</strong> box. Audio will play from the speakers.</p>
+                                    <img src="images/IMG_1823_copy.jpg" alt="Room Audio on Crestron" class="step-image">
+                                </div>
+                            </div>
+
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('external-sound')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('external-sound')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,8 +186,34 @@
                 <div id="room-pc-video" class="mode-section active">
                     <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Projector setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="room-pc-video">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the <strong>Crestron</strong> panel. Select <strong>Mac Mini</strong> from the top row.</p>
+                                    <img src="images/IMG_1824.jpg" alt="Select Mac Mini on Crestron" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Click the <strong>Display</strong> box. The Mac Mini screen will be shown on the TV.</p>
+                                    <img src="images/IMG_1825.jpg" alt="Display Mac Mini to TV" class="step-image">
+                                </div>
+                            </div>
+
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,8 +221,34 @@
                 <div id="laptop-video" class="mode-section">
                     <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
                     <div class="mode-content">
-                        <div class="instructions">
-                            <p>Laptop projector setup instructions coming soon...</p>
+                        <div class="step-by-step-container" data-section="laptop-video">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Locate the <strong>Crestron</strong> panel. Select <strong>BYOD Laptop</strong> from the top row.</p>
+                                    <img src="images/4_first_frame.png" alt="Select BYOD Laptop on Crestron" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Click the <strong>Display</strong> box. The laptop screen will be shown on the TV.</p>
+                                    <img src="images/IMG_1825.jpg" alt="Display Laptop to TV" class="step-image">
+                                </div>
+                            </div>
+
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,6 +267,21 @@
             });
             document.getElementById(modeId).classList.add('active');
             button.classList.add('active');
+
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
         }
 
         function showSection(section) {
@@ -135,10 +303,63 @@
             }
         }
 
-        // Default to Sound on load
         document.addEventListener('DOMContentLoaded', function() {
             showSection('sound');
         });
+
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum < totalSteps) {
+                currentStep.classList.remove('active');
+                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                nextStep.classList.add('active');
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+            }
+        }
+
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            
+            if (currentStepNum > 1) {
+                currentStep.classList.remove('active');
+                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prevStep.classList.add('active');
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+            }
+        }
+
+        function updateStepCounter(container, currentStep, totalSteps) {
+            const stepDots = container.querySelectorAll('.step-dot');
+            stepDots.forEach((dot, index) => {
+                if (index === currentStep - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            prevBtn.disabled = currentStep === 1;
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.disabled = false;
+            }
+        }
     </script>
 
     <script>
