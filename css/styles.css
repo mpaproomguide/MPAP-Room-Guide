@@ -427,7 +427,6 @@ h3 {
     height: 400px;
     object-fit: contain;
     display: block;
-    border-radius: 8px;
 }
 
 /* Zoom out the second image */
@@ -1268,7 +1267,6 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     margin: 8px auto;
     display: block;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     flex-shrink: 0;
     object-fit: contain;
     /* Ensure images never exceed container bounds */
