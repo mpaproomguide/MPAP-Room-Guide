@@ -756,7 +756,6 @@ h2 .fas, h3 .fas {
         margin: 15px auto;
         display: block;
         border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         flex-shrink: 0;
         object-fit: contain;
         box-sizing: border-box;
@@ -900,8 +899,6 @@ h2 .fas, h3 .fas {
         margin-top: 0;
         padding-top: 0;
         border-radius: 16px;
-        box-shadow: 0 6px 20px rgba(87, 6, 140, 0.1);
-        backdrop-filter: blur(10px);
         background: transparent;
     }
     
