@@ -498,10 +498,10 @@ h3 {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: 2px solid rgba(255,255,255,0.5);
 }
 
 .carousel-dot.active {
@@ -511,7 +511,8 @@ h3 {
 }
 
 .carousel-dot:hover {
-    background-color: rgba(255,255,255,0.8);
+    background-color: transparent;
+    border-color: rgba(255,255,255,0.8);
 }
 
 /* Carousel Counter */
