@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
 </head>
 <body>
     <div class="container">
@@ -57,8 +58,18 @@
                             <div class="instruction-step" data-step="2">
                                 <div class="step-content">
                                     <p class="step-text">Click the <strong>Room Audio</strong> box. Audio from the Mac Mini will play from the speakers. Control volume on the right side of the Crestron panel.</p>
-                                    <img src="images/IMG_1825.jpg" alt="Room Audio on Crestron" class="step-image">
-                                    <img src="images/IMG_1824_copy.jpg" alt="Alternate view of Crestron panel" class="step-image" style="margin-top:12px;">
+                                    <div class="image-carousel">
+                                        <div class="carousel-container">
+                                            <div class="carousel-slide active">
+                                                <img src="images/IMG_1825.jpg" alt="Room Audio on Crestron" class="step-image">
+                                            </div>
+                                            <div class="carousel-slide">
+                                                <img src="images/IMG_1824_copy.jpg" alt="Alternate view of Crestron panel" class="step-image">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-arrow prev" onclick="changeSlideScoped(this,-1)">❮</button>
+                                        <button class="carousel-arrow next" onclick="changeSlideScoped(this,1)">❯</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -105,8 +116,18 @@
                             <div class="instruction-step" data-step="4">
                                 <div class="step-content">
                                     <p class="step-text">Click the <strong>Room Audio</strong> box. Audio will play from the speakers. Control volume on the right side of the Crestron panel.</p>
-                                    <img src="images/IMG_1825.jpg" alt="Room Audio on Crestron" class="step-image">
-                                    <img src="images/IMG_1824_copy.jpg" alt="Alternate view of Crestron panel" class="step-image" style="margin-top:12px;">
+                                    <div class="image-carousel">
+                                        <div class="carousel-container">
+                                            <div class="carousel-slide active">
+                                                <img src="images/IMG_1825.jpg" alt="Room Audio on Crestron" class="step-image">
+                                            </div>
+                                            <div class="carousel-slide">
+                                                <img src="images/IMG_1824_copy.jpg" alt="Alternate view of Crestron panel" class="step-image">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-arrow prev" onclick="changeSlideScoped(this,-1)">❮</button>
+                                        <button class="carousel-arrow next" onclick="changeSlideScoped(this,1)">❯</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -359,6 +380,20 @@
                 nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
                 nextBtn.disabled = false;
             }
+        }
+
+        // Scoped carousel controls (matches other rooms)
+        function changeSlideScoped(button, delta) {
+            const carousel = button.closest('.image-carousel');
+            if (!carousel) return;
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            let activeIndex = 0;
+            slides.forEach((s, i) => { if (s.classList.contains('active')) activeIndex = i; });
+            let nextIndex = activeIndex + delta;
+            if (nextIndex < 0) nextIndex = slides.length - 1;
+            if (nextIndex >= slides.length) nextIndex = 0;
+            slides[activeIndex].classList.remove('active');
+            slides[nextIndex].classList.add('active');
         }
     </script>
 
