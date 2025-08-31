@@ -29,7 +29,6 @@
             <h1>Studio E</h1>
             <div class="main-menu-selector">
                 <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
-                <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
             </div>
             
             <section class="step" id="sound-setup-section">
@@ -139,82 +138,7 @@
                 </div>
             </section>
 
-            <section class="step" id="video-projection-section" style="display:none;">
-                <div class="mode-selector">
-                    <button class="mode-button active" onclick="toggleMode('room-pc-video', this)">
-                        <i class="fas fa-desktop"></i> Room PC
-                    </button>
-                    <button class="mode-button" onclick="toggleMode('laptop-video', this)">
-                        <i class="fas fa-laptop"></i> Laptop
-                    </button>
-                </div>
 
-                <div id="room-pc-video" class="mode-section active">
-                    <h2><i class="fas fa-desktop"></i> Room PC Video</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="room-pc-video">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">The Room Mac can be turned on using the Mac Power button on the rack. Use the remote control to open the projector.</p>
-                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('room-pc-video')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <div class="step-dots">
-                                        <div class="step-dot active" data-step="1"></div>
-                                    </div>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('room-pc-video')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="laptop-video" class="mode-section">
-                    <h2><i class="fas fa-laptop"></i> Laptop Video</h2>
-                    <div class="mode-content">
-                        <div class="step-by-step-container" data-section="laptop-video">
-                            <!-- Step 1 -->
-                            <div class="instruction-step active" data-step="1">
-                                <div class="step-content">
-                                    <p class="step-text">Connect with HDMI outlet. In laptop display setting select mirroring onto external screen.</p>
-                                    <img src="images/4.gif" alt="Mac Display Settings" class="step-image">
-                                </div>
-                            </div>
-                            
-                            <!-- Navigation Controls -->
-                            <div class="step-navigation">
-                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
-                                    <i class="fas fa-chevron-left"></i>
-                                </button>
-                                
-                                <!-- Step Progress Indicator -->
-                                <div class="step-progress">
-                                    <div class="step-dots">
-                                        <div class="step-dot active" data-step="1"></div>
-                                    </div>
-                                </div>
-                                
-                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
-                                    <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
 
@@ -250,29 +174,10 @@
             });
         }
 
-        function showSection(section) {
-            const soundSection = document.getElementById('sound-setup-section');
-            const videoSection = document.getElementById('video-projection-section');
-            const soundTab = document.getElementById('sound-tab');
-            const videoTab = document.getElementById('video-tab');
-            
-            if (section === 'sound') {
-                soundSection.style.display = '';
-                videoSection.style.display = 'none';
-                soundTab.classList.add('active');
-                videoTab.classList.remove('active');
-            } else {
-                soundSection.style.display = 'none';
-                videoSection.style.display = '';
-                soundTab.classList.remove('active');
-                videoTab.classList.add('active');
-            }
-        }
 
-        // Default to Sound on load
+
+        // Initialize carousels after DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
-            showSection('sound');
-            // Initialize carousels after DOM is loaded
             setTimeout(initCarouselScoped, 100);
             setTimeout(addCarouselTouchSupport, 200);
         });
