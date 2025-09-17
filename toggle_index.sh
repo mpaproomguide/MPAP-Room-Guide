@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# Toggle between index.html and index2.html
+# Deprecated: index2.html has been removed. Style toggle is disabled.
 # Usage: ./toggle_index.sh
+
+if [ ! -f "index2.html" ]; then
+    echo "ℹ️  index2.html not found. The 3D navigator alternate style was removed."
+    echo "    This toggle script is deprecated and no longer needed."
+    exit 1
+fi
 
 if [ -f "index.html" ] && [ -f "index2.html" ]; then
     if grep -q "building-navigator" index.html; then
@@ -20,4 +26,4 @@ if [ -f "index.html" ] && [ -f "index2.html" ]; then
 else
     echo "❌ Error: Both index.html and index2.html must exist"
     exit 1
-fi 
+fi
