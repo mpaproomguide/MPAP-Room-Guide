@@ -2036,6 +2036,15 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     margin: 0 auto;
 }
 
+/* Make 6th Floor tiles square and center content */
+.sixth-3d {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 /* Animations */
 @keyframes fadeIn {
     from {
