@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Time Installation - NYU MPAP Room Guides</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+    <style>
+        .installation-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f5ff;
+            border-left: 4px solid var(--nyu-purple);
+            border-radius: 5px;
+        }
+        
+        .step h3 {
+            color: var(--nyu-purple);
+            margin-top: 0;
+        }
+        
+        .substep {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .screenshot {
+            margin: 10px 0;
+        }
+        
+        .warning {
+            background: #f8f5ff;
+            border: 2px solid var(--nyu-light-purple);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .warning h4 {
+            color: var(--nyu-purple);
+            margin-top: 0;
+        }
+        
+        .warning ol {
+            padding-left: 25px;
+        }
+        
+        .warning li {
+            margin-bottom: 8px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--nyu-purple);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            background: #f8f5ff;
+            border: 1px solid var(--nyu-light-purple);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: var(--nyu-light-purple);
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <div class="installation-content">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Room Guides
+            </a>
+            
+            <h2><i class="fas fa-download"></i> First Time Installation</h2>
+            
+            <div class="step">
+                <h3>Download RME Driver</h3>
+                <div class="substep">
+                    <strong>1. Navigate to the RME downloads page:</strong>
+                    <p>Go to: <a href="https://rme-audio.de/downloads.html" target="_blank" rel="noopener">rme-audio.de/downloads.html</a></p>
+                </div>
+                
+                <div class="substep">
+                    <strong>2. Select Product:</strong>
+                    <p>Under "Select Product or Software", choose <strong>MadiFace USB</strong> in the left dialog box.</p>
+                    <div class="screenshot">
+                        <img src="images/screenshot1.png" alt="RME Product Selection Dialog" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                    </div>
+                </div>
+                
+                <div class="substep">
+                    <strong>3. Select Operating System and Driver Type:</strong>
+                    <p>Select your operating system, and then select <strong>"Driver"</strong>.</p>
+                    <div class="screenshot">
+                        <img src="images/screenshot2.png" alt="RME OS and Driver Selection" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                    </div>
+                </div>
+                
+                <div class="substep">
+                    <strong>4. Download the Correct Driver:</strong>
+                    <p><strong>Download only the latest DriverKit Driver.</strong> Ignore "Kernel Extension Driver".</p>
+                    <div class="screenshot">
+                        <img src="images/screenshot3.png" alt="RME Driver Selection Options" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <h3>After Installation</h3>
+                <p>After installation, you should have both <strong>Totalmix</strong> and <strong>FireFace USB Settings</strong> in your Applications folder.</p>
+                
+                <div class="warning">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Important Note</h4>
+                    <p>Due to a known DriverKit bug, audio may not play until both Totalmix and FireFace USB Settings windows have been opened. You may want to force them to automatically open every time your computer starts up.</p>
+                    
+                    <p><strong>To set up auto-start:</strong></p>
+                    <ol>
+                        <li>Go to <strong>System Preferences</strong></li>
+                        <li>Navigate to <strong>Login Items & Extensions</strong></li>
+                        <li>Click <strong>Open at Login</strong></li>
+                        <li>Add both applications via the <strong>'+'</strong> button</li>
+                    </ol>
+                    
+                    <div class="screenshot">
+                        <img src="images/screenshot4.png" alt="System Preferences Login Items Configuration" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© NYU MPAP Room Guide</p>
+        </footer>
+    </div>
+
+    <script>
+        // Cat toggle logic
+        let catEnabled = false;
+        let catScript = null;
+        function toggleCat() {
+            if (!catEnabled) {
+                catScript = document.createElement('script');
+                catScript.src = 'js/oneko.js';
+                catScript.dataset.cat = 'js/images/oneko.gif';
+                document.body.appendChild(catScript);
+                catEnabled = true;
+            } else {
+                const neko = document.getElementById('oneko');
+                if (neko) neko.remove();
+                if (catScript) catScript.remove();
+                catScript = null;
+                catEnabled = false;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.nyu-logo');
+            if (logo) {
+                logo.style.cursor = 'pointer';
+                logo.title = 'Toggle Cat';
+                logo.addEventListener('click', toggleCat);
+            }
+        });
+    </script>
+</body>
+</html>
