@@ -23,9 +23,6 @@
         .step {
             margin: 20px 0;
             padding: 15px;
-            background: #f8f5ff;
-            border-left: 4px solid var(--nyu-purple);
-            border-radius: 5px;
         }
         
         .step h3 {
@@ -102,55 +99,80 @@
             
             <div class="step">
                 <h3>Download RME Driver</h3>
-                <div class="substep">
-                    <strong>1. Navigate to the RME downloads page:</strong>
-                    <p>Go to: <a href="https://rme-audio.de/downloads.html" target="_blank" rel="noopener">rme-audio.de/downloads.html</a></p>
-                </div>
-                
-                <div class="substep">
-                    <strong>2. Select Product:</strong>
-                    <p>Under "Select Product or Software", choose <strong>MadiFace USB</strong> in the left dialog box.</p>
-                    <div class="screenshot">
-                        <img src="images/screenshot1.png" alt="RME Product Selection Dialog" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
-                    </div>
-                </div>
-                
-                <div class="substep">
-                    <strong>3. Select Operating System and Driver Type:</strong>
-                    <p>Select your operating system, and then select <strong>"Driver"</strong>.</p>
-                    <div class="screenshot">
-                        <img src="images/screenshot2.png" alt="RME OS and Driver Selection" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
-                    </div>
-                </div>
-                
-                <div class="substep">
-                    <strong>4. Download the Correct Driver:</strong>
-                    <p><strong>Download only the latest DriverKit Driver.</strong> Ignore "Kernel Extension Driver".</p>
-                    <div class="screenshot">
-                        <img src="images/screenshot3.png" alt="RME Driver Selection Options" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
-                    </div>
-                </div>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> Navigate to the RME downloads page: <a href="https://rme-audio.de/downloads.html" target="_blank" rel="noopener">rme-audio.de/downloads.html</a>
+                    </li>
+                    
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> Under "Select Product or Software", choose <strong style="color: var(--nyu-purple);">MadiFace USB</strong> in the left dialog box.
+                        <div class="screenshot">
+                            <img src="images/screenshot1.png" alt="RME Product Selection Dialog" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                        </div>
+                    </li>
+                    
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> Select your operating system, and then select <strong style="color: var(--nyu-purple);">"Driver"</strong>.
+                        <div class="screenshot">
+                            <img src="images/screenshot2.png" alt="RME OS and Driver Selection" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                        </div>
+                    </li>
+                    
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> <strong style="color: var(--nyu-purple);">Download only the latest DriverKit Driver.</strong> Ignore "Kernel Extension Driver".
+                        <div class="screenshot">
+                            <img src="images/screenshot3.png" alt="RME Driver Selection Options" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                        </div>
+                    </li>
+                    
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> After installation, you should have both <strong style="color: var(--nyu-purple);">Totalmix</strong> and <strong style="color: var(--nyu-purple);">FireFace USB Settings</strong> in your Applications folder.
+                    </li>
+                </ul>
             </div>
             
             <div class="step">
                 <h3>After Installation</h3>
-                <p>After installation, you should have both <strong>Totalmix</strong> and <strong>FireFace USB Settings</strong> in your Applications folder.</p>
+                
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> Open both <strong style="color: var(--nyu-purple);">TotalMix</strong> and <strong style="color: var(--nyu-purple);">FireFace USB Settings</strong> applications.
+                    </li>
                 
                 <div class="warning">
                     <h4><i class="fas fa-exclamation-triangle"></i> Important Note</h4>
-                    <p>Due to a known DriverKit bug, audio may not play until both Totalmix and FireFace USB Settings windows have been opened. You may want to force them to automatically open every time your computer starts up.</p>
+                    <p>Due to a known <strong style="color: var(--nyu-purple);">DriverKit bug</strong>, audio may not play until both Totalmix and FireFace USB Settings windows have been opened. You may want to force them to <strong style="color: var(--nyu-purple);">automatically open</strong> every time your computer starts up.</p>
                     
                     <p><strong>To set up auto-start:</strong></p>
                     <ol>
-                        <li>Go to <strong>System Preferences</strong></li>
-                        <li>Navigate to <strong>Login Items & Extensions</strong></li>
-                        <li>Click <strong>Open at Login</strong></li>
-                        <li>Add both applications via the <strong>'+'</strong> button</li>
+                        <li>Go to <strong style="color: var(--nyu-purple);">System Preferences</strong>.</li>
+                        <li>Navigate to <strong style="color: var(--nyu-purple);">Login Items & Extensions</strong>.</li>
+                        <li>Click <strong style="color: var(--nyu-purple);">Open at Login</strong>.</li>
+                        <li>Add both applications via the <strong style="color: var(--nyu-purple);">'+'</strong> button.</li>
                     </ol>
                     
                     <div class="screenshot">
                         <img src="images/screenshot4.png" alt="System Preferences Login Items Configuration" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
                     </div>
+                </div>
+                
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> Download the <strong style="color: var(--nyu-purple);">TotalMix2025.tmws</strong> file from <a href="https://drive.google.com/file/d/1RA4nRW7Ua7Z82gw_JJcleok4c8Zwbl6e/view?usp=drive_link" target="_blank" rel="noopener" style="color: var(--nyu-purple); font-weight: bold;">this link</a>. This is the template for the Research Lab.
+                    </li>
+                    
+                    <li style="margin: 15px 0;">
+                        <span style="color: var(--nyu-purple); font-weight: bold;">•</span> In <strong style="color: var(--nyu-purple);">TotalMix</strong>, go to <strong style="color: var(--nyu-purple);">File > Load Workspace</strong>, and load the <strong style="color: var(--nyu-purple);">TotalMix2025.tmws</strong> file you just downloaded. TotalMix is now configured for the Research Lab.
+                    </li>
+                </ul>
+                
+                <div class="screenshot">
+                    <img src="images/screenshot5.png" alt="TotalMix Workspace Configuration" style="max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px;">
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; padding: 20px;">
+                    <a href="https://www.rme-audio.de/totalmix-fx.html" target="_blank" rel="noopener" style="color: white; background-color: var(--nyu-purple); font-weight: bold; text-decoration: none; padding: 10px 20px; border: 2px solid var(--nyu-purple); border-radius: 5px; display: inline-block;">
+                        Click here to learn more about TotalMix
+                    </a>
                 </div>
             </div>
         </div>
