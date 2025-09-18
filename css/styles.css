@@ -1974,7 +1974,7 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     margin: 0 auto;
 }
 
-.room-3d, .studio-3d, .cart-3d, .pless-3d, .paulson-3d, .north-3d {
+.room-3d, .studio-3d, .cart-3d, .pless-3d, .paulson-3d, .north-3d, .sixth-3d {
     background: linear-gradient(145deg, #f8f5ff, #e9e1f3);
     border: 2px solid #d4c5f7;
     border-radius: 12px;
@@ -1989,7 +1989,7 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     transform: perspective(1000px) rotateX(0deg);
 }
 
-.room-3d::before, .studio-3d::before, .cart-3d::before, .pless-3d::before, .paulson-3d::before, .north-3d::before {
+.room-3d::before, .studio-3d::before, .cart-3d::before, .pless-3d::before, .paulson-3d::before, .north-3d::before, .sixth-3d::before {
     content: '';
     position: absolute;
     top: 0;
@@ -2000,11 +2000,11 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     transition: left 0.6s ease;
 }
 
-.room-3d:hover::before, .studio-3d:hover::before, .cart-3d:hover::before, .pless-3d:hover::before, .paulson-3d:hover::before, .north-3d:hover::before {
+.room-3d:hover::before, .studio-3d:hover::before, .cart-3d:hover::before, .pless-3d:hover::before, .paulson-3d:hover::before, .north-3d:hover::before, .sixth-3d:hover::before {
     left: 100%;
 }
 
-.room-3d:hover, .studio-3d:hover, .cart-3d:hover, .pless-3d:hover, .paulson-3d:hover, .north-3d:hover {
+.room-3d:hover, .studio-3d:hover, .cart-3d:hover, .pless-3d:hover, .paulson-3d:hover, .north-3d:hover, .sixth-3d:hover {
     transform: perspective(1000px) rotateX(10deg) translateY(-8px);
     box-shadow: 0 12px 30px rgba(87, 6, 140, 0.3);
     border-color: var(--nyu-purple);
@@ -2024,12 +2024,12 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
 }
 
 /* Studio Layout */
-.studio-layout, .film-cart-layout, .pless-layout, .paulson-layout, .north-layout, .education-layout {
+.studio-layout, .film-cart-layout, .pless-layout, .paulson-layout, .north-layout, .education-layout, .sixth-layout {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.studio-grid, .cart-grid, .pless-grid, .paulson-grid, .north-grid {
+.studio-grid, .cart-grid, .pless-grid, .paulson-grid, .north-grid, .sixth-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
@@ -2086,7 +2086,7 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
         font-size: 1.4em;
     }
     
-    .room-grid-3d, .studio-grid, .cart-grid, .pless-grid, .paulson-grid, .north-grid {
+    .room-grid-3d, .studio-grid, .cart-grid, .pless-grid, .paulson-grid, .north-grid, .sixth-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 12px;
     }
