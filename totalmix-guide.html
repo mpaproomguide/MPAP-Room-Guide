@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TotalMix Guide - NYU MPAP Room Guides</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+    <style>
+        .guide-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guide-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f5ff;
+            border-left: 4px solid var(--nyu-purple);
+            border-radius: 5px;
+        }
+        
+        .guide-section h3 {
+            color: var(--nyu-purple);
+            margin-top: 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            color: var(--nyu-purple);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--nyu-purple);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            background: #f8f5ff;
+            border: 1px solid var(--nyu-light-purple);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: var(--nyu-light-purple);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .coming-soon {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--nyu-purple), var(--nyu-light-purple));
+            color: white;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .coming-soon h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <div class="guide-content">
+            <a href="research-lab.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Research Lab
+            </a>
+            
+            <h2><i class="fas fa-sliders-h"></i> TotalMix Guide</h2>
+            <p>Learn how to use TotalMix effectively for audio mixing and routing in the Research Lab.</p>
+            
+            <div class="guide-section">
+                <h3>What is TotalMix?</h3>
+                <p>TotalMix is RME's powerful audio mixing software that provides comprehensive control over audio routing, monitoring, and effects processing. It's essential for managing audio in professional recording and research environments.</p>
+            </div>
+            
+            <div class="guide-section">
+                <h3>Key Features</h3>
+                <ul class="feature-list">
+                    <li>Real-time audio mixing and routing</li>
+                    <li>Multiple input and output channels</li>
+                    <li>Built-in effects and EQ</li>
+                    <li>Low-latency monitoring</li>
+                    <li>Snapshot and workspace management</li>
+                    <li>Matrix routing capabilities</li>
+                </ul>
+            </div>
+            
+            <div class="guide-section">
+                <h3>Basic Navigation</h3>
+                <ul class="feature-list">
+                    <li><strong>Input Channels:</strong> Control incoming audio signals</li>
+                    <li><strong>Playback Channels:</strong> Manage computer audio playback</li>
+                    <li><strong>Output Channels:</strong> Route audio to speakers and headphones</li>
+                    <li><strong>Matrix View:</strong> Visual routing grid for complex setups</li>
+                </ul>
+            </div>
+            
+            <div class="coming-soon">
+                <h3><i class="fas fa-tools"></i> Detailed Tutorials Coming Soon</h3>
+                <p>Comprehensive step-by-step tutorials and advanced techniques will be added to this guide. Check back regularly for updates!</p>
+            </div>
+            
+            <div class="guide-section">
+                <h3>Quick Tips</h3>
+                <ul class="feature-list">
+                    <li>Always save your workspace after making changes</li>
+                    <li>Use the Research Lab template (TotalMix2025.tmws) as your starting point</li>
+                    <li>Test audio routing before starting important sessions</li>
+                    <li>Keep the TotalMix window open during audio work</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>© NYU MPAP Room Guide</p>
+        </footer>
+    </div>
+
+    <script>
+        // Cat toggle logic
+        let catEnabled = false;
+        let catScript = null;
+        function toggleCat() {
+            if (!catEnabled) {
+                catScript = document.createElement('script');
+                catScript.src = 'js/oneko.js';
+                catScript.dataset.cat = 'js/images/oneko.gif';
+                document.body.appendChild(catScript);
+                catEnabled = true;
+            } else {
+                const neko = document.getElementById('oneko');
+                if (neko) neko.remove();
+                if (catScript) catScript.remove();
+                catScript = null;
+                catEnabled = false;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.nyu-logo');
+            if (logo) {
+                logo.style.cursor = 'pointer';
+                logo.title = 'Toggle Cat';
+                logo.addEventListener('click', toggleCat);
+            }
+        });
+    </script>
+</body>
+</html>
