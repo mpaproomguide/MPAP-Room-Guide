@@ -11,6 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
     <script src="js/lightbox.js"></script>
+    <style>
+        /* Do not number the format list; override global instruction numbering */
+        .instructions .no-number-list { padding-left: 0; margin-left: 0; }
+        .instructions .no-number-list li { position: static; padding-left: 0; margin-left: 0; }
+        .instructions .no-number-list li:before { content: none !important; }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -57,7 +63,7 @@
                             </ul>
 
                             <h3>Click your format below to see the correct channel configurations:</h3>
-                            <ul>
+                            <ul class="no-number-list">
                                 <li><a href="#" data-target="format-51">5.1</a></li>
                                 <li><a href="#" data-target="format-512">5.1.2</a></li>
                                 <li><a href="#" data-target="format-61">6.1</a></li>
@@ -66,11 +72,11 @@
                             </ul>
 
                             <!-- Hidden images used for pop-up (lightbox) -->
-                            <img id="format-51" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/5.1.png" alt="5.1 configuration" class="instruction-image" style="display:none;">
-                            <img id="format-512" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/5.1.2.png" alt="5.1.2 configuration" class="instruction-image" style="display:none;">
-                            <img id="format-61" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/6.1.png" alt="6.1 configuration" class="instruction-image" style="display:none;">
-                            <img id="format-71" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/7.1.png" alt="7.1 Rear Surround configuration" class="instruction-image" style="display:none;">
-                            <img id="format-714" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/7.1.4.png" alt="7.1.4 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-51" src="images/speaker-configs/5.1.png" alt="5.1 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-512" src="images/speaker-configs/5.1.2.png" alt="5.1.2 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-61" src="images/speaker-configs/6.1.png" alt="6.1 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-71" src="images/speaker-configs/7.1.png" alt="7.1 Rear Surround configuration" class="instruction-image" style="display:none;">
+                            <img id="format-714" src="images/speaker-configs/7.1.4.png" alt="7.1.4 configuration" class="instruction-image" style="display:none;">
                         </div>
                     </div>
                 </div>
