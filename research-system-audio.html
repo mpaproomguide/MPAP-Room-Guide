@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Audio Playback - Research Lab</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <a href="research-lab.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Research Lab</a>
+
+        <main>
+            <h1>System Audio Playback</h1>
+            <div class="step" id="system-audio-playback">
+                <div class="mode-section active">
+                    <h2><i class="fas fa-music"></i> Apple Music and Surround Content</h2>
+                    <div class="mode-content">
+                        <div class="instructions">
+                            <ul>
+                                <li>In the <strong>Sound</strong> settings, select <strong>MADIFace</strong>.</li>
+                            </ul>
+                            <img src="images/RME.png" alt="Select MADIFace in Sound settings" class="instruction-image">
+
+                            <ul>
+                                <li>Go to <strong>Applications &gt; Utilities &gt; Audio MIDI Setup</strong>.</li>
+                            </ul>
+                            <img src="images/RME.png" alt="Open Audio MIDI Setup" class="instruction-image">
+
+                            <ul>
+                                <li>Click on <strong>MADIFace</strong> on the left, then click <strong>Configure Speakers</strong> at the bottom right.</li>
+                            </ul>
+                            <img src="images/RME.png" alt="Configure Speakers in Audio MIDI Setup" class="instruction-image">
+
+                            <ul>
+                                <li>Under the <strong>Configuration</strong> tab, pick the surround format that suits your media.</li>
+                            </ul>
+                            <div class="instruction-note">
+                                <strong>Note:</strong> Apple Music automatically adapts its Atmos channels to your chosen format. For example, if you select <strong>5.1</strong>, it will output a 5.1 mix; if you select <strong>7.1.2</strong>, it will output a 7.1.2 mix.
+                            </div>
+
+                            <ul>
+                                <li>In the bottom half of the window, ensure the speakers are routed correctly.</li>
+                            </ul>
+
+                            <h3>Click your format below to see the correct channel configurations:</h3>
+                            <ul>
+                                <li><a href="#" data-target="format-51">5.1</a></li>
+                                <li><a href="#" data-target="format-512">5.1.2</a></li>
+                                <li><a href="#" data-target="format-61">6.1</a></li>
+                                <li><a href="#" data-target="format-71">7.1 Rear Surround</a></li>
+                                <li><a href="#" data-target="format-714">7.1.4</a></li>
+                            </ul>
+
+                            <!-- Hidden images used for pop-up (lightbox) -->
+                            <img id="format-51" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/5.1.png" alt="5.1 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-512" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/5.1.2.png" alt="5.1.2 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-61" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/6.1.png" alt="6.1 configuration" class="instruction-image" style="display:none;">
+                            <img id="format-71" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/7.1.png" alt="7.1 Rear Surround configuration" class="instruction-image" style="display:none;">
+                            <img id="format-714" src="file:///Users/drewatz/Downloads/TotalMix%20Guide/7.1.4.png" alt="7.1.4 configuration" class="instruction-image" style="display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© NYU MPAP Room Guide</p>
+        </footer>
+    </div>
+
+    <script>
+        // Click text to open corresponding hidden image in lightbox
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[data-target]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var id = this.getAttribute('data-target');
+                    var img = document.getElementById(id);
+                    if (img) {
+                        img.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+

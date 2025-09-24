@@ -123,6 +123,75 @@ h3 {
     color: var(--nyu-purple);
 }
 
+/* Password button (top-of-page) */
+.password-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto;
+    padding: 10px 20px; /* match .back-link height */
+    font-weight: 500; /* match .back-link weight */
+    font-size: 1em; /* match .back-link size */
+    line-height: 1.2; /* match typical link line-height */
+    color: var(--nyu-white);
+    background: linear-gradient(135deg, var(--nyu-purple), var(--nyu-light-purple));
+    text-decoration: none;
+    border-radius: 8px; /* match .back-link radius */
+    box-shadow: 0 4px 10px rgba(87, 6, 140, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.password-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(87, 6, 140, 0.3);
+    color: var(--nyu-white);
+    opacity: 0.95;
+}
+
+.password-btn i {
+    color: var(--nyu-white);
+}
+
+/* Make sure it sits nicely under headers on mobile */
+@media (max-width: 768px) {
+    .password-btn {
+        width: auto;
+    }
+}
+
+/* Wrapper to center the password button under the page title */
+.password-btn-wrapper {
+    display: block;
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+
+/* Row container to align Back link and Password button on same line */
+
+.back-actions-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    margin: 20px 0; /* match .back-link margin rhythm */
+}
+
+.back-actions-row .back-link {
+    grid-column: 1;
+    justify-self: start;
+}
+
+.back-actions-row .password-btn {
+    grid-column: 2;
+    justify-self: center;
+}
+
+@media (max-width: 768px) {
+    .back-actions-row { margin: 12px 0; grid-template-columns: 1fr; }
+    .back-actions-row .back-link { grid-column: 1; justify-self: center; width: 100%; text-align: center; }
+    .back-actions-row .password-btn { grid-column: 1; justify-self: center; }
+}
+
 /* Universal Step and Section Styles */
 .step {
     backdrop-filter: blur(8px);

@@ -28,6 +28,13 @@
             border-radius: 5px;
         }
         
+        .guide-section.no-style {
+            background: transparent;
+            border-left: none;
+            padding: 20px 0;
+            margin: 15px 0;
+        }
+        
         .guide-section h3 {
             color: var(--nyu-purple);
             margin-top: 0;
@@ -54,7 +61,7 @@
         
         .back-link {
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: var(--nyu-purple);
             text-decoration: none;
             font-weight: bold;
@@ -84,6 +91,59 @@
             color: white;
             margin-bottom: 15px;
         }
+        
+        .table-of-contents {
+            background: #f8f5ff;
+            border: 1px solid var(--nyu-light-purple);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .table-of-contents h3 {
+            color: var(--nyu-purple);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc-list li {
+            margin: 8px 0;
+        }
+        
+        .toc-list a {
+            color: var(--nyu-purple);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-list a:hover {
+            background: var(--nyu-light-purple);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .section-anchor {
+            scroll-margin-top: 20px;
+        }
+        
+        /* Tighten spacing between first image and General Layout */
+        #getting-started {
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+        #general-layout {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -100,46 +160,150 @@
                 <i class="fas fa-arrow-left"></i> Back to Research Lab
             </a>
             
-            <h2><i class="fas fa-sliders-h"></i> TotalMix Guide</h2>
-            <p>Learn how to use TotalMix effectively for audio mixing and routing in the Research Lab.</p>
-            
-            <div class="guide-section">
-                <h3>What is TotalMix?</h3>
-                <p>TotalMix is RME's powerful audio mixing software that provides comprehensive control over audio routing, monitoring, and effects processing. It's essential for managing audio in professional recording and research environments.</p>
+            <div class="guide-section no-style section-anchor" id="about-totalmix">
+                <h1 style="text-align: center; color: var(--nyu-purple); font-size: 2.5em; margin-top: 0; margin-bottom: 20px;">TotalMix Guide</h1>
+                <p>TotalMix FX manages surround sound and monitoring for the Research Lab. By default, it simply routes MADIFace outputs 1–23 directly to speakers 1–23. As such, <a href="#controlling-level" style="color: var(--nyu-purple); font-weight: bold;">you'll rarely need to adjust more than volume</a>, but this guide outlines additional features you may use.</p>
             </div>
             
-            <div class="guide-section">
-                <h3>Key Features</h3>
-                <ul class="feature-list">
-                    <li>Real-time audio mixing and routing</li>
-                    <li>Multiple input and output channels</li>
-                    <li>Built-in effects and EQ</li>
-                    <li>Low-latency monitoring</li>
-                    <li>Snapshot and workspace management</li>
-                    <li>Matrix routing capabilities</li>
+            <div class="table-of-contents">
+                <h3><i class="fas fa-list"></i> Table of Contents</h3>
+                <ul class="toc-list">
+                    <li><a href="#getting-started">Getting Started with TotalMix</a></li>
+                    <li><a href="#general-layout">General Layout</a></li>
+                    <li><a href="#controlling-level">Controlling Level</a></li>
+                    <li><a href="#channel-strip-controls">Channel Strip Controls</a></li>
+                    <li><a href="#submix-free-mode">Submix Mode vs Free Mode</a></li>
+                    <li><a href="#global-buttons">Global Buttons</a></li>
+                    <li><a href="#quick-tips">Quick Tips</a></li>
                 </ul>
             </div>
             
-            <div class="guide-section">
-                <h3>Basic Navigation</h3>
+            <div class="guide-section no-style section-anchor" id="getting-started">
+                <h3>Getting Started with TotalMix</h3>
+                <p>Make sure you have completed the <a href="first-time-installation.html" style="color: var(--nyu-purple); font-weight: bold;">First-Time Installation</a> instructions to install the necessary drivers and software required for TotalMix.</p>
+                
+                <p>TotalMix should look like this when opened. If not, ensure the <a href="https://drive.google.com/file/d/1RA4nRW7Ua7Z82gw_JJcleok4c8Zwbl6e/view?usp=drive_link" target="_blank" rel="noopener" style="color: var(--nyu-purple); font-weight: bold;">TotalMix2025.tmws</a> file is loaded.</p>
+                <div style="text-align: center; margin: 20px 0 10px 0;">
+                    <img src="images/FirstPic.png" alt="TotalMix Interface Overview" style="display: block; max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 0 auto;">
+                </div>
+                
+            </div>
+            
+            <div class="guide-section no-style section-anchor" id="general-layout">
+                <h3>General Layout</h3>
+                <p>In the mixer window, you’ll see two rows of faders:</p>
                 <ul class="feature-list">
-                    <li><strong>Input Channels:</strong> Control incoming audio signals</li>
-                    <li><strong>Playback Channels:</strong> Manage computer audio playback</li>
-                    <li><strong>Output Channels:</strong> Route audio to speakers and headphones</li>
-                    <li><strong>Matrix View:</strong> Visual routing grid for complex setups</li>
+                    <li><strong style="color: var(--nyu-purple);">Software Playback (top row)</strong>: these represent audio streams coming from your computer (e.g. DAW outputs, Atmos channels from Apple Music).</li>
+                    <li><strong style="color: var(--nyu-purple);">Hardware Outputs (bottom row)</strong>: these represent the actual physical outputs to the speakers and headphones.</li>
                 </ul>
             </div>
             
-            <div class="coming-soon">
-                <h3><i class="fas fa-tools"></i> Detailed Tutorials Coming Soon</h3>
-                <p>Comprehensive step-by-step tutorials and advanced techniques will be added to this guide. Check back regularly for updates!</p>
+            <div class="guide-section no-style section-anchor" id="controlling-level">
+                <h3>Controlling Level</h3>
+                <p>Move the wheel on the <strong style="color: var(--nyu-purple);">ARC USB remote</strong>. By default, this controls the level of all speakers at the same time. In <strong style="color: var(--nyu-purple);">TotalMix</strong>, you'll notice all faders (except for the Headphones) move together. These red colored faders are <strong style="color: var(--nyu-purple);">grouped</strong>, allowing the wheel on the <strong style="color: var(--nyu-purple);">ARC USB remote</strong> to control the level of the entire surround mix. It is unlikely that you will want to deviate from this behavior, but in order to change the level of individual speakers, you may disable grouping by un-selecting <strong style="color: var(--nyu-purple);">"1"</strong> from the <strong style="color: var(--nyu-purple);">Groups</strong> section on the right. The red faders will turn grey, and be able to be changed individually. Re-select <strong style="color: var(--nyu-purple);">"1"</strong> to reactivate the group and control the overall volume again.</p>
+                
+                <div style="display: flex; gap: 20px; margin: 20px 0; justify-content: center; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px; text-align: center;">
+                        <img src="images/rme-arc-remote.jpg" alt="RME ARC USB Remote" style="max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="flex: 1; min-width: 300px; text-align: center;">
+                        <img src="images/totalmix-screenshot3.png" alt="TotalMix Fader Grouping" style="max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </div>
             </div>
             
-            <div class="guide-section">
+            <div class="guide-section no-style section-anchor" id="channel-strip-controls">
+                <h3>Channel Strip Controls</h3>
+                <p>Each channel in TotalMix features a comprehensive set of controls that allow you to shape and route your audio signals:</p>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Level Controls</h4>
+                <ul class="feature-list">
+                    <li><strong style="color: var(--nyu-purple);">Fader</strong> - Main volume control for the channel</li>
+                    <li><strong style="color: var(--nyu-purple);">Gain</strong> - Input/output gain adjustment</li>
+                    <li><strong style="color: var(--nyu-purple);">Trim</strong> - Fine adjustment for precise level matching</li>
+                </ul>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Routing Controls</h4>
+                <ul class="feature-list">
+                    <li><strong style="color: var(--nyu-purple);">Mute/Solo</strong> - Quickly silence or isolate channels</li>
+                    <li><strong style="color: var(--nyu-purple);">Pan</strong> - Stereo positioning for mono sources</li>
+                    <li><strong style="color: var(--nyu-purple);">Routing Matrix</strong> - Send signals to multiple outputs simultaneously</li>
+                </ul>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Processing Options</h4>
+                <ul class="feature-list">
+                    <li><strong style="color: var(--nyu-purple);">EQ</strong> - Built-in equalizer for frequency shaping</li>
+                    <li><strong style="color: var(--nyu-purple);">Dynamics</strong> - Compression and limiting controls</li>
+                    <li><strong style="color: var(--nyu-purple);">Effects</strong> - Reverb, delay, and other spatial effects</li>
+                </ul>
+                
+                <div style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 5px; padding: 15px; margin: 20px 0;">
+                    <p style="margin: 0;"><strong>✅ Remember:</strong> In the Research Lab setup, most channels are grouped together so the ARC USB remote controls the entire surround mix as one unit.</p>
+                </div>
+            </div>
+            
+            <div class="guide-section no-style section-anchor" id="submix-free-mode">
+                <h3>Submix Mode vs Free Mode</h3>
+                <p>TotalMix operates in two distinct modes that affect how you interact with the mixer and how audio is processed:</p>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Submix Mode (Default)</h4>
+                <ul class="feature-list">
+                    <li>Channels are pre-mixed before being sent to outputs</li>
+                    <li>Allows for complex routing and processing chains</li>
+                    <li>Perfect for surround sound mixing and live monitoring</li>
+                    <li>Changes affect the entire mix, not individual channels</li>
+                </ul>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Free Mode</h4>
+                <ul class="feature-list">
+                    <li>Direct routing from inputs to outputs</li>
+                    <li>Minimal processing and latency</li>
+                    <li>Ideal for recording and zero-latency monitoring</li>
+                    <li>Each input can be routed independently to any output</li>
+                </ul>
+                
+                <div style="background: #fff3e0; border: 1px solid #ff9800; border-radius: 5px; padding: 15px; margin: 20px 0;">
+                    <p style="margin: 0;"><strong>⚠️ Important:</strong> The Research Lab template is configured in Submix Mode. Switching to Free Mode will change the behavior of all routing and may require reconfiguring your setup.</p>
+                </div>
+                
+                <p>To switch between modes, use the <strong style="color: var(--nyu-purple);">Mode</strong> button in the top toolbar. The current mode is indicated by the button's appearance and the overall layout of the interface.</p>
+            </div>
+            
+            <div class="guide-section no-style section-anchor" id="global-buttons">
+                <h3>Global Buttons</h3>
+                <p>TotalMix features several global control buttons that affect the entire mixer or specific groups of channels:</p>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Master Controls</h4>
+                <ul class="feature-list">
+                    <li><strong style="color: var(--nyu-purple);">Master Mute</strong> - Instantly silence all outputs</li>
+                    <li><strong style="color: var(--nyu-purple);">Master Dim</strong> - Reduce all levels by a fixed amount</li>
+                    <li><strong style="color: var(--nyu-purple);">Talkback</strong> - Enable microphone input for communication</li>
+                </ul>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Group Controls</h4>
+                <ul class="feature-list">
+                    <li><strong style="color: var(--nyu-purple);">Group Mute</strong> - Mute entire groups of channels simultaneously</li>
+                    <li><strong style="color: var(--nyu-purple);">Group Solo</strong> - Isolate groups for focused monitoring</li>
+                    <li><strong style="color: var(--nyu-purple);">Group Volume</strong> - Adjust levels for entire channel groups</li>
+                </ul>
+                
+                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Utility Functions</h4>
+                <ul class="feature-list">
+                    <li><strong style="color: var(--nyu-purple);">Save Workspace</strong> - Store current mixer configuration</li>
+                    <li><strong style="color: var(--nyu-purple);">Load Workspace</strong> - Recall saved configurations</li>
+                    <li><strong style="color: var(--nyu-purple);">Reset</strong> - Return to default settings</li>
+                    <li><strong style="color: var(--nyu-purple);">Snapshot</strong> - Capture current state for later recall</li>
+                </ul>
+                
+                <div style="background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px; padding: 15px; margin: 20px 0;">
+                    <p style="margin: 0;"><strong>🔧 Essential:</strong> Always save your workspace after making changes to preserve your custom routing and settings. Use descriptive names for different configurations (e.g., "5.1 Surround Mix", "Stereo Recording Setup").</p>
+                </div>
+            </div>
+            
+            <div class="guide-section section-anchor" id="quick-tips">
                 <h3>Quick Tips</h3>
                 <ul class="feature-list">
                     <li>Always save your workspace after making changes</li>
-                    <li>Use the Research Lab template (TotalMix2025.tmws) as your starting point</li>
+                    <li>Use the Research Lab template (<strong style="color: var(--nyu-purple);">TotalMix2025.tmws</strong>) as your starting point</li>
                     <li>Test audio routing before starting important sessions</li>
                     <li>Keep the TotalMix window open during audio work</li>
                 </ul>

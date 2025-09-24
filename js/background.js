@@ -122,3 +122,62 @@ function windowResized() {
         waves[i].harmonic = min(i + 1, maxHarmonics);
     }
 } 
+
+// Inject a top-of-page password button on all local pages except index
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        // Skip on index.html (landing navigator)
+        var path = (window.location.pathname || '').toLowerCase();
+        if (path.endsWith('/index.html') || path === '/' || path === '') {
+            return;
+        }
+
+        // Build the link element
+        var link = document.createElement('a');
+        link.href = 'https://docs.google.com/document/d/1t0-zcBEQpKC0T8B9totgLuMFtEGMDegbU05gRqN8GII/edit?usp=sharing';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'password-btn';
+        link.innerHTML = '<i class="fas fa-lock"></i> CLICK HERE FOR LOG IN CREDENTIALS';
+
+        // Preferred placement: Below header on a row with back link (left) and centered password button
+        var headerEl = document.querySelector('header');
+        var backLink = document.querySelector('.back-link');
+        if (headerEl) {
+            var row = document.createElement('div');
+            row.className = 'back-actions-row';
+            if (backLink) {
+                headerEl.insertAdjacentElement('afterend', row);
+                row.appendChild(backLink);
+                row.appendChild(link);
+                return;
+            } else {
+                // no back link; still create row and center password button
+                headerEl.insertAdjacentElement('afterend', row);
+                row.appendChild(link);
+                return;
+            }
+        }
+
+        // Fallback: center above title if header not found
+        var mainTitle = document.querySelector('main h1');
+        if (mainTitle) {
+            var wrapper = document.createElement('div');
+            wrapper.className = 'password-btn-wrapper';
+            wrapper.appendChild(link);
+            mainTitle.insertAdjacentElement('beforebegin', wrapper);
+            return;
+        }
+
+        var container = document.querySelector('.container');
+        if (container) {
+            container.insertAdjacentElement('afterbegin', link);
+            return;
+        }
+
+        document.body.insertAdjacentElement('afterbegin', link);
+    } catch (e) {
+        // No-op on errors so it never blocks the page
+        console && console.warn && console.warn('Password button inject failed:', e);
+    }
+});
