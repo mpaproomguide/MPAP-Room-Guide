@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img class="lightbox-image" src="" alt="">
             </div>
             <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-            <div class="lightbox-zoom-info">Double-click or scroll to zoom</div>
         </div>
     `;
     document.body.appendChild(lightboxOverlay);
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxImage = lightboxOverlay.querySelector('.lightbox-image');
     const lightboxImageContainer = lightboxOverlay.querySelector('.lightbox-image-container');
     const lightboxClose = lightboxOverlay.querySelector('.lightbox-close');
-    const lightboxZoomInfo = lightboxOverlay.querySelector('.lightbox-zoom-info');
+    
 
     // Zoom and pan variables
     let currentScale = 1;
@@ -50,11 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lightboxOverlay.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent scrolling
         
-        // Show zoom info briefly
-        lightboxZoomInfo.style.opacity = '1';
-        setTimeout(() => {
-            lightboxZoomInfo.style.opacity = '0';
-        }, 2000);
+        // No hint text
     }
 
     // Function to close lightbox
