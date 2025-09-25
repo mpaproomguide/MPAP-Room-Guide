@@ -193,6 +193,27 @@ ROOMS = [
         "name": "Drama Therapy",
         "url": "drama-therapy.html",
         "description": "Drama Therapy room setup guide"
+    },
+    # Additional standalone pages (not indexed)
+    {
+        "name": "756 (Paulson)",
+        "url": "paulson-756.html",
+        "description": "Paulson 756 room"
+    },
+    {
+        "name": "760 (Paulson)",
+        "url": "paulson-760.html",
+        "description": "Paulson 760 room"
+    },
+    {
+        "name": "ORR",
+        "url": "orr.html",
+        "description": "ORR room"
+    },
+    {
+        "name": "Percussion Room (Paulson)",
+        "url": "paulson-percussion.html",
+        "description": "Percussion Room (Paulson)"
     }
 ]
 
