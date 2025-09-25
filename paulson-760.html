@@ -25,8 +25,265 @@
         </a>
 
         <main>
-            <h1>760 (Paulson)</h1>
+            <h1>Room 760</h1>
+            <div class="main-menu-selector room774-menu">
+                <button id="desktop-tab" class="mode-button active" onclick="showSection('desktop')"><i class="fas fa-desktop"></i> Desktop Mode</button>
+                <button id="laptop-tab" class="mode-button" onclick="showSection('laptop')"><i class="fas fa-laptop"></i> Laptop Mode</button>
+            </div>
+            
+            <section class="step" id="desktop-section">
+
+                <div id="desktop-video" class="mode-section active">
+                    <h2><i class="fas fa-desktop"></i> Desktop Mode</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="desktop-video">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Notice the CalDigit Thunderbolt Hub located under the computer monitor. Make sure the <strong>MAC MINI</strong> cable is plugged in to the hub.</p>
+                                    <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="CalDigit Thunderbolt Hub" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">The Desktop computer should now be connected to the display and audio system. Use the volume controls on the <strong>Apollo Twin</strong> to adjust the volume.</p>
+                                    <img src="images/12b640-crop-d60812-ApolloTSmkII.png" alt="Apollo Interface" class="step-image">
+                                </div>
+                            </div>
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('desktop-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('desktop-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step" id="laptop-section" style="display:none;">
+                <div id="laptop-video" class="mode-section active">
+                    <h2><i class="fas fa-laptop"></i> Laptop Mode</h2>
+                    <div class="mode-content">
+                        <div class="step-by-step-container" data-section="laptop-video">
+                            <div class="instruction-step active" data-step="1">
+                                <div class="step-content">
+                                    <p class="step-text">Notice the CalDigit Thunderbolt Hub located under the computer monitor. Make sure the <strong>LAPTOP</strong> cable is plugged in to the hub.</p>
+                                    <img src="images/hub-example-c69056dcdd9c5d134e374cab05b1868f.jpg.avif" alt="CalDigit Thunderbolt Hub" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="2">
+                                <div class="step-content">
+                                    <p class="step-text">Plug the other end of the <strong>LAPTOP</strong> cable into your device.</p>
+                                    <img src="images/laptop-example-8de8a918b6a4023b4c711ad0a108967d.jpg.avif" alt="Laptop Mode Setup" class="step-image">
+                                </div>
+                            </div>
+                            <div class="instruction-step" data-step="3">
+                                <div class="step-content">
+                                    <p class="step-text">The laptop should now be connected to the display and audio system. Use the volume controls on the <strong>Apollo Twin</strong> to adjust the volume.</p>
+                                    <img src="images/12b640-crop-d60812-ApolloTSmkII.png" alt="Apollo Interface" class="step-image">
+                                </div>
+                            </div>
+                            <div class="step-navigation">
+                                <button class="step-btn prev-btn circular-nav-btn" onclick="previousStep('laptop-video')" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="step-progress">
+                                    <div class="step-dots">
+                                        <div class="step-dot active" data-step="1"></div>
+                                        <div class="step-dot" data-step="2"></div>
+                                        <div class="step-dot" data-step="3"></div>
+                                    </div>
+                                </div>
+                                <button class="step-btn next-btn circular-nav-btn" onclick="nextStep('laptop-video')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
+    </div>
+
+    <script>
+        function toggleMode(modeId, button) {
+            const parentSection = button.closest('.step');
+            parentSection.querySelectorAll('.mode-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            parentSection.querySelectorAll('.mode-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(modeId).classList.add('active');
+            button.classList.add('active');
+            const newSection = document.getElementById(modeId);
+            const stepContainers = newSection.querySelectorAll('.step-by-step-container');
+            stepContainers.forEach(container => {
+                container.querySelectorAll('.instruction-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                const firstStep = container.querySelector('[data-step="1"]');
+                if (firstStep) {
+                    firstStep.classList.add('active');
+                }
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                updateStepCounter(container, 1, totalSteps);
+                updateNavigationButtons(container, 1, totalSteps);
+            });
+        }
+
+        function showSection(section) {
+            const desktopSection = document.getElementById('desktop-section');
+            const laptopSection = document.getElementById('laptop-section');
+            const desktopTab = document.getElementById('desktop-tab');
+            const laptopTab = document.getElementById('laptop-tab');
+            if (section === 'desktop') {
+                desktopSection.style.display = '';
+                laptopSection.style.display = 'none';
+                desktopTab.classList.add('active');
+                laptopTab.classList.remove('active');
+            } else {
+                desktopSection.style.display = 'none';
+                laptopSection.style.display = '';
+                desktopTab.classList.remove('active');
+                laptopTab.classList.add('active');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('desktop');
+            initializeSingleStepNavigation();
+        });
+
+        function initializeSingleStepNavigation() {
+            const containers = document.querySelectorAll('.step-by-step-container');
+            containers.forEach(container => {
+                const totalSteps = container.querySelectorAll('.instruction-step').length;
+                if (totalSteps === 1) {
+                    const prevBtn = container.querySelector('.prev-btn');
+                    const nextBtn = container.querySelector('.next-btn');
+                    if (prevBtn) prevBtn.disabled = true;
+                    if (nextBtn) {
+                        nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                        nextBtn.disabled = true;
+                    }
+                }
+            });
+        }
+
+        function nextStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            if (currentStepNum < totalSteps) {
+                currentStep.classList.remove('active');
+                const nextStep = container.querySelector(`[data-step="${currentStepNum + 1}"]`);
+                nextStep.classList.add('active');
+                updateStepCounter(container, currentStepNum + 1, totalSteps);
+                updateNavigationButtons(container, currentStepNum + 1, totalSteps);
+            }
+        }
+
+        function previousStep(sectionId) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const currentStepNum = parseInt(currentStep.dataset.step);
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            if (currentStepNum > 1) {
+                currentStep.classList.remove('active');
+                const prevStep = container.querySelector(`[data-step="${currentStepNum - 1}"]`);
+                prevStep.classList.add('active');
+                updateStepCounter(container, currentStepNum - 1, totalSteps);
+                updateNavigationButtons(container, currentStepNum - 1, totalSteps);
+            }
+        }
+
+        function updateStepCounter(container, currentStep, totalSteps) {
+            const stepDots = container.querySelectorAll('.step-dot');
+            stepDots.forEach((dot, index) => {
+                if (index === currentStep - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function goToStep(sectionId, targetStep) {
+            const container = document.querySelector(`[data-section="${sectionId}"]`);
+            const currentStep = container.querySelector('.instruction-step.active');
+            const totalSteps = container.querySelectorAll('.instruction-step').length;
+            if (targetStep >= 1 && targetStep <= totalSteps) {
+                currentStep.classList.remove('active');
+                const nextStep = container.querySelector(`[data-step="${targetStep}"]`);
+                nextStep.classList.add('active');
+                updateStepCounter(container, targetStep, totalSteps);
+                updateNavigationButtons(container, targetStep, totalSteps);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const stepDots = document.querySelectorAll('.step-dot');
+            stepDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const targetStep = parseInt(this.dataset.step);
+                    const container = this.closest('[data-section]');
+                    const sectionId = container.dataset.section;
+                    goToStep(sectionId, targetStep);
+                });
+            });
+        });
+
+        function updateNavigationButtons(container, currentStep, totalSteps) {
+            const prevBtn = container.querySelector('.prev-btn');
+            const nextBtn = container.querySelector('.next-btn');
+            prevBtn.disabled = currentStep === 1;
+            if (currentStep === totalSteps) {
+                nextBtn.innerHTML = '<i class="fas fa-check"></i>';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.disabled = false;
+            }
+        }
+    </script>
+
+    <script>
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
     </div>
 </body>
 </html>
