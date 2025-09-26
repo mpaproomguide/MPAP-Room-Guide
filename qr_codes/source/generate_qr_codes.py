@@ -194,6 +194,11 @@ ROOMS = [
         "url": "drama-therapy.html",
         "description": "Drama Therapy room setup guide"
     },
+    {
+        "name": "Research Lab",
+        "url": "research-lab.html",
+        "description": "Research Lab resources and guides"
+    },
     # Additional standalone pages (not indexed)
     {
         "name": "756 (Paulson)",
@@ -235,9 +240,22 @@ def generate_qr_code(room_name, url, description, output_dir):
     # Create the image
     img = qr.make_image(fill_color="black", back_color="white")
     
-    # Save the image
-    filename = f"{room_name.replace(' ', '_').replace('/', '_')}_QR.png"
-    filepath = output_dir / filename
+    # Save the image (allow dedicated subfolders for certain rooms)
+    safe_name = room_name.replace(' ', '_').replace('/', '_')
+    # Create dedicated subfolder for select new pages
+    dedicated = {
+        '756_(Paulson)': 'paulson',
+        '760_(Paulson)': 'paulson',
+        'ORR': 'paulson',
+        'Percussion_Room_(Paulson)': 'paulson',
+    }
+    subdir_key = safe_name
+    subdir = dedicated.get(subdir_key)
+    if subdir:
+        (output_dir / subdir).mkdir(exist_ok=True)
+        filepath = output_dir / subdir / f"{safe_name}_QR.png"
+    else:
+        filepath = output_dir / f"{safe_name}_QR.png"
     img.save(filepath)
     
     print(f"✓ Generated QR code for {room_name}: {filepath}")
