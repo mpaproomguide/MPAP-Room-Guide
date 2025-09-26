@@ -171,10 +171,6 @@
                     <li><a href="#getting-started">Getting Started with TotalMix</a></li>
                     <li><a href="#general-layout">General Layout</a></li>
                     <li><a href="#controlling-level">Controlling Level</a></li>
-                    <li><a href="#channel-strip-controls">Channel Strip Controls</a></li>
-                    <li><a href="#submix-free-mode">Submix Mode vs Free Mode</a></li>
-                    <li><a href="#global-buttons">Global Buttons</a></li>
-                    <li><a href="#quick-tips">Quick Tips</a></li>
                 </ul>
             </div>
             
@@ -191,11 +187,14 @@
             
             <div class="guide-section no-style section-anchor" id="general-layout">
                 <h3>General Layout</h3>
-                <p>In the mixer window, you’ll see two rows of faders:</p>
+                <p>In the mixer window, you'll see two rows of faders:</p>
                 <ul class="feature-list">
                     <li><strong style="color: var(--nyu-purple);">Software Playback (top row)</strong>: these represent audio streams coming from your computer (e.g. DAW outputs, Atmos channels from Apple Music).</li>
                     <li><strong style="color: var(--nyu-purple);">Hardware Outputs (bottom row)</strong>: these represent the actual physical outputs to the speakers and headphones.</li>
                 </ul>
+                <p>When you select a Hardware Output channel from the bottom, the Software Playback faders above show the submix to that output. You'll notice that only Software Playback 1 and 2 feed Hardware Outputs 1 and 2, and only Software Playback 3 feeds Hardware Output 3, and so on. This is because we want a <strong style="color: var(--nyu-purple);">1:1 configuration</strong>; setting a track in our DAW to output 14 will logically play the signal on speaker 14. As such, <strong style="color: var(--nyu-purple);">it is unlikely you will ever want to mess with the Software Playback submixes</strong>. Instead, you should handle all actual routing in your <a href="research-daw-playback.html" style="color: var(--nyu-purple); font-weight: bold;">DAW</a>, or <a href="research-system-audio.html" style="color: var(--nyu-purple); font-weight: bold;">Audio MIDI Setup speaker configuration</a>.</p>
+                <br>
+                <p><strong style="color: var(--nyu-purple);">Hardware Inputs</strong> are hidden in our template because the software doesn't control the level sent to your DAW; it only routes the input directly to the selected hardware output. Since you should monitor inputs through your DAW anyway, showing them here would be redundant and potentially cause issues.</p>
             </div>
             
             <div class="guide-section no-style section-anchor" id="controlling-level">
@@ -211,103 +210,13 @@
                 </div>
             </div>
             
-            <div class="guide-section no-style section-anchor" id="channel-strip-controls">
-                <h3>Channel Strip Controls</h3>
-                <p>Each channel in TotalMix features a comprehensive set of controls that allow you to shape and route your audio signals:</p>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Level Controls</h4>
-                <ul class="feature-list">
-                    <li><strong style="color: var(--nyu-purple);">Fader</strong> - Main volume control for the channel</li>
-                    <li><strong style="color: var(--nyu-purple);">Gain</strong> - Input/output gain adjustment</li>
-                    <li><strong style="color: var(--nyu-purple);">Trim</strong> - Fine adjustment for precise level matching</li>
-                </ul>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Routing Controls</h4>
-                <ul class="feature-list">
-                    <li><strong style="color: var(--nyu-purple);">Mute/Solo</strong> - Quickly silence or isolate channels</li>
-                    <li><strong style="color: var(--nyu-purple);">Pan</strong> - Stereo positioning for mono sources</li>
-                    <li><strong style="color: var(--nyu-purple);">Routing Matrix</strong> - Send signals to multiple outputs simultaneously</li>
-                </ul>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Processing Options</h4>
-                <ul class="feature-list">
-                    <li><strong style="color: var(--nyu-purple);">EQ</strong> - Built-in equalizer for frequency shaping</li>
-                    <li><strong style="color: var(--nyu-purple);">Dynamics</strong> - Compression and limiting controls</li>
-                    <li><strong style="color: var(--nyu-purple);">Effects</strong> - Reverb, delay, and other spatial effects</li>
-                </ul>
-                
-                <div style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 5px; padding: 15px; margin: 20px 0;">
-                    <p style="margin: 0;"><strong>✅ Remember:</strong> In the Research Lab setup, most channels are grouped together so the ARC USB remote controls the entire surround mix as one unit.</p>
-                </div>
+            <p>The <strong style="color: var(--nyu-purple);">Software Playback</strong> channels default to <strong style="color: var(--nyu-purple);">-24 dB</strong> because the Research Lab is <strong style="color: var(--nyu-purple);">VERY LOUD</strong>. If you need to adjust this calibration, the <strong style="color: var(--nyu-purple);">Software Playback</strong> channels are automatically grouped on <strong style="color: var(--nyu-purple);">Fader Group 2</strong> to make the process easier. Raising any <strong style="color: var(--nyu-purple);">Software Playback</strong> fader will raise the rest of the faders in other submixes, even though those submixes are not visible. Ensure the faders are colored blue and <strong style="color: var(--nyu-purple);">Fader Group 2</strong> is illuminated in the <strong style="color: var(--nyu-purple);">Groups</strong> section.</p>
+            <div style="text-align: center; margin: 10px 0 0 0;">
+                <img src="images/software-playback-group.png" alt="Software Playback grouped on Fader group 2" style="max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
             </div>
             
-            <div class="guide-section no-style section-anchor" id="submix-free-mode">
-                <h3>Submix Mode vs Free Mode</h3>
-                <p>TotalMix operates in two distinct modes that affect how you interact with the mixer and how audio is processed:</p>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Submix Mode (Default)</h4>
-                <ul class="feature-list">
-                    <li>Channels are pre-mixed before being sent to outputs</li>
-                    <li>Allows for complex routing and processing chains</li>
-                    <li>Perfect for surround sound mixing and live monitoring</li>
-                    <li>Changes affect the entire mix, not individual channels</li>
-                </ul>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Free Mode</h4>
-                <ul class="feature-list">
-                    <li>Direct routing from inputs to outputs</li>
-                    <li>Minimal processing and latency</li>
-                    <li>Ideal for recording and zero-latency monitoring</li>
-                    <li>Each input can be routed independently to any output</li>
-                </ul>
-                
-                <div style="background: #fff3e0; border: 1px solid #ff9800; border-radius: 5px; padding: 15px; margin: 20px 0;">
-                    <p style="margin: 0;"><strong>⚠️ Important:</strong> The Research Lab template is configured in Submix Mode. Switching to Free Mode will change the behavior of all routing and may require reconfiguring your setup.</p>
-                </div>
-                
-                <p>To switch between modes, use the <strong style="color: var(--nyu-purple);">Mode</strong> button in the top toolbar. The current mode is indicated by the button's appearance and the overall layout of the interface.</p>
-            </div>
             
-            <div class="guide-section no-style section-anchor" id="global-buttons">
-                <h3>Global Buttons</h3>
-                <p>TotalMix features several global control buttons that affect the entire mixer or specific groups of channels:</p>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Master Controls</h4>
-                <ul class="feature-list">
-                    <li><strong style="color: var(--nyu-purple);">Master Mute</strong> - Instantly silence all outputs</li>
-                    <li><strong style="color: var(--nyu-purple);">Master Dim</strong> - Reduce all levels by a fixed amount</li>
-                    <li><strong style="color: var(--nyu-purple);">Talkback</strong> - Enable microphone input for communication</li>
-                </ul>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Group Controls</h4>
-                <ul class="feature-list">
-                    <li><strong style="color: var(--nyu-purple);">Group Mute</strong> - Mute entire groups of channels simultaneously</li>
-                    <li><strong style="color: var(--nyu-purple);">Group Solo</strong> - Isolate groups for focused monitoring</li>
-                    <li><strong style="color: var(--nyu-purple);">Group Volume</strong> - Adjust levels for entire channel groups</li>
-                </ul>
-                
-                <h4 style="color: var(--nyu-purple); margin-top: 25px;">Utility Functions</h4>
-                <ul class="feature-list">
-                    <li><strong style="color: var(--nyu-purple);">Save Workspace</strong> - Store current mixer configuration</li>
-                    <li><strong style="color: var(--nyu-purple);">Load Workspace</strong> - Recall saved configurations</li>
-                    <li><strong style="color: var(--nyu-purple);">Reset</strong> - Return to default settings</li>
-                    <li><strong style="color: var(--nyu-purple);">Snapshot</strong> - Capture current state for later recall</li>
-                </ul>
-                
-                <div style="background: #e3f2fd; border: 1px solid #2196f3; border-radius: 5px; padding: 15px; margin: 20px 0;">
-                    <p style="margin: 0;"><strong>🔧 Essential:</strong> Always save your workspace after making changes to preserve your custom routing and settings. Use descriptive names for different configurations (e.g., "5.1 Surround Mix", "Stereo Recording Setup").</p>
-                </div>
-            </div>
             
-            <div class="guide-section section-anchor" id="quick-tips">
-                <h3>Quick Tips</h3>
-                <ul class="feature-list">
-                    <li>Always save your workspace after making changes</li>
-                    <li>Use the Research Lab template (<strong style="color: var(--nyu-purple);">TotalMix2025.tmws</strong>) as your starting point</li>
-                    <li>Test audio routing before starting important sessions</li>
-                    <li>Keep the TotalMix window open during audio work</li>
-                </ul>
-            </div>
         </div>
 
         <footer>

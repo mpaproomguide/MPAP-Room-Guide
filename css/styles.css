@@ -171,9 +171,10 @@ h3 {
 
 .back-actions-row {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
     margin: 20px 0; /* match .back-link margin rhythm */
+    gap: 20px;
 }
 
 .back-actions-row .back-link {
@@ -183,7 +184,7 @@ h3 {
 
 .back-actions-row .password-btn {
     grid-column: 2;
-    justify-self: center;
+    justify-self: end;
 }
 
 @media (max-width: 768px) {
