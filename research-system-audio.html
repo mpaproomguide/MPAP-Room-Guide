@@ -23,6 +23,11 @@
         #system-audio-playback .instructions { font-size: 1.05em; }
         #system-audio-playback .instructions li,
         #system-audio-playback .instructions p { font-size: 1.05em; }
+        /* Make the first image 20% smaller */
+        #system-audio-playback .instructions img:first-of-type { 
+            width: 80%; 
+            height: auto; 
+        }
     </style>
 </head>
 <body>
@@ -44,9 +49,9 @@
                     <div class="mode-content">
                         <div class="instructions">
                             <ul>
-                                <li>In the <strong>Sound</strong> settings, select <strong>MADIFace</strong>.</li>
+                                <li>In the <strong>Sound</strong> settings, select <strong>MADIFace USB</strong>.</li>
                             </ul>
-                            <img src="images/RME.png" alt="Select MADIFace in Sound settings" class="instruction-image">
+                            <img src="images/sound-settings-madiface.png" alt="Select MADIFace in Sound settings" class="instruction-image">
 
                             <ul>
                                 <li>Go to <strong>Applications &gt; Utilities &gt; Audio MIDI Setup</strong>.</li>
@@ -54,7 +59,7 @@
                             <img src="images/audio-midi-setup.png" alt="Open Audio MIDI Setup" class="instruction-image">
 
                             <ul>
-                                <li>Click on <strong>MADIFace</strong> on the left, then click <strong>Configure Speakers</strong> at the bottom right.</li>
+                                <li>Click on <strong>MADIFace USB</strong> on the left, then click <strong>Configure Speakers</strong> at the bottom right.</li>
                             </ul>
                             <img src="images/audio-midi-configure-speakers.png" alt="Configure Speakers in Audio MIDI Setup" class="instruction-image">
 
@@ -77,7 +82,13 @@
                                         <li><a href="#" data-target="format-71">7.1 Rear Surround</a></li>
                                         <li><a href="#" data-target="format-714">7.1.4</a></li>
                                     </ul>
+                                    <br>
+                                    <p style="font-weight: normal;">You can click the speaker icon next to the channel, and a white noise will play out of it, allowing you to test that the MADI output is routed to the correct speaker. <span style="color: var(--nyu-purple);">Make sure level is turned down on TotalMix, as the noise burst can be very loud.</span></p>
                                 </li>
+                            </ul>
+
+                            <ul>
+                                <li>Play your multichannel content from Apple Music or elsewhere.</li>
                             </ul>
 
                             <!-- Hidden images used for pop-up (lightbox) -->

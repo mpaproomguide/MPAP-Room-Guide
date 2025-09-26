@@ -368,6 +368,14 @@ h3 {
     font-weight: 600;
 }
 
+.instructions .no-number-list li {
+    counter-increment: none;
+}
+
+.instructions .no-number-list li:before {
+    content: none;
+}
+
 .instructions ul, .instructions li {
     font-family: 'NYU Perstare';
     font-size: 1.15em;

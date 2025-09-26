@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAW Playback - Research Lab</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css?v=3.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
+    <style>
+        /* Do not number the format list; override global instruction numbering */
+        .instructions .no-number-list { padding-left: 20px; margin-left: 0; }
+        .instructions .no-number-list li { position: static; padding-left: 0; margin-left: 0; }
+        .instructions .no-number-list li:before { content: none !important; }
+        .instructions .format-list a { font-size: 0.9em; }
+        /* Page-specific type scaling (split the difference) */
+        main h1 { font-size: 2.25em; }
+        #daw-playback h2 { font-size: 1.6em; }
+        #daw-playback .instructions { font-size: 1.05em; }
+        #daw-playback .instructions li,
+        #daw-playback .instructions p { font-size: 1.05em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP ROOM GUIDES</h1>
+            </div>
+        </header>
+
+        <a href="research-lab.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Research Lab</a>
+
+        <main>
+            <h1>DAW Playback</h1>
+            <div class="step" id="daw-playback">
+                <div class="mode-section active">
+                    <h2><i class="fas fa-music"></i> Digital Audio Workstation Setup</h2>
+                    <div class="mode-content">
+                        <div class="instructions">
+                            <ul>
+                                <li>Open your Digital Audio Workstation (Pro Tools, Logic Pro, Ableton Live, etc.).</li>
+                            </ul>
+
+                            <ul>
+                                <li>In your DAW's audio preferences, set the audio interface to <strong>MADIFace USB</strong>.</li>
+                            </ul>
+
+                            <ul>
+                                <li>Configure your project's audio settings to match your desired channel configuration (stereo, 5.1, 7.1, etc.).</li>
+                            </ul>
+
+                            <ul>
+                                <li>Set up your track routing to output to the appropriate MADI channels for your speaker configuration.</li>
+                            </ul>
+
+                            <ul>
+                                <li>Ensure TotalMix is properly configured to route the MADI outputs to your speakers.</li>
+                            </ul>
+
+                            <ul>
+                                <li>Test your setup by playing back audio and verifying it comes through the correct speakers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© NYU MPAP Room Guide</p>
+        </footer>
+    </div>
+</body>
+</html>
