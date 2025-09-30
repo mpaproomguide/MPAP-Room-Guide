@@ -132,6 +132,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // If a credentials button already exists in the DOM, do not inject another
+        if (document.querySelector('.password-btn')) {
+            return;
+        }
+
         // Build the link element
         var link = document.createElement('a');
         link.href = 'https://docs.google.com/document/d/1t0-zcBEQpKC0T8B9totgLuMFtEGMDegbU05gRqN8GII/edit?usp=sharing';
