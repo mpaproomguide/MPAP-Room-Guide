@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYU 771 Film Cart</title>
+    <link rel="icon" type="image/png" href="images/nyu-logo.png">
+    <link rel="apple-touch-icon" href="images/nyu-logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="js/background.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
+                <h1>MPAP Room Guides</h1>
+            </div>
+        </header>
+
+        <span class="password-btn-wrapper">
+            <a href="https://docs.google.com/document/d/1t0-zcBEQpKC0T8B9totgLuMFtEGMDegbU05gRqN8GII/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="password-btn">
+                <i class="fas fa-lock"></i> CLICK HERE FOR LOG IN CREDENTIALS
+            </a>
+        </span>
+
+        <main>
+            <h1>771 Film Cart</h1>
+        </main>
+    </div>
+
+    <script>
+    // Cat toggle logic
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const logo = document.querySelector('.nyu-logo');
+        if (logo) {
+            logo.style.cursor = 'pointer';
+            logo.title = 'Toggle Cat';
+            logo.addEventListener('click', toggleCat);
+        }
+    });
+    </script>
+</body>
+</html>
+

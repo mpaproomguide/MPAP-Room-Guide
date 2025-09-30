@@ -204,6 +204,11 @@ ROOMS = [
         "url": "room12thFloor.html",
         "description": "12th Floor landing page"
     },
+    {
+        "name": "771 Film Cart",
+        "url": "filmcart-771.html",
+        "description": "771 Film Cart credentials link"
+    },
     # Additional standalone pages (not indexed)
     {
         "name": "756 (Paulson)",
