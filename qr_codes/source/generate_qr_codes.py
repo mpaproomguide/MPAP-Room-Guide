@@ -199,6 +199,11 @@ ROOMS = [
         "url": "research-lab.html",
         "description": "Research Lab resources and guides"
     },
+    {
+        "name": "12th Floor",
+        "url": "room12thFloor.html",
+        "description": "12th Floor landing page"
+    },
     # Additional standalone pages (not indexed)
     {
         "name": "756 (Paulson)",
