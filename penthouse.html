@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/lightbox.js"></script>
 </head>
 <body>
     <div class="container">
@@ -32,12 +33,61 @@
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0; border-radius: 8px;">
                         <iframe 
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                            src="https://www.youtube.com/embed/jNQXAC9IVRw?rel=0&modestbranding=1" 
+                            src="https://www.youtube.com/embed/ayf1sYiNLhQ?rel=0&modestbranding=1" 
                             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                         </iframe>
                     </div>
                     <p style="margin-top: 20px; color: #666; font-size: 0.9em;">Watch the video above for instructions on using The Penthouse.</p>
+                </div>
+            </section>
+
+            <section class="step">
+                <div class="mode-content" style="width: 100%; display: block;">
+                    <h2 style="margin-bottom: 20px;">Penthouse Written Guide</h2>
+                    <div class="main-menu-selector">
+                        <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
+                        <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
+                    </div>
+
+                    <section class="step" id="sound-setup-section">
+                        <h2><i class="fas fa-volume-up"></i> Sound</h2>
+                <div class="mode-content">
+                    <div class="instructions penthouse-instructions">
+                        <p>Make sure the <strong>mixer</strong>, <strong>speakers</strong>, and the <strong>stagebox</strong> are on. Make sure that the mixer is set to <strong>CH 1-16</strong>, and that the selected channel(s) are on <strong>Stereo Bus</strong>.</p>
+                        <div class="images-row penthouse-images-row">
+                            <img src="images/penthouse/image5.png" alt="Stagebox inputs" class="instruction-image">
+                            <img src="images/penthouse/image8.png" alt="Stagebox channel inputs" class="instruction-image">
+                        </div>
+                        <p>Plug any extra inputs into the stagebox. Sound for the TV should be plugged into <strong>channel 1 and 2</strong> on the box (though this can be changed).</p>
+                        <p>To get sound, select the channel, raise the fader, and raise the <strong>MAIN</strong> fader on the right.</p>
+                        <div class="images-row penthouse-images-row">
+                            <img src="images/penthouse/image4.png" alt="Channel faders and MAIN fader" class="instruction-image">
+                            <img src="images/penthouse/image2.png" alt="MAIN fader" class="instruction-image">
+                        </div>
+                        <p>For the <strong>monitor speakers</strong> (on the floor of the stage): Bus 1 is stage right, Bus 2 is stage left. Make sure that <strong>Bus 1-8</strong> are selected, and that knobs on the bus sends are up to get sound.</p>
+                        <div class="images-row penthouse-images-row">
+                            <img src="images/penthouse/image1.png" alt="Monitor bus sends" class="instruction-image">
+                            <img src="images/penthouse/image7.png" alt="Bus 1-8 and bus send knobs" class="instruction-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="step" id="video-projection-section" style="display:none;">
+                <h2><i class="fas fa-eye"></i> Video</h2>
+                <div class="mode-content">
+                    <div class="instructions penthouse-instructions">
+                        <p>In the closet by the stage, go into <strong>Cabinet C</strong>. There is a box that says <strong>"Penthouse TV Stuff"</strong>. In there, there should be a remote, an HDMI w/ USB-A dongle, and a USB-C dongle.</p>
+                        <p>Plug either dongle into your device (if using HDMI, USB-A is to power the dongle). Turn the TV on and make sure the input is <strong>HDMI 1</strong>. You will see this pop up on the screen.</p>
+                        <img src="images/penthouse/image3.png" alt="HDMI 1 input on TV" class="instruction-image">
+                        <p>Once the dongle is plugged in, it should flash green for a while until it goes to solid green. Once it does that, press the button in the middle of the dongle and your screen will project to the TV.</p>
+                        <img src="images/penthouse/image6.png" alt="Dongle states: green (not projecting) and red (projecting)" class="instruction-image">
+                        <div class="instruction-note">Note: The dongle is red when it's projecting, and green when it is not.</div>
+                        <p>On your device, make sure your settings have the 2nd monitor and your sound on <strong>WirelessMedia</strong>.</p>
+                    </div>
+                </div>
+            </section>
                 </div>
             </section>
         </main>
@@ -46,5 +96,25 @@
             <p>© NYU MPAP Room Guide</p>
         </footer>
     </div>
+    <script>
+        function showSection(section) {
+            const soundSection = document.getElementById('sound-setup-section');
+            const videoSection = document.getElementById('video-projection-section');
+            const soundTab = document.getElementById('sound-tab');
+            const videoTab = document.getElementById('video-tab');
+            if (section === 'sound') {
+                soundSection.style.display = '';
+                videoSection.style.display = 'none';
+                soundTab.classList.add('active');
+                videoTab.classList.remove('active');
+            } else {
+                soundSection.style.display = 'none';
+                videoSection.style.display = '';
+                soundTab.classList.remove('active');
+                videoTab.classList.add('active');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() { showSection('sound'); });
+    </script>
 </body>
 </html>

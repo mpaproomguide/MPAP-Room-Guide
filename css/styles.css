@@ -461,10 +461,12 @@ h3 {
     margin: 20px 0;
 }
 
-.images-row .mode-image {
+.images-row .mode-image,
+.images-row .step-image {
     width: calc(50% - 10px);
     max-width: 45%;
     flex: 1;
+    min-width: 0;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -827,7 +829,7 @@ h2 .fas, h3 .fas {
 
     /* Unified image sizing for mobile - consistent with desktop */
     .step-image {
-        width: 9%;
+        width: 100%;
         max-width: min(500px, calc(100vw - 20px));
         height: auto;
         margin: 15px auto;
@@ -1086,7 +1088,8 @@ h2 .fas, h3 .fas {
         align-items: center;
     }
 
-    .images-row .mode-image {
+    .images-row .mode-image,
+    .images-row .step-image {
         width: 100%;
         max-width: min(400px, calc(100vw - 20px));
         object-fit: contain;
@@ -1308,6 +1311,18 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
 
 
 
+.step-number {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--nyu-purple);
+    margin-top: auto;
+    margin-bottom: 0;
+    padding-top: 15px;
+    order: 999;
+    text-align: center;
+    width: 100%;
+}
+
 .step-text {
     font-size: 1.1em;
     font-weight: 400;
@@ -1446,6 +1461,82 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     height: auto;
     margin: 0 auto;
     display: block;
+}
+
+/* Penthouse images - consistent sizing */
+[data-section="penthouse-sound"] .step-image,
+[data-section="penthouse-video"] .step-image {
+    max-width: min(500px, 85%);
+    height: auto;
+    margin: 10px auto;
+    display: block;
+}
+
+[data-section="penthouse-sound"] .images-row .step-image,
+[data-section="penthouse-video"] .images-row .step-image {
+    max-width: 45%;
+}
+
+/* Penthouse: no bold anywhere */
+.penthouse-instructions,
+.penthouse-instructions p,
+.penthouse-instructions strong,
+.penthouse-instructions .instruction-note {
+    font-weight: 400;
+}
+
+/* Penthouse: bullets next to each text entry */
+.penthouse-instructions p {
+    padding-left: 1.5em;
+    position: relative;
+}
+.penthouse-instructions p::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--nyu-purple);
+}
+
+/* Penthouse instruction-note: fix indenting, keep bullet */
+.penthouse-instructions .instruction-note {
+    margin: 15px 0;
+    margin-left: 0;
+    padding: 12px 0 12px 1.5em;
+    border-left: 3px solid var(--nyu-light-purple);
+    background: rgba(138, 43, 226, 0.05);
+    border-radius: 0 4px 4px 0;
+}
+
+.penthouse-images-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.penthouse-images-row img {
+    flex: 1;
+    min-width: 0;
+    max-width: 45%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 4th image (2nd in each row) stretches to match 3rd's height */
+.penthouse-images-row img:nth-child(2) {
+    object-fit: fill;
+}
+
+@media (max-width: 768px) {
+    .penthouse-images-row {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .penthouse-images-row img {
+        max-width: 45%;
+    }
 }
 
 .step-navigation {

@@ -126,9 +126,9 @@ function windowResized() {
 // Inject a top-of-page password button on all local pages except index
 document.addEventListener('DOMContentLoaded', function() {
     try {
-        // Skip on index.html (landing navigator)
+        // Skip on index.html (landing navigator) and room620
         var path = (window.location.pathname || '').toLowerCase();
-        if (path.endsWith('/index.html') || path === '/' || path === '') {
+        if (path.endsWith('/index.html') || path === '/' || path === '' || path.endsWith('room620.html')) {
             return;
         }
 
