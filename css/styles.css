@@ -2052,6 +2052,25 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     margin: 0 auto;
 }
 
+/* Penthouse - double-sized on row below Education rooms */
+.penthouse-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto 0;
+}
+.penthouse-3d {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .room-3d, .studio-3d, .cart-3d, .pless-3d, .paulson-3d, .north-3d, .sixth-3d {
     background: linear-gradient(145deg, #f8f5ff, #e9e1f3);
     border: 2px solid #d4c5f7;

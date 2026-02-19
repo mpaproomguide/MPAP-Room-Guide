@@ -180,6 +180,11 @@ ROOMS = [
         "description": "Room 985 setup guide"
     },
     {
+        "name": "The Penthouse",
+        "url": "penthouse.html",
+        "description": "Education Building - The Penthouse"
+    },
+    {
         "name": "Room C205",
         "url": "roomC205.html",
         "description": "Room C205 setup guide"
