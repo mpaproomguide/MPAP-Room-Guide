@@ -1529,6 +1529,46 @@ strong[style*="color: #8c4bbd"], strong[style*="color:#8c4bbd"] {
     object-fit: fill;
 }
 
+/* Penthouse desktop: constrain video and photos, tighten spacing */
+@media (min-width: 769px) {
+    .penthouse-main .step {
+        padding: 18px;
+    }
+    .penthouse-main .penthouse-video-wrapper {
+        max-width: 520px;
+        margin: 16px auto;
+    }
+    .penthouse-main .penthouse-video-embed {
+        width: 100%;
+    }
+    .penthouse-main .penthouse-instructions .instruction-image {
+        max-width: 420px;
+        max-height: 280px;
+        width: auto;
+        height: auto;
+        margin: 8px 0;
+        margin-right: auto;
+        margin-left: 0;
+        display: block;
+        object-fit: contain;
+    }
+    .penthouse-main .penthouse-images-row {
+        gap: 12px;
+        margin: 8px 0;
+        justify-content: flex-start;
+    }
+    .penthouse-main .penthouse-images-row img {
+        max-width: 340px;
+        max-height: 220px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+    .penthouse-main .penthouse-instructions p {
+        margin-bottom: 10px;
+    }
+}
+
 @media (max-width: 768px) {
     .penthouse-images-row {
         flex-direction: row;
