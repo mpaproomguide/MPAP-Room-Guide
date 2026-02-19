@@ -12,7 +12,7 @@
     <script src="js/background.js"></script>
     <script src="js/lightbox.js"></script>
 </head>
-<body>
+<body data-hide-credentials="true">
     <div class="container">
         <header>
             <div class="header-content">
@@ -29,7 +29,7 @@
             <h1>The Penthouse</h1>
             <section class="step">
                 <div class="mode-content" style="width: 100%; display: block;">
-                    <h2 style="margin-bottom: 20px;">The Penthouse Video Guide</h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: none;">The Penthouse Video Guide</h2>
                     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 20px 0; border-radius: 8px;">
                         <iframe 
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
@@ -42,9 +42,9 @@
                 </div>
             </section>
 
-            <section class="step">
+            <section class="step" style="margin-top: 48px;">
                 <div class="mode-content" style="width: 100%; display: block;">
-                    <h2 style="margin-bottom: 20px;">Penthouse Written Guide</h2>
+                    <h2 style="margin-bottom: 20px; border-bottom: none;">Penthouse Written Guide</h2>
                     <div class="main-menu-selector">
                         <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
                         <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
