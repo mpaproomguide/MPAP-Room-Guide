@@ -5,7 +5,5 @@ docs/
 *.tmp
 *.cache
 CURSOR_RULES_ADDITION.md
-# Exclude generated QR code images but keep source files
-qr_codes/*.png
-qr_codes/*.jpg
-qr_codes/*.jpeg
+# Archive of unused/development files (not synced)
+_archive/
