@@ -1,127 +1,184 @@
-let waves = [];
-const numWaves = 8;
-let time = 0;
-const baseColor = '#57068c';
-let blurAmount = 1;
+// Ambient background: a slow, zoomed-in 3D waterfall spectrogram of a
+// "vox" signal — a harmonic series shaped by three morphing vowel
+// formants. Every animated component runs at an integer number of
+// cycles per LOOP_SECONDS, so the whole scene loops seamlessly.
+// Vanilla canvas, no p5 dependency.
 
-// Mobile optimization settings
-let isMobile = false;
-let stepSize, pointSpacing, maxHarmonics, targetFrameRate;
+(function () {
+    'use strict';
 
-function setup() {
-    // Simple mobile detection
-    isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-               ('ontouchstart' in window) || 
-               (window.innerWidth < 768);
-    
-    // Set performance parameters based on device
-    if (isMobile) {
-        stepSize = 12;        // Bigger steps = less detail but smoother
-        pointSpacing = 40;    // Fewer points
-        maxHarmonics = 3;     // Limit complexity
-        targetFrameRate = 30; // Lower frame rate
-        blurAmount = 0.5;     // Less blur
-    } else {
-        stepSize = 5;         // Original detail
-        pointSpacing = 20;    // Original points
-        maxHarmonics = 8;     // Full complexity
-        targetFrameRate = 60; // Full frame rate
-        blurAmount = 1;       // Original blur
-    }
-    
-    const canvas = createCanvas(windowWidth, windowHeight);
-    canvas.position(0, 0);
-    canvas.style('z-index', '-1');
-    canvas.style('position', 'fixed');
-    
-    // Set frame rate based on device
-    frameRate(targetFrameRate);
-    
-    // Initialize waves with different harmonic properties
-    for (let i = 0; i < numWaves; i++) {
-        waves.push({
-            amplitude: map(i, 0, numWaves-1, height * 0.1, height * 0.3),
-            frequency: map(i, 0, numWaves-1, 0.001, 0.005),
-            speed: map(i, 0, numWaves-1, 0.5, 2),
-            phase: random(TWO_PI),
-            harmonic: min(i + 1, maxHarmonics), // Limit harmonics on mobile
-            opacity: map(i, 0, numWaves-1, 0.15, 0.05)
-        });
-    }
-}
+    var LOOP_SECONDS = 60;
+    var TAU = Math.PI * 2;
+    var VIOLET = { r: 87, g: 6, b: 140 };     // --nyu-purple #57068c
+    var LAVENDER = { r: 138, g: 43, b: 226 }; // --nyu-light-purple #8a2be2
 
-function draw() {
-    clear();
-    time += 0.0015;
-    
-    // Draw each wave
-    for (let wave of waves) {
-        // Draw the wave pattern
-        noFill();
-        stroke(color(baseColor + hex(wave.opacity * 255, 2)));
-        strokeWeight(isMobile ? 0.8 : 1);
-        
-        beginShape();
-        for (let x = 0; x < width; x += stepSize) {
-            // Calculate y position using multiple harmonics
-            let y = height/2;
-            for (let h = 1; h <= wave.harmonic; h++) {
-                y += sin(x * wave.frequency * h + time * wave.speed + wave.phase) * 
-                     (wave.amplitude / h);
-            }
-            vertex(x, y);
-        }
-        endShape();
-        
-        // Draw harmonic points (skip on mobile for lowest harmonics)
-        if (!isMobile || wave.harmonic >= 3) {
-            for (let x = 0; x < width; x += pointSpacing) {
-                let y = height/2;
-                for (let h = 1; h <= wave.harmonic; h++) {
-                    y += sin(x * wave.frequency * h + time * wave.speed + wave.phase) * 
-                         (wave.amplitude / h);
-                }
-                fill(color(baseColor + hex(wave.opacity * 255, 2)));
-                noStroke();
-                ellipse(x, y, isMobile ? 2 : 3);
-            }
+    function mix(a, b, t) { return Math.round(a + (b - a) * t); }
+
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                   ('ontouchstart' in window) ||
+                   (window.innerWidth < 768);
+
+    var BINS = isMobile ? 80 : 140;
+    var ROWS = isMobile ? 34 : 58;
+    var FPS = 30;
+    var FMAX = 42;
+    var ROW_DT = 0.35;                      // seconds of history per row
+
+    var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var canvas, ctx, W, H, DPR;
+
+    function setup() {
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('aria-hidden', 'true');
+        canvas.style.cssText =
+            'position:fixed;top:0;left:0;width:100vw;height:100vh;' +
+            'z-index:-1;pointer-events:none;';
+        document.body.insertBefore(canvas, document.body.firstChild);
+        ctx = canvas.getContext('2d');
+        resize();
+        window.addEventListener('resize', resize);
+
+        if (reduceMotion) {
+            render(12.0);                   // one static, composed frame
+        } else {
+            tick();
         }
     }
-    
-    // Apply blur effect - disabled for mobile performance
-    // filter(BLUR, blurAmount);
-}
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-    
-    // Re-detect mobile status on resize
-    isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
-               ('ontouchstart' in window) || 
-               (window.innerWidth < 768);
-    
-    // Update performance settings
-    if (isMobile) {
-        stepSize = 12;
-        pointSpacing = 40;
-        maxHarmonics = 3;
-        targetFrameRate = 30;
-        blurAmount = 0.5;
+    function resize() {
+        DPR = Math.min(window.devicePixelRatio || 1, 2);
+        W = window.innerWidth;
+        H = window.innerHeight;
+        canvas.width = Math.round(W * DPR);
+        canvas.height = Math.round(H * DPR);
+        if (reduceMotion) render(12.0);
+    }
+
+    /* ----- vox spectrum: deterministic in t, periodic in LOOP_SECONDS ----- */
+
+    function lfo(cycles, phase, t) {
+        return Math.sin(TAU * cycles * t / LOOP_SECONDS + phase);
+    }
+
+    // fills row[] with the spectrum at absolute time t
+    function spectrumRow(row, t) {
+        var b;
+        for (b = 0; b < BINS; b++) row[b] = 0;
+
+        var F1 = 7 + 3.5 * lfo(2, 0.0, t);
+        var F2 = 18 + 8.0 * lfo(3, 1.7, t);
+        var F3 = 32 + 5.0 * lfo(1, 3.1, t);
+
+        var k, f, envF, amp, center, from, to, d, g;
+        for (k = 1; k <= 18; k++) {
+            f = k * 2;
+            envF =
+                1.00 * Math.exp(-Math.pow((f - F1) / 2.6, 2)) +
+                0.70 * Math.exp(-Math.pow((f - F2) / 3.6, 2)) +
+                0.42 * Math.exp(-Math.pow((f - F3) / 4.2, 2)) + 0.05;
+            amp = (1 / Math.sqrt(k)) * envF *
+                  (1 + 0.14 * lfo(4 + (k % 3), k, t));
+            if (amp < 0.01) continue;
+
+            // gaussian ridge, only computed near its own peak
+            center = f / FMAX * BINS;
+            from = Math.max(0, Math.floor(center - 9));
+            to = Math.min(BINS - 1, Math.ceil(center + 9));
+            for (b = from; b <= to; b++) {
+                d = (b + 0.5) / BINS * FMAX - f;
+                g = amp * Math.exp(-d * d * 3.2);
+                if (g > row[b]) row[b] = g;
+            }
+        }
+        for (b = 0; b < BINS; b++) row[b] = Math.min(1, row[b] * 0.9);
+    }
+
+    /* ----- render: zoomed-in low side angle, gently swaying ----- */
+
+    var rowBuf = new Float32Array(BINS);
+
+    function render(t) {
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+
+        var yaw = -0.92 + 0.10 * lfo(1, 0.6, t);
+        var pitch = 0.34 + 0.045 * lfo(2, 2.2, t);
+        var cosY = Math.cos(yaw), sinY = Math.sin(yaw);
+        var cosP = Math.cos(pitch), sinP = Math.sin(pitch);
+
+        // oversized and pushed low-right so the mesh bleeds off the edges
+        var S = Math.max(W, H) * 1.35;
+        var cx = W * 0.58, cy = H * 0.62;
+
+        function proj(fx, amp, dz) {
+            var X = (fx - 0.5) * 1.9, Y = amp * 0.62, Z = (dz - 0.5) * 2.1;
+            var x1 = X * cosY + Z * sinY;
+            var z1 = -X * sinY + Z * cosY;
+            var y2 = Y * cosP + z1 * sinP;
+            var z2 = -Y * sinP + z1 * cosP;
+            var p = 3.0 / (3.0 + z2);
+            return { x: cx + x1 * p * S * 0.5, y: cy - y2 * p * S * 0.5 };
+        }
+
+        var i, b, dz, fade, bl, br, pt;
+        for (i = ROWS - 1; i >= 0; i--) {
+            spectrumRow(rowBuf, t - i * ROW_DT);
+            dz = i / (ROWS - 1);
+
+            bl = proj(0, 0, dz);
+            br = proj(1, 0, dz);
+            ctx.beginPath();
+            ctx.moveTo(bl.x, bl.y);
+            for (b = 0; b < BINS; b++) {
+                pt = proj(b / (BINS - 1), rowBuf[b], dz);
+                ctx.lineTo(pt.x, pt.y);
+            }
+            ctx.lineTo(br.x, br.y);
+
+            fade = (1 - dz) * (1 - dz);
+
+            // opaque fill occludes the rows behind; a lavender haze that
+            // deepens toward the front gives the mesh volume
+            ctx.fillStyle = 'rgb(' + mix(245, 238, fade) + ',' +
+                            mix(245, 231, fade) + ',' + mix(245, 249, fade) + ')';
+            ctx.fill();
+
+            // stroke ramps from airy lavender at the back to full violet
+            // up front, with a soft glow on the nearest ridges
+            ctx.strokeStyle = 'rgba(' +
+                mix(LAVENDER.r, VIOLET.r, fade) + ',' +
+                mix(LAVENDER.g, VIOLET.g, fade) + ',' +
+                mix(LAVENDER.b, VIOLET.b, fade) + ',' +
+                (0.14 + 0.56 * fade).toFixed(3) + ')';
+            ctx.lineWidth = 1 + 0.9 * fade;
+            if (!isMobile && dz < 0.25) {
+                ctx.shadowColor = 'rgba(138,43,226,0.5)';
+                ctx.shadowBlur = 7 * (1 - dz * 4);
+            }
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    /* ----- 30fps loop on the shared seamless clock ----- */
+
+    var last = 0;
+    function tick(now) {
+        requestAnimationFrame(tick);
+        if (now - last < 1000 / FPS) return;
+        last = now;
+        var t = (now / 1000) % LOOP_SECONDS;
+        render(t);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setup);
     } else {
-        stepSize = 5;
-        pointSpacing = 20;
-        maxHarmonics = 8;
-        targetFrameRate = 60;
-        blurAmount = 1;
+        setup();
     }
-    
-    frameRate(targetFrameRate);
-    
-    // Update wave harmonics
-    for (let i = 0; i < waves.length; i++) {
-        waves[i].harmonic = min(i + 1, maxHarmonics);
-    }
-} 
+})();
 
 // Inject a top-of-page password button on all local pages except index
 document.addEventListener('DOMContentLoaded', function() {
