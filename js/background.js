@@ -108,9 +108,10 @@
         var cosY = Math.cos(yaw), sinY = Math.sin(yaw);
         var cosP = Math.cos(pitch), sinP = Math.sin(pitch);
 
-        // oversized and pushed low-right so the mesh bleeds off the edges
-        var S = Math.max(W, H) * 1.35;
-        var cx = W * 0.58, cy = H * 0.62;
+        // oversized and pushed right so the mesh bleeds off the edges,
+        // back ridges climbing into the top of the viewport
+        var S = Math.max(W, H) * 1.55;
+        var cx = W * 0.58, cy = H * 0.46;
 
         function proj(fx, amp, dz) {
             var X = (fx - 0.5) * 1.9, Y = amp * 0.62, Z = (dz - 0.5) * 2.1;
