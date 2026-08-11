@@ -8,6 +8,7 @@
     'use strict';
 
     var LOOP_SECONDS = 60;
+    var SPEED = 0.5;   // wall-clock rate: one full loop takes LOOP_SECONDS / SPEED
     var TAU = Math.PI * 2;
     var VIOLET = { r: 87, g: 6, b: 140 };     // --nyu-purple #57068c
     var LAVENDER = { r: 138, g: 43, b: 226 }; // --nyu-light-purple #8a2be2
@@ -35,7 +36,7 @@
         canvas.style.cssText =
             'position:fixed;top:0;left:0;width:100vw;height:100vh;' +
             'z-index:-1;pointer-events:none;' +
-            'filter:blur(4px);transform:scale(1.03);';
+            'filter:blur(3px);transform:scale(1.03);';
         document.body.insertBefore(canvas, document.body.firstChild);
         ctx = canvas.getContext('2d');
         resize();
@@ -181,7 +182,7 @@
         requestAnimationFrame(tick);
         if (now - last < 1000 / FPS) return;
         last = now;
-        var t = (now / 1000) % LOOP_SECONDS;
+        var t = (now / 1000 * SPEED) % LOOP_SECONDS;
         render(t);
     }
 
