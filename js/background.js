@@ -34,7 +34,8 @@
         canvas.setAttribute('aria-hidden', 'true');
         canvas.style.cssText =
             'position:fixed;top:0;left:0;width:100vw;height:100vh;' +
-            'z-index:-1;pointer-events:none;';
+            'z-index:-1;pointer-events:none;' +
+            'filter:blur(8px);transform:scale(1.03);';
         document.body.insertBefore(canvas, document.body.firstChild);
         ctx = canvas.getContext('2d');
         resize();
