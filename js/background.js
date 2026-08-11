@@ -80,7 +80,7 @@
                 0.70 * Math.exp(-Math.pow((f - F2) / 3.6, 2)) +
                 0.42 * Math.exp(-Math.pow((f - F3) / 4.2, 2)) + 0.05;
             amp = (1 / Math.sqrt(k)) * envF *
-                  (1 + 0.14 * lfo(4 + (k % 3), k, t));
+                  (1 + 0.08 * lfo(4 + (k % 3), k, t));
             if (amp < 0.01) continue;
 
             // gaussian ridge, only computed near its own peak
@@ -89,11 +89,21 @@
             to = Math.min(BINS - 1, Math.ceil(center + 9));
             for (b = from; b <= to; b++) {
                 d = (b + 0.5) / BINS * FMAX - f;
-                g = amp * Math.exp(-d * d * 3.2);
-                if (g > row[b]) row[b] = g;
+                g = amp * Math.exp(-d * d * 1.4);
+                row[b] += g;
             }
         }
-        for (b = 0; b < BINS; b++) row[b] = Math.min(1, row[b] * 0.9);
+        // neighbor-averaging passes melt ridge creases into rolling hills
+        var pass, prev, cur;
+        for (pass = 0; pass < 2; pass++) {
+            prev = row[0];
+            for (b = 1; b < BINS - 1; b++) {
+                cur = row[b];
+                row[b] = 0.25 * prev + 0.5 * cur + 0.25 * row[b + 1];
+                prev = cur;
+            }
+        }
+        for (b = 0; b < BINS; b++) row[b] = Math.min(1, row[b] * 0.85);
     }
 
     /* ----- render: zoomed-in low side angle, gently swaying ----- */
