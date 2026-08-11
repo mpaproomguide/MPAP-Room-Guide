@@ -101,6 +101,27 @@
         .research-content p a:hover {
             color: var(--nyu-light-purple);
         }
+
+        .install-callout {
+            display: block;
+            background: linear-gradient(135deg, var(--nyu-purple), var(--nyu-light-purple));
+            color: white;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .install-callout:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -135,7 +156,11 @@
             <p>Welcome to the Research Lab! This room is equipped with 23 speakers, ideal for working with multichannel sound. This guide will run you through the setup and operation of the system so you can begin working quickly and effectively.</p>
             <br>
             <p>You can use your own laptop if you have <strong>TotalMix FX</strong> installed. <a href="https://rme-audio.de/rme-macos.html">Click here for help with installation.</a></p>
-            
+
+            <a href="first-time-installation.html" class="install-callout">
+                <i class="fas fa-laptop"></i> First time using your laptop in the Research Lab? Start with the First-Time Installation Guide <i class="fas fa-arrow-right"></i>
+            </a>
+
             <div style="background: #f8f5ff; border: 2px solid var(--nyu-light-purple); border-radius: 10px; padding: 20px; margin: 20px 0;">
                 <h3 style="margin-top: 0; color: var(--nyu-purple);"><i class="fas fa-list"></i> Table of Contents</h3>
                 <ul style="list-style: none; padding-left: 0;">
