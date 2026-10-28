@@ -699,5 +699,32 @@
         fitScreen();
         render();
     </script>
+
+    <script>
+    // Cat toggle logic, as on the other room pages. Phones hide the logo,
+    // so the room title toggles it there too.
+    let catEnabled = false;
+    let catScript = null;
+    function toggleCat() {
+        if (!catEnabled) {
+            catScript = document.createElement('script');
+            catScript.src = 'js/oneko.js';
+            catScript.dataset.cat = 'js/images/oneko.gif';
+            document.body.appendChild(catScript);
+            catEnabled = true;
+        } else {
+            const neko = document.getElementById('oneko');
+            if (neko) neko.remove();
+            if (catScript) catScript.remove();
+            catScript = null;
+            catEnabled = false;
+        }
+    }
+    document.querySelectorAll('.nyu-logo, .ph-titlebar h1').forEach((el) => {
+        el.style.cursor = 'pointer';
+        el.title = 'Toggle Cat';
+        el.addEventListener('click', toggleCat);
+    });
+    </script>
 </body>
 </html>
