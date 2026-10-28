@@ -7,3 +7,6 @@ docs/
 CURSOR_RULES_ADDITION.md
 # Archive of unused/development files (not synced)
 _archive/
+
+# Local preview server and editor settings
+.claude/

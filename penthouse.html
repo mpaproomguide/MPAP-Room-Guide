@@ -2,17 +2,356 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>The Penthouse - NYU MPAP Room Guides</title>
     <link rel="icon" type="image/png" href="images/nyu-logo.png">
     <link rel="apple-touch-icon" href="images/nyu-logo.png">
     <link rel="stylesheet" href="css/styles.css?v=3.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Only this site, plus Font Awesome from cdnjs, may supply scripts, styles, fonts and images -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <script src="js/background.js?v=4"></script>
     <script src="js/lightbox.js"></script>
+    <style>
+        /* The whole guide is one screen: header, section pills, the slide card,
+           and the Next button. A single photo shrinks to make room, so nothing scrolls. */
+        /* min-height, not height: on a screen too small for a slide the page
+           scrolls a little instead of cutting the slide off */
+        .ph-app {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            min-height: 100dvh;
+            min-height: var(--app-h, 100dvh);
+            max-width: 760px;
+            padding-bottom: calc(14px + env(safe-area-inset-bottom));
+        }
+        /* Quick taps on Next shouldn't read as a double-tap zoom on iPhone */
+        .ph-app { touch-action: manipulation; }
+        .ph-app header {
+            flex: none;
+            margin-bottom: 14px;
+        }
+
+        .ph-titlebar {
+            flex: none;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 10px;
+        }
+        .ph-titlebar .back-link { margin: 0; justify-self: start; }
+        .ph-titlebar h1 { margin: 0; font-size: 2em; }
+
+        /* Progress: one segment per part, filling as you go through it */
+        .ph-progress {
+            flex: none;
+            display: flex;
+            gap: 5px;
+            margin-top: 12px;
+        }
+        .ph-part {
+            flex: 1;
+            min-width: 0;
+        }
+        .ph-part b {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            color: #6b5b7b;
+        }
+        .ph-part.here b { color: var(--nyu-purple); font-weight: 800; }
+        @media (max-width: 430px) {
+            .ph-part b { font-size: 0.7em; }
+        }
+        @media (max-width: 370px) {
+            .ph-part b { font-size: 0.64em; }
+        }
+        .ph-progress span {
+            display: block;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(87, 6, 140, 0.13);
+            overflow: hidden;
+        }
+        .ph-progress i {
+            display: block;
+            height: 100%;
+            border-radius: 3px;
+            background: var(--nyu-purple);
+            transition: width 0.35s ease;
+        }
+
+        /* Read out to screen readers only */
+        .ph-sr {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        /* The slide card */
+        /* The card grows to meet the Next button, so each step reads as a full screen */
+        .ph-card.step {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            margin-top: 14px;
+            padding: 20px 18px;
+            background: #fff;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+        }
+        .ph-card.step:hover { transform: none; }
+        .ph-slide {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .ph-slide h2 {
+            flex: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 1.3em;
+            line-height: 1.25;
+            color: var(--nyu-purple);
+        }
+
+        /* The photo. fitPhotos() sets its height in pixels from the space left on
+           screen; the width follows from the 16:9 shape. */
+        .ph-photo {
+            flex: none;
+            display: flex;
+        }
+        .ph-photo figure {
+            position: relative;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .ph-photo .step-image {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            margin: 0;
+            object-fit: contain;
+            background: #000;
+            border-radius: 8px;
+        }
+        .ph-grid .step-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            margin: 0;
+            border-radius: 8px;
+        }
+
+        .lightbox-close { width: 44px; height: 44px; }
+        @media (hover: none) {
+            .step-image:hover { transform: none; opacity: 1; }
+        }
+
+        /* Several photos of one task, crossfading in turn (stepped by the script) */
+        .ph-fade .ph-fade-top {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+        .ph-fade .ph-fade-top.on { opacity: 1; }
+        .ph-fade .ph-fade-top:not(.on) { pointer-events: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .ph-fade .ph-fade-top { transition: none; }
+        }
+
+        /* Photo grid with captions */
+        .ph-grid {
+            flex: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        .ph-grid figure {
+            width: calc((100% - 16px) / 3);
+            margin: 0;
+        }
+        .ph-grid .step-image {
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+        .ph-grid figcaption {
+            padding-top: 3px;
+            font-size: 0.85em;
+            line-height: 1.25;
+            text-align: center;
+        }
+
+        .ph-slide .step-text {
+            flex: none;
+            margin: 0;
+            padding: 0 2px;
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+
+
+        .ph-slide .step-text strong { color: var(--nyu-light-purple); }
+        .ph-slide .ph-instruction {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .ph-bullets {
+            flex: none;
+            margin: 0;
+            padding-left: 1.4em;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .ph-slide .instruction-note {
+            flex: none;
+            margin: 0;
+            padding: 10px 14px;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .ph-slide .instruction-note a { color: var(--nyu-purple); }
+
+        /* Channel list: two columns so all sixteen channels fit on one screen */
+        .ph-channels {
+            flex: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(5, auto);
+            grid-auto-flow: column;
+            gap: 1px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #e9e1f3;
+        }
+        .ph-channels li {
+            display: flex;
+            gap: 8px;
+            padding: 5px 8px;
+            background: var(--nyu-white);
+            font-size: 0.92em;
+            line-height: 1.25;
+        }
+        .ph-channels b {
+            flex: none;
+            min-width: 2.7em;
+            color: var(--nyu-purple);
+        }
+
+        /* Gentle slide between steps */
+        .ph-slide-next { animation: ph-in-right 0.3s ease both; }
+        .ph-slide-prev { animation: ph-in-left 0.3s ease both; }
+        @keyframes ph-in-right { from { opacity: 0; transform: translateX(24px); } }
+        @keyframes ph-in-left { from { opacity: 0; transform: translateX(-24px); } }
+        @media (prefers-reduced-motion: reduce) {
+            .ph-slide-next, .ph-slide-prev { animation: none; }
+        }
+
+        /* Back + Next */
+        .ph-nav {
+            flex: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 14px;
+        }
+        .ph-nav .circular-nav-btn { flex: none; }
+        .ph-next.mode-button {
+            flex: 1;
+            justify-content: center;
+            min-height: 54px;
+            font-size: 1.1em;
+        }
+        .ph-next.mode-button:hover { transform: none; }
+        .ph-next.mode-button:active { transform: scale(0.98); }
+        .ph-next.mode-button i { margin: 0 0 0 10px; }
+
+        @media (max-width: 768px) {
+            .ph-app {
+                padding: 12px max(16px, env(safe-area-inset-right)) calc(14px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+            }
+            /* Phones: one purple bar with the way back and the room's name */
+            .ph-app header { display: none; }
+            .ph-titlebar {
+                display: flex;
+                padding: 10px 12px;
+                border-radius: 8px;
+                background: var(--nyu-purple);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .ph-titlebar .back-link {
+                width: auto;
+                min-height: 44px;
+                padding: 6px 10px;
+                font-size: 0.85em;
+                background: rgba(255, 255, 255, 0.15);
+                box-shadow: none;
+                color: var(--nyu-white);
+            }
+            .ph-titlebar .back-link i { color: var(--nyu-white); }
+            .ph-titlebar h1 {
+                flex: 1;
+                margin-right: 4px;
+                font-size: 1.2em;
+                letter-spacing: 0.5px;
+                text-align: right;
+                color: var(--nyu-white);
+            }
+            .ph-progress { gap: 8px; margin-top: 18px; }
+            .ph-part b { margin-top: 7px; }
+            .ph-progress { margin-top: 14px; }
+            .ph-card.step { margin-top: 14px; padding: 18px 16px; }
+            .ph-slide { gap: 14px; }
+            .ph-slide h2 { font-size: 1.4em; }
+            .ph-nav { padding-top: 14px; }
+        }
+
+        /* Short screens (iPhone SE with Safari's bars showing): drop the banner,
+           the page title says where you are */
+        @media (max-width: 768px) and (max-height: 620px) {
+            .ph-app { padding: 8px 12px calc(10px + env(safe-area-inset-bottom)); }
+            .ph-progress { margin-top: 10px; }
+            .ph-card.step { margin-top: 10px; padding: 12px; }
+            .ph-slide { gap: 8px; }
+            .ph-slide h2 { font-size: 1.15em; }
+            .ph-nav { padding-top: 10px; }
+            .ph-next.mode-button { min-height: 48px; }
+            .ph-grid { gap: 6px; }
+            .ph-grid .step-image { aspect-ratio: 3 / 2; }
+            .ph-channels li { padding: 5px 6px; font-size: 0.85em; }
+        }
+
+        /* Narrowest phones (360px Androids): a little less space between items */
+        @media (max-width: 370px) {
+            .ph-slide { gap: 10px; }
+            .ph-card.step { padding: 14px 12px; }
+        }
+    </style>
 </head>
 <body data-hide-credentials="true">
-    <div class="container">
+    <div class="container ph-app">
         <header>
             <div class="header-content">
                 <img src="images/nyu-logo.svg" alt="NYU Logo" class="nyu-logo">
@@ -20,102 +359,345 @@
             </div>
         </header>
 
-        <a href="index.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Back to Room Guides
-        </a>
-
-        <main class="penthouse-main">
+        <div class="ph-titlebar">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Rooms</a>
             <h1>The Penthouse</h1>
-            <section class="step">
-                <div class="mode-content" style="width: 100%; display: block;">
-                    <h2 style="margin-bottom: 20px; border-bottom: none;">The Penthouse Video Guide</h2>
-                    <div class="penthouse-video-wrapper">
-                        <div class="penthouse-video-embed" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
-                            <iframe 
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                                src="https://www.youtube.com/embed/LA0U8fOF3Cs?rel=0&modestbranding=1" 
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    </div>
-                    <p style="margin-top: 20px; color: #666; font-size: 0.9em;">Watch the video above for instructions on using The Penthouse.</p>
-                </div>
-            </section>
+        </div>
 
-            <section class="step" style="margin-top: 48px;">
-                <div class="mode-content" style="width: 100%; display: block;">
-                    <h2 style="margin-bottom: 20px; border-bottom: none;">Penthouse Written Guide</h2>
-                    <div class="main-menu-selector">
-                        <button id="sound-tab" class="mode-button active" onclick="showSection('sound')"><i class="fas fa-volume-up"></i> Sound</button>
-                        <button id="video-tab" class="mode-button" onclick="showSection('video')"><i class="fas fa-eye"></i> Video</button>
-                    </div>
+        <div class="ph-progress" id="progress" aria-hidden="true"></div>
 
-                    <section class="step" id="sound-setup-section">
-                        <h2><i class="fas fa-volume-up"></i> Sound</h2>
-                <div class="mode-content">
-                    <div class="instructions penthouse-instructions">
-                        <p>Make sure the <strong>mixer</strong>, <strong>speakers</strong>, and the <strong>stagebox</strong> are on. Make sure that the mixer is set to <strong>CH 1-16</strong>, and that the selected channel(s) are on <strong>Stereo Bus</strong>.</p>
-                        <div class="images-row penthouse-images-row">
-                            <img src="images/penthouse/image5.png" alt="Stagebox inputs" class="instruction-image">
-                            <img src="images/penthouse/image8.png" alt="Stagebox channel inputs" class="instruction-image">
-                        </div>
-                        <p>Plug any extra inputs into the stagebox. Sound for the TV should be plugged into <strong>channel 1 and 2</strong> on the box (though this can be changed).</p>
-                        <p>To get sound, select the channel, raise the fader, and raise the <strong>MAIN</strong> fader on the right.</p>
-                        <div class="images-row penthouse-images-row">
-                            <img src="images/penthouse/image4.png" alt="Channel faders and MAIN fader" class="instruction-image">
-                            <img src="images/penthouse/image2.png" alt="MAIN fader" class="instruction-image">
-                        </div>
-                        <p>For the <strong>monitor speakers</strong> (on the floor of the stage): Bus 1 is stage right, Bus 2 is stage left. Make sure that <strong>Bus 1-8</strong> are selected, and that knobs on the bus sends are up to get sound.</p>
-                        <div class="images-row penthouse-images-row">
-                            <img src="images/penthouse/image1.png" alt="Monitor bus sends" class="instruction-image">
-                            <img src="images/penthouse/image7.png" alt="Bus 1-8 and bus send knobs" class="instruction-image">
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <section class="step ph-card" id="card" aria-live="polite"></section>
 
-            <section class="step" id="video-projection-section" style="display:none;">
-                <h2><i class="fas fa-eye"></i> Video</h2>
-                <div class="mode-content">
-                    <div class="instructions penthouse-instructions">
-                        <p>In the closet by the stage, go into <strong>Cabinet C</strong>. There is a box that says <strong>"Penthouse TV Stuff"</strong>. In there, there should be a remote, an HDMI w/ USB-A dongle, and a USB-C dongle.</p>
-                        <p>Plug either dongle into your device (if using HDMI, USB-A is to power the dongle). Turn the TV on and make sure the input is <strong>HDMI 1</strong>. You will see this pop up on the screen.</p>
-                        <img src="images/penthouse/image3.png" alt="HDMI 1 input on TV" class="instruction-image">
-                        <p>Once the dongle is plugged in, it should flash green for a while until it goes to solid green. Once it does that, press the button in the middle of the dongle and your screen will project to the TV.</p>
-                        <img src="images/penthouse/image6.png" alt="Dongle states: green (not projecting) and red (projecting)" class="instruction-image" style="max-width: 280px;">
-                        <div class="instruction-note">Note: The dongle is red when it's projecting, and green when it is not.</div>
-                        <p>On your device, make sure your settings have the 2nd monitor and your sound on <strong>WirelessMedia</strong>.</p>
-                    </div>
-                </div>
-            </section>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>© NYU MPAP Room Guide</p>
-        </footer>
+        <div class="ph-nav">
+            <button class="step-btn circular-nav-btn" id="back" type="button" aria-label="Previous step">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="mode-button active ph-next" id="next" type="button"></button>
+        </div>
     </div>
+
     <script>
-        function showSection(section) {
-            const soundSection = document.getElementById('sound-setup-section');
-            const videoSection = document.getElementById('video-projection-section');
-            const soundTab = document.getElementById('sound-tab');
-            const videoTab = document.getElementById('video-tab');
-            if (section === 'sound') {
-                soundSection.style.display = '';
-                videoSection.style.display = 'none';
-                soundTab.classList.add('active');
-                videoTab.classList.remove('active');
+        const IMG = 'images/penthouse/live/';
+
+        const sections = [
+            { id: 'start', name: 'Start' },
+            { id: 'power', name: 'Power up' },
+            { id: 'stage', name: 'Plugging in' },
+            { id: 'mixer', name: 'Load scene' },
+            { id: 'sound', name: 'Sound' },
+            { id: 'finish', name: 'Shut down' },
+        ];
+
+        // Channel 8 is labeled Mic SR (stage right), which is the left side as you face the stage
+        const channels = [
+            ['1–2', 'TV / laptop'],
+            ['3–4', 'Drums'],
+            ['5', 'Bass'],
+            ['6–7', 'Guitar'],
+            ['8', 'Vocal, left'],
+            ['9', 'Vocal, center'],
+            ['10', 'Vocal, right'],
+            ['11–12', 'Electric piano'],
+            ['13', 'Grand piano'],
+            ['14–16', 'Your gear'],
+        ];
+
+        // Each slide: a title, then one of photo / grid / table / outline / bullets, then text.
+        // `photos` go with `steps`: one photo and one instruction per screen
+        const slides = [
+            {
+                id: 'start', sec: 'start', title: 'Welcome to the Penthouse!',
+                photo: 'stage.jpg', outline: true,
+                text: `This quick guide will help you operate smoothly in the space, from turning on the speakers, working with the mixer, and getting sound.`,
+            },
+            // 1. Turn everything on: mixer first, then the speakers
+            {
+                id: 'mixer', sec: 'power', title: 'Turn on the mixer',
+                photo: 'mixer-power.jpg',
+                text: `Go to the mixer at the back of the room and turn it on with the switch on the back. It takes about a minute to start.`,
+            },
+            {
+                id: 'speakers', sec: 'power', title: 'Turn on the speakers',
+                fade: ['wedge-power.jpg', 'main-power.jpg'],
+                text: `Walk to the stage and turn on the three wedges (the speakers on the floor facing the performers) and the two main speakers. The switches are on the back.`,
+            },
+
+            // 2. What's on stage
+            {
+                id: 'plugged-in', sec: 'stage', title: 'On the stage',
+                grid: [
+                    ['vocal-mic.jpg', '3 vocal mics'], ['amp.jpg', 'Amps'], ['drums.jpg', '2 drum mics'],
+                    ['keys.jpg', 'Electric piano'], ['piano.jpg', 'Grand piano mic'],
+                ],
+                text: `The following will already be plugged in for you:`,
+            },
+            {
+                id: 'your-gear', sec: 'stage', title: 'Plugging in your own gear',
+                fade: ['stagebox-side.jpg', 'stagebox-inputs.jpg'],
+                text: `To plug in anything else, you can plug into the three open inputs on the stage box, located to the back left of the stage. Inputs 14–16 should be free to use.`,
+            },
+
+            // 3. Load the scene
+            {
+                id: 'load', sec: 'mixer', title: 'Load the PH Live scene',
+                photos: ['view-button.jpg', ['scene-load-knob.jpg', 'scene-confirm.jpg']],
+                steps: [
+                    `Back at the mixer, let's load the <strong>PH Live</strong> scene so everything is routed correctly. Press <strong>View</strong>, to the right of the screen.`,
+                    `Turn the first knob to <strong>PH Live</strong>, then press the second knob. When it asks <strong>Load Scene?</strong>, press the knob under <strong>Confirm</strong>.`,
+                ],
+            },
+            {
+                id: 'channels', sec: 'mixer', title: 'What PH Live sets up',
+                fade: ['labels-left.jpg', 'labels-right.jpg'],
+                table: true,
+                text: `Each channel's name shows above its fader:`,
+            },
+            {
+                id: 'mains', sec: 'sound', title: 'Get sound in the main speakers',
+                photos: ['master-mute.jpg', 'channel-level.jpg'],
+                steps: [
+                    `All channels in the template default to being muted. Start by pressing the red <strong>Mute</strong> button on the <strong>Master</strong> channel (the fader on the far right) to unmute it, then set it to a safe, low level.`,
+                    `Next, press the red <strong>Mute</strong> button on the performer's channel to unmute it, then slowly raise its fader while they make some sound.`,
+                ],
+            },
+            {
+                id: 'wedges', sec: 'sound', title: 'Get sound in the wedges',
+                photos: ['bus-mute.jpg', 'send-knob.jpg'],
+                steps: [
+                    `If performers want to hear themselves in the monitors, unmute the wedges. Press the red <strong>Mute</strong> buttons on <strong>Bus 1, 2 and 3</strong>, then bring them up to a safe level. Bus 1 is the left wedge, Bus 2 the right and Bus 3 the center.`,
+                    `To send a channel to the monitor wedges, press <strong>Select</strong> on that channel, then turn up knob 1 for the left wedge, 2 for the right or 3 for the center.`,
+                ],
+                note: `Repeat this process for every performer.`,
+            },
+            {
+                id: 'no-sound', sec: 'sound', title: 'No sound',
+                text: `If you don't hear anything, check that:`,
+                bullets: [
+                    `The channel, master and buses are unmuted`,
+                    `The faders are up`,
+                    `The speakers are on`,
+                    `PH Live is loaded`,
+                    `For a wedge, its knob is turned up`,
+                ],
+                note: `Still no sound? Email <a href="mailto:steinhardt.technology@nyu.edu">steinhardt.technology@nyu.edu</a>.`,
+            },
+
+            // 5. Shut down: reset at the mixer, speakers and gear on stage, then the mixer last
+            {
+                id: 'reset', sec: 'finish', title: 'Load the default scene',
+                photos: ['default-list.jpg', 'scene-confirm.jpg'],
+                steps: [
+                    `When you're done, press <strong>View</strong> at the mixer, turn the first knob to <strong>Default PH '26</strong> and press the second knob.`,
+                    `Press the knob under <strong>Confirm</strong>. This turns all the levels down.`,
+                ],
+            },
+            {
+                id: 'power-off', sec: 'finish', title: 'Turn everything off',
+                photos: ['wedge-power.jpg', 'mixer-power.jpg'],
+                steps: [
+                    `Go to the stage. Turn off the wedges and main speakers, and unplug anything you added to inputs 14–16.`,
+                    `Back at the mixer, turn it off.`,
+                ],
+                note: `Questions? Email <a href="mailto:steinhardt.technology@nyu.edu">steinhardt.technology@nyu.edu</a>.`,
+            },
+        ];
+
+        const card = document.getElementById('card');
+        const nextBtn = document.getElementById('next');
+        const backBtn = document.getElementById('back');
+
+        // A slide with several photos is shown one photo and one instruction at a
+        // time; `sub` is which of them is on screen.
+        const indexOf = (id) => Math.max(0, slides.findIndex((s) => s.id === id));
+        let cur = indexOf(location.hash.slice(1));
+        let sub = 0;
+
+        function slideHtml(s) {
+            const part = sections.find((x) => x.id === s.sec);
+            let html = `<h2>${s.sec !== 'start' ? `<span class="ph-sr">${part.name}: </span>` : ''}${s.title}</h2>`;
+            if (s.outline) {
+                html += `<div class="ph-photo"><figure><img src="${IMG + s.photo}" alt="The Penthouse stage" class="step-image"></figure></div>`;
+                html += `<p class="step-text ph-instruction">${s.text}</p>`;
+                return html;
+            }
+            const stepPhoto = s.photos && s.photos[sub];
+            const fade = s.fade || (Array.isArray(stepPhoto) ? stepPhoto : null);
+            if (fade) {
+                html += `<div class="ph-photo"><figure class="ph-fade">${fade.map((src, i) =>
+                    `<img src="${IMG + src}" alt="" class="step-image${i ? ' ph-fade-top' : ''}">`).join('')}</figure></div>`;
+            }
+            const photo = s.photo || (fade ? null : stepPhoto);
+            if (photo) {
+                html += `<div class="ph-photo"><figure><img src="${IMG + photo}" alt="" class="step-image"></figure></div>`;
+            }
+            if (s.grid) {
+                html += `<p class="step-text ph-instruction">${s.text}</p><div class="ph-grid">${s.grid.map(([src, cap, cls]) =>
+                    `<figure class="${cls || ''}"><img src="${IMG + src}" alt="${cap}" class="step-image"><figcaption>${cap}</figcaption></figure>`).join('')}</div>`;
+            }
+            if (s.steps) html += `<p class="step-text ph-instruction">${s.steps[sub]}</p>`;
+            if (s.text && !s.grid) html += `<p class="step-text ph-instruction">${s.text}</p>`;
+            if (s.table) {
+                html += `<ul class="ph-channels">${channels.map(([ch, what]) =>
+                    `<li><b>${ch}</b>${what}</li>`).join('')}</ul>`;
+            }
+            if (s.list) html += `<ol class="ph-bullets">${s.list.map((b) => `<li>${b}</li>`).join('')}</ol>`;
+            if (s.bullets) html += `<ul class="ph-bullets">${s.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>`;
+            if (s.note && (!s.steps || sub === s.steps.length - 1)) html += `<div class="instruction-note">${s.note}</div>`;
+            return html;
+        }
+
+        // Size the photo to the room left between the card's text and the Next button
+        function fitPhotos() {
+            const slide = card.querySelector('.ph-slide');
+            const img = slide && slide.querySelector('.ph-photo img');
+            if (!img) return;
+            img.style.height = '0px';
+            const pad = parseFloat(getComputedStyle(card).paddingTop) + parseFloat(getComputedStyle(card).paddingBottom);
+            // offsetTop ignores the site's fade-in, which slides the card while it plays
+            const navTop = document.querySelector('.ph-nav').offsetTop;
+            const room = navTop - card.offsetTop - pad - slide.scrollHeight - 4;
+            const widest = slide.querySelector('.ph-photo').clientWidth * 9 / 16;
+            img.style.height = `${Math.floor(Math.max(80, Math.min(room, widest)))}px`;
+        }
+        // iOS browsers (Safari, Brave) report the height mid-animation after a
+        // pull-to-refresh or a toolbar change, so measure the visible height
+        // ourselves every time it can change, and always start at the top.
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        function fitScreen() {
+            document.documentElement.style.setProperty('--app-h', `${window.innerHeight}px`);
+            fitPhotos();
+        }
+        window.addEventListener('resize', fitScreen);
+        window.addEventListener('orientationchange', () => setTimeout(fitScreen, 300));
+        if (window.visualViewport) window.visualViewport.addEventListener('resize', fitScreen);
+        window.addEventListener('pageshow', () => {
+            window.scrollTo(0, 0);
+            fitScreen();
+        });
+        // The font changes text heights once it loads, so measure again then
+        if (document.fonts) document.fonts.ready.then(fitScreen);
+
+        // How far through each part you are, counting every screen (each step of a slide is a screen)
+        function renderProgress() {
+            const screens = (x) => (x.steps ? x.steps.length : 1);
+            const bar = document.getElementById('progress');
+            const parts = sections.slice(1);
+            // Build the segments once, then only change widths so the fill animates
+            if (!bar.children.length) {
+                bar.innerHTML = parts.map((sec) => `<div class="ph-part"><span><i></i></span><b>${sec.name}</b></div>`).join('');
+            }
+            const here = slides[cur].sec;
+            // The welcome screen stands on its own; the bar starts with Power up
+            bar.style.display = here === 'start' ? 'none' : '';
+            parts.forEach((sec, n) => {
+                const inPart = slides.filter((x) => x.sec === sec.id);
+                const total = inPart.reduce((sum, x) => sum + screens(x), 0);
+                let done = 0;
+                for (const x of inPart) {
+                    const i = slides.indexOf(x);
+                    if (i < cur) done += screens(x);
+                    else if (i === cur) done += sub + 1;
+                }
+                bar.children[n].querySelector('i').style.width = `${(done / total) * 100}%`;
+                bar.children[n].classList.toggle('here', sec.id === here);
+            });
+        }
+
+        // Step a crossfading photo every 2 seconds
+        let fadeTimer = null;
+        function startFade() {
+            clearInterval(fadeTimer);
+            const tops = [...card.querySelectorAll('.ph-fade-top')];
+            if (!tops.length) return;
+            let k = 0;
+            fadeTimer = setInterval(() => {
+                k = (k + 1) % (tops.length + 1);
+                tops.forEach((t, i) => t.classList.toggle('on', i === k - 1));
+            }, 2000);
+        }
+
+        function render(direction, fromHistory) {
+            const s = slides[cur];
+            card.innerHTML = `<div class="ph-slide ${direction ? 'ph-slide-' + direction : ''}">${slideHtml(s)}</div>`;
+            // Have this slide's other photos ready before they're needed
+            (s.photos || []).flat().forEach((src) => { new Image().src = IMG + src; });
+
+            const atEnd = !s.steps || sub === s.steps.length - 1;
+            const next = slides[cur + 1];
+            if (cur === 0) {
+                nextBtn.innerHTML = `Start <i class="fas fa-arrow-right"></i>`;
+            } else if (!next && atEnd) {
+                nextBtn.innerHTML = `Start over <i class="fas fa-redo"></i>`;
             } else {
-                soundSection.style.display = 'none';
-                videoSection.style.display = '';
-                soundTab.classList.remove('active');
-                videoTab.classList.add('active');
+                nextBtn.innerHTML = `Next <i class="fas fa-arrow-right"></i>`;
+            }
+            backBtn.disabled = cur === 0;
+
+            renderProgress();
+            fitPhotos();
+            startFade();
+            if (direction && !fromHistory) history.pushState({ cur, sub }, '', '#' + s.id);
+            else history.replaceState({ cur, sub }, '', '#' + s.id);
+        }
+
+        // Going back into a slide lands on its last photo
+        function go(i, atEnd) {
+            if (i < 0 || i >= slides.length) return;
+            const direction = i > cur ? 'next' : 'prev';
+            cur = i;
+            sub = atEnd && slides[i].steps ? slides[i].steps.length - 1 : 0;
+            render(direction);
+        }
+        function forward() {
+            const s = slides[cur];
+            if (s.steps && sub < s.steps.length - 1) {
+                sub++;
+                render('next');
+            } else if (cur < slides.length - 1) {
+                go(cur + 1);
+            } else {
+                go(0);
             }
         }
-        document.addEventListener('DOMContentLoaded', function() { showSection('sound'); });
+        function backward() {
+            if (sub > 0) {
+                sub--;
+                render('prev');
+            } else if (cur > 0) {
+                go(cur - 1, true);
+            }
+        }
+        window.addEventListener('popstate', (e) => {
+            if (!e.state) return;
+            const back = e.state.cur < cur || (e.state.cur === cur && e.state.sub < sub);
+            cur = e.state.cur;
+            sub = e.state.sub;
+            render(back ? 'prev' : 'next', true);
+        });
+        nextBtn.addEventListener('click', forward);
+        backBtn.addEventListener('click', backward);
+
+        document.addEventListener('keydown', (e) => {
+            if (document.querySelector('.lightbox-overlay.active')) return;
+            if (e.key === 'ArrowRight') forward();
+            if (e.key === 'ArrowLeft') backward();
+        });
+
+        // Swipe between screens on phones
+        let touch = null;
+        card.addEventListener('touchstart', (e) => { touch = e.touches[0]; }, { passive: true });
+        card.addEventListener('touchend', (e) => {
+            if (!touch) return;
+            const dx = e.changedTouches[0].clientX - touch.clientX;
+            const dy = e.changedTouches[0].clientY - touch.clientY;
+            touch = null;
+            if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+            if (dx < 0) forward();
+            else backward();
+        });
+
+        fitScreen();
+        render();
     </script>
 </body>
 </html>
